@@ -20885,7 +20885,7 @@ type FactionCrime struct {
 	CreatedAt  int32 `json:"created_at"`
 	Difficulty int32 `json:"difficulty"`
 
-	// ExecutedAt The timestamp at which the crime was executed. Note: this value is null for all crimes executed before January 15th, 2025.
+	// ExecutedAt The timestamp at which the crime was executed. <br> Note: this value is null for all crimes executed before January 15th, 2025.
 	ExecutedAt *int32 `json:"executed_at"`
 
 	// ExpiredAt The timestamp at which the crime will expire.
@@ -20961,7 +20961,7 @@ type FactionCrimeSlot struct {
 		// IsAvailable Shows if user has the required item.
 		IsAvailable bool `json:"is_available"`
 
-		// IsReusable Shows if the item is reusable or consumed during the crime. Important note: There may be alternative paths which won't consume the item, even if the item is non-reusable.
+		// IsReusable Shows if the item is reusable or consumed during the crime.<br><b>Important note: There may be alternative paths which won't consume the item, even if the item is non-reusable.</b>
 		IsReusable bool `json:"is_reusable"`
 	} `json:"item_requirement"`
 	Position     string                  `json:"position"`
@@ -21395,7 +21395,7 @@ type FactionSlotPositionInfo struct {
 	Id    TornOrganizedCrimePositionId `json:"id"`
 	Label string                       `json:"label"`
 
-	// Number This field is no longer needed as there's 'label' field now. This field will be removed on 1st of June 2026.
+	// Number This field is no longer needed as there's 'label' field now.<br>This field will be removed on 1st of June 2026.
 	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 	Number int32 `json:"number"`
 }
@@ -21731,13 +21731,13 @@ type ForumFeed struct {
 	Title     string        `json:"title"`
 
 	// Type This represents the type of the activity. Values range from 1 to 8 where:
-	//  * 1 = 'X posted on a thread',
-	//  * 2 = 'X created a thread',
-	//  * 3 = 'X liked your thread',
-	//  * 4 = 'X disliked your thread',
-	//  * 5 = 'X liked your post',
-	//  * 6 = 'X disliked your post',
-	//  * 7 = 'X quoted your post'.
+	//  *                    1 = 'X posted on a thread',
+	//  *                    2 = 'X created a thread',
+	//  *                    3 = 'X liked your thread',
+	//  *                    4 = 'X disliked your thread',
+	//  *                    5 = 'X liked your post',
+	//  *                    6 = 'X disliked your post',
+	//  *                    7 = 'X quoted your post'.
 	Type ForumFeedTypeEnum `json:"type"`
 	User ForumThreadAuthor `json:"user"`
 }
@@ -24051,7 +24051,7 @@ type TornItem struct {
 	Circulation int64  `json:"circulation"`
 	Description string `json:"description"`
 
-	// Details If the item 'type' is 'Armor' then TornItemArmorDetails is returned. If the item 'type' is 'Weapon' then TornItemWeaponDetails is returned. Otherwise, null is returned.
+	// Details If the item 'type' is 'Armor' then TornItemArmorDetails is returned.<br>If the item 'type' is 'Weapon' then TornItemWeaponDetails is returned.<br>Otherwise, null is returned.
 	Details       *TornItem_Details       `json:"details"`
 	Effect        *string                 `json:"effect"`
 	Id            ItemId                  `json:"id"`
@@ -24083,7 +24083,7 @@ type TornItem struct {
 	} `json:"value"`
 }
 
-// TornItem_Details If the item 'type' is 'Armor' then TornItemArmorDetails is returned. If the item 'type' is 'Weapon' then TornItemWeaponDetails is returned. Otherwise, null is returned.
+// TornItem_Details If the item 'type' is 'Armor' then TornItemArmorDetails is returned.<br>If the item 'type' is 'Weapon' then TornItemWeaponDetails is returned.<br>Otherwise, null is returned.
 type TornItem_Details struct {
 	union json.RawMessage
 }
@@ -24346,7 +24346,7 @@ type TornOrganizedCrime struct {
 // TornOrganizedCrimePositionId defines model for TornOrganizedCrimePositionId.
 type TornOrganizedCrimePositionId string
 
-// TornOrganizedCrimePositionIdDeprecated This field is now available in 'position_info' object as 'id' field. This field will be removed on 1st of June 2026.
+// TornOrganizedCrimePositionIdDeprecated This field is now available in 'position_info' object as 'id' field.<br>This field will be removed on 1st of June 2026.
 //
 // Deprecated: this type has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 type TornOrganizedCrimePositionIdDeprecated string
@@ -27206,7 +27206,7 @@ type GetCompanyGenericParams struct {
 	} `form:"cat,omitempty" json:"cat,omitempty"`
 	Limit *ApiLimit `form:"limit,omitempty" json:"limit,omitempty"`
 
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTags       `form:"striptags,omitempty" json:"striptags,omitempty"`
 	Offset    *ApiOffsetNoDefault `form:"offset,omitempty" json:"offset,omitempty"`
 
@@ -27216,7 +27216,7 @@ type GetCompanyGenericParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27233,13 +27233,13 @@ type GetMyCompanyApplicationsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyCompanyEmployeesParams defines parameters for GetMyCompanyEmployees.
 type GetMyCompanyEmployeesParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -27248,7 +27248,7 @@ type GetMyCompanyEmployeesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27260,13 +27260,13 @@ type GetCompanyLookupParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyCompanyNewsParams defines parameters for GetMyCompanyNews.
 type GetMyCompanyNewsParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsFalse `form:"striptags,omitempty" json:"striptags,omitempty"`
 	Limit     *ApiLimit100       `form:"limit,omitempty" json:"limit,omitempty"`
 
@@ -27288,7 +27288,7 @@ type GetMyCompanyNewsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27297,7 +27297,7 @@ type GetMyCompanyNewsParamsSort string
 
 // GetMyCompanyProfileParams defines parameters for GetMyCompanyProfile.
 type GetMyCompanyProfileParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -27306,7 +27306,7 @@ type GetMyCompanyProfileParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27315,14 +27315,14 @@ type GetCompaniesSearchParams struct {
 	// Name Name to search for.
 	Name *ApiName `form:"name,omitempty" json:"name,omitempty"`
 
-	// Filters A filtering query parameter allowing a comma-separated list of filters.
-	//  * Each filter can be one of the following:
-	//  * Fixed options: `recruiting`, `notRecruiting`
-	//  * Dynamic options: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:
-	//  * * `fieldName` is one of: `id`, `type`, `daysOld`, `rating`, `dailyIncome`, `weeklyIncome`, `dailyCustomers`, `weeklyCustomers`
-	//  * * `condition` is one of: `=`, `!=`, `<`, `<=`, `>=`, `>`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`
-	//  * * `number`: any integer value
-	//  * Examples:
+	// Filters A filtering query parameter allowing a comma-separated list of filters. <br>
+	//  *  Each filter can be one of the following:
+	//  *  Fixed options: `recruiting`, `notRecruiting`
+	//  *  Dynamic options: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:
+	//  *  * `fieldName` is one of: `id`, `type`, `daysOld`, `rating`, `dailyIncome`, `weeklyIncome`, `dailyCustomers`, `weeklyCustomers`
+	//  *  * `condition` is one of: `=`, `!=`, `<`, `<=`, `>=`, `>`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`
+	//  *  * `number`: any integer value
+	//  *  Examples:
 	//  * `filters=recruiting`,
 	//  * `filters=weeklyIncome:>=:20000,id:<:1000,notRecruiting`,
 	//  * `filters=type:Equal:10,rating:=:10,dailyIncome:<=:6666666`
@@ -27336,7 +27336,7 @@ type GetCompaniesSearchParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27348,7 +27348,7 @@ type GetCompaniesSnapshotParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27360,7 +27360,7 @@ type GetMyCompanyStockParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27372,13 +27372,13 @@ type GetCompanyTimestampParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetCompanyEmployeesParams defines parameters for GetCompanyEmployees.
 type GetCompanyEmployeesParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -27387,13 +27387,13 @@ type GetCompanyEmployeesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetCompanyProfileParams defines parameters for GetCompanyProfile.
 type GetCompanyProfileParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -27402,7 +27402,7 @@ type GetCompanyProfileParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27411,7 +27411,7 @@ type GetCompaniesListParams struct {
 	Limit  *ApiLimit100Default20 `form:"limit,omitempty" json:"limit,omitempty"`
 	Offset *ApiOffsetNoDefault   `form:"offset,omitempty" json:"offset,omitempty"`
 
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -27420,7 +27420,7 @@ type GetCompaniesListParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27453,7 +27453,7 @@ type GetFactionGenericParams struct {
 	Stat    *FactionStatEnum                `form:"stat,omitempty" json:"stat,omitempty"`
 	Filters *GetFactionGenericParamsFilters `form:"filters,omitempty" json:"filters,omitempty"`
 
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTags `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Sort Sorted by the greatest timestamps
@@ -27466,7 +27466,7 @@ type GetFactionGenericParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27495,7 +27495,7 @@ type GetMyFactionApplicationsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27521,7 +27521,7 @@ type GetMyFactionAttacksParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27550,7 +27550,7 @@ type GetMyFactionAttacksSimplifiedParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27568,7 +27568,7 @@ type GetMyFactionBalanceParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27583,7 +27583,7 @@ type GetMyFactionBasicInformationParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27595,7 +27595,7 @@ type GetMyFactionChainParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27607,7 +27607,7 @@ type GetMyFactionLatestChainReportParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27630,7 +27630,7 @@ type GetMyFactionCompletedChainsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27651,7 +27651,7 @@ type GetMyFactionContributorsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27666,13 +27666,13 @@ type GetMyFactionCrimeExpParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyFactionOrganizedCrimesParams defines parameters for GetMyFactionOrganizedCrimes.
 type GetMyFactionOrganizedCrimesParams struct {
-	// Cat Category of organized crimes returned. Category 'available' includes both 'recruiting' & 'planning', and category 'completed' includes both 'successful' & 'failure' Default category is 'all'.
+	// Cat Category of organized crimes returned. Category 'available' includes both 'recruiting' & 'planning', and category 'completed' includes both 'successful' & 'failure'<br>Default category is 'all'.
 	Cat *GetMyFactionOrganizedCrimesParamsCat `form:"cat,omitempty" json:"cat,omitempty"`
 
 	// Filters It's possible to set this parameter to specify a field used for the sort, from & to query parameters. If not specified, the field will default to the category sorting as described above.
@@ -27695,7 +27695,7 @@ type GetMyFactionOrganizedCrimesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27716,7 +27716,7 @@ type GetWarfareDirtyBombsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27728,7 +27728,7 @@ type GetMyFactionHoFParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27745,7 +27745,7 @@ type GetMyFactionInventoryParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27757,13 +27757,13 @@ type GetFactionLookupParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyFactionMembersParams defines parameters for GetMyFactionMembers.
 type GetMyFactionMembersParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -27772,13 +27772,13 @@ type GetMyFactionMembersParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyFactionNewsParams defines parameters for GetMyFactionNews.
 type GetMyFactionNewsParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsFalse `form:"striptags,omitempty" json:"striptags,omitempty"`
 	Limit     *ApiLimit100       `form:"limit,omitempty" json:"limit,omitempty"`
 
@@ -27800,7 +27800,7 @@ type GetMyFactionNewsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27815,7 +27815,7 @@ type GetMyFactionPositionsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27827,7 +27827,7 @@ type GetFactionRacketsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27849,7 +27849,7 @@ type GetMyFactionRaidsHistoryParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27876,7 +27876,7 @@ type GetMyFactionRankedWarsHistoryParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27902,7 +27902,7 @@ type GetMyFactionReportsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27925,7 +27925,7 @@ type GetMyFactionRevivesParams struct {
 	// From Timestamp that sets the lower limit for the data returned. Data returned will be after this time
 	From *ApiFrom `form:"from,omitempty" json:"from,omitempty"`
 
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -27934,7 +27934,7 @@ type GetMyFactionRevivesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27957,7 +27957,7 @@ type GetMyFactionRevivesSimplifiedParams struct {
 	// From Timestamp that sets the lower limit for the data returned. Data returned will be after this time
 	From *ApiFrom `form:"from,omitempty" json:"from,omitempty"`
 
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -27966,7 +27966,7 @@ type GetMyFactionRevivesSimplifiedParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -27978,7 +27978,7 @@ type GetFactionSearchParams struct {
 	// Name Name to search for.
 	Name *ApiName `form:"name,omitempty" json:"name,omitempty"`
 
-	// Filters A filtering query parameter allowing a comma-separated list of filters.
+	// Filters A filtering query parameter allowing a comma-separated list of filters. <br>
 	//  * Each filter can be one of the following:
 	//  * Fixed options: `destroyed`, `notDestroyed`, `recruiting`, `notRecruiting`
 	//  * Dynamic options: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:
@@ -27999,7 +27999,7 @@ type GetFactionSearchParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28011,7 +28011,7 @@ type GetFactionsSnapshotParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28023,7 +28023,7 @@ type GetMyFactionStatsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28035,7 +28035,7 @@ type GetMyFactionTerritoryParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28050,7 +28050,7 @@ type GetTerritoryOwnershipParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28072,7 +28072,7 @@ type GetMyFactionTerritoryWarsHistoryParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28087,7 +28087,7 @@ type GetFactionTimestampParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28099,7 +28099,7 @@ type GetMyFactionUpgradesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28123,7 +28123,7 @@ type GetWarfareParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28150,7 +28150,7 @@ type GetWarfareChainsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28179,7 +28179,7 @@ type GetWarfareRaidsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28205,7 +28205,7 @@ type GetWarfareRankedWarsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28231,7 +28231,7 @@ type GetWarfareTerritoryWarsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28246,7 +28246,7 @@ type GetMyFactionWarsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28258,7 +28258,7 @@ type GetChainReportParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28270,7 +28270,7 @@ type GetMyFactionOrganizedCrimeParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28282,7 +28282,7 @@ type GetFactionBasicInformationParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28294,7 +28294,7 @@ type GetFactionChainParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28317,7 +28317,7 @@ type GetFactionCompletedChainsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28332,13 +28332,13 @@ type GetFactionHoFParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetFactionMembersParams defines parameters for GetFactionMembers.
 type GetFactionMembersParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -28347,7 +28347,7 @@ type GetFactionMembersParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28369,7 +28369,7 @@ type GetFactionRaidsHistoryParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28387,7 +28387,7 @@ type GetFactionRankedWarsHistoryParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28399,7 +28399,7 @@ type GetFactionTerritoryParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28421,7 +28421,7 @@ type GetFactionTerritoryWarsHistoryParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28436,7 +28436,7 @@ type GetFactionWarsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28448,7 +28448,7 @@ type GetRaidReportParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28460,7 +28460,7 @@ type GetRankedWarReportParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28472,7 +28472,7 @@ type GetTerritoryWarReportParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28486,7 +28486,7 @@ type GetForumGenericParams struct {
 		union json.RawMessage
 	} `form:"id,omitempty" json:"id,omitempty"`
 
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTags `form:"striptags,omitempty" json:"striptags,omitempty"`
 	Limit     *ApiLimit     `form:"limit,omitempty" json:"limit,omitempty"`
 
@@ -28506,7 +28506,7 @@ type GetForumGenericParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28529,7 +28529,7 @@ type GetForumCategoriesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28541,7 +28541,7 @@ type GetForumLookupParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28564,7 +28564,7 @@ type GetForumAllThreadsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28579,7 +28579,7 @@ type GetForumTimestampParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28602,7 +28602,7 @@ type GetForumThreadsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28611,7 +28611,7 @@ type GetForumThreadsParamsSort string
 
 // GetForumThreadPostsParams defines parameters for GetForumThreadPosts.
 type GetForumThreadPostsParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue   `form:"striptags,omitempty" json:"striptags,omitempty"`
 	Offset    *ApiOffsetNoDefault `form:"offset,omitempty" json:"offset,omitempty"`
 
@@ -28630,7 +28630,7 @@ type GetForumThreadPostsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28645,7 +28645,7 @@ type GetForumThreadParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28662,7 +28662,7 @@ type GetKeyGenericParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28679,7 +28679,7 @@ type GetKeyInfoParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28694,7 +28694,7 @@ type GetKeyLogParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28728,7 +28728,7 @@ type GetMarketGenericParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28759,7 +28759,7 @@ type GetMarketAuctionHouseParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28777,7 +28777,7 @@ type GetMarketBazaarParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28789,7 +28789,7 @@ type GetMarketLookupParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28801,7 +28801,7 @@ type GetMarketPointsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28813,7 +28813,7 @@ type GetMarketTimestampParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28836,7 +28836,7 @@ type GetMarketAuctionHouseItemParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28851,7 +28851,7 @@ type GetMarketAuctionHouseListingParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28863,7 +28863,7 @@ type GetMarketBazaarItemParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28880,7 +28880,7 @@ type GetMarketItemMarketItemParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28898,7 +28898,7 @@ type GetMarketPropertiesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28919,7 +28919,7 @@ type GetMarketPropertiesRentalParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28940,7 +28940,7 @@ type GetPropertyGenericParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28957,7 +28957,7 @@ type GetPropertyLookupParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28969,7 +28969,7 @@ type GetPropertyTimestampParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -28981,7 +28981,7 @@ type GetPropertyParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29017,7 +29017,7 @@ type GetRacingGenericParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29037,7 +29037,7 @@ type GetRacingCarsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29049,7 +29049,7 @@ type GetRacingCarUpgradesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29061,7 +29061,7 @@ type GetRacingLookupParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29087,7 +29087,7 @@ type GetRacingRacesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29102,7 +29102,7 @@ type GetRacingTimestampParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29114,7 +29114,7 @@ type GetRacingTracksParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29126,7 +29126,7 @@ type GetRacingRaceDetailsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29141,7 +29141,7 @@ type GetRacingTrackRecordsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29158,7 +29158,7 @@ type GetTornGenericParams struct {
 	// Legacy Legacy selection names for which you want or expect API v1 response
 	Legacy *[]TornSelectionName `form:"legacy,omitempty" json:"legacy,omitempty"`
 
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTags `form:"striptags,omitempty" json:"striptags,omitempty"`
 	Limit     *ApiLimit     `form:"limit,omitempty" json:"limit,omitempty"`
 
@@ -29183,7 +29183,7 @@ type GetTornGenericParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29216,7 +29216,7 @@ type GetTornAttackLogParams struct {
 	// Sort Sorted by the greatest timestamps
 	Sort *GetTornAttackLogParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
 
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -29225,7 +29225,7 @@ type GetTornAttackLogParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29240,7 +29240,7 @@ type GetTornBankParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29255,7 +29255,7 @@ type GetTornBountiesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29267,7 +29267,7 @@ type GetTornCalendarParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29279,7 +29279,7 @@ type GetTornCardsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29291,7 +29291,7 @@ type GetTornCityShopsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29303,7 +29303,7 @@ type GetTornCompaniesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29315,7 +29315,7 @@ type GetTornCrimesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29327,7 +29327,7 @@ type GetTornEducationParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29339,7 +29339,7 @@ type GetTornEliminationParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29357,7 +29357,7 @@ type GetTornFactionHoFParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29369,7 +29369,7 @@ type GetTornFactionTreeParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29381,7 +29381,7 @@ type GetTornGymsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29393,7 +29393,7 @@ type GetTornHalloweenParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29411,7 +29411,7 @@ type GetTornHoFParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29429,7 +29429,7 @@ type GetTornHonorsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29444,7 +29444,7 @@ type GetTornItemAmmoParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29456,7 +29456,7 @@ type GetTornItemModsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29465,7 +29465,7 @@ type GetTornItemsParams struct {
 	// Cat Item category type
 	Cat *TornItemCategory `form:"cat,omitempty" json:"cat,omitempty"`
 
-	// Sort Sort rows from newest to oldest Default ordering is ascending
+	// Sort Sort rows from newest to oldest<br>Default ordering is ascending
 	Sort *GetTornItemsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -29474,7 +29474,7 @@ type GetTornItemsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29489,7 +29489,7 @@ type GetTornLogCategoriesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29501,7 +29501,7 @@ type GetTornLogTypesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29513,7 +29513,7 @@ type GetTornLookupParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29525,7 +29525,7 @@ type GetTornMedalsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29537,7 +29537,7 @@ type GetTornMeritsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29549,7 +29549,7 @@ type GetTornMuseumParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29561,7 +29561,7 @@ type GetTornOrganizedCrimesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29573,7 +29573,7 @@ type GetTornPokerTablesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29585,7 +29585,7 @@ type GetTornPropertiesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29597,7 +29597,7 @@ type GetTornRpsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29609,7 +29609,7 @@ type GetTornSearchForCashParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29621,7 +29621,7 @@ type GetTornShopliftingParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29633,7 +29633,7 @@ type GetTornCityStatsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29645,7 +29645,7 @@ type GetTornStocksParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29662,7 +29662,7 @@ type GetTornTerritoryParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29674,7 +29674,7 @@ type GetTornTimestampParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29686,7 +29686,7 @@ type GetTornSubcrimesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29698,7 +29698,7 @@ type GetTornHonorsSpecificParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29710,13 +29710,13 @@ type GetTornItemDetailsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetTornItemsSpecificParams defines parameters for GetTornItemsSpecific.
 type GetTornItemsSpecificParams struct {
-	// Sort Sort rows from newest to oldest Default ordering is ascending
+	// Sort Sort rows from newest to oldest<br>Default ordering is ascending
 	Sort *GetTornItemsSpecificParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -29725,7 +29725,7 @@ type GetTornItemsSpecificParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29740,7 +29740,7 @@ type GetTornItemStatsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29752,7 +29752,7 @@ type GetTornMedalsSpecificParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29767,7 +29767,7 @@ type GetTornEliminationTeamParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29779,7 +29779,7 @@ type GetTornLogTypesSpecificParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29791,7 +29791,7 @@ type GetTornCityShopSpecificParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29803,7 +29803,7 @@ type GetSpecificTornStockParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29815,7 +29815,7 @@ type GetTornCompaniesSpecificParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29853,7 +29853,7 @@ type GetUserGenericParams struct {
 	// Filters It's possible to use this query parameter to only get incoming or outgoing attacks / revives. If not specified, this selection will return both incoming and outgoing attacks / revives.
 	Filters *GetUserGenericParamsFilters `form:"filters,omitempty" json:"filters,omitempty"`
 
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTags       `form:"striptags,omitempty" json:"striptags,omitempty"`
 	Offset    *ApiOffsetNoDefault `form:"offset,omitempty" json:"offset,omitempty"`
 
@@ -29863,7 +29863,7 @@ type GetUserGenericParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29889,7 +29889,7 @@ type GetMyAmmoParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29915,7 +29915,7 @@ type GetMyAttacksParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29944,7 +29944,7 @@ type GetMyAttacksSimplifiedParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29959,13 +29959,13 @@ type GetMyBarsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyBasicInformationParams defines parameters for GetMyBasicInformation.
 type GetMyBasicInformationParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -29974,7 +29974,7 @@ type GetMyBasicInformationParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29986,7 +29986,7 @@ type GetMyBattlestatsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -29998,7 +29998,7 @@ type GetMyBountiesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30010,7 +30010,7 @@ type GetMyCalendarTimeParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30022,7 +30022,7 @@ type GetMyCasinoStreakParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30034,7 +30034,7 @@ type GetMyCompetitionInfoParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30046,7 +30046,7 @@ type GetMyCooldownsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30058,7 +30058,7 @@ type GetMyDiscordParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30070,7 +30070,7 @@ type GetMyEducationParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30082,7 +30082,7 @@ type GetMyEnlistedCarsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30094,13 +30094,13 @@ type GetMyEquipmentParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyEventsParams defines parameters for GetMyEvents.
 type GetMyEventsParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsFalse    `form:"striptags,omitempty" json:"striptags,omitempty"`
 	Limit     *ApiLimit100Default20 `form:"limit,omitempty" json:"limit,omitempty"`
 
@@ -30116,7 +30116,7 @@ type GetMyEventsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30128,7 +30128,7 @@ type GetMyFactionParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30140,7 +30140,7 @@ type GetMyForumFeedParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30152,13 +30152,13 @@ type GetMyForumFriendsUpdatesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyForumPostsParams defines parameters for GetMyForumPosts.
 type GetMyForumPostsParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 	Limit     *ApiLimit20       `form:"limit,omitempty" json:"limit,omitempty"`
 
@@ -30177,7 +30177,7 @@ type GetMyForumPostsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30192,7 +30192,7 @@ type GetMyForumSubscribedThreadsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30215,7 +30215,7 @@ type GetMyForumThreadsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30230,7 +30230,7 @@ type GetMyGymParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30242,7 +30242,7 @@ type GetMyHalloweenParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30254,7 +30254,7 @@ type GetMyHoFParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30266,7 +30266,7 @@ type GetMyHonorsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30278,7 +30278,7 @@ type GetMyIconsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30295,7 +30295,7 @@ type GetMyInventoryParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30309,7 +30309,7 @@ type GetMyItemMarketListingsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30321,7 +30321,7 @@ type GetMyItemModsInformationParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30333,7 +30333,7 @@ type GetMyJobParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30345,7 +30345,7 @@ type GetMyJobPointsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30357,7 +30357,7 @@ type GetMyJobRanksParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30366,12 +30366,12 @@ type GetMyContactsListParams struct {
 	// Cat Select list type
 	Cat UserListEnum `form:"cat" json:"cat"`
 
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue   `form:"striptags,omitempty" json:"striptags,omitempty"`
 	Limit     *ApiLimit50         `form:"limit,omitempty" json:"limit,omitempty"`
 	Offset    *ApiOffsetNoDefault `form:"offset,omitempty" json:"offset,omitempty"`
 
-	// Sort Sort rows from newest to oldest Default ordering is ascending
+	// Sort Sort rows from newest to oldest<br>Default ordering is ascending
 	Sort *GetMyContactsListParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -30380,7 +30380,7 @@ type GetMyContactsListParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30414,7 +30414,7 @@ type GetMyLogsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Full). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Full).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyFull `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30426,7 +30426,7 @@ type GetUserLookupParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30438,7 +30438,7 @@ type GetMyMedalsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30450,7 +30450,7 @@ type GetMyMeritsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30473,7 +30473,7 @@ type GetMyMessagesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30488,7 +30488,7 @@ type GetMyMissionsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30500,7 +30500,7 @@ type GetMyMoneyParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30512,13 +30512,13 @@ type GetMyNetworthParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyNewEventsParams defines parameters for GetMyNewEvents.
 type GetMyNewEventsParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsFalse `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -30527,7 +30527,7 @@ type GetMyNewEventsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30539,7 +30539,7 @@ type GetMyNewMessagesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30551,7 +30551,7 @@ type GetMyNotificationsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30563,7 +30563,7 @@ type GetMyOrganizedCrimeParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30575,7 +30575,7 @@ type GetMyAvailableOrganizedCrimesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30587,7 +30587,7 @@ type GetMyPerksParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30605,13 +30605,13 @@ type GetMyPersonalStatsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyProfileParams defines parameters for GetMyProfile.
 type GetMyProfileParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -30620,7 +30620,7 @@ type GetMyProfileParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30637,7 +30637,7 @@ type GetMyPropertiesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30652,7 +30652,7 @@ type GetMyPropertyParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30678,7 +30678,7 @@ type GetMyRacesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30693,7 +30693,7 @@ type GetMyRacingRecordsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30705,7 +30705,7 @@ type GetMyRefillsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30728,7 +30728,7 @@ type GetMyReportsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30751,7 +30751,7 @@ type GetMyRevivesParams struct {
 	// From Timestamp that sets the lower limit for the data returned. Data returned will be after this time
 	From *ApiFrom `form:"from,omitempty" json:"from,omitempty"`
 
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -30760,7 +30760,7 @@ type GetMyRevivesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30783,7 +30783,7 @@ type GetMyRevivesSimplifiedParams struct {
 	// From Timestamp that sets the lower limit for the data returned. Data returned will be after this time
 	From *ApiFrom `form:"from,omitempty" json:"from,omitempty"`
 
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -30792,7 +30792,7 @@ type GetMyRevivesSimplifiedParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30804,17 +30804,17 @@ type GetUsersSearchParams struct {
 	// Name Name to search for.
 	Name *ApiName `form:"name,omitempty" json:"name,omitempty"`
 
-	// Filters A filtering query parameter allowing a comma-separated list of filters.
-	//  * Filters in this selection reflect on-site filters, and they can be:
-	//  * One of: `married`, `notMarried`, `traveling`, `notTraveling`, `inFaction`, `notInFaction`, `inCompany`, `notInCompany`, `inHospital`, `notInHospital`, `inJail`, `notInJail`, `inFederalJail`, `notInFederalJail`
-	//  * Additionally, one of last action: `lastActionNow`, `lastActionRecent`, `lastActionHourAgo`, `lastActionDayAgo`, `lastActionWeekAgo`, `lastActionMonthAgo`, `lastActionYearAgo`
-	//  * Additionally, one of gender: `male`, `female`, `enby`
-	//  * Any dynamic option: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:
-	//  * * `fieldName` is one of: `level`, `daysOld`, `offences`
-	//  * * `condition` is one of: `=`, `!=`, `<`, `<=`, `>=`, `>`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`
-	//  * * `number`: any integer value
-	//  * Additionally, a dynamic list of faction ids (negates `inFaction` and `notInFaction` filters): `factions`+`:`+`list of ids separated by semicolon ;`
-	//  * Examples:
+	// Filters A filtering query parameter allowing a comma-separated list of filters. <br>
+	//  *  Filters in this selection reflect on-site filters, and they can be:
+	//  *  One of: `married`, `notMarried`, `traveling`, `notTraveling`, `inFaction`, `notInFaction`, `inCompany`, `notInCompany`, `inHospital`, `notInHospital`, `inJail`, `notInJail`, `inFederalJail`, `notInFederalJail`
+	//  *  Additionally, one of last action: `lastActionNow`, `lastActionRecent`, `lastActionHourAgo`, `lastActionDayAgo`, `lastActionWeekAgo`, `lastActionMonthAgo`, `lastActionYearAgo`
+	//  *  Additionally, one of gender: `male`, `female`, `enby`
+	//  *  Any dynamic option: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:
+	//  *  * `fieldName` is one of: `level`, `daysOld`, `offences`
+	//  *  * `condition` is one of: `=`, `!=`, `<`, `<=`, `>=`, `>`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`
+	//  *  * `number`: any integer value
+	//  *  Additionally, a dynamic list of faction ids (negates `inFaction` and `notInFaction` filters): `factions`+`:`+`list of ids separated by semicolon ;`
+	//  *  Examples:
 	//  * `filters=married`,
 	//  * `filters=daysOld:>=:5000,offences:>:100000,notInFaction`,
 	//  * `filters=factions:1;2;3`,
@@ -30834,7 +30834,7 @@ type GetUsersSearchParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30849,7 +30849,7 @@ type GetMySkillsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30861,7 +30861,7 @@ type GetUsersSnapshotParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30873,7 +30873,7 @@ type GetMyStocksParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30885,7 +30885,7 @@ type GetUserTimestampParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30910,7 +30910,7 @@ type GetMyTradesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30925,7 +30925,7 @@ type GetMyTravelInformationParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30937,7 +30937,7 @@ type GetMyVirusCodingInformationParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30949,7 +30949,7 @@ type GetMyWeaponExpParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30961,7 +30961,7 @@ type GetMyWorkstatsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -30973,13 +30973,13 @@ type GetMyCrimesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetUserBasicInformationParams defines parameters for GetUserBasicInformation.
 type GetUserBasicInformationParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -30988,7 +30988,7 @@ type GetUserBasicInformationParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31000,7 +31000,7 @@ type GetUserBountiesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31012,7 +31012,7 @@ type GetUserCompetitionInfoParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31024,7 +31024,7 @@ type GetUserDiscordParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31036,13 +31036,13 @@ type GetUserFactionParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetUserForumPostsParams defines parameters for GetUserForumPosts.
 type GetUserForumPostsParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 	Limit     *ApiLimit20       `form:"limit,omitempty" json:"limit,omitempty"`
 
@@ -31061,7 +31061,7 @@ type GetUserForumPostsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31087,7 +31087,7 @@ type GetUserForumThreadsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31102,7 +31102,7 @@ type GetUserHoFParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31114,7 +31114,7 @@ type GetUserIconsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31126,7 +31126,7 @@ type GetUserJobParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31138,7 +31138,7 @@ type GetUserMedalsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31155,13 +31155,13 @@ type GetUserPersonalStatsParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetUserProfileParams defines parameters for GetUserProfile.
 type GetUserProfileParams struct {
-	// Striptags Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
 	Striptags *ApiStripTagsTrue `form:"striptags,omitempty" json:"striptags,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
@@ -31170,7 +31170,7 @@ type GetUserProfileParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31187,7 +31187,7 @@ type GetUserPropertiesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31202,7 +31202,7 @@ type GetUserPropertyParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -31214,7 +31214,7 @@ type GetMyDetailedTradeParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
@@ -41448,21 +41448,21 @@ type ClientInterface interface {
 
 	// GetCompanyGeneric Get any Company selection
 	//
-	// Key access level depends on the required selections. Choose one or more selections (comma separated).
+	// Key access level depends on the required selections. <br> Choose one or more selections (comma separated).
 	//
 	// Corresponds with GET /company (the `GetCompanyGeneric` operationId).
 	GetCompanyGeneric(ctx context.Context, params *GetCompanyGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyCompanyApplications Get your company's applications
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /company/applications (the `GetMyCompanyApplications` operationId).
 	GetMyCompanyApplications(ctx context.Context, params *GetMyCompanyApplicationsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyCompanyEmployees Get my company's employees
 	//
-	// Requires public access key. When using Limited, Custom or Full access API keys, the response will be:
+	// Requires public access key. <br>When using Limited, Custom or Full access API keys, the response will be:<br>
 	//  * for director: CompanyEmployeeFull
 	//  * for employee: CompanyEmployeeExtended
 	//  * anyone else: CompanyEmployee.
@@ -41472,33 +41472,33 @@ type ClientInterface interface {
 
 	// GetCompanyLookup performs a GET /company/lookup (the `GetCompanyLookup` operationId) request.
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	GetCompanyLookup(ctx context.Context, params *GetCompanyLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyCompanyNews Get your company's news details
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /company/news (the `GetMyCompanyNews` operationId).
 	GetMyCompanyNews(ctx context.Context, params *GetMyCompanyNewsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyCompanyProfile Get my company's profile
 	//
-	// Requires public access key. When using Limited, Custom or Full access API keys, the response will be of type CompanyProfileExtended, otherwise it will be CompanyProfile.
+	// Requires public access key. <br>When using Limited, Custom or Full access API keys, the response will be of type CompanyProfileExtended, otherwise it will be CompanyProfile.
 	//
 	// Corresponds with GET /company/profile (the `GetMyCompanyProfile` operationId).
 	GetMyCompanyProfile(ctx context.Context, params *GetMyCompanyProfileParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetCompaniesSearch Search companies by name or other criteria
 	//
-	// Requires public access key. This selection is standalone and cannot be used together with other selections.
+	// Requires public access key. <br>This selection is standalone and cannot be used together with other selections.
 	//
 	// Corresponds with GET /company/search (the `GetCompaniesSearch` operationId).
 	GetCompaniesSearch(ctx context.Context, params *GetCompaniesSearchParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetCompaniesSnapshot Get daily companies snapshot CSV
 	//
-	// Requires public access key. Returns a CSV daily snapshot of companies. This selection is standalone and cannot be used together with other selections.
+	// Requires public access key.<br>Returns a CSV daily snapshot of companies.<br>This selection is standalone and cannot be used together with other selections.<br>
 	// CSV columns: id, name, created_at, days_old, image, type, rating, director_id,
 	// employees_hired, employees_capacity, daily_income, daily_customers,
 	// weekly_income, weekly_customers, applications_allowed
@@ -41508,14 +41508,14 @@ type ClientInterface interface {
 
 	// GetMyCompanyStock Get your company's stock
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /company/stock (the `GetMyCompanyStock` operationId).
 	GetMyCompanyStock(ctx context.Context, params *GetMyCompanyStockParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetCompanyTimestamp Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /company/timestamp (the `GetCompanyTimestamp` operationId).
 	GetCompanyTimestamp(ctx context.Context, params *GetCompanyTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -41536,91 +41536,91 @@ type ClientInterface interface {
 
 	// GetCompaniesList Get a list of companies for a specific company type
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /company/{typeId}/companies (the `GetCompaniesList` operationId).
 	GetCompaniesList(ctx context.Context, typeId CompanyTypeId, params *GetCompaniesListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionGeneric Get any Faction selection
 	//
-	// Key access level depends on the required selections. Choose one or more selections (comma separated).
+	// Key access level depends on the required selections. <br> Choose one or more selections (comma separated).
 	//
 	// Corresponds with GET /faction (the `GetFactionGeneric` operationId).
 	GetFactionGeneric(ctx context.Context, params *GetFactionGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionApplications Get your faction's applications
 	//
-	// Requires minimal access key with faction API access permissions.
+	// Requires minimal access key with faction API access permissions. <br>
 	//
 	// Corresponds with GET /faction/applications (the `GetMyFactionApplications` operationId).
 	GetMyFactionApplications(ctx context.Context, params *GetMyFactionApplicationsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionAttacks Get your faction's detailed attacks
 	//
-	// Requires limited access key with faction API access permissions.
+	// Requires limited access key with faction API access permissions. <br>
 	//
 	// Corresponds with GET /faction/attacks (the `GetMyFactionAttacks` operationId).
 	GetMyFactionAttacks(ctx context.Context, params *GetMyFactionAttacksParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionAttacksSimplified Get your faction's simplified attacks
 	//
-	// Requires limited access key with faction API access permissions.
+	// Requires limited access key with faction API access permissions. <br>
 	//
 	// Corresponds with GET /faction/attacksfull (the `GetMyFactionAttacksSimplified` operationId).
 	GetMyFactionAttacksSimplified(ctx context.Context, params *GetMyFactionAttacksSimplifiedParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionBalance Get your faction's & member's balance details
 	//
-	// Requires limited access key with faction API access permissions.
+	// Requires limited access key with faction API access permissions. <br>
 	//
 	// Corresponds with GET /faction/balance (the `GetMyFactionBalance` operationId).
 	GetMyFactionBalance(ctx context.Context, params *GetMyFactionBalanceParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionBasicInformation Get your faction's basic details
 	//
-	// Requires public access key. The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
+	// Requires public access key. <br> The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
 	//
 	// Corresponds with GET /faction/basic (the `GetMyFactionBasicInformation` operationId).
 	GetMyFactionBasicInformation(ctx context.Context, params *GetMyFactionBasicInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionChain Get your faction's current chain
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/chain (the `GetMyFactionChain` operationId).
 	GetMyFactionChain(ctx context.Context, params *GetMyFactionChainParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionLatestChainReport Get your faction's latest chain report
 	//
-	// Requires public access key. This includes currently ongoing chains.
+	// Requires public access key. <br> This includes currently ongoing chains.
 	//
 	// Corresponds with GET /faction/chainreport (the `GetMyFactionLatestChainReport` operationId).
 	GetMyFactionLatestChainReport(ctx context.Context, params *GetMyFactionLatestChainReportParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionCompletedChains Get a list of your faction's completed chains
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/chains (the `GetMyFactionCompletedChains` operationId).
 	GetMyFactionCompletedChains(ctx context.Context, params *GetMyFactionCompletedChainsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionContributors Get your faction's challenge contributors
 	//
-	// Requires limiteed access key with faction API access permissions.
+	// Requires limiteed access key with faction API access permissions. <br>
 	//
 	// Corresponds with GET /faction/contributors (the `GetMyFactionContributors` operationId).
 	GetMyFactionContributors(ctx context.Context, params *GetMyFactionContributorsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionCrimeExp Get your faction members crime experience
 	//
-	// Requires minimal access key. Members are ordered descending, from highest crime experience to lowest.
+	// Requires minimal access key. <br>Members are ordered descending, from highest crime experience to lowest.
 	//
 	// Corresponds with GET /faction/crimeexp (the `GetMyFactionCrimeExp` operationId).
 	GetMyFactionCrimeExp(ctx context.Context, params *GetMyFactionCrimeExpParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionOrganizedCrimes Get your faction's organized crimes
 	//
-	// Requires minimal access key with faction API access permissions. It's possible to get older entries either by timestamp range (from, to) or with offset. Crimes are ordered depending on the category chosen:
+	// Requires minimal access key with faction API access permissions. <br> It's possible to get older entries either by timestamp range (from, to) or with offset.<br> Crimes are ordered depending on the category chosen:
 	//  * For categories 'all' & 'available', the ordering field is 'created_at'.
 	//  * For categories 'successful', 'failed' & 'completed', the ordering field is 'executed_at'.
 	//  * For categories 'recruiting' & 'expired', the ordering field is 'expired_at'.
@@ -41631,76 +41631,76 @@ type ClientInterface interface {
 
 	// GetWarfareDirtyBombs Get all dirty bombs
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/dirtybombs (the `GetWarfareDirtyBombs` operationId).
 	GetWarfareDirtyBombs(ctx context.Context, params *GetWarfareDirtyBombsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionHoF Get your faction's hall of fame rankings.
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/hof (the `GetMyFactionHoF` operationId).
 	GetMyFactionHoF(ctx context.Context, params *GetMyFactionHoFParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionInventory Get your faction's inventory items.
 	//
-	//  Cached selection (5 minutes, all items cached at once). Requires limited access key.
+	// <b>Cached selection (5 minutes, all items cached at once).</b><br><br>Requires limited access key. <br>
 	//
 	// Corresponds with GET /faction/inventory (the `GetMyFactionInventory` operationId).
 	GetMyFactionInventory(ctx context.Context, params *GetMyFactionInventoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionLookup performs a GET /faction/lookup (the `GetFactionLookup` operationId) request.
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	GetFactionLookup(ctx context.Context, params *GetFactionLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionMembers Get a list of your faction's members
 	//
-	// Requires public access key. The 'revive_setting' value will be populated (not Unknown) if you have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
+	// Requires public access key. <br> The 'revive_setting' value will be populated (not Unknown) if you have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
 	//
 	// Corresponds with GET /faction/members (the `GetMyFactionMembers` operationId).
 	GetMyFactionMembers(ctx context.Context, params *GetMyFactionMembersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionNews Get your faction's news details
 	//
-	// Requires minimal access key with faction API access permissions. It is possible to pass up to 10 categories at the time (comma separated). Categories 'attack', 'depositFunds' and 'giveFunds' are only available with 'Custom', 'Limited' or 'Full' access keys.
+	// Requires minimal access key with faction API access permissions. <br> It is possible to pass up to 10 categories at the time (comma separated). Categories 'attack', 'depositFunds' and 'giveFunds' are only available with 'Custom', 'Limited' or 'Full' access keys.
 	//
 	// Corresponds with GET /faction/news (the `GetMyFactionNews` operationId).
 	GetMyFactionNews(ctx context.Context, params *GetMyFactionNewsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionPositions Get your faction's positions details
 	//
-	// Requires minimal access key with faction API access permissions.
+	// Requires minimal access key with faction API access permissions. <br>
 	//
 	// Corresponds with GET /faction/positions (the `GetMyFactionPositions` operationId).
 	GetMyFactionPositions(ctx context.Context, params *GetMyFactionPositionsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionRackets Get a list of current rackets
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/rackets (the `GetFactionRackets` operationId).
 	GetFactionRackets(ctx context.Context, params *GetFactionRacketsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionRaidsHistory Get raids history for your faction
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/raids (the `GetMyFactionRaidsHistory` operationId).
 	GetMyFactionRaidsHistory(ctx context.Context, params *GetMyFactionRaidsHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionRankedWarsHistory Get ranked wars history for your faction
 	//
-	// Requires public access key. Use offset to get older results which are always ordered descending.
+	// Requires public access key. <br> Use offset to get older results which are always ordered descending.
 	//
 	// Corresponds with GET /faction/rankedwars (the `GetMyFactionRankedWarsHistory` operationId).
 	GetMyFactionRankedWarsHistory(ctx context.Context, params *GetMyFactionRankedWarsHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionReports Get faction reports
 	//
-	// Requires limited access key.
-	// The limit is set to 25 when requesting any category other than 'stats'.
+	// Requires limited access key. <br>
+	// The limit is set to 25 when requesting any category other than 'stats'.<br>
 	// When requesting the 'stats' category, limit can be increased up to 100.
 	//
 	// Corresponds with GET /faction/reports (the `GetMyFactionReports` operationId).
@@ -41708,28 +41708,28 @@ type ClientInterface interface {
 
 	// GetMyFactionRevives Get your faction's detailed revives
 	//
-	// Requires limited access key with faction API access permissions.
+	// Requires limited access key with faction API access permissions. <br>
 	//
 	// Corresponds with GET /faction/revives (the `GetMyFactionRevives` operationId).
 	GetMyFactionRevives(ctx context.Context, params *GetMyFactionRevivesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionRevivesSimplified Get your faction's simplified revives
 	//
-	// Requires limited access key with faction API access permissions.
+	// Requires limited access key with faction API access permissions. <br>
 	//
 	// Corresponds with GET /faction/revivesFull (the `GetMyFactionRevivesSimplified` operationId).
 	GetMyFactionRevivesSimplified(ctx context.Context, params *GetMyFactionRevivesSimplifiedParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionSearch Search factions by name or other criteria
 	//
-	// Requires public access key. This selection is standalone and cannot be used together with other selections.
+	// Requires public access key. <br>This selection is standalone and cannot be used together with other selections.
 	//
 	// Corresponds with GET /faction/search (the `GetFactionSearch` operationId).
 	GetFactionSearch(ctx context.Context, params *GetFactionSearchParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionsSnapshot Get daily factions snapshot CSV
 	//
-	// Requires public access key. Returns a CSV daily snapshot of factions. This selection is standalone and cannot be used together with other selections.
+	// Requires public access key.<br>Returns a CSV daily snapshot of factions.<br>This selection is standalone and cannot be used together with other selections.<br>
 	// CSV columns: id, name, tag, tag_image, banner_image, leader_id, co_leader_id, respect, days_old, rank, members, members_max, member_list, recruiting, destroyed_timestamp
 	//
 	// Corresponds with GET /faction/snapshot (the `GetFactionsSnapshot` operationId).
@@ -41737,49 +41737,49 @@ type ClientInterface interface {
 
 	// GetMyFactionStats Get your faction's challenges stats
 	//
-	// Requires minimal access key with faction API access permissions.
+	// Requires minimal access key with faction API access permissions. <br>
 	//
 	// Corresponds with GET /faction/stats (the `GetMyFactionStats` operationId).
 	GetMyFactionStats(ctx context.Context, params *GetMyFactionStatsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionTerritory Get a list of your faction's territories
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/territory (the `GetMyFactionTerritory` operationId).
 	GetMyFactionTerritory(ctx context.Context, params *GetMyFactionTerritoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTerritoryOwnership Get a list territory ownership
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/territoryownership (the `GetTerritoryOwnership` operationId).
 	GetTerritoryOwnership(ctx context.Context, params *GetTerritoryOwnershipParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionTerritoryWarsHistory Get territory wars history for your faction
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/territorywars (the `GetMyFactionTerritoryWarsHistory` operationId).
 	GetMyFactionTerritoryWarsHistory(ctx context.Context, params *GetMyFactionTerritoryWarsHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionTimestamp Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/timestamp (the `GetFactionTimestamp` operationId).
 	GetFactionTimestamp(ctx context.Context, params *GetFactionTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionUpgrades Get your faction's upgrades
 	//
-	// Requires minimal access key with faction API access permissions.
+	// Requires minimal access key with faction API access permissions. <br>
 	//
 	// Corresponds with GET /faction/upgrades (the `GetMyFactionUpgrades` operationId).
 	GetMyFactionUpgrades(ctx context.Context, params *GetMyFactionUpgradesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetWarfare Get faction warfare
 	//
-	// This selection is replaced by other warfare selections and 'faction' -> 'dirtybombs'. This will be removed on 1st January 2027. Requires public access key. The response depends on the selected category.
+	// This selection is replaced by other warfare selections and 'faction' -> 'dirtybombs'.<br>This will be removed on 1st January 2027<b></b>.<br>Requires public access key. <br>The response depends on the selected category.
 	//
 	// Corresponds with GET /faction/warfare (the `GetWarfare` operationId).
 	//
@@ -41788,196 +41788,196 @@ type ClientInterface interface {
 
 	// GetWarfareChains Get all chains
 	//
-	// Requires public access key. By default, active chains are returned.
+	// Requires public access key. <br>By default, active chains are returned.
 	//
 	// Corresponds with GET /faction/warfarechains (the `GetWarfareChains` operationId).
 	GetWarfareChains(ctx context.Context, params *GetWarfareChainsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetWarfareRaids Get all raids
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/warfareraids (the `GetWarfareRaids` operationId).
 	GetWarfareRaids(ctx context.Context, params *GetWarfareRaidsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetWarfareRankedWars Get all ranked wars
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/warfareranked (the `GetWarfareRankedWars` operationId).
 	GetWarfareRankedWars(ctx context.Context, params *GetWarfareRankedWarsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetWarfareTerritoryWars Get all territory wars
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/warfareterritory (the `GetWarfareTerritoryWars` operationId).
 	GetWarfareTerritoryWars(ctx context.Context, params *GetWarfareTerritoryWarsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionWars Get your faction's wars & pacts details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/wars (the `GetMyFactionWars` operationId).
 	GetMyFactionWars(ctx context.Context, params *GetMyFactionWarsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetChainReport Get a chain report
 	//
-	// Requires public access key. Chain reports for ongoing chains are available only for your own faction.
+	// Requires public access key. <br> Chain reports for ongoing chains are available only for your own faction.
 	//
 	// Corresponds with GET /faction/{chainId}/chainreport (the `GetChainReport` operationId).
 	GetChainReport(ctx context.Context, chainId ChainId, params *GetChainReportParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyFactionOrganizedCrime Get a specific organized crime
 	//
-	// Requires minimal access key with faction API access permissions.
+	// Requires minimal access key with faction API access permissions. <br>
 	//
 	// Corresponds with GET /faction/{crimeId}/crime (the `GetMyFactionOrganizedCrime` operationId).
 	GetMyFactionOrganizedCrime(ctx context.Context, crimeId FactionCrimeId, params *GetMyFactionOrganizedCrimeParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionBasicInformation Get a faction's basic details
 	//
-	// Requires public access key. The 'is_enlisted' value will be populated if you're requesting data for your faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
+	// Requires public access key. <br> The 'is_enlisted' value will be populated if you're requesting data for your faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
 	//
 	// Corresponds with GET /faction/{id}/basic (the `GetFactionBasicInformation` operationId).
 	GetFactionBasicInformation(ctx context.Context, id FactionId, params *GetFactionBasicInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionChain Get a faction's current chain
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/{id}/chain (the `GetFactionChain` operationId).
 	GetFactionChain(ctx context.Context, id FactionId, params *GetFactionChainParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionCompletedChains Get a list of a faction's completed chains
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/{id}/chains (the `GetFactionCompletedChains` operationId).
 	GetFactionCompletedChains(ctx context.Context, id FactionId, params *GetFactionCompletedChainsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionHoF Get a faction's hall of fame rankings.
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/{id}/hof (the `GetFactionHoF` operationId).
 	GetFactionHoF(ctx context.Context, id FactionId, params *GetFactionHoFParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionMembers Get a list of a faction's members
 	//
-	// Requires public access key. The 'revive_setting' value will be populated (not Unknown) if you're requesting data for your own faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
+	// Requires public access key. <br> The 'revive_setting' value will be populated (not Unknown) if you're requesting data for your own faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
 	//
 	// Corresponds with GET /faction/{id}/members (the `GetFactionMembers` operationId).
 	GetFactionMembers(ctx context.Context, id FactionId, params *GetFactionMembersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionRaidsHistory Get a faction's raids history
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/{id}/raids (the `GetFactionRaidsHistory` operationId).
 	GetFactionRaidsHistory(ctx context.Context, id FactionId, params *GetFactionRaidsHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionRankedWarsHistory Get a faction's ranked wars history
 	//
-	// Requires public access key. Use offset to get older results which are always ordered descending.
+	// Requires public access key. <br> Use offset to get older results which are always ordered descending.
 	//
 	// Corresponds with GET /faction/{id}/rankedwars (the `GetFactionRankedWarsHistory` operationId).
 	GetFactionRankedWarsHistory(ctx context.Context, id FactionId, params *GetFactionRankedWarsHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionTerritory Get a list of a faction's territories
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/{id}/territory (the `GetFactionTerritory` operationId).
 	GetFactionTerritory(ctx context.Context, id FactionId, params *GetFactionTerritoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionTerritoryWarsHistory Get a faction's territory wars history
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/{id}/territorywars (the `GetFactionTerritoryWarsHistory` operationId).
 	GetFactionTerritoryWarsHistory(ctx context.Context, id FactionId, params *GetFactionTerritoryWarsHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetFactionWars Get a faction's wars & pacts details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/{id}/wars (the `GetFactionWars` operationId).
 	GetFactionWars(ctx context.Context, id FactionId, params *GetFactionWarsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRaidReport Get raid war details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/{raidWarId}/raidreport (the `GetRaidReport` operationId).
 	GetRaidReport(ctx context.Context, raidWarId RaidWarId, params *GetRaidReportParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRankedWarReport Get ranked war details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/{rankedWarId}/rankedwarreport (the `GetRankedWarReport` operationId).
 	GetRankedWarReport(ctx context.Context, rankedWarId RankedWarId, params *GetRankedWarReportParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTerritoryWarReport Get territory war details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /faction/{territoryWarId}/territorywarreport (the `GetTerritoryWarReport` operationId).
 	GetTerritoryWarReport(ctx context.Context, territoryWarId TerritoryWarId, params *GetTerritoryWarReportParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetForumGeneric Get any Forum selection
 	//
-	// Requires public access key. Choose one or more selections (comma separated).
+	// Requires public access key. <br>Choose one or more selections (comma separated).
 	//
 	// Corresponds with GET /forum (the `GetForumGeneric` operationId).
 	GetForumGeneric(ctx context.Context, params *GetForumGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetForumCategories Get publicly available forum categories
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /forum/categories (the `GetForumCategories` operationId).
 	GetForumCategories(ctx context.Context, params *GetForumCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetForumLookup Get all available forum selections
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /forum/lookup (the `GetForumLookup` operationId).
 	GetForumLookup(ctx context.Context, params *GetForumLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetForumAllThreads Get threads across all forum categories
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /forum/threads (the `GetForumAllThreads` operationId).
 	GetForumAllThreads(ctx context.Context, params *GetForumAllThreadsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetForumTimestamp Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /forum/timestamp (the `GetForumTimestamp` operationId).
 	GetForumTimestamp(ctx context.Context, params *GetForumTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetForumThreads Get threads for specific public forum category or categories
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /forum/{categoryIds}/threads (the `GetForumThreads` operationId).
 	GetForumThreads(ctx context.Context, categoryIds []ForumId, params *GetForumThreadsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetForumThreadPosts Get specific forum thread posts
 	//
-	// Requires public access key. Returns 20 posts per page for a specific thread. By default, it uses 'offset', but it's possible to filter posts with 'from' & 'to' parameters.
+	// Requires public access key. <br>Returns 20 posts per page for a specific thread. <br> By default, it uses 'offset', but it's possible to filter posts with 'from' & 'to' parameters.
 	//
 	// Corresponds with GET /forum/{threadId}/posts (the `GetForumThreadPosts` operationId).
 	GetForumThreadPosts(ctx context.Context, threadId ForumThreadId, params *GetForumThreadPostsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetForumThread Get specific thread details
 	//
-	// Requires public access key. Contains details of a thread including topic content and poll (if any).
+	// Requires public access key. <br>Contains details of a thread including topic content and poll (if any).
 	//
 	// Corresponds with GET /forum/{threadId}/thread (the `GetForumThread` operationId).
 	GetForumThread(ctx context.Context, threadId ForumThreadId, params *GetForumThreadParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -41989,14 +41989,14 @@ type ClientInterface interface {
 
 	// GetKeyInfo Get current key info
 	//
-	// Available for any key.
+	// Available for any key. <br>
 	//
 	// Corresponds with GET /key/info (the `GetKeyInfo` operationId).
 	GetKeyInfo(ctx context.Context, params *GetKeyInfoParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetKeyLog Get current key log history
 	//
-	// Available for any key.
+	// Available for any key. <br>
 	//  * This selection contains up to last 250 request logs.
 	//
 	// Corresponds with GET /key/log (the `GetKeyLog` operationId).
@@ -42004,245 +42004,245 @@ type ClientInterface interface {
 
 	// GetMarketGeneric Get any Market selection
 	//
-	// Requires public access key. Choose one or more selections (comma separated).
+	// Requires public access key. <br>Choose one or more selections (comma separated).
 	//
 	// Corresponds with GET /market (the `GetMarketGeneric` operationId).
 	GetMarketGeneric(ctx context.Context, params *GetMarketGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketAuctionHouse Get auction house listings
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /market/auctionhouse (the `GetMarketAuctionHouse` operationId).
 	GetMarketAuctionHouse(ctx context.Context, params *GetMarketAuctionHouseParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketBazaar Get bazaar directory
 	//
-	// Requires public access key. The default response is of type 'BazaarWeekly', but if a category is chosen, the response will be of type 'BazaarSpecialized'.
+	// Requires public access key. <br> The default response is of type 'BazaarWeekly', but if a category is chosen, the response will be of type 'BazaarSpecialized'.
 	//
 	// Corresponds with GET /market/bazaar (the `GetMarketBazaar` operationId).
 	GetMarketBazaar(ctx context.Context, params *GetMarketBazaarParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketLookup Get all available market selections
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /market/lookup (the `GetMarketLookup` operationId).
 	GetMarketLookup(ctx context.Context, params *GetMarketLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketPoints Get points market listings
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /market/pointsmarket (the `GetMarketPoints` operationId).
 	GetMarketPoints(ctx context.Context, params *GetMarketPointsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketTimestamp Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /market/timestamp (the `GetMarketTimestamp` operationId).
 	GetMarketTimestamp(ctx context.Context, params *GetMarketTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketAuctionHouseItem Get specific item auction house listings
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /market/{id}/auctionhouse (the `GetMarketAuctionHouseItem` operationId).
 	GetMarketAuctionHouseItem(ctx context.Context, id ItemId, params *GetMarketAuctionHouseItemParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketAuctionHouseListing Get specific item auction house listings
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /market/{id}/auctionhouselisting (the `GetMarketAuctionHouseListing` operationId).
 	GetMarketAuctionHouseListing(ctx context.Context, id AuctionListingId, params *GetMarketAuctionHouseListingParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketBazaarItem Get item specialized bazaar directory
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /market/{id}/bazaar (the `GetMarketBazaarItem` operationId).
 	GetMarketBazaarItem(ctx context.Context, id ItemId, params *GetMarketBazaarItemParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketItemMarketItem Get item market listings
 	//
-	//  Globally cached selection. Requires public access key.
+	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 	//
 	// Corresponds with GET /market/{id}/itemmarket (the `GetMarketItemMarketItem` operationId).
 	GetMarketItemMarketItem(ctx context.Context, id ItemId, params *GetMarketItemMarketItemParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketProperties Get properties market listings
 	//
-	//  Globally cached selection. Requires public access key.
+	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 	//
 	// Corresponds with GET /market/{propertyTypeId}/properties (the `GetMarketProperties` operationId).
 	GetMarketProperties(ctx context.Context, propertyTypeId PropertyTypeId, params *GetMarketPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketPropertiesRental Get properties rental listings
 	//
-	//  Globally cached selection. Requires public access key.
+	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 	//
 	// Corresponds with GET /market/{propertyTypeId}/rentals (the `GetMarketPropertiesRental` operationId).
 	GetMarketPropertiesRental(ctx context.Context, propertyTypeId PropertyTypeId, params *GetMarketPropertiesRentalParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetPropertyGeneric Get any property selection
 	//
-	// Requires public access key. Choose one or more selections (comma separated).
+	// Requires public access key. <br>Choose one or more selections (comma separated).
 	//
 	// Corresponds with GET /property (the `GetPropertyGeneric` operationId).
 	GetPropertyGeneric(ctx context.Context, params *GetPropertyGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetPropertyLookup Get all available property selections
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /property/lookup (the `GetPropertyLookup` operationId).
 	GetPropertyLookup(ctx context.Context, params *GetPropertyLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetPropertyTimestamp Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /property/timestamp (the `GetPropertyTimestamp` operationId).
 	GetPropertyTimestamp(ctx context.Context, params *GetPropertyTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetProperty Get a specific property
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /property/{id}/property (the `GetProperty` operationId).
 	GetProperty(ctx context.Context, id PropertyId, params *GetPropertyParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRacingGeneric Get any Racing selection
 	//
-	// Requires public access key. Choose one or more selections (comma separated).
+	// Requires public access key. <br>Choose one or more selections (comma separated).
 	//
 	// Corresponds with GET /racing (the `GetRacingGeneric` operationId).
 	GetRacingGeneric(ctx context.Context, params *GetRacingGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRacingCars Get cars and their racing stats
 	//
-	// Requires public access key. Returns the stat details about racing cars.
+	// Requires public access key. <br>Returns the stat details about racing cars.
 	//
 	// Corresponds with GET /racing/cars (the `GetRacingCars` operationId).
 	GetRacingCars(ctx context.Context, params *GetRacingCarsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRacingCarUpgrades Get all possible car upgrades
 	//
-	// Requires public access key. Returns the details about all possible car upgrades.
+	// Requires public access key. <br>Returns the details about all possible car upgrades.
 	//
 	// Corresponds with GET /racing/carupgrades (the `GetRacingCarUpgrades` operationId).
 	GetRacingCarUpgrades(ctx context.Context, params *GetRacingCarUpgradesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRacingLookup Get all available racing selections
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /racing/lookup (the `GetRacingLookup` operationId).
 	GetRacingLookup(ctx context.Context, params *GetRacingLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRacingRaces Get races
 	//
-	// Requires public access key. Returns a list of races, ordered by race start timestamp.
+	// Requires public access key. <br>Returns a list of races, ordered by race start timestamp.
 	//
 	// Corresponds with GET /racing/races (the `GetRacingRaces` operationId).
 	GetRacingRaces(ctx context.Context, params *GetRacingRacesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRacingTimestamp Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /racing/timestamp (the `GetRacingTimestamp` operationId).
 	GetRacingTimestamp(ctx context.Context, params *GetRacingTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRacingTracks Get race tracks and descriptions
 	//
-	// Requires public access key. Returns the details about racing tracks.
+	// Requires public access key. <br>Returns the details about racing tracks.
 	//
 	// Corresponds with GET /racing/tracks (the `GetRacingTracks` operationId).
 	GetRacingTracks(ctx context.Context, params *GetRacingTracksParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRacingRaceDetails Get specific race details
 	//
-	// Requires public access key. Returns the details of a race.
+	// Requires public access key. <br>Returns the details of a race.
 	//
 	// Corresponds with GET /racing/{raceId}/race (the `GetRacingRaceDetails` operationId).
 	GetRacingRaceDetails(ctx context.Context, raceId RaceId, params *GetRacingRaceDetailsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRacingTrackRecords Get track records
 	//
-	// Requires public access key. Returns a list of 5 best lap records for the chosen track and car class.
+	// Requires public access key. <br>Returns a list of 5 best lap records for the chosen track and car class.
 	//
 	// Corresponds with GET /racing/{trackId}/records (the `GetRacingTrackRecords` operationId).
 	GetRacingTrackRecords(ctx context.Context, trackId RaceTrackId, params *GetRacingTrackRecordsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornGeneric Get any Torn selection
 	//
-	// Requires public access key. Choose one or more selections (comma separated).
+	// Requires public access key. <br> Choose one or more selections (comma separated).
 	//
 	// Corresponds with GET /torn (the `GetTornGeneric` operationId).
 	GetTornGeneric(ctx context.Context, params *GetTornGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornAttackLog Get attack log details
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Corresponds with GET /torn/attacklog (the `GetTornAttackLog` operationId).
 	GetTornAttackLog(ctx context.Context, params *GetTornAttackLogParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornBank Get current bank rates
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/bank (the `GetTornBank` operationId).
 	GetTornBank(ctx context.Context, params *GetTornBankParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornBounties Get bounties
 	//
-	//  Globally cached selection. Requires public key.
+	// <b>Globally cached selection.</b><br><br>Requires public key. <br>
 	//
 	// Corresponds with GET /torn/bounties (the `GetTornBounties` operationId).
 	GetTornBounties(ctx context.Context, params *GetTornBountiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornCalendar Get calendar information
 	//
-	// Requires public access key. Get the details about competitions & events in the running year.
+	// Requires public access key. <br> Get the details about competitions & events in the running year.
 	//
 	// Corresponds with GET /torn/calendar (the `GetTornCalendar` operationId).
 	GetTornCalendar(ctx context.Context, params *GetTornCalendarParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornCards Get casino playing cards
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/cards (the `GetTornCards` operationId).
 	GetTornCards(ctx context.Context, params *GetTornCardsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornCityShops Get city shops stock information
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/cityshops (the `GetTornCityShops` operationId).
 	GetTornCityShops(ctx context.Context, params *GetTornCityShopsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornCompanies Get all companies details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/companies (the `GetTornCompanies` operationId).
 	GetTornCompanies(ctx context.Context, params *GetTornCompaniesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornCrimes Get crimes information
 	//
-	// Requires public access key. Return the details about released crimes.
+	// Requires public access key. <br> Return the details about released crimes.
 	//
 	// Corresponds with GET /torn/crimes (the `GetTornCrimes` operationId).
 	GetTornCrimes(ctx context.Context, params *GetTornCrimesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornEducation Get education information
 	//
-	// Requires public access key.
+	// Requires public access key.<br>
 	//
 	// Corresponds with GET /torn/education (the `GetTornEducation` operationId).
 	GetTornEducation(ctx context.Context, params *GetTornEducationParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42256,28 +42256,28 @@ type ClientInterface interface {
 
 	// GetTornFactionHoF Get faction hall of fame positions for a specific category
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/factionhof (the `GetTornFactionHoF` operationId).
 	GetTornFactionHoF(ctx context.Context, params *GetTornFactionHoFParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornFactionTree Get full faction tree
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/factiontree (the `GetTornFactionTree` operationId).
 	GetTornFactionTree(ctx context.Context, params *GetTornFactionTreeParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornGyms Get all gyms
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/gyms (the `GetTornGyms` operationId).
 	GetTornGyms(ctx context.Context, params *GetTornGymsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornHalloween Get Halloween basket upgrades
 	//
-	// Requires minimal access key. Returns the list of available Halloween basket upgrades with their benefits, treats cost and unlock requirement.
+	// Requires minimal access key. <br>Returns the list of available Halloween basket upgrades with their benefits, treats cost and unlock requirement.
 	//
 	// Corresponds with GET /torn/halloween (the `GetTornHalloween` operationId).
 	GetTornHalloween(ctx context.Context, params *GetTornHalloweenParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42291,7 +42291,7 @@ type ClientInterface interface {
 
 	// GetTornHonors Get all honors
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/honors (the `GetTornHonors` operationId).
 	GetTornHonors(ctx context.Context, params *GetTornHonorsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42312,70 +42312,70 @@ type ClientInterface interface {
 
 	// GetTornItems Get information about items
 	//
-	// Requires public key. Default category is 'All'. Details are not populated when requesting the category 'All'.
+	// Requires public key.<br>Default category is 'All'.<br>Details are not populated when requesting the category 'All'.
 	//
 	// Corresponds with GET /torn/items (the `GetTornItems` operationId).
 	GetTornItems(ctx context.Context, params *GetTornItemsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornLogCategories Get available log categories
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Corresponds with GET /torn/logcategories (the `GetTornLogCategories` operationId).
 	GetTornLogCategories(ctx context.Context, params *GetTornLogCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornLogTypes Get all available log ids
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Corresponds with GET /torn/logtypes (the `GetTornLogTypes` operationId).
 	GetTornLogTypes(ctx context.Context, params *GetTornLogTypesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornLookup Get all available torn selections
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Corresponds with GET /torn/lookup (the `GetTornLookup` operationId).
 	GetTornLookup(ctx context.Context, params *GetTornLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornMedals Get all medals
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/medals (the `GetTornMedals` operationId).
 	GetTornMedals(ctx context.Context, params *GetTornMedalsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornMerits Get all merits
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/merits (the `GetTornMerits` operationId).
 	GetTornMerits(ctx context.Context, params *GetTornMeritsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornMuseum Get all museum sets
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/museum (the `GetTornMuseum` operationId).
 	GetTornMuseum(ctx context.Context, params *GetTornMuseumParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornOrganizedCrimes Get organized crimes information
 	//
-	// Requires public access key. Return the details about released faction organized crimes.
+	// Requires public access key. <br> Return the details about released faction organized crimes.
 	//
 	// Corresponds with GET /torn/organizedcrimes (the `GetTornOrganizedCrimes` operationId).
 	GetTornOrganizedCrimes(ctx context.Context, params *GetTornOrganizedCrimesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornPokerTables Get active poker tables
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/pokertables (the `GetTornPokerTables` operationId).
 	GetTornPokerTables(ctx context.Context, params *GetTornPokerTablesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornProperties Get properties details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/properties (the `GetTornProperties` operationId).
 	GetTornProperties(ctx context.Context, params *GetTornPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42389,14 +42389,14 @@ type ClientInterface interface {
 
 	// GetTornSearchForCash Get search for cash crime statuses
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/searchforcash (the `GetTornSearchForCash` operationId).
 	GetTornSearchForCash(ctx context.Context, params *GetTornSearchForCashParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornShoplifting Get shoplifting crime statuses
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/shoplifting (the `GetTornShoplifting` operationId).
 	GetTornShoplifting(ctx context.Context, params *GetTornShopliftingParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42410,35 +42410,35 @@ type ClientInterface interface {
 
 	// GetTornStocks Get all stocks
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/stocks (the `GetTornStocks` operationId).
 	GetTornStocks(ctx context.Context, params *GetTornStocksParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornTerritory Get territory details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/territory (the `GetTornTerritory` operationId).
 	GetTornTerritory(ctx context.Context, params *GetTornTerritoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornTimestamp Get current server time
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Corresponds with GET /torn/timestamp (the `GetTornTimestamp` operationId).
 	GetTornTimestamp(ctx context.Context, params *GetTornTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornSubcrimes Get Subcrimes information
 	//
-	// Requires public access key. Return the details about possible actions for a specific crime.
+	// Requires public access key. <br> Return the details about possible actions for a specific crime.
 	//
 	// Corresponds with GET /torn/{crimeId}/subcrimes (the `GetTornSubcrimes` operationId).
 	GetTornSubcrimes(ctx context.Context, crimeId TornCrimeId, params *GetTornSubcrimesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornHonorsSpecific Get specific honors
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/{ids}/honors (the `GetTornHonorsSpecific` operationId).
 	GetTornHonorsSpecific(ctx context.Context, ids []HonorId, params *GetTornHonorsSpecificParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42452,21 +42452,21 @@ type ClientInterface interface {
 
 	// GetTornItemsSpecific Get information about items
 	//
-	// Requires public key. Details are always populated when available.
+	// Requires public key.<br>Details are always populated when available.
 	//
 	// Corresponds with GET /torn/{ids}/items (the `GetTornItemsSpecific` operationId).
 	GetTornItemsSpecific(ctx context.Context, ids []ItemId, params *GetTornItemsSpecificParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornItemStats Get specific item(s) stats
 	//
-	// Requires public key.
+	// Requires public key.<br>
 	//
 	// Corresponds with GET /torn/{ids}/itemstats (the `GetTornItemStats` operationId).
 	GetTornItemStats(ctx context.Context, ids []ItemUid, params *GetTornItemStatsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornMedalsSpecific Get specific medals
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/{ids}/medals (the `GetTornMedalsSpecific` operationId).
 	GetTornMedalsSpecific(ctx context.Context, ids []MedalId, params *GetTornMedalsSpecificParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42480,98 +42480,98 @@ type ClientInterface interface {
 
 	// GetTornLogTypesSpecific Get available log ids for a specific log category
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Corresponds with GET /torn/{logCategoryId}/logtypes (the `GetTornLogTypesSpecific` operationId).
 	GetTornLogTypesSpecific(ctx context.Context, logCategoryId LogCategoryId, params *GetTornLogTypesSpecificParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornCityShopSpecific Get stock information for a specific shop
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/{shopId}/cityshops (the `GetTornCityShopSpecific` operationId).
 	GetTornCityShopSpecific(ctx context.Context, shopId CityShopId, params *GetTornCityShopSpecificParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetSpecificTornStock Get specific stock with chart history
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/{stockId}/stocks (the `GetSpecificTornStock` operationId).
 	GetSpecificTornStock(ctx context.Context, stockId StockId, params *GetSpecificTornStockParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTornCompaniesSpecific Get specific company details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /torn/{typeId}/companies (the `GetTornCompaniesSpecific` operationId).
 	GetTornCompaniesSpecific(ctx context.Context, typeId CompanyTypeId, params *GetTornCompaniesSpecificParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserGeneric Get any User selection
 	//
-	// Key access level depends on the required selections. Choose one or more selections (comma separated).
+	// Key access level depends on the required selections. <br>Choose one or more selections (comma separated).
 	//
 	// Corresponds with GET /user (the `GetUserGeneric` operationId).
 	GetUserGeneric(ctx context.Context, params *GetUserGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyAmmo Get your ammo information
 	//
-	// Requires minimal key.
+	// Requires minimal key. <br>
 	//
 	// Corresponds with GET /user/ammo (the `GetMyAmmo` operationId).
 	GetMyAmmo(ctx context.Context, params *GetMyAmmoParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyAttacks Get your detailed attacks
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/attacks (the `GetMyAttacks` operationId).
 	GetMyAttacks(ctx context.Context, params *GetMyAttacksParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyAttacksSimplified Get your simplified attacks
 	//
-	// Requires limited access key. Returns up to 1,000 rows.
+	// Requires limited access key. <br>Returns up to 1,000 rows. <br>
 	//
 	// Corresponds with GET /user/attacksfull (the `GetMyAttacksSimplified` operationId).
 	GetMyAttacksSimplified(ctx context.Context, params *GetMyAttacksSimplifiedParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyBars Get your bars information
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/bars (the `GetMyBars` operationId).
 	GetMyBars(ctx context.Context, params *GetMyBarsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyBasicInformation Get your basic profile information
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /user/basic (the `GetMyBasicInformation` operationId).
 	GetMyBasicInformation(ctx context.Context, params *GetMyBasicInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyBattlestats Get your battlestats
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/battlestats (the `GetMyBattlestats` operationId).
 	GetMyBattlestats(ctx context.Context, params *GetMyBattlestatsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyBounties Get bounties placed on you
 	//
-	//  Globally cached selection. Requires public access key.
+	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 	//
 	// Corresponds with GET /user/bounties (the `GetMyBounties` operationId).
 	GetMyBounties(ctx context.Context, params *GetMyBountiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyCalendarTime Get your calendar events start time
 	//
-	// Requires minimal access key. Only available to yourself.
+	// Requires minimal access key. <br>Only available to yourself.
 	//
 	// Corresponds with GET /user/calendar (the `GetMyCalendarTime` operationId).
 	GetMyCalendarTime(ctx context.Context, params *GetMyCalendarTimeParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyCasinoStreak Get your casino streak & tokens
 	//
-	// Requires limited access key. Only available to yourself.
+	// Requires limited access key. <br>Only available to yourself.
 	//
 	// Corresponds with GET /user/casino (the `GetMyCasinoStreak` operationId).
 	GetMyCasinoStreak(ctx context.Context, params *GetMyCasinoStreakParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42585,28 +42585,28 @@ type ClientInterface interface {
 
 	// GetMyCooldowns Get your cooldowns information
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/cooldowns (the `GetMyCooldowns` operationId).
 	GetMyCooldowns(ctx context.Context, params *GetMyCooldownsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyDiscord Get your discord information
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Corresponds with GET /user/discord (the `GetMyDiscord` operationId).
 	GetMyDiscord(ctx context.Context, params *GetMyDiscordParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyEducation Get your education information
 	//
-	// Requires minimal access key. The response contains a list of complete eduactions and of a current education (if any).
+	// Requires minimal access key. <br>The response contains a list of complete eduactions and of a current education (if any).
 	//
 	// Corresponds with GET /user/education (the `GetMyEducation` operationId).
 	GetMyEducation(ctx context.Context, params *GetMyEducationParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyEnlistedCars Get your enlisted cars
 	//
-	// Requires minimal access key. Returns a list of all user enlisted cars.
+	// Requires minimal access key. <br>Returns a list of all user enlisted cars.
 	//
 	// Corresponds with GET /user/enlistedcars (the `GetMyEnlistedCars` operationId).
 	GetMyEnlistedCars(ctx context.Context, params *GetMyEnlistedCarsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42620,7 +42620,7 @@ type ClientInterface interface {
 
 	// GetMyEvents Get your events
 	//
-	// Requires limited access key. Unfortunately, the 'sort' parameter is not available for this selection.
+	// Requires limited access key. <br> Unfortunately, the 'sort' parameter is not available for this selection.
 	//
 	// Corresponds with GET /user/events (the `GetMyEvents` operationId).
 	GetMyEvents(ctx context.Context, params *GetMyEventsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42634,91 +42634,91 @@ type ClientInterface interface {
 
 	// GetMyForumFeed Get updates on your threads and posts
 	//
-	// Requires minimal access key. This selection returns data visible in 'Feed' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
+	// Requires minimal access key. <br>This selection returns data visible in 'Feed' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
 	//
 	// Corresponds with GET /user/forumfeed (the `GetMyForumFeed` operationId).
 	GetMyForumFeed(ctx context.Context, params *GetMyForumFeedParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyForumFriendsUpdates Get updates on your friends' activity
 	//
-	// Requires minimal access key. This selection returns data visible in 'Friends' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
+	// Requires minimal access key. <br>This selection returns data visible in 'Friends' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
 	//
 	// Corresponds with GET /user/forumfriends (the `GetMyForumFriendsUpdates` operationId).
 	GetMyForumFriendsUpdates(ctx context.Context, params *GetMyForumFriendsUpdatesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyForumPosts Get your posts
 	//
-	// Requires public access key. Returns 20 posts per page.
+	// Requires public access key. <br>Returns 20 posts per page.
 	//
 	// Corresponds with GET /user/forumposts (the `GetMyForumPosts` operationId).
 	GetMyForumPosts(ctx context.Context, params *GetMyForumPostsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyForumSubscribedThreads Get updates on threads you subscribed to
 	//
-	// Requires minimal access key. This selection returns data visible in 'Subscribed Threads' section on forum page. Threads are sorted in the same way as on site.
+	// Requires minimal access key. <br>This selection returns data visible in 'Subscribed Threads' section on forum page. Threads are sorted in the same way as on site.
 	//
 	// Corresponds with GET /user/forumsubscribedthreads (the `GetMyForumSubscribedThreads` operationId).
 	GetMyForumSubscribedThreads(ctx context.Context, params *GetMyForumSubscribedThreadsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyForumThreads Get your threads
 	//
-	// Requires public access key. Returns 100 threads per page. The field 'new_posts' is also available, indicating the amount of unread posts with a Minimum API key (or higher).
+	// Requires public access key. <br>Returns 100 threads per page. The field 'new_posts' is also available, indicating the amount of unread posts with a Minimum API key (or higher).
 	//
 	// Corresponds with GET /user/forumthreads (the `GetMyForumThreads` operationId).
 	GetMyForumThreads(ctx context.Context, params *GetMyForumThreadsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyGym Get your currently active gym
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/gym (the `GetMyGym` operationId).
 	GetMyGym(ctx context.Context, params *GetMyGymParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyHalloween Get your Halloween treats information
 	//
-	// Requires minimal access key. Returns your current and cumulative treats and the IDs of basket upgrades you have unlocked.
+	// Requires minimal access key. <br>Returns your current and cumulative treats and the IDs of basket upgrades you have unlocked.
 	//
 	// Corresponds with GET /user/halloween (the `GetMyHalloween` operationId).
 	GetMyHalloween(ctx context.Context, params *GetMyHalloweenParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyHoF Get your hall of fame rankings
 	//
-	// Requires public access key. When requesting selection with Limited, Full or Custom key, battle_stats selection will be populated.
+	// Requires public access key. <br>When requesting selection with Limited, Full or Custom key, battle_stats selection will be populated.
 	//
 	// Corresponds with GET /user/hof (the `GetMyHoF` operationId).
 	GetMyHoF(ctx context.Context, params *GetMyHoFParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyHonors Get your achieved honors
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/honors (the `GetMyHonors` operationId).
 	GetMyHonors(ctx context.Context, params *GetMyHonorsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyIcons Get your icons information
 	//
-	// Requires public access key. When requesting data for yourself with 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
+	// Requires public access key. <br> When requesting data for yourself with 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
 	//
 	// Corresponds with GET /user/icons (the `GetMyIcons` operationId).
 	GetMyIcons(ctx context.Context, params *GetMyIconsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyInventory Get your inventory
 	//
-	//  Cached selection (15 minutes per category). Requires minimal access key.
+	// <b>Cached selection (15 minutes per category).</b><br><br>Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/inventory (the `GetMyInventory` operationId).
 	GetMyInventory(ctx context.Context, params *GetMyInventoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyItemMarketListings Get your item market listings
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/itemmarket (the `GetMyItemMarketListings` operationId).
 	GetMyItemMarketListings(ctx context.Context, params *GetMyItemMarketListingsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyItemModsInformation Get your information about available item mods
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/itemmods (the `GetMyItemModsInformation` operationId).
 	GetMyItemModsInformation(ctx context.Context, params *GetMyItemModsInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42732,126 +42732,126 @@ type ClientInterface interface {
 
 	// GetMyJobPoints Get your jobpoints
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/jobpoints (the `GetMyJobPoints` operationId).
 	GetMyJobPoints(ctx context.Context, params *GetMyJobPointsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyJobRanks Get your starter job positions
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/jobranks (the `GetMyJobRanks` operationId).
 	GetMyJobRanks(ctx context.Context, params *GetMyJobRanksParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyContactsList Get your friends, enemies or targets list
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/list (the `GetMyContactsList` operationId).
 	GetMyContactsList(ctx context.Context, params *GetMyContactsListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyLogs Get your logs
 	//
-	// Requires full access key. It's possible to pass a list of log ids or a log category id. This selection is standalone and cannot be used together with other selections.
+	// Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.
 	//
 	// Corresponds with GET /user/log (the `GetMyLogs` operationId).
 	GetMyLogs(ctx context.Context, params *GetMyLogsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserLookup Get all available user selections
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /user/lookup (the `GetUserLookup` operationId).
 	GetUserLookup(ctx context.Context, params *GetUserLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyMedals Get all your achieved medals
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /user/medals (the `GetMyMedals` operationId).
 	GetMyMedals(ctx context.Context, params *GetMyMedalsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyMerits Get your merits
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/merits (the `GetMyMerits` operationId).
 	GetMyMerits(ctx context.Context, params *GetMyMeritsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyMessages Get your messages
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/messages (the `GetMyMessages` operationId).
 	GetMyMessages(ctx context.Context, params *GetMyMessagesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyMissions Get your current missions information
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/missions (the `GetMyMissions` operationId).
 	GetMyMissions(ctx context.Context, params *GetMyMissionsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyMoney Get your current wealth
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/money (the `GetMyMoney` operationId).
 	GetMyMoney(ctx context.Context, params *GetMyMoneyParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyNetworth Get your networth
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/networth (the `GetMyNetworth` operationId).
 	GetMyNetworth(ctx context.Context, params *GetMyNetworthParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyNewEvents Get your unseen events
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/newevents (the `GetMyNewEvents` operationId).
 	GetMyNewEvents(ctx context.Context, params *GetMyNewEventsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyNewMessages Get your unseen messages
 	//
-	// Requires limited access key. This selection is cached for 1 hour.
+	// Requires limited access key. <br>This selection is cached for 1 hour.
 	//
 	// Corresponds with GET /user/newmessages (the `GetMyNewMessages` operationId).
 	GetMyNewMessages(ctx context.Context, params *GetMyNewMessagesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyNotifications Get your notifications
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/notifications (the `GetMyNotifications` operationId).
 	GetMyNotifications(ctx context.Context, params *GetMyNotificationsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyOrganizedCrime Get your current ongoing organized crime
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/organizedcrime (the `GetMyOrganizedCrime` operationId).
 	GetMyOrganizedCrime(ctx context.Context, params *GetMyOrganizedCrimeParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyAvailableOrganizedCrimes Get your available slots for organized crimes with status 'Recruiting'
 	//
-	// Requires minimal access key. Unlike 'faction' -> 'crimes', this selection only shows empty slots, and only for crimes with the 'Recruiting' status.
+	// Requires minimal access key. <br>Unlike 'faction' -> 'crimes', this selection only shows empty slots, and only for crimes with the 'Recruiting' status.
 	//
 	// Corresponds with GET /user/organizedcrimes (the `GetMyAvailableOrganizedCrimes` operationId).
 	GetMyAvailableOrganizedCrimes(ctx context.Context, params *GetMyAvailableOrganizedCrimesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyPerks Get your current perks
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/perks (the `GetMyPerks` operationId).
 	GetMyPerks(ctx context.Context, params *GetMyPerksParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyPersonalStats Get your personal stats
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//  * UserPersonalStatsFull is returned only when this selection is requested with Limited, Full or Custom key access key.
 	//  * UserPersonalStatsFullPublic is returned when the requested category is 'all'.
 	//  * UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.
@@ -42871,43 +42871,43 @@ type ClientInterface interface {
 
 	// GetMyProperties Get your own properties
 	//
-	// Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys.
+	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys.
 	//
 	// Corresponds with GET /user/properties (the `GetMyProperties` operationId).
 	GetMyProperties(ctx context.Context, params *GetMyPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyProperty Get your current property
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /user/property (the `GetMyProperty` operationId).
 	GetMyProperty(ctx context.Context, params *GetMyPropertyParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyRaces Get your races
 	//
-	// Requires minimal access key. Returns a list of user races, ordered by race start timestamp.
+	// Requires minimal access key. <br>Returns a list of user races, ordered by race start timestamp.
 	//
 	// Corresponds with GET /user/races (the `GetMyRaces` operationId).
 	GetMyRaces(ctx context.Context, params *GetMyRacesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyRacingRecords Get your current racing records
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/racingrecords (the `GetMyRacingRecords` operationId).
 	GetMyRacingRecords(ctx context.Context, params *GetMyRacingRecordsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyRefills Get your refills information
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/refills (the `GetMyRefills` operationId).
 	GetMyRefills(ctx context.Context, params *GetMyRefillsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyReports Get your reports
 	//
-	// Requires limited access key.
-	// The limit is set to 25 when requesting any category other than 'stats'.
+	// Requires limited access key. <br>
+	// The limit is set to 25 when requesting any category other than 'stats'.<br>
 	// When requesting the 'stats' category, limit can be increased up to 100.
 	//
 	// Corresponds with GET /user/reports (the `GetMyReports` operationId).
@@ -42915,35 +42915,35 @@ type ClientInterface interface {
 
 	// GetMyRevives Get your detailed revives
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/revives (the `GetMyRevives` operationId).
 	GetMyRevives(ctx context.Context, params *GetMyRevivesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyRevivesSimplified Get your simplified revives
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/revivesFull (the `GetMyRevivesSimplified` operationId).
 	GetMyRevivesSimplified(ctx context.Context, params *GetMyRevivesSimplifiedParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUsersSearch Search users by name or other criteria
 	//
-	// Requires public access key. This selection is standalone and cannot be used together with other selections. It's always limited to return just 25 records.
+	// Requires public access key. <br>This selection is standalone and cannot be used together with other selections.<br>It's always limited to return just 25 records.
 	//
 	// Corresponds with GET /user/search (the `GetUsersSearch` operationId).
 	GetUsersSearch(ctx context.Context, params *GetUsersSearchParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMySkills Get your skills
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/skills (the `GetMySkills` operationId).
 	GetMySkills(ctx context.Context, params *GetMySkillsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUsersSnapshot Get daily active players snapshot CSV
 	//
-	// Requires public access key. Returns a CSV daily snapshot of active players. This selection is standalone and cannot be used together with other selections.
+	// Requires public access key.<br>Returns a CSV daily snapshot of active players.<br>This selection is standalone and cannot be used together with other selections.<br>
 	// CSV columns: id, name, gender, signed_up, level, rank, donator, faction, company, job, spouse, display_case, bazaar, fed, fed_reason, time_played, awards
 	//
 	// Corresponds with GET /user/snapshot (the `GetUsersSnapshot` operationId).
@@ -42951,70 +42951,70 @@ type ClientInterface interface {
 
 	// GetMyStocks Get your stocks
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/stocks (the `GetMyStocks` operationId).
 	GetMyStocks(ctx context.Context, params *GetMyStocksParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserTimestamp Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /user/timestamp (the `GetUserTimestamp` operationId).
 	GetUserTimestamp(ctx context.Context, params *GetUserTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyTrades Get your trades
 	//
-	// Requires limited access key. When requesting 'ongoing' trades (default), limit/offset/sort are not being used.
+	// Requires limited access key. <br> When requesting 'ongoing' trades (default), limit/offset/sort are not being used.
 	//
 	// Corresponds with GET /user/trades (the `GetMyTrades` operationId).
 	GetMyTrades(ctx context.Context, params *GetMyTradesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyTravelInformation Get your travel information
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/travel (the `GetMyTravelInformation` operationId).
 	GetMyTravelInformation(ctx context.Context, params *GetMyTravelInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyVirusCodingInformation Get your virus coding information
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/virus (the `GetMyVirusCodingInformation` operationId).
 	GetMyVirusCodingInformation(ctx context.Context, params *GetMyVirusCodingInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyWeaponExp Get your weapon experience information
 	//
-	// Requires minimal key.
+	// Requires minimal key. <br>
 	//
 	// Corresponds with GET /user/weaponexp (the `GetMyWeaponExp` operationId).
 	GetMyWeaponExp(ctx context.Context, params *GetMyWeaponExpParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyWorkstats Get your working stats
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Corresponds with GET /user/workstats (the `GetMyWorkstats` operationId).
 	GetMyWorkstats(ctx context.Context, params *GetMyWorkstatsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyCrimes Get your crime statistics
 	//
-	// Requires minimal access key. Return the details and statistics about for a specific crime.
+	// Requires minimal access key. <br>Return the details and statistics about for a specific crime.
 	//
 	// Corresponds with GET /user/{crimeId}/crimes (the `GetMyCrimes` operationId).
 	GetMyCrimes(ctx context.Context, crimeId TornCrimeId, params *GetMyCrimesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserBasicInformation Get basic profile information for a specific user
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /user/{id}/basic (the `GetUserBasicInformation` operationId).
 	GetUserBasicInformation(ctx context.Context, id UserDiscordPathId, params *GetUserBasicInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserBounties Get bounties placed on a specific user
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /user/{id}/bounties (the `GetUserBounties` operationId).
 	GetUserBounties(ctx context.Context, id UserDiscordPathId, params *GetUserBountiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43028,7 +43028,7 @@ type ClientInterface interface {
 
 	// GetUserDiscord Get discord information for a specific user
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /user/{id}/discord (the `GetUserDiscord` operationId).
 	GetUserDiscord(ctx context.Context, id UserDiscordPathId, params *GetUserDiscordParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43042,28 +43042,28 @@ type ClientInterface interface {
 
 	// GetUserForumPosts Get posts for a specific player
 	//
-	// Requires public access key. Returns 20 posts per page for a specific player.
+	// Requires public access key. <br>Returns 20 posts per page for a specific player.
 	//
 	// Corresponds with GET /user/{id}/forumposts (the `GetUserForumPosts` operationId).
 	GetUserForumPosts(ctx context.Context, id UserDiscordPathId, params *GetUserForumPostsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserForumThreads Get threads for a specific player
 	//
-	// Requires public access key. Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.
+	// Requires public access key. <br>Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.
 	//
 	// Corresponds with GET /user/{id}/forumthreads (the `GetUserForumThreads` operationId).
 	GetUserForumThreads(ctx context.Context, id UserDiscordPathId, params *GetUserForumThreadsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserHoF Get hall of fame rankings for a specific player
 	//
-	// Requires public access key. The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.
+	// Requires public access key. <br>The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.
 	//
 	// Corresponds with GET /user/{id}/hof (the `GetUserHoF` operationId).
 	GetUserHoF(ctx context.Context, id UserDiscordPathId, params *GetUserHoFParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserIcons Get icons information for a specific player
 	//
-	// Requires public access key. When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
+	// Requires public access key.<br> When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
 	//
 	// Corresponds with GET /user/{id}/icons (the `GetUserIcons` operationId).
 	GetUserIcons(ctx context.Context, id UserDiscordPathId, params *GetUserIconsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43077,20 +43077,20 @@ type ClientInterface interface {
 
 	// GetUserMedals Get medals achieved by a specific player
 	//
-	// Requires public access key. Returns only highest medal in each category (just like profiles on site).
+	// Requires public access key.<br>Returns only highest medal in each category (just like profiles on site).
 	//
 	// Corresponds with GET /user/{id}/medals (the `GetUserMedals` operationId).
 	GetUserMedals(ctx context.Context, id UserDiscordPathId, params *GetUserMedalsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserPersonalStats Get a player's personal stats
 	//
-	// Requires public access key.
-	//  * UserPersonalStatsFull is returned only when this selection is requested for the key owner with Limited, Full or Custom key.
-	//  * UserPersonalStatsFullPublic is returned when the requested category is 'all'.
-	//  * UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.
-	//  * Otherwise, UserPersonalStatsCategory is returned for the matched category.
-	//  * It's possible to request specific stats via 'stat' parameter. In this case the response will vary depending on the stats requested. Private stats are still available only to the key owner (with Limited or higher key).
-	//  * Additionally, historical stats can also be fetched via 'stat' query parameter, but 'timestamp' parameter must be provided as well. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.
+	// Requires public access key. <br>
+	//  *  UserPersonalStatsFull is returned only when this selection is requested for the key owner with Limited, Full or Custom key.
+	//  *  UserPersonalStatsFullPublic is returned when the requested category is 'all'.
+	//  *  UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.
+	//  *  Otherwise, UserPersonalStatsCategory is returned for the matched category.
+	//  *  It's possible to request specific stats via 'stat' parameter. In this case the response will vary depending on the stats requested. Private stats are still available only to the key owner (with Limited or higher key).
+	//  *  Additionally, historical stats can also be fetched via 'stat' query parameter, but 'timestamp' parameter must be provided as well. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.
 	//
 	// Corresponds with GET /user/{id}/personalstats (the `GetUserPersonalStats` operationId).
 	GetUserPersonalStats(ctx context.Context, id UserDiscordPathId, params *GetUserPersonalStatsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43104,21 +43104,21 @@ type ClientInterface interface {
 
 	// GetUserProperties Get specific user's properties
 	//
-	// Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
+	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
 	//
 	// Corresponds with GET /user/{id}/properties (the `GetUserProperties` operationId).
 	GetUserProperties(ctx context.Context, id UserDiscordPathId, params *GetUserPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserProperty Get specific user's property
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Corresponds with GET /user/{id}/property (the `GetUserProperty` operationId).
 	GetUserProperty(ctx context.Context, id UserDiscordPathId, params *GetUserPropertyParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyDetailedTrade Get your detailed trade
 	//
-	// Requires limited access key. Only possible to get trades you participated in.
+	// Requires limited access key. <br>Only possible to get trades you participated in.
 	//
 	// Corresponds with GET /user/{tradeId}/trade (the `GetMyDetailedTrade` operationId).
 	GetMyDetailedTrade(ctx context.Context, tradeId TradeId, params *GetMyDetailedTradeParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43126,7 +43126,7 @@ type ClientInterface interface {
 
 // GetCompanyGeneric Get any Company selection
 //
-// Key access level depends on the required selections. Choose one or more selections (comma separated).
+// Key access level depends on the required selections. <br> Choose one or more selections (comma separated).
 //
 // Corresponds with GET /company (the `GetCompanyGeneric` operationId).
 func (c *Client) GetCompanyGeneric(ctx context.Context, params *GetCompanyGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43143,7 +43143,7 @@ func (c *Client) GetCompanyGeneric(ctx context.Context, params *GetCompanyGeneri
 
 // GetMyCompanyApplications Get your company's applications
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /company/applications (the `GetMyCompanyApplications` operationId).
 func (c *Client) GetMyCompanyApplications(ctx context.Context, params *GetMyCompanyApplicationsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43160,7 +43160,7 @@ func (c *Client) GetMyCompanyApplications(ctx context.Context, params *GetMyComp
 
 // GetMyCompanyEmployees Get my company's employees
 //
-// Requires public access key. When using Limited, Custom or Full access API keys, the response will be:
+// Requires public access key. <br>When using Limited, Custom or Full access API keys, the response will be:<br>
 //   - for director: CompanyEmployeeFull
 //   - for employee: CompanyEmployeeExtended
 //   - anyone else: CompanyEmployee.
@@ -43180,7 +43180,7 @@ func (c *Client) GetMyCompanyEmployees(ctx context.Context, params *GetMyCompany
 
 // GetCompanyLookup performs a GET /company/lookup (the `GetCompanyLookup` operationId) request.
 //
-// Requires public access key.
+// Requires public access key. <br>
 func (c *Client) GetCompanyLookup(ctx context.Context, params *GetCompanyLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetCompanyLookupRequest(c.Server, params)
 	if err != nil {
@@ -43195,7 +43195,7 @@ func (c *Client) GetCompanyLookup(ctx context.Context, params *GetCompanyLookupP
 
 // GetMyCompanyNews Get your company's news details
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /company/news (the `GetMyCompanyNews` operationId).
 func (c *Client) GetMyCompanyNews(ctx context.Context, params *GetMyCompanyNewsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43212,7 +43212,7 @@ func (c *Client) GetMyCompanyNews(ctx context.Context, params *GetMyCompanyNewsP
 
 // GetMyCompanyProfile Get my company's profile
 //
-// Requires public access key. When using Limited, Custom or Full access API keys, the response will be of type CompanyProfileExtended, otherwise it will be CompanyProfile.
+// Requires public access key. <br>When using Limited, Custom or Full access API keys, the response will be of type CompanyProfileExtended, otherwise it will be CompanyProfile.
 //
 // Corresponds with GET /company/profile (the `GetMyCompanyProfile` operationId).
 func (c *Client) GetMyCompanyProfile(ctx context.Context, params *GetMyCompanyProfileParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43229,7 +43229,7 @@ func (c *Client) GetMyCompanyProfile(ctx context.Context, params *GetMyCompanyPr
 
 // GetCompaniesSearch Search companies by name or other criteria
 //
-// Requires public access key. This selection is standalone and cannot be used together with other selections.
+// Requires public access key. <br>This selection is standalone and cannot be used together with other selections.
 //
 // Corresponds with GET /company/search (the `GetCompaniesSearch` operationId).
 func (c *Client) GetCompaniesSearch(ctx context.Context, params *GetCompaniesSearchParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43246,7 +43246,7 @@ func (c *Client) GetCompaniesSearch(ctx context.Context, params *GetCompaniesSea
 
 // GetCompaniesSnapshot Get daily companies snapshot CSV
 //
-// Requires public access key. Returns a CSV daily snapshot of companies. This selection is standalone and cannot be used together with other selections.
+// Requires public access key.<br>Returns a CSV daily snapshot of companies.<br>This selection is standalone and cannot be used together with other selections.<br>
 // CSV columns: id, name, created_at, days_old, image, type, rating, director_id,
 // employees_hired, employees_capacity, daily_income, daily_customers,
 // weekly_income, weekly_customers, applications_allowed
@@ -43266,7 +43266,7 @@ func (c *Client) GetCompaniesSnapshot(ctx context.Context, params *GetCompaniesS
 
 // GetMyCompanyStock Get your company's stock
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /company/stock (the `GetMyCompanyStock` operationId).
 func (c *Client) GetMyCompanyStock(ctx context.Context, params *GetMyCompanyStockParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43283,7 +43283,7 @@ func (c *Client) GetMyCompanyStock(ctx context.Context, params *GetMyCompanyStoc
 
 // GetCompanyTimestamp Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /company/timestamp (the `GetCompanyTimestamp` operationId).
 func (c *Client) GetCompanyTimestamp(ctx context.Context, params *GetCompanyTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43334,7 +43334,7 @@ func (c *Client) GetCompanyProfile(ctx context.Context, id CompanyId, params *Ge
 
 // GetCompaniesList Get a list of companies for a specific company type
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /company/{typeId}/companies (the `GetCompaniesList` operationId).
 func (c *Client) GetCompaniesList(ctx context.Context, typeId CompanyTypeId, params *GetCompaniesListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43351,7 +43351,7 @@ func (c *Client) GetCompaniesList(ctx context.Context, typeId CompanyTypeId, par
 
 // GetFactionGeneric Get any Faction selection
 //
-// Key access level depends on the required selections. Choose one or more selections (comma separated).
+// Key access level depends on the required selections. <br> Choose one or more selections (comma separated).
 //
 // Corresponds with GET /faction (the `GetFactionGeneric` operationId).
 func (c *Client) GetFactionGeneric(ctx context.Context, params *GetFactionGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43368,7 +43368,7 @@ func (c *Client) GetFactionGeneric(ctx context.Context, params *GetFactionGeneri
 
 // GetMyFactionApplications Get your faction's applications
 //
-// Requires minimal access key with faction API access permissions.
+// Requires minimal access key with faction API access permissions. <br>
 //
 // Corresponds with GET /faction/applications (the `GetMyFactionApplications` operationId).
 func (c *Client) GetMyFactionApplications(ctx context.Context, params *GetMyFactionApplicationsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43385,7 +43385,7 @@ func (c *Client) GetMyFactionApplications(ctx context.Context, params *GetMyFact
 
 // GetMyFactionAttacks Get your faction's detailed attacks
 //
-// Requires limited access key with faction API access permissions.
+// Requires limited access key with faction API access permissions. <br>
 //
 // Corresponds with GET /faction/attacks (the `GetMyFactionAttacks` operationId).
 func (c *Client) GetMyFactionAttacks(ctx context.Context, params *GetMyFactionAttacksParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43402,7 +43402,7 @@ func (c *Client) GetMyFactionAttacks(ctx context.Context, params *GetMyFactionAt
 
 // GetMyFactionAttacksSimplified Get your faction's simplified attacks
 //
-// Requires limited access key with faction API access permissions.
+// Requires limited access key with faction API access permissions. <br>
 //
 // Corresponds with GET /faction/attacksfull (the `GetMyFactionAttacksSimplified` operationId).
 func (c *Client) GetMyFactionAttacksSimplified(ctx context.Context, params *GetMyFactionAttacksSimplifiedParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43419,7 +43419,7 @@ func (c *Client) GetMyFactionAttacksSimplified(ctx context.Context, params *GetM
 
 // GetMyFactionBalance Get your faction's & member's balance details
 //
-// Requires limited access key with faction API access permissions.
+// Requires limited access key with faction API access permissions. <br>
 //
 // Corresponds with GET /faction/balance (the `GetMyFactionBalance` operationId).
 func (c *Client) GetMyFactionBalance(ctx context.Context, params *GetMyFactionBalanceParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43436,7 +43436,7 @@ func (c *Client) GetMyFactionBalance(ctx context.Context, params *GetMyFactionBa
 
 // GetMyFactionBasicInformation Get your faction's basic details
 //
-// Requires public access key. The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
+// Requires public access key. <br> The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
 //
 // Corresponds with GET /faction/basic (the `GetMyFactionBasicInformation` operationId).
 func (c *Client) GetMyFactionBasicInformation(ctx context.Context, params *GetMyFactionBasicInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43453,7 +43453,7 @@ func (c *Client) GetMyFactionBasicInformation(ctx context.Context, params *GetMy
 
 // GetMyFactionChain Get your faction's current chain
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/chain (the `GetMyFactionChain` operationId).
 func (c *Client) GetMyFactionChain(ctx context.Context, params *GetMyFactionChainParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43470,7 +43470,7 @@ func (c *Client) GetMyFactionChain(ctx context.Context, params *GetMyFactionChai
 
 // GetMyFactionLatestChainReport Get your faction's latest chain report
 //
-// Requires public access key. This includes currently ongoing chains.
+// Requires public access key. <br> This includes currently ongoing chains.
 //
 // Corresponds with GET /faction/chainreport (the `GetMyFactionLatestChainReport` operationId).
 func (c *Client) GetMyFactionLatestChainReport(ctx context.Context, params *GetMyFactionLatestChainReportParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43487,7 +43487,7 @@ func (c *Client) GetMyFactionLatestChainReport(ctx context.Context, params *GetM
 
 // GetMyFactionCompletedChains Get a list of your faction's completed chains
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/chains (the `GetMyFactionCompletedChains` operationId).
 func (c *Client) GetMyFactionCompletedChains(ctx context.Context, params *GetMyFactionCompletedChainsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43504,7 +43504,7 @@ func (c *Client) GetMyFactionCompletedChains(ctx context.Context, params *GetMyF
 
 // GetMyFactionContributors Get your faction's challenge contributors
 //
-// Requires limiteed access key with faction API access permissions.
+// Requires limiteed access key with faction API access permissions. <br>
 //
 // Corresponds with GET /faction/contributors (the `GetMyFactionContributors` operationId).
 func (c *Client) GetMyFactionContributors(ctx context.Context, params *GetMyFactionContributorsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43521,7 +43521,7 @@ func (c *Client) GetMyFactionContributors(ctx context.Context, params *GetMyFact
 
 // GetMyFactionCrimeExp Get your faction members crime experience
 //
-// Requires minimal access key. Members are ordered descending, from highest crime experience to lowest.
+// Requires minimal access key. <br>Members are ordered descending, from highest crime experience to lowest.
 //
 // Corresponds with GET /faction/crimeexp (the `GetMyFactionCrimeExp` operationId).
 func (c *Client) GetMyFactionCrimeExp(ctx context.Context, params *GetMyFactionCrimeExpParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43538,7 +43538,7 @@ func (c *Client) GetMyFactionCrimeExp(ctx context.Context, params *GetMyFactionC
 
 // GetMyFactionOrganizedCrimes Get your faction's organized crimes
 //
-// Requires minimal access key with faction API access permissions. It's possible to get older entries either by timestamp range (from, to) or with offset. Crimes are ordered depending on the category chosen:
+// Requires minimal access key with faction API access permissions. <br> It's possible to get older entries either by timestamp range (from, to) or with offset.<br> Crimes are ordered depending on the category chosen:
 //   - For categories 'all' & 'available', the ordering field is 'created_at'.
 //   - For categories 'successful', 'failed' & 'completed', the ordering field is 'executed_at'.
 //   - For categories 'recruiting' & 'expired', the ordering field is 'expired_at'.
@@ -43559,7 +43559,7 @@ func (c *Client) GetMyFactionOrganizedCrimes(ctx context.Context, params *GetMyF
 
 // GetWarfareDirtyBombs Get all dirty bombs
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/dirtybombs (the `GetWarfareDirtyBombs` operationId).
 func (c *Client) GetWarfareDirtyBombs(ctx context.Context, params *GetWarfareDirtyBombsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43576,7 +43576,7 @@ func (c *Client) GetWarfareDirtyBombs(ctx context.Context, params *GetWarfareDir
 
 // GetMyFactionHoF Get your faction's hall of fame rankings.
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/hof (the `GetMyFactionHoF` operationId).
 func (c *Client) GetMyFactionHoF(ctx context.Context, params *GetMyFactionHoFParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43593,7 +43593,7 @@ func (c *Client) GetMyFactionHoF(ctx context.Context, params *GetMyFactionHoFPar
 
 // GetMyFactionInventory Get your faction's inventory items.
 //
-//	Cached selection (5 minutes, all items cached at once). Requires limited access key.
+// <b>Cached selection (5 minutes, all items cached at once).</b><br><br>Requires limited access key. <br>
 //
 // Corresponds with GET /faction/inventory (the `GetMyFactionInventory` operationId).
 func (c *Client) GetMyFactionInventory(ctx context.Context, params *GetMyFactionInventoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43610,7 +43610,7 @@ func (c *Client) GetMyFactionInventory(ctx context.Context, params *GetMyFaction
 
 // GetFactionLookup performs a GET /faction/lookup (the `GetFactionLookup` operationId) request.
 //
-// Requires public access key.
+// Requires public access key. <br>
 func (c *Client) GetFactionLookup(ctx context.Context, params *GetFactionLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetFactionLookupRequest(c.Server, params)
 	if err != nil {
@@ -43625,7 +43625,7 @@ func (c *Client) GetFactionLookup(ctx context.Context, params *GetFactionLookupP
 
 // GetMyFactionMembers Get a list of your faction's members
 //
-// Requires public access key. The 'revive_setting' value will be populated (not Unknown) if you have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
+// Requires public access key. <br> The 'revive_setting' value will be populated (not Unknown) if you have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
 //
 // Corresponds with GET /faction/members (the `GetMyFactionMembers` operationId).
 func (c *Client) GetMyFactionMembers(ctx context.Context, params *GetMyFactionMembersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43642,7 +43642,7 @@ func (c *Client) GetMyFactionMembers(ctx context.Context, params *GetMyFactionMe
 
 // GetMyFactionNews Get your faction's news details
 //
-// Requires minimal access key with faction API access permissions. It is possible to pass up to 10 categories at the time (comma separated). Categories 'attack', 'depositFunds' and 'giveFunds' are only available with 'Custom', 'Limited' or 'Full' access keys.
+// Requires minimal access key with faction API access permissions. <br> It is possible to pass up to 10 categories at the time (comma separated). Categories 'attack', 'depositFunds' and 'giveFunds' are only available with 'Custom', 'Limited' or 'Full' access keys.
 //
 // Corresponds with GET /faction/news (the `GetMyFactionNews` operationId).
 func (c *Client) GetMyFactionNews(ctx context.Context, params *GetMyFactionNewsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43659,7 +43659,7 @@ func (c *Client) GetMyFactionNews(ctx context.Context, params *GetMyFactionNewsP
 
 // GetMyFactionPositions Get your faction's positions details
 //
-// Requires minimal access key with faction API access permissions.
+// Requires minimal access key with faction API access permissions. <br>
 //
 // Corresponds with GET /faction/positions (the `GetMyFactionPositions` operationId).
 func (c *Client) GetMyFactionPositions(ctx context.Context, params *GetMyFactionPositionsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43676,7 +43676,7 @@ func (c *Client) GetMyFactionPositions(ctx context.Context, params *GetMyFaction
 
 // GetFactionRackets Get a list of current rackets
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/rackets (the `GetFactionRackets` operationId).
 func (c *Client) GetFactionRackets(ctx context.Context, params *GetFactionRacketsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43693,7 +43693,7 @@ func (c *Client) GetFactionRackets(ctx context.Context, params *GetFactionRacket
 
 // GetMyFactionRaidsHistory Get raids history for your faction
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/raids (the `GetMyFactionRaidsHistory` operationId).
 func (c *Client) GetMyFactionRaidsHistory(ctx context.Context, params *GetMyFactionRaidsHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43710,7 +43710,7 @@ func (c *Client) GetMyFactionRaidsHistory(ctx context.Context, params *GetMyFact
 
 // GetMyFactionRankedWarsHistory Get ranked wars history for your faction
 //
-// Requires public access key. Use offset to get older results which are always ordered descending.
+// Requires public access key. <br> Use offset to get older results which are always ordered descending.
 //
 // Corresponds with GET /faction/rankedwars (the `GetMyFactionRankedWarsHistory` operationId).
 func (c *Client) GetMyFactionRankedWarsHistory(ctx context.Context, params *GetMyFactionRankedWarsHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43727,8 +43727,8 @@ func (c *Client) GetMyFactionRankedWarsHistory(ctx context.Context, params *GetM
 
 // GetMyFactionReports Get faction reports
 //
-// Requires limited access key.
-// The limit is set to 25 when requesting any category other than 'stats'.
+// Requires limited access key. <br>
+// The limit is set to 25 when requesting any category other than 'stats'.<br>
 // When requesting the 'stats' category, limit can be increased up to 100.
 //
 // Corresponds with GET /faction/reports (the `GetMyFactionReports` operationId).
@@ -43746,7 +43746,7 @@ func (c *Client) GetMyFactionReports(ctx context.Context, params *GetMyFactionRe
 
 // GetMyFactionRevives Get your faction's detailed revives
 //
-// Requires limited access key with faction API access permissions.
+// Requires limited access key with faction API access permissions. <br>
 //
 // Corresponds with GET /faction/revives (the `GetMyFactionRevives` operationId).
 func (c *Client) GetMyFactionRevives(ctx context.Context, params *GetMyFactionRevivesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43763,7 +43763,7 @@ func (c *Client) GetMyFactionRevives(ctx context.Context, params *GetMyFactionRe
 
 // GetMyFactionRevivesSimplified Get your faction's simplified revives
 //
-// Requires limited access key with faction API access permissions.
+// Requires limited access key with faction API access permissions. <br>
 //
 // Corresponds with GET /faction/revivesFull (the `GetMyFactionRevivesSimplified` operationId).
 func (c *Client) GetMyFactionRevivesSimplified(ctx context.Context, params *GetMyFactionRevivesSimplifiedParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43780,7 +43780,7 @@ func (c *Client) GetMyFactionRevivesSimplified(ctx context.Context, params *GetM
 
 // GetFactionSearch Search factions by name or other criteria
 //
-// Requires public access key. This selection is standalone and cannot be used together with other selections.
+// Requires public access key. <br>This selection is standalone and cannot be used together with other selections.
 //
 // Corresponds with GET /faction/search (the `GetFactionSearch` operationId).
 func (c *Client) GetFactionSearch(ctx context.Context, params *GetFactionSearchParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43797,7 +43797,7 @@ func (c *Client) GetFactionSearch(ctx context.Context, params *GetFactionSearchP
 
 // GetFactionsSnapshot Get daily factions snapshot CSV
 //
-// Requires public access key. Returns a CSV daily snapshot of factions. This selection is standalone and cannot be used together with other selections.
+// Requires public access key.<br>Returns a CSV daily snapshot of factions.<br>This selection is standalone and cannot be used together with other selections.<br>
 // CSV columns: id, name, tag, tag_image, banner_image, leader_id, co_leader_id, respect, days_old, rank, members, members_max, member_list, recruiting, destroyed_timestamp
 //
 // Corresponds with GET /faction/snapshot (the `GetFactionsSnapshot` operationId).
@@ -43815,7 +43815,7 @@ func (c *Client) GetFactionsSnapshot(ctx context.Context, params *GetFactionsSna
 
 // GetMyFactionStats Get your faction's challenges stats
 //
-// Requires minimal access key with faction API access permissions.
+// Requires minimal access key with faction API access permissions. <br>
 //
 // Corresponds with GET /faction/stats (the `GetMyFactionStats` operationId).
 func (c *Client) GetMyFactionStats(ctx context.Context, params *GetMyFactionStatsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43832,7 +43832,7 @@ func (c *Client) GetMyFactionStats(ctx context.Context, params *GetMyFactionStat
 
 // GetMyFactionTerritory Get a list of your faction's territories
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/territory (the `GetMyFactionTerritory` operationId).
 func (c *Client) GetMyFactionTerritory(ctx context.Context, params *GetMyFactionTerritoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43849,7 +43849,7 @@ func (c *Client) GetMyFactionTerritory(ctx context.Context, params *GetMyFaction
 
 // GetTerritoryOwnership Get a list territory ownership
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/territoryownership (the `GetTerritoryOwnership` operationId).
 func (c *Client) GetTerritoryOwnership(ctx context.Context, params *GetTerritoryOwnershipParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43866,7 +43866,7 @@ func (c *Client) GetTerritoryOwnership(ctx context.Context, params *GetTerritory
 
 // GetMyFactionTerritoryWarsHistory Get territory wars history for your faction
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/territorywars (the `GetMyFactionTerritoryWarsHistory` operationId).
 func (c *Client) GetMyFactionTerritoryWarsHistory(ctx context.Context, params *GetMyFactionTerritoryWarsHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43883,7 +43883,7 @@ func (c *Client) GetMyFactionTerritoryWarsHistory(ctx context.Context, params *G
 
 // GetFactionTimestamp Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/timestamp (the `GetFactionTimestamp` operationId).
 func (c *Client) GetFactionTimestamp(ctx context.Context, params *GetFactionTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43900,7 +43900,7 @@ func (c *Client) GetFactionTimestamp(ctx context.Context, params *GetFactionTime
 
 // GetMyFactionUpgrades Get your faction's upgrades
 //
-// Requires minimal access key with faction API access permissions.
+// Requires minimal access key with faction API access permissions. <br>
 //
 // Corresponds with GET /faction/upgrades (the `GetMyFactionUpgrades` operationId).
 func (c *Client) GetMyFactionUpgrades(ctx context.Context, params *GetMyFactionUpgradesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43917,7 +43917,7 @@ func (c *Client) GetMyFactionUpgrades(ctx context.Context, params *GetMyFactionU
 
 // GetWarfare Get faction warfare
 //
-// This selection is replaced by other warfare selections and 'faction' -> 'dirtybombs'. This will be removed on 1st January 2027. Requires public access key. The response depends on the selected category.
+// This selection is replaced by other warfare selections and 'faction' -> 'dirtybombs'.<br>This will be removed on 1st January 2027<b></b>.<br>Requires public access key. <br>The response depends on the selected category.
 //
 // Corresponds with GET /faction/warfare (the `GetWarfare` operationId).
 // Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
@@ -43935,7 +43935,7 @@ func (c *Client) GetWarfare(ctx context.Context, params *GetWarfareParams, reqEd
 
 // GetWarfareChains Get all chains
 //
-// Requires public access key. By default, active chains are returned.
+// Requires public access key. <br>By default, active chains are returned.
 //
 // Corresponds with GET /faction/warfarechains (the `GetWarfareChains` operationId).
 func (c *Client) GetWarfareChains(ctx context.Context, params *GetWarfareChainsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43952,7 +43952,7 @@ func (c *Client) GetWarfareChains(ctx context.Context, params *GetWarfareChainsP
 
 // GetWarfareRaids Get all raids
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/warfareraids (the `GetWarfareRaids` operationId).
 func (c *Client) GetWarfareRaids(ctx context.Context, params *GetWarfareRaidsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43969,7 +43969,7 @@ func (c *Client) GetWarfareRaids(ctx context.Context, params *GetWarfareRaidsPar
 
 // GetWarfareRankedWars Get all ranked wars
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/warfareranked (the `GetWarfareRankedWars` operationId).
 func (c *Client) GetWarfareRankedWars(ctx context.Context, params *GetWarfareRankedWarsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -43986,7 +43986,7 @@ func (c *Client) GetWarfareRankedWars(ctx context.Context, params *GetWarfareRan
 
 // GetWarfareTerritoryWars Get all territory wars
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/warfareterritory (the `GetWarfareTerritoryWars` operationId).
 func (c *Client) GetWarfareTerritoryWars(ctx context.Context, params *GetWarfareTerritoryWarsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44003,7 +44003,7 @@ func (c *Client) GetWarfareTerritoryWars(ctx context.Context, params *GetWarfare
 
 // GetMyFactionWars Get your faction's wars & pacts details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/wars (the `GetMyFactionWars` operationId).
 func (c *Client) GetMyFactionWars(ctx context.Context, params *GetMyFactionWarsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44020,7 +44020,7 @@ func (c *Client) GetMyFactionWars(ctx context.Context, params *GetMyFactionWarsP
 
 // GetChainReport Get a chain report
 //
-// Requires public access key. Chain reports for ongoing chains are available only for your own faction.
+// Requires public access key. <br> Chain reports for ongoing chains are available only for your own faction.
 //
 // Corresponds with GET /faction/{chainId}/chainreport (the `GetChainReport` operationId).
 func (c *Client) GetChainReport(ctx context.Context, chainId ChainId, params *GetChainReportParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44037,7 +44037,7 @@ func (c *Client) GetChainReport(ctx context.Context, chainId ChainId, params *Ge
 
 // GetMyFactionOrganizedCrime Get a specific organized crime
 //
-// Requires minimal access key with faction API access permissions.
+// Requires minimal access key with faction API access permissions. <br>
 //
 // Corresponds with GET /faction/{crimeId}/crime (the `GetMyFactionOrganizedCrime` operationId).
 func (c *Client) GetMyFactionOrganizedCrime(ctx context.Context, crimeId FactionCrimeId, params *GetMyFactionOrganizedCrimeParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44054,7 +44054,7 @@ func (c *Client) GetMyFactionOrganizedCrime(ctx context.Context, crimeId Faction
 
 // GetFactionBasicInformation Get a faction's basic details
 //
-// Requires public access key. The 'is_enlisted' value will be populated if you're requesting data for your faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
+// Requires public access key. <br> The 'is_enlisted' value will be populated if you're requesting data for your faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
 //
 // Corresponds with GET /faction/{id}/basic (the `GetFactionBasicInformation` operationId).
 func (c *Client) GetFactionBasicInformation(ctx context.Context, id FactionId, params *GetFactionBasicInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44071,7 +44071,7 @@ func (c *Client) GetFactionBasicInformation(ctx context.Context, id FactionId, p
 
 // GetFactionChain Get a faction's current chain
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/{id}/chain (the `GetFactionChain` operationId).
 func (c *Client) GetFactionChain(ctx context.Context, id FactionId, params *GetFactionChainParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44088,7 +44088,7 @@ func (c *Client) GetFactionChain(ctx context.Context, id FactionId, params *GetF
 
 // GetFactionCompletedChains Get a list of a faction's completed chains
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/{id}/chains (the `GetFactionCompletedChains` operationId).
 func (c *Client) GetFactionCompletedChains(ctx context.Context, id FactionId, params *GetFactionCompletedChainsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44105,7 +44105,7 @@ func (c *Client) GetFactionCompletedChains(ctx context.Context, id FactionId, pa
 
 // GetFactionHoF Get a faction's hall of fame rankings.
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/{id}/hof (the `GetFactionHoF` operationId).
 func (c *Client) GetFactionHoF(ctx context.Context, id FactionId, params *GetFactionHoFParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44122,7 +44122,7 @@ func (c *Client) GetFactionHoF(ctx context.Context, id FactionId, params *GetFac
 
 // GetFactionMembers Get a list of a faction's members
 //
-// Requires public access key. The 'revive_setting' value will be populated (not Unknown) if you're requesting data for your own faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
+// Requires public access key. <br> The 'revive_setting' value will be populated (not Unknown) if you're requesting data for your own faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
 //
 // Corresponds with GET /faction/{id}/members (the `GetFactionMembers` operationId).
 func (c *Client) GetFactionMembers(ctx context.Context, id FactionId, params *GetFactionMembersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44139,7 +44139,7 @@ func (c *Client) GetFactionMembers(ctx context.Context, id FactionId, params *Ge
 
 // GetFactionRaidsHistory Get a faction's raids history
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/{id}/raids (the `GetFactionRaidsHistory` operationId).
 func (c *Client) GetFactionRaidsHistory(ctx context.Context, id FactionId, params *GetFactionRaidsHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44156,7 +44156,7 @@ func (c *Client) GetFactionRaidsHistory(ctx context.Context, id FactionId, param
 
 // GetFactionRankedWarsHistory Get a faction's ranked wars history
 //
-// Requires public access key. Use offset to get older results which are always ordered descending.
+// Requires public access key. <br> Use offset to get older results which are always ordered descending.
 //
 // Corresponds with GET /faction/{id}/rankedwars (the `GetFactionRankedWarsHistory` operationId).
 func (c *Client) GetFactionRankedWarsHistory(ctx context.Context, id FactionId, params *GetFactionRankedWarsHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44173,7 +44173,7 @@ func (c *Client) GetFactionRankedWarsHistory(ctx context.Context, id FactionId, 
 
 // GetFactionTerritory Get a list of a faction's territories
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/{id}/territory (the `GetFactionTerritory` operationId).
 func (c *Client) GetFactionTerritory(ctx context.Context, id FactionId, params *GetFactionTerritoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44190,7 +44190,7 @@ func (c *Client) GetFactionTerritory(ctx context.Context, id FactionId, params *
 
 // GetFactionTerritoryWarsHistory Get a faction's territory wars history
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/{id}/territorywars (the `GetFactionTerritoryWarsHistory` operationId).
 func (c *Client) GetFactionTerritoryWarsHistory(ctx context.Context, id FactionId, params *GetFactionTerritoryWarsHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44207,7 +44207,7 @@ func (c *Client) GetFactionTerritoryWarsHistory(ctx context.Context, id FactionI
 
 // GetFactionWars Get a faction's wars & pacts details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/{id}/wars (the `GetFactionWars` operationId).
 func (c *Client) GetFactionWars(ctx context.Context, id FactionId, params *GetFactionWarsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44224,7 +44224,7 @@ func (c *Client) GetFactionWars(ctx context.Context, id FactionId, params *GetFa
 
 // GetRaidReport Get raid war details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/{raidWarId}/raidreport (the `GetRaidReport` operationId).
 func (c *Client) GetRaidReport(ctx context.Context, raidWarId RaidWarId, params *GetRaidReportParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44241,7 +44241,7 @@ func (c *Client) GetRaidReport(ctx context.Context, raidWarId RaidWarId, params 
 
 // GetRankedWarReport Get ranked war details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/{rankedWarId}/rankedwarreport (the `GetRankedWarReport` operationId).
 func (c *Client) GetRankedWarReport(ctx context.Context, rankedWarId RankedWarId, params *GetRankedWarReportParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44258,7 +44258,7 @@ func (c *Client) GetRankedWarReport(ctx context.Context, rankedWarId RankedWarId
 
 // GetTerritoryWarReport Get territory war details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /faction/{territoryWarId}/territorywarreport (the `GetTerritoryWarReport` operationId).
 func (c *Client) GetTerritoryWarReport(ctx context.Context, territoryWarId TerritoryWarId, params *GetTerritoryWarReportParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44275,7 +44275,7 @@ func (c *Client) GetTerritoryWarReport(ctx context.Context, territoryWarId Terri
 
 // GetForumGeneric Get any Forum selection
 //
-// Requires public access key. Choose one or more selections (comma separated).
+// Requires public access key. <br>Choose one or more selections (comma separated).
 //
 // Corresponds with GET /forum (the `GetForumGeneric` operationId).
 func (c *Client) GetForumGeneric(ctx context.Context, params *GetForumGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44292,7 +44292,7 @@ func (c *Client) GetForumGeneric(ctx context.Context, params *GetForumGenericPar
 
 // GetForumCategories Get publicly available forum categories
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /forum/categories (the `GetForumCategories` operationId).
 func (c *Client) GetForumCategories(ctx context.Context, params *GetForumCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44309,7 +44309,7 @@ func (c *Client) GetForumCategories(ctx context.Context, params *GetForumCategor
 
 // GetForumLookup Get all available forum selections
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /forum/lookup (the `GetForumLookup` operationId).
 func (c *Client) GetForumLookup(ctx context.Context, params *GetForumLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44326,7 +44326,7 @@ func (c *Client) GetForumLookup(ctx context.Context, params *GetForumLookupParam
 
 // GetForumAllThreads Get threads across all forum categories
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /forum/threads (the `GetForumAllThreads` operationId).
 func (c *Client) GetForumAllThreads(ctx context.Context, params *GetForumAllThreadsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44343,7 +44343,7 @@ func (c *Client) GetForumAllThreads(ctx context.Context, params *GetForumAllThre
 
 // GetForumTimestamp Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /forum/timestamp (the `GetForumTimestamp` operationId).
 func (c *Client) GetForumTimestamp(ctx context.Context, params *GetForumTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44360,7 +44360,7 @@ func (c *Client) GetForumTimestamp(ctx context.Context, params *GetForumTimestam
 
 // GetForumThreads Get threads for specific public forum category or categories
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /forum/{categoryIds}/threads (the `GetForumThreads` operationId).
 func (c *Client) GetForumThreads(ctx context.Context, categoryIds []ForumId, params *GetForumThreadsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44377,7 +44377,7 @@ func (c *Client) GetForumThreads(ctx context.Context, categoryIds []ForumId, par
 
 // GetForumThreadPosts Get specific forum thread posts
 //
-// Requires public access key. Returns 20 posts per page for a specific thread. By default, it uses 'offset', but it's possible to filter posts with 'from' & 'to' parameters.
+// Requires public access key. <br>Returns 20 posts per page for a specific thread. <br> By default, it uses 'offset', but it's possible to filter posts with 'from' & 'to' parameters.
 //
 // Corresponds with GET /forum/{threadId}/posts (the `GetForumThreadPosts` operationId).
 func (c *Client) GetForumThreadPosts(ctx context.Context, threadId ForumThreadId, params *GetForumThreadPostsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44394,7 +44394,7 @@ func (c *Client) GetForumThreadPosts(ctx context.Context, threadId ForumThreadId
 
 // GetForumThread Get specific thread details
 //
-// Requires public access key. Contains details of a thread including topic content and poll (if any).
+// Requires public access key. <br>Contains details of a thread including topic content and poll (if any).
 //
 // Corresponds with GET /forum/{threadId}/thread (the `GetForumThread` operationId).
 func (c *Client) GetForumThread(ctx context.Context, threadId ForumThreadId, params *GetForumThreadParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44426,7 +44426,7 @@ func (c *Client) GetKeyGeneric(ctx context.Context, params *GetKeyGenericParams,
 
 // GetKeyInfo Get current key info
 //
-// Available for any key.
+// Available for any key. <br>
 //
 // Corresponds with GET /key/info (the `GetKeyInfo` operationId).
 func (c *Client) GetKeyInfo(ctx context.Context, params *GetKeyInfoParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44443,7 +44443,7 @@ func (c *Client) GetKeyInfo(ctx context.Context, params *GetKeyInfoParams, reqEd
 
 // GetKeyLog Get current key log history
 //
-// Available for any key.
+// Available for any key. <br>
 //   - This selection contains up to last 250 request logs.
 //
 // Corresponds with GET /key/log (the `GetKeyLog` operationId).
@@ -44461,7 +44461,7 @@ func (c *Client) GetKeyLog(ctx context.Context, params *GetKeyLogParams, reqEdit
 
 // GetMarketGeneric Get any Market selection
 //
-// Requires public access key. Choose one or more selections (comma separated).
+// Requires public access key. <br>Choose one or more selections (comma separated).
 //
 // Corresponds with GET /market (the `GetMarketGeneric` operationId).
 func (c *Client) GetMarketGeneric(ctx context.Context, params *GetMarketGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44478,7 +44478,7 @@ func (c *Client) GetMarketGeneric(ctx context.Context, params *GetMarketGenericP
 
 // GetMarketAuctionHouse Get auction house listings
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /market/auctionhouse (the `GetMarketAuctionHouse` operationId).
 func (c *Client) GetMarketAuctionHouse(ctx context.Context, params *GetMarketAuctionHouseParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44495,7 +44495,7 @@ func (c *Client) GetMarketAuctionHouse(ctx context.Context, params *GetMarketAuc
 
 // GetMarketBazaar Get bazaar directory
 //
-// Requires public access key. The default response is of type 'BazaarWeekly', but if a category is chosen, the response will be of type 'BazaarSpecialized'.
+// Requires public access key. <br> The default response is of type 'BazaarWeekly', but if a category is chosen, the response will be of type 'BazaarSpecialized'.
 //
 // Corresponds with GET /market/bazaar (the `GetMarketBazaar` operationId).
 func (c *Client) GetMarketBazaar(ctx context.Context, params *GetMarketBazaarParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44512,7 +44512,7 @@ func (c *Client) GetMarketBazaar(ctx context.Context, params *GetMarketBazaarPar
 
 // GetMarketLookup Get all available market selections
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /market/lookup (the `GetMarketLookup` operationId).
 func (c *Client) GetMarketLookup(ctx context.Context, params *GetMarketLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44529,7 +44529,7 @@ func (c *Client) GetMarketLookup(ctx context.Context, params *GetMarketLookupPar
 
 // GetMarketPoints Get points market listings
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /market/pointsmarket (the `GetMarketPoints` operationId).
 func (c *Client) GetMarketPoints(ctx context.Context, params *GetMarketPointsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44546,7 +44546,7 @@ func (c *Client) GetMarketPoints(ctx context.Context, params *GetMarketPointsPar
 
 // GetMarketTimestamp Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /market/timestamp (the `GetMarketTimestamp` operationId).
 func (c *Client) GetMarketTimestamp(ctx context.Context, params *GetMarketTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44563,7 +44563,7 @@ func (c *Client) GetMarketTimestamp(ctx context.Context, params *GetMarketTimest
 
 // GetMarketAuctionHouseItem Get specific item auction house listings
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /market/{id}/auctionhouse (the `GetMarketAuctionHouseItem` operationId).
 func (c *Client) GetMarketAuctionHouseItem(ctx context.Context, id ItemId, params *GetMarketAuctionHouseItemParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44580,7 +44580,7 @@ func (c *Client) GetMarketAuctionHouseItem(ctx context.Context, id ItemId, param
 
 // GetMarketAuctionHouseListing Get specific item auction house listings
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /market/{id}/auctionhouselisting (the `GetMarketAuctionHouseListing` operationId).
 func (c *Client) GetMarketAuctionHouseListing(ctx context.Context, id AuctionListingId, params *GetMarketAuctionHouseListingParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44597,7 +44597,7 @@ func (c *Client) GetMarketAuctionHouseListing(ctx context.Context, id AuctionLis
 
 // GetMarketBazaarItem Get item specialized bazaar directory
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /market/{id}/bazaar (the `GetMarketBazaarItem` operationId).
 func (c *Client) GetMarketBazaarItem(ctx context.Context, id ItemId, params *GetMarketBazaarItemParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44614,7 +44614,7 @@ func (c *Client) GetMarketBazaarItem(ctx context.Context, id ItemId, params *Get
 
 // GetMarketItemMarketItem Get item market listings
 //
-//	Globally cached selection. Requires public access key.
+// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 //
 // Corresponds with GET /market/{id}/itemmarket (the `GetMarketItemMarketItem` operationId).
 func (c *Client) GetMarketItemMarketItem(ctx context.Context, id ItemId, params *GetMarketItemMarketItemParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44631,7 +44631,7 @@ func (c *Client) GetMarketItemMarketItem(ctx context.Context, id ItemId, params 
 
 // GetMarketProperties Get properties market listings
 //
-//	Globally cached selection. Requires public access key.
+// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 //
 // Corresponds with GET /market/{propertyTypeId}/properties (the `GetMarketProperties` operationId).
 func (c *Client) GetMarketProperties(ctx context.Context, propertyTypeId PropertyTypeId, params *GetMarketPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44648,7 +44648,7 @@ func (c *Client) GetMarketProperties(ctx context.Context, propertyTypeId Propert
 
 // GetMarketPropertiesRental Get properties rental listings
 //
-//	Globally cached selection. Requires public access key.
+// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 //
 // Corresponds with GET /market/{propertyTypeId}/rentals (the `GetMarketPropertiesRental` operationId).
 func (c *Client) GetMarketPropertiesRental(ctx context.Context, propertyTypeId PropertyTypeId, params *GetMarketPropertiesRentalParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44665,7 +44665,7 @@ func (c *Client) GetMarketPropertiesRental(ctx context.Context, propertyTypeId P
 
 // GetPropertyGeneric Get any property selection
 //
-// Requires public access key. Choose one or more selections (comma separated).
+// Requires public access key. <br>Choose one or more selections (comma separated).
 //
 // Corresponds with GET /property (the `GetPropertyGeneric` operationId).
 func (c *Client) GetPropertyGeneric(ctx context.Context, params *GetPropertyGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44682,7 +44682,7 @@ func (c *Client) GetPropertyGeneric(ctx context.Context, params *GetPropertyGene
 
 // GetPropertyLookup Get all available property selections
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /property/lookup (the `GetPropertyLookup` operationId).
 func (c *Client) GetPropertyLookup(ctx context.Context, params *GetPropertyLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44699,7 +44699,7 @@ func (c *Client) GetPropertyLookup(ctx context.Context, params *GetPropertyLooku
 
 // GetPropertyTimestamp Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /property/timestamp (the `GetPropertyTimestamp` operationId).
 func (c *Client) GetPropertyTimestamp(ctx context.Context, params *GetPropertyTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44716,7 +44716,7 @@ func (c *Client) GetPropertyTimestamp(ctx context.Context, params *GetPropertyTi
 
 // GetProperty Get a specific property
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /property/{id}/property (the `GetProperty` operationId).
 func (c *Client) GetProperty(ctx context.Context, id PropertyId, params *GetPropertyParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44733,7 +44733,7 @@ func (c *Client) GetProperty(ctx context.Context, id PropertyId, params *GetProp
 
 // GetRacingGeneric Get any Racing selection
 //
-// Requires public access key. Choose one or more selections (comma separated).
+// Requires public access key. <br>Choose one or more selections (comma separated).
 //
 // Corresponds with GET /racing (the `GetRacingGeneric` operationId).
 func (c *Client) GetRacingGeneric(ctx context.Context, params *GetRacingGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44750,7 +44750,7 @@ func (c *Client) GetRacingGeneric(ctx context.Context, params *GetRacingGenericP
 
 // GetRacingCars Get cars and their racing stats
 //
-// Requires public access key. Returns the stat details about racing cars.
+// Requires public access key. <br>Returns the stat details about racing cars.
 //
 // Corresponds with GET /racing/cars (the `GetRacingCars` operationId).
 func (c *Client) GetRacingCars(ctx context.Context, params *GetRacingCarsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44767,7 +44767,7 @@ func (c *Client) GetRacingCars(ctx context.Context, params *GetRacingCarsParams,
 
 // GetRacingCarUpgrades Get all possible car upgrades
 //
-// Requires public access key. Returns the details about all possible car upgrades.
+// Requires public access key. <br>Returns the details about all possible car upgrades.
 //
 // Corresponds with GET /racing/carupgrades (the `GetRacingCarUpgrades` operationId).
 func (c *Client) GetRacingCarUpgrades(ctx context.Context, params *GetRacingCarUpgradesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44784,7 +44784,7 @@ func (c *Client) GetRacingCarUpgrades(ctx context.Context, params *GetRacingCarU
 
 // GetRacingLookup Get all available racing selections
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /racing/lookup (the `GetRacingLookup` operationId).
 func (c *Client) GetRacingLookup(ctx context.Context, params *GetRacingLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44801,7 +44801,7 @@ func (c *Client) GetRacingLookup(ctx context.Context, params *GetRacingLookupPar
 
 // GetRacingRaces Get races
 //
-// Requires public access key. Returns a list of races, ordered by race start timestamp.
+// Requires public access key. <br>Returns a list of races, ordered by race start timestamp.
 //
 // Corresponds with GET /racing/races (the `GetRacingRaces` operationId).
 func (c *Client) GetRacingRaces(ctx context.Context, params *GetRacingRacesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44818,7 +44818,7 @@ func (c *Client) GetRacingRaces(ctx context.Context, params *GetRacingRacesParam
 
 // GetRacingTimestamp Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /racing/timestamp (the `GetRacingTimestamp` operationId).
 func (c *Client) GetRacingTimestamp(ctx context.Context, params *GetRacingTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44835,7 +44835,7 @@ func (c *Client) GetRacingTimestamp(ctx context.Context, params *GetRacingTimest
 
 // GetRacingTracks Get race tracks and descriptions
 //
-// Requires public access key. Returns the details about racing tracks.
+// Requires public access key. <br>Returns the details about racing tracks.
 //
 // Corresponds with GET /racing/tracks (the `GetRacingTracks` operationId).
 func (c *Client) GetRacingTracks(ctx context.Context, params *GetRacingTracksParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44852,7 +44852,7 @@ func (c *Client) GetRacingTracks(ctx context.Context, params *GetRacingTracksPar
 
 // GetRacingRaceDetails Get specific race details
 //
-// Requires public access key. Returns the details of a race.
+// Requires public access key. <br>Returns the details of a race.
 //
 // Corresponds with GET /racing/{raceId}/race (the `GetRacingRaceDetails` operationId).
 func (c *Client) GetRacingRaceDetails(ctx context.Context, raceId RaceId, params *GetRacingRaceDetailsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44869,7 +44869,7 @@ func (c *Client) GetRacingRaceDetails(ctx context.Context, raceId RaceId, params
 
 // GetRacingTrackRecords Get track records
 //
-// Requires public access key. Returns a list of 5 best lap records for the chosen track and car class.
+// Requires public access key. <br>Returns a list of 5 best lap records for the chosen track and car class.
 //
 // Corresponds with GET /racing/{trackId}/records (the `GetRacingTrackRecords` operationId).
 func (c *Client) GetRacingTrackRecords(ctx context.Context, trackId RaceTrackId, params *GetRacingTrackRecordsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44886,7 +44886,7 @@ func (c *Client) GetRacingTrackRecords(ctx context.Context, trackId RaceTrackId,
 
 // GetTornGeneric Get any Torn selection
 //
-// Requires public access key. Choose one or more selections (comma separated).
+// Requires public access key. <br> Choose one or more selections (comma separated).
 //
 // Corresponds with GET /torn (the `GetTornGeneric` operationId).
 func (c *Client) GetTornGeneric(ctx context.Context, params *GetTornGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44903,7 +44903,7 @@ func (c *Client) GetTornGeneric(ctx context.Context, params *GetTornGenericParam
 
 // GetTornAttackLog Get attack log details
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Corresponds with GET /torn/attacklog (the `GetTornAttackLog` operationId).
 func (c *Client) GetTornAttackLog(ctx context.Context, params *GetTornAttackLogParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44920,7 +44920,7 @@ func (c *Client) GetTornAttackLog(ctx context.Context, params *GetTornAttackLogP
 
 // GetTornBank Get current bank rates
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/bank (the `GetTornBank` operationId).
 func (c *Client) GetTornBank(ctx context.Context, params *GetTornBankParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44937,7 +44937,7 @@ func (c *Client) GetTornBank(ctx context.Context, params *GetTornBankParams, req
 
 // GetTornBounties Get bounties
 //
-//	Globally cached selection. Requires public key.
+// <b>Globally cached selection.</b><br><br>Requires public key. <br>
 //
 // Corresponds with GET /torn/bounties (the `GetTornBounties` operationId).
 func (c *Client) GetTornBounties(ctx context.Context, params *GetTornBountiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44954,7 +44954,7 @@ func (c *Client) GetTornBounties(ctx context.Context, params *GetTornBountiesPar
 
 // GetTornCalendar Get calendar information
 //
-// Requires public access key. Get the details about competitions & events in the running year.
+// Requires public access key. <br> Get the details about competitions & events in the running year.
 //
 // Corresponds with GET /torn/calendar (the `GetTornCalendar` operationId).
 func (c *Client) GetTornCalendar(ctx context.Context, params *GetTornCalendarParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44971,7 +44971,7 @@ func (c *Client) GetTornCalendar(ctx context.Context, params *GetTornCalendarPar
 
 // GetTornCards Get casino playing cards
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/cards (the `GetTornCards` operationId).
 func (c *Client) GetTornCards(ctx context.Context, params *GetTornCardsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -44988,7 +44988,7 @@ func (c *Client) GetTornCards(ctx context.Context, params *GetTornCardsParams, r
 
 // GetTornCityShops Get city shops stock information
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/cityshops (the `GetTornCityShops` operationId).
 func (c *Client) GetTornCityShops(ctx context.Context, params *GetTornCityShopsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45005,7 +45005,7 @@ func (c *Client) GetTornCityShops(ctx context.Context, params *GetTornCityShopsP
 
 // GetTornCompanies Get all companies details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/companies (the `GetTornCompanies` operationId).
 func (c *Client) GetTornCompanies(ctx context.Context, params *GetTornCompaniesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45022,7 +45022,7 @@ func (c *Client) GetTornCompanies(ctx context.Context, params *GetTornCompaniesP
 
 // GetTornCrimes Get crimes information
 //
-// Requires public access key. Return the details about released crimes.
+// Requires public access key. <br> Return the details about released crimes.
 //
 // Corresponds with GET /torn/crimes (the `GetTornCrimes` operationId).
 func (c *Client) GetTornCrimes(ctx context.Context, params *GetTornCrimesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45039,7 +45039,7 @@ func (c *Client) GetTornCrimes(ctx context.Context, params *GetTornCrimesParams,
 
 // GetTornEducation Get education information
 //
-// Requires public access key.
+// Requires public access key.<br>
 //
 // Corresponds with GET /torn/education (the `GetTornEducation` operationId).
 func (c *Client) GetTornEducation(ctx context.Context, params *GetTornEducationParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45073,7 +45073,7 @@ func (c *Client) GetTornElimination(ctx context.Context, params *GetTornEliminat
 
 // GetTornFactionHoF Get faction hall of fame positions for a specific category
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/factionhof (the `GetTornFactionHoF` operationId).
 func (c *Client) GetTornFactionHoF(ctx context.Context, params *GetTornFactionHoFParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45090,7 +45090,7 @@ func (c *Client) GetTornFactionHoF(ctx context.Context, params *GetTornFactionHo
 
 // GetTornFactionTree Get full faction tree
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/factiontree (the `GetTornFactionTree` operationId).
 func (c *Client) GetTornFactionTree(ctx context.Context, params *GetTornFactionTreeParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45107,7 +45107,7 @@ func (c *Client) GetTornFactionTree(ctx context.Context, params *GetTornFactionT
 
 // GetTornGyms Get all gyms
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/gyms (the `GetTornGyms` operationId).
 func (c *Client) GetTornGyms(ctx context.Context, params *GetTornGymsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45124,7 +45124,7 @@ func (c *Client) GetTornGyms(ctx context.Context, params *GetTornGymsParams, req
 
 // GetTornHalloween Get Halloween basket upgrades
 //
-// Requires minimal access key. Returns the list of available Halloween basket upgrades with their benefits, treats cost and unlock requirement.
+// Requires minimal access key. <br>Returns the list of available Halloween basket upgrades with their benefits, treats cost and unlock requirement.
 //
 // Corresponds with GET /torn/halloween (the `GetTornHalloween` operationId).
 func (c *Client) GetTornHalloween(ctx context.Context, params *GetTornHalloweenParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45158,7 +45158,7 @@ func (c *Client) GetTornHoF(ctx context.Context, params *GetTornHoFParams, reqEd
 
 // GetTornHonors Get all honors
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/honors (the `GetTornHonors` operationId).
 func (c *Client) GetTornHonors(ctx context.Context, params *GetTornHonorsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45209,7 +45209,7 @@ func (c *Client) GetTornItemMods(ctx context.Context, params *GetTornItemModsPar
 
 // GetTornItems Get information about items
 //
-// Requires public key. Default category is 'All'. Details are not populated when requesting the category 'All'.
+// Requires public key.<br>Default category is 'All'.<br>Details are not populated when requesting the category 'All'.
 //
 // Corresponds with GET /torn/items (the `GetTornItems` operationId).
 func (c *Client) GetTornItems(ctx context.Context, params *GetTornItemsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45226,7 +45226,7 @@ func (c *Client) GetTornItems(ctx context.Context, params *GetTornItemsParams, r
 
 // GetTornLogCategories Get available log categories
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Corresponds with GET /torn/logcategories (the `GetTornLogCategories` operationId).
 func (c *Client) GetTornLogCategories(ctx context.Context, params *GetTornLogCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45243,7 +45243,7 @@ func (c *Client) GetTornLogCategories(ctx context.Context, params *GetTornLogCat
 
 // GetTornLogTypes Get all available log ids
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Corresponds with GET /torn/logtypes (the `GetTornLogTypes` operationId).
 func (c *Client) GetTornLogTypes(ctx context.Context, params *GetTornLogTypesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45260,7 +45260,7 @@ func (c *Client) GetTornLogTypes(ctx context.Context, params *GetTornLogTypesPar
 
 // GetTornLookup Get all available torn selections
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Corresponds with GET /torn/lookup (the `GetTornLookup` operationId).
 func (c *Client) GetTornLookup(ctx context.Context, params *GetTornLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45277,7 +45277,7 @@ func (c *Client) GetTornLookup(ctx context.Context, params *GetTornLookupParams,
 
 // GetTornMedals Get all medals
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/medals (the `GetTornMedals` operationId).
 func (c *Client) GetTornMedals(ctx context.Context, params *GetTornMedalsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45294,7 +45294,7 @@ func (c *Client) GetTornMedals(ctx context.Context, params *GetTornMedalsParams,
 
 // GetTornMerits Get all merits
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/merits (the `GetTornMerits` operationId).
 func (c *Client) GetTornMerits(ctx context.Context, params *GetTornMeritsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45311,7 +45311,7 @@ func (c *Client) GetTornMerits(ctx context.Context, params *GetTornMeritsParams,
 
 // GetTornMuseum Get all museum sets
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/museum (the `GetTornMuseum` operationId).
 func (c *Client) GetTornMuseum(ctx context.Context, params *GetTornMuseumParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45328,7 +45328,7 @@ func (c *Client) GetTornMuseum(ctx context.Context, params *GetTornMuseumParams,
 
 // GetTornOrganizedCrimes Get organized crimes information
 //
-// Requires public access key. Return the details about released faction organized crimes.
+// Requires public access key. <br> Return the details about released faction organized crimes.
 //
 // Corresponds with GET /torn/organizedcrimes (the `GetTornOrganizedCrimes` operationId).
 func (c *Client) GetTornOrganizedCrimes(ctx context.Context, params *GetTornOrganizedCrimesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45345,7 +45345,7 @@ func (c *Client) GetTornOrganizedCrimes(ctx context.Context, params *GetTornOrga
 
 // GetTornPokerTables Get active poker tables
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/pokertables (the `GetTornPokerTables` operationId).
 func (c *Client) GetTornPokerTables(ctx context.Context, params *GetTornPokerTablesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45362,7 +45362,7 @@ func (c *Client) GetTornPokerTables(ctx context.Context, params *GetTornPokerTab
 
 // GetTornProperties Get properties details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/properties (the `GetTornProperties` operationId).
 func (c *Client) GetTornProperties(ctx context.Context, params *GetTornPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45396,7 +45396,7 @@ func (c *Client) GetTornRps(ctx context.Context, params *GetTornRpsParams, reqEd
 
 // GetTornSearchForCash Get search for cash crime statuses
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/searchforcash (the `GetTornSearchForCash` operationId).
 func (c *Client) GetTornSearchForCash(ctx context.Context, params *GetTornSearchForCashParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45413,7 +45413,7 @@ func (c *Client) GetTornSearchForCash(ctx context.Context, params *GetTornSearch
 
 // GetTornShoplifting Get shoplifting crime statuses
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/shoplifting (the `GetTornShoplifting` operationId).
 func (c *Client) GetTornShoplifting(ctx context.Context, params *GetTornShopliftingParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45447,7 +45447,7 @@ func (c *Client) GetTornCityStats(ctx context.Context, params *GetTornCityStatsP
 
 // GetTornStocks Get all stocks
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/stocks (the `GetTornStocks` operationId).
 func (c *Client) GetTornStocks(ctx context.Context, params *GetTornStocksParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45464,7 +45464,7 @@ func (c *Client) GetTornStocks(ctx context.Context, params *GetTornStocksParams,
 
 // GetTornTerritory Get territory details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/territory (the `GetTornTerritory` operationId).
 func (c *Client) GetTornTerritory(ctx context.Context, params *GetTornTerritoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45481,7 +45481,7 @@ func (c *Client) GetTornTerritory(ctx context.Context, params *GetTornTerritoryP
 
 // GetTornTimestamp Get current server time
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Corresponds with GET /torn/timestamp (the `GetTornTimestamp` operationId).
 func (c *Client) GetTornTimestamp(ctx context.Context, params *GetTornTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45498,7 +45498,7 @@ func (c *Client) GetTornTimestamp(ctx context.Context, params *GetTornTimestampP
 
 // GetTornSubcrimes Get Subcrimes information
 //
-// Requires public access key. Return the details about possible actions for a specific crime.
+// Requires public access key. <br> Return the details about possible actions for a specific crime.
 //
 // Corresponds with GET /torn/{crimeId}/subcrimes (the `GetTornSubcrimes` operationId).
 func (c *Client) GetTornSubcrimes(ctx context.Context, crimeId TornCrimeId, params *GetTornSubcrimesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45515,7 +45515,7 @@ func (c *Client) GetTornSubcrimes(ctx context.Context, crimeId TornCrimeId, para
 
 // GetTornHonorsSpecific Get specific honors
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/{ids}/honors (the `GetTornHonorsSpecific` operationId).
 func (c *Client) GetTornHonorsSpecific(ctx context.Context, ids []HonorId, params *GetTornHonorsSpecificParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45549,7 +45549,7 @@ func (c *Client) GetTornItemDetails(ctx context.Context, ids []ItemUid, params *
 
 // GetTornItemsSpecific Get information about items
 //
-// Requires public key. Details are always populated when available.
+// Requires public key.<br>Details are always populated when available.
 //
 // Corresponds with GET /torn/{ids}/items (the `GetTornItemsSpecific` operationId).
 func (c *Client) GetTornItemsSpecific(ctx context.Context, ids []ItemId, params *GetTornItemsSpecificParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45566,7 +45566,7 @@ func (c *Client) GetTornItemsSpecific(ctx context.Context, ids []ItemId, params 
 
 // GetTornItemStats Get specific item(s) stats
 //
-// Requires public key.
+// Requires public key.<br>
 //
 // Corresponds with GET /torn/{ids}/itemstats (the `GetTornItemStats` operationId).
 func (c *Client) GetTornItemStats(ctx context.Context, ids []ItemUid, params *GetTornItemStatsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45583,7 +45583,7 @@ func (c *Client) GetTornItemStats(ctx context.Context, ids []ItemUid, params *Ge
 
 // GetTornMedalsSpecific Get specific medals
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/{ids}/medals (the `GetTornMedalsSpecific` operationId).
 func (c *Client) GetTornMedalsSpecific(ctx context.Context, ids []MedalId, params *GetTornMedalsSpecificParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45617,7 +45617,7 @@ func (c *Client) GetTornEliminationTeam(ctx context.Context, id EliminationTeamI
 
 // GetTornLogTypesSpecific Get available log ids for a specific log category
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Corresponds with GET /torn/{logCategoryId}/logtypes (the `GetTornLogTypesSpecific` operationId).
 func (c *Client) GetTornLogTypesSpecific(ctx context.Context, logCategoryId LogCategoryId, params *GetTornLogTypesSpecificParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45634,7 +45634,7 @@ func (c *Client) GetTornLogTypesSpecific(ctx context.Context, logCategoryId LogC
 
 // GetTornCityShopSpecific Get stock information for a specific shop
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/{shopId}/cityshops (the `GetTornCityShopSpecific` operationId).
 func (c *Client) GetTornCityShopSpecific(ctx context.Context, shopId CityShopId, params *GetTornCityShopSpecificParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45651,7 +45651,7 @@ func (c *Client) GetTornCityShopSpecific(ctx context.Context, shopId CityShopId,
 
 // GetSpecificTornStock Get specific stock with chart history
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/{stockId}/stocks (the `GetSpecificTornStock` operationId).
 func (c *Client) GetSpecificTornStock(ctx context.Context, stockId StockId, params *GetSpecificTornStockParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45668,7 +45668,7 @@ func (c *Client) GetSpecificTornStock(ctx context.Context, stockId StockId, para
 
 // GetTornCompaniesSpecific Get specific company details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /torn/{typeId}/companies (the `GetTornCompaniesSpecific` operationId).
 func (c *Client) GetTornCompaniesSpecific(ctx context.Context, typeId CompanyTypeId, params *GetTornCompaniesSpecificParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45685,7 +45685,7 @@ func (c *Client) GetTornCompaniesSpecific(ctx context.Context, typeId CompanyTyp
 
 // GetUserGeneric Get any User selection
 //
-// Key access level depends on the required selections. Choose one or more selections (comma separated).
+// Key access level depends on the required selections. <br>Choose one or more selections (comma separated).
 //
 // Corresponds with GET /user (the `GetUserGeneric` operationId).
 func (c *Client) GetUserGeneric(ctx context.Context, params *GetUserGenericParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45702,7 +45702,7 @@ func (c *Client) GetUserGeneric(ctx context.Context, params *GetUserGenericParam
 
 // GetMyAmmo Get your ammo information
 //
-// Requires minimal key.
+// Requires minimal key. <br>
 //
 // Corresponds with GET /user/ammo (the `GetMyAmmo` operationId).
 func (c *Client) GetMyAmmo(ctx context.Context, params *GetMyAmmoParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45719,7 +45719,7 @@ func (c *Client) GetMyAmmo(ctx context.Context, params *GetMyAmmoParams, reqEdit
 
 // GetMyAttacks Get your detailed attacks
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /user/attacks (the `GetMyAttacks` operationId).
 func (c *Client) GetMyAttacks(ctx context.Context, params *GetMyAttacksParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45736,7 +45736,7 @@ func (c *Client) GetMyAttacks(ctx context.Context, params *GetMyAttacksParams, r
 
 // GetMyAttacksSimplified Get your simplified attacks
 //
-// Requires limited access key. Returns up to 1,000 rows.
+// Requires limited access key. <br>Returns up to 1,000 rows. <br>
 //
 // Corresponds with GET /user/attacksfull (the `GetMyAttacksSimplified` operationId).
 func (c *Client) GetMyAttacksSimplified(ctx context.Context, params *GetMyAttacksSimplifiedParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45753,7 +45753,7 @@ func (c *Client) GetMyAttacksSimplified(ctx context.Context, params *GetMyAttack
 
 // GetMyBars Get your bars information
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/bars (the `GetMyBars` operationId).
 func (c *Client) GetMyBars(ctx context.Context, params *GetMyBarsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45770,7 +45770,7 @@ func (c *Client) GetMyBars(ctx context.Context, params *GetMyBarsParams, reqEdit
 
 // GetMyBasicInformation Get your basic profile information
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /user/basic (the `GetMyBasicInformation` operationId).
 func (c *Client) GetMyBasicInformation(ctx context.Context, params *GetMyBasicInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45787,7 +45787,7 @@ func (c *Client) GetMyBasicInformation(ctx context.Context, params *GetMyBasicIn
 
 // GetMyBattlestats Get your battlestats
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /user/battlestats (the `GetMyBattlestats` operationId).
 func (c *Client) GetMyBattlestats(ctx context.Context, params *GetMyBattlestatsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45804,7 +45804,7 @@ func (c *Client) GetMyBattlestats(ctx context.Context, params *GetMyBattlestatsP
 
 // GetMyBounties Get bounties placed on you
 //
-//	Globally cached selection. Requires public access key.
+// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 //
 // Corresponds with GET /user/bounties (the `GetMyBounties` operationId).
 func (c *Client) GetMyBounties(ctx context.Context, params *GetMyBountiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45821,7 +45821,7 @@ func (c *Client) GetMyBounties(ctx context.Context, params *GetMyBountiesParams,
 
 // GetMyCalendarTime Get your calendar events start time
 //
-// Requires minimal access key. Only available to yourself.
+// Requires minimal access key. <br>Only available to yourself.
 //
 // Corresponds with GET /user/calendar (the `GetMyCalendarTime` operationId).
 func (c *Client) GetMyCalendarTime(ctx context.Context, params *GetMyCalendarTimeParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45838,7 +45838,7 @@ func (c *Client) GetMyCalendarTime(ctx context.Context, params *GetMyCalendarTim
 
 // GetMyCasinoStreak Get your casino streak & tokens
 //
-// Requires limited access key. Only available to yourself.
+// Requires limited access key. <br>Only available to yourself.
 //
 // Corresponds with GET /user/casino (the `GetMyCasinoStreak` operationId).
 func (c *Client) GetMyCasinoStreak(ctx context.Context, params *GetMyCasinoStreakParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45872,7 +45872,7 @@ func (c *Client) GetMyCompetitionInfo(ctx context.Context, params *GetMyCompetit
 
 // GetMyCooldowns Get your cooldowns information
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/cooldowns (the `GetMyCooldowns` operationId).
 func (c *Client) GetMyCooldowns(ctx context.Context, params *GetMyCooldownsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45889,7 +45889,7 @@ func (c *Client) GetMyCooldowns(ctx context.Context, params *GetMyCooldownsParam
 
 // GetMyDiscord Get your discord information
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Corresponds with GET /user/discord (the `GetMyDiscord` operationId).
 func (c *Client) GetMyDiscord(ctx context.Context, params *GetMyDiscordParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45906,7 +45906,7 @@ func (c *Client) GetMyDiscord(ctx context.Context, params *GetMyDiscordParams, r
 
 // GetMyEducation Get your education information
 //
-// Requires minimal access key. The response contains a list of complete eduactions and of a current education (if any).
+// Requires minimal access key. <br>The response contains a list of complete eduactions and of a current education (if any).
 //
 // Corresponds with GET /user/education (the `GetMyEducation` operationId).
 func (c *Client) GetMyEducation(ctx context.Context, params *GetMyEducationParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45923,7 +45923,7 @@ func (c *Client) GetMyEducation(ctx context.Context, params *GetMyEducationParam
 
 // GetMyEnlistedCars Get your enlisted cars
 //
-// Requires minimal access key. Returns a list of all user enlisted cars.
+// Requires minimal access key. <br>Returns a list of all user enlisted cars.
 //
 // Corresponds with GET /user/enlistedcars (the `GetMyEnlistedCars` operationId).
 func (c *Client) GetMyEnlistedCars(ctx context.Context, params *GetMyEnlistedCarsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45957,7 +45957,7 @@ func (c *Client) GetMyEquipment(ctx context.Context, params *GetMyEquipmentParam
 
 // GetMyEvents Get your events
 //
-// Requires limited access key. Unfortunately, the 'sort' parameter is not available for this selection.
+// Requires limited access key. <br> Unfortunately, the 'sort' parameter is not available for this selection.
 //
 // Corresponds with GET /user/events (the `GetMyEvents` operationId).
 func (c *Client) GetMyEvents(ctx context.Context, params *GetMyEventsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45991,7 +45991,7 @@ func (c *Client) GetMyFaction(ctx context.Context, params *GetMyFactionParams, r
 
 // GetMyForumFeed Get updates on your threads and posts
 //
-// Requires minimal access key. This selection returns data visible in 'Feed' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
+// Requires minimal access key. <br>This selection returns data visible in 'Feed' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
 //
 // Corresponds with GET /user/forumfeed (the `GetMyForumFeed` operationId).
 func (c *Client) GetMyForumFeed(ctx context.Context, params *GetMyForumFeedParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46008,7 +46008,7 @@ func (c *Client) GetMyForumFeed(ctx context.Context, params *GetMyForumFeedParam
 
 // GetMyForumFriendsUpdates Get updates on your friends' activity
 //
-// Requires minimal access key. This selection returns data visible in 'Friends' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
+// Requires minimal access key. <br>This selection returns data visible in 'Friends' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
 //
 // Corresponds with GET /user/forumfriends (the `GetMyForumFriendsUpdates` operationId).
 func (c *Client) GetMyForumFriendsUpdates(ctx context.Context, params *GetMyForumFriendsUpdatesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46025,7 +46025,7 @@ func (c *Client) GetMyForumFriendsUpdates(ctx context.Context, params *GetMyForu
 
 // GetMyForumPosts Get your posts
 //
-// Requires public access key. Returns 20 posts per page.
+// Requires public access key. <br>Returns 20 posts per page.
 //
 // Corresponds with GET /user/forumposts (the `GetMyForumPosts` operationId).
 func (c *Client) GetMyForumPosts(ctx context.Context, params *GetMyForumPostsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46042,7 +46042,7 @@ func (c *Client) GetMyForumPosts(ctx context.Context, params *GetMyForumPostsPar
 
 // GetMyForumSubscribedThreads Get updates on threads you subscribed to
 //
-// Requires minimal access key. This selection returns data visible in 'Subscribed Threads' section on forum page. Threads are sorted in the same way as on site.
+// Requires minimal access key. <br>This selection returns data visible in 'Subscribed Threads' section on forum page. Threads are sorted in the same way as on site.
 //
 // Corresponds with GET /user/forumsubscribedthreads (the `GetMyForumSubscribedThreads` operationId).
 func (c *Client) GetMyForumSubscribedThreads(ctx context.Context, params *GetMyForumSubscribedThreadsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46059,7 +46059,7 @@ func (c *Client) GetMyForumSubscribedThreads(ctx context.Context, params *GetMyF
 
 // GetMyForumThreads Get your threads
 //
-// Requires public access key. Returns 100 threads per page. The field 'new_posts' is also available, indicating the amount of unread posts with a Minimum API key (or higher).
+// Requires public access key. <br>Returns 100 threads per page. The field 'new_posts' is also available, indicating the amount of unread posts with a Minimum API key (or higher).
 //
 // Corresponds with GET /user/forumthreads (the `GetMyForumThreads` operationId).
 func (c *Client) GetMyForumThreads(ctx context.Context, params *GetMyForumThreadsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46076,7 +46076,7 @@ func (c *Client) GetMyForumThreads(ctx context.Context, params *GetMyForumThread
 
 // GetMyGym Get your currently active gym
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/gym (the `GetMyGym` operationId).
 func (c *Client) GetMyGym(ctx context.Context, params *GetMyGymParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46093,7 +46093,7 @@ func (c *Client) GetMyGym(ctx context.Context, params *GetMyGymParams, reqEditor
 
 // GetMyHalloween Get your Halloween treats information
 //
-// Requires minimal access key. Returns your current and cumulative treats and the IDs of basket upgrades you have unlocked.
+// Requires minimal access key. <br>Returns your current and cumulative treats and the IDs of basket upgrades you have unlocked.
 //
 // Corresponds with GET /user/halloween (the `GetMyHalloween` operationId).
 func (c *Client) GetMyHalloween(ctx context.Context, params *GetMyHalloweenParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46110,7 +46110,7 @@ func (c *Client) GetMyHalloween(ctx context.Context, params *GetMyHalloweenParam
 
 // GetMyHoF Get your hall of fame rankings
 //
-// Requires public access key. When requesting selection with Limited, Full or Custom key, battle_stats selection will be populated.
+// Requires public access key. <br>When requesting selection with Limited, Full or Custom key, battle_stats selection will be populated.
 //
 // Corresponds with GET /user/hof (the `GetMyHoF` operationId).
 func (c *Client) GetMyHoF(ctx context.Context, params *GetMyHoFParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46127,7 +46127,7 @@ func (c *Client) GetMyHoF(ctx context.Context, params *GetMyHoFParams, reqEditor
 
 // GetMyHonors Get your achieved honors
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/honors (the `GetMyHonors` operationId).
 func (c *Client) GetMyHonors(ctx context.Context, params *GetMyHonorsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46144,7 +46144,7 @@ func (c *Client) GetMyHonors(ctx context.Context, params *GetMyHonorsParams, req
 
 // GetMyIcons Get your icons information
 //
-// Requires public access key. When requesting data for yourself with 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
+// Requires public access key. <br> When requesting data for yourself with 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
 //
 // Corresponds with GET /user/icons (the `GetMyIcons` operationId).
 func (c *Client) GetMyIcons(ctx context.Context, params *GetMyIconsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46161,7 +46161,7 @@ func (c *Client) GetMyIcons(ctx context.Context, params *GetMyIconsParams, reqEd
 
 // GetMyInventory Get your inventory
 //
-//	Cached selection (15 minutes per category). Requires minimal access key.
+// <b>Cached selection (15 minutes per category).</b><br><br>Requires minimal access key. <br>
 //
 // Corresponds with GET /user/inventory (the `GetMyInventory` operationId).
 func (c *Client) GetMyInventory(ctx context.Context, params *GetMyInventoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46178,7 +46178,7 @@ func (c *Client) GetMyInventory(ctx context.Context, params *GetMyInventoryParam
 
 // GetMyItemMarketListings Get your item market listings
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /user/itemmarket (the `GetMyItemMarketListings` operationId).
 func (c *Client) GetMyItemMarketListings(ctx context.Context, params *GetMyItemMarketListingsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46195,7 +46195,7 @@ func (c *Client) GetMyItemMarketListings(ctx context.Context, params *GetMyItemM
 
 // GetMyItemModsInformation Get your information about available item mods
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/itemmods (the `GetMyItemModsInformation` operationId).
 func (c *Client) GetMyItemModsInformation(ctx context.Context, params *GetMyItemModsInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46229,7 +46229,7 @@ func (c *Client) GetMyJob(ctx context.Context, params *GetMyJobParams, reqEditor
 
 // GetMyJobPoints Get your jobpoints
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/jobpoints (the `GetMyJobPoints` operationId).
 func (c *Client) GetMyJobPoints(ctx context.Context, params *GetMyJobPointsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46246,7 +46246,7 @@ func (c *Client) GetMyJobPoints(ctx context.Context, params *GetMyJobPointsParam
 
 // GetMyJobRanks Get your starter job positions
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/jobranks (the `GetMyJobRanks` operationId).
 func (c *Client) GetMyJobRanks(ctx context.Context, params *GetMyJobRanksParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46263,7 +46263,7 @@ func (c *Client) GetMyJobRanks(ctx context.Context, params *GetMyJobRanksParams,
 
 // GetMyContactsList Get your friends, enemies or targets list
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /user/list (the `GetMyContactsList` operationId).
 func (c *Client) GetMyContactsList(ctx context.Context, params *GetMyContactsListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46280,7 +46280,7 @@ func (c *Client) GetMyContactsList(ctx context.Context, params *GetMyContactsLis
 
 // GetMyLogs Get your logs
 //
-// Requires full access key. It's possible to pass a list of log ids or a log category id. This selection is standalone and cannot be used together with other selections.
+// Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.
 //
 // Corresponds with GET /user/log (the `GetMyLogs` operationId).
 func (c *Client) GetMyLogs(ctx context.Context, params *GetMyLogsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46297,7 +46297,7 @@ func (c *Client) GetMyLogs(ctx context.Context, params *GetMyLogsParams, reqEdit
 
 // GetUserLookup Get all available user selections
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /user/lookup (the `GetUserLookup` operationId).
 func (c *Client) GetUserLookup(ctx context.Context, params *GetUserLookupParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46314,7 +46314,7 @@ func (c *Client) GetUserLookup(ctx context.Context, params *GetUserLookupParams,
 
 // GetMyMedals Get all your achieved medals
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /user/medals (the `GetMyMedals` operationId).
 func (c *Client) GetMyMedals(ctx context.Context, params *GetMyMedalsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46331,7 +46331,7 @@ func (c *Client) GetMyMedals(ctx context.Context, params *GetMyMedalsParams, req
 
 // GetMyMerits Get your merits
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/merits (the `GetMyMerits` operationId).
 func (c *Client) GetMyMerits(ctx context.Context, params *GetMyMeritsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46348,7 +46348,7 @@ func (c *Client) GetMyMerits(ctx context.Context, params *GetMyMeritsParams, req
 
 // GetMyMessages Get your messages
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /user/messages (the `GetMyMessages` operationId).
 func (c *Client) GetMyMessages(ctx context.Context, params *GetMyMessagesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46365,7 +46365,7 @@ func (c *Client) GetMyMessages(ctx context.Context, params *GetMyMessagesParams,
 
 // GetMyMissions Get your current missions information
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/missions (the `GetMyMissions` operationId).
 func (c *Client) GetMyMissions(ctx context.Context, params *GetMyMissionsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46382,7 +46382,7 @@ func (c *Client) GetMyMissions(ctx context.Context, params *GetMyMissionsParams,
 
 // GetMyMoney Get your current wealth
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /user/money (the `GetMyMoney` operationId).
 func (c *Client) GetMyMoney(ctx context.Context, params *GetMyMoneyParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46399,7 +46399,7 @@ func (c *Client) GetMyMoney(ctx context.Context, params *GetMyMoneyParams, reqEd
 
 // GetMyNetworth Get your networth
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /user/networth (the `GetMyNetworth` operationId).
 func (c *Client) GetMyNetworth(ctx context.Context, params *GetMyNetworthParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46416,7 +46416,7 @@ func (c *Client) GetMyNetworth(ctx context.Context, params *GetMyNetworthParams,
 
 // GetMyNewEvents Get your unseen events
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /user/newevents (the `GetMyNewEvents` operationId).
 func (c *Client) GetMyNewEvents(ctx context.Context, params *GetMyNewEventsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46433,7 +46433,7 @@ func (c *Client) GetMyNewEvents(ctx context.Context, params *GetMyNewEventsParam
 
 // GetMyNewMessages Get your unseen messages
 //
-// Requires limited access key. This selection is cached for 1 hour.
+// Requires limited access key. <br>This selection is cached for 1 hour.
 //
 // Corresponds with GET /user/newmessages (the `GetMyNewMessages` operationId).
 func (c *Client) GetMyNewMessages(ctx context.Context, params *GetMyNewMessagesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46450,7 +46450,7 @@ func (c *Client) GetMyNewMessages(ctx context.Context, params *GetMyNewMessagesP
 
 // GetMyNotifications Get your notifications
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/notifications (the `GetMyNotifications` operationId).
 func (c *Client) GetMyNotifications(ctx context.Context, params *GetMyNotificationsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46467,7 +46467,7 @@ func (c *Client) GetMyNotifications(ctx context.Context, params *GetMyNotificati
 
 // GetMyOrganizedCrime Get your current ongoing organized crime
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/organizedcrime (the `GetMyOrganizedCrime` operationId).
 func (c *Client) GetMyOrganizedCrime(ctx context.Context, params *GetMyOrganizedCrimeParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46484,7 +46484,7 @@ func (c *Client) GetMyOrganizedCrime(ctx context.Context, params *GetMyOrganized
 
 // GetMyAvailableOrganizedCrimes Get your available slots for organized crimes with status 'Recruiting'
 //
-// Requires minimal access key. Unlike 'faction' -> 'crimes', this selection only shows empty slots, and only for crimes with the 'Recruiting' status.
+// Requires minimal access key. <br>Unlike 'faction' -> 'crimes', this selection only shows empty slots, and only for crimes with the 'Recruiting' status.
 //
 // Corresponds with GET /user/organizedcrimes (the `GetMyAvailableOrganizedCrimes` operationId).
 func (c *Client) GetMyAvailableOrganizedCrimes(ctx context.Context, params *GetMyAvailableOrganizedCrimesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46501,7 +46501,7 @@ func (c *Client) GetMyAvailableOrganizedCrimes(ctx context.Context, params *GetM
 
 // GetMyPerks Get your current perks
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/perks (the `GetMyPerks` operationId).
 func (c *Client) GetMyPerks(ctx context.Context, params *GetMyPerksParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46518,7 +46518,7 @@ func (c *Client) GetMyPerks(ctx context.Context, params *GetMyPerksParams, reqEd
 
 // GetMyPersonalStats Get your personal stats
 //
-// Requires public access key.
+// Requires public access key. <br>
 //   - UserPersonalStatsFull is returned only when this selection is requested with Limited, Full or Custom key access key.
 //   - UserPersonalStatsFullPublic is returned when the requested category is 'all'.
 //   - UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.
@@ -46558,7 +46558,7 @@ func (c *Client) GetMyProfile(ctx context.Context, params *GetMyProfileParams, r
 
 // GetMyProperties Get your own properties
 //
-// Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys.
+// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys.
 //
 // Corresponds with GET /user/properties (the `GetMyProperties` operationId).
 func (c *Client) GetMyProperties(ctx context.Context, params *GetMyPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46575,7 +46575,7 @@ func (c *Client) GetMyProperties(ctx context.Context, params *GetMyPropertiesPar
 
 // GetMyProperty Get your current property
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /user/property (the `GetMyProperty` operationId).
 func (c *Client) GetMyProperty(ctx context.Context, params *GetMyPropertyParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46592,7 +46592,7 @@ func (c *Client) GetMyProperty(ctx context.Context, params *GetMyPropertyParams,
 
 // GetMyRaces Get your races
 //
-// Requires minimal access key. Returns a list of user races, ordered by race start timestamp.
+// Requires minimal access key. <br>Returns a list of user races, ordered by race start timestamp.
 //
 // Corresponds with GET /user/races (the `GetMyRaces` operationId).
 func (c *Client) GetMyRaces(ctx context.Context, params *GetMyRacesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46609,7 +46609,7 @@ func (c *Client) GetMyRaces(ctx context.Context, params *GetMyRacesParams, reqEd
 
 // GetMyRacingRecords Get your current racing records
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/racingrecords (the `GetMyRacingRecords` operationId).
 func (c *Client) GetMyRacingRecords(ctx context.Context, params *GetMyRacingRecordsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46626,7 +46626,7 @@ func (c *Client) GetMyRacingRecords(ctx context.Context, params *GetMyRacingReco
 
 // GetMyRefills Get your refills information
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/refills (the `GetMyRefills` operationId).
 func (c *Client) GetMyRefills(ctx context.Context, params *GetMyRefillsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46643,8 +46643,8 @@ func (c *Client) GetMyRefills(ctx context.Context, params *GetMyRefillsParams, r
 
 // GetMyReports Get your reports
 //
-// Requires limited access key.
-// The limit is set to 25 when requesting any category other than 'stats'.
+// Requires limited access key. <br>
+// The limit is set to 25 when requesting any category other than 'stats'.<br>
 // When requesting the 'stats' category, limit can be increased up to 100.
 //
 // Corresponds with GET /user/reports (the `GetMyReports` operationId).
@@ -46662,7 +46662,7 @@ func (c *Client) GetMyReports(ctx context.Context, params *GetMyReportsParams, r
 
 // GetMyRevives Get your detailed revives
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /user/revives (the `GetMyRevives` operationId).
 func (c *Client) GetMyRevives(ctx context.Context, params *GetMyRevivesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46679,7 +46679,7 @@ func (c *Client) GetMyRevives(ctx context.Context, params *GetMyRevivesParams, r
 
 // GetMyRevivesSimplified Get your simplified revives
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /user/revivesFull (the `GetMyRevivesSimplified` operationId).
 func (c *Client) GetMyRevivesSimplified(ctx context.Context, params *GetMyRevivesSimplifiedParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46696,7 +46696,7 @@ func (c *Client) GetMyRevivesSimplified(ctx context.Context, params *GetMyRevive
 
 // GetUsersSearch Search users by name or other criteria
 //
-// Requires public access key. This selection is standalone and cannot be used together with other selections. It's always limited to return just 25 records.
+// Requires public access key. <br>This selection is standalone and cannot be used together with other selections.<br>It's always limited to return just 25 records.
 //
 // Corresponds with GET /user/search (the `GetUsersSearch` operationId).
 func (c *Client) GetUsersSearch(ctx context.Context, params *GetUsersSearchParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46713,7 +46713,7 @@ func (c *Client) GetUsersSearch(ctx context.Context, params *GetUsersSearchParam
 
 // GetMySkills Get your skills
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/skills (the `GetMySkills` operationId).
 func (c *Client) GetMySkills(ctx context.Context, params *GetMySkillsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46730,7 +46730,7 @@ func (c *Client) GetMySkills(ctx context.Context, params *GetMySkillsParams, req
 
 // GetUsersSnapshot Get daily active players snapshot CSV
 //
-// Requires public access key. Returns a CSV daily snapshot of active players. This selection is standalone and cannot be used together with other selections.
+// Requires public access key.<br>Returns a CSV daily snapshot of active players.<br>This selection is standalone and cannot be used together with other selections.<br>
 // CSV columns: id, name, gender, signed_up, level, rank, donator, faction, company, job, spouse, display_case, bazaar, fed, fed_reason, time_played, awards
 //
 // Corresponds with GET /user/snapshot (the `GetUsersSnapshot` operationId).
@@ -46748,7 +46748,7 @@ func (c *Client) GetUsersSnapshot(ctx context.Context, params *GetUsersSnapshotP
 
 // GetMyStocks Get your stocks
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /user/stocks (the `GetMyStocks` operationId).
 func (c *Client) GetMyStocks(ctx context.Context, params *GetMyStocksParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46765,7 +46765,7 @@ func (c *Client) GetMyStocks(ctx context.Context, params *GetMyStocksParams, req
 
 // GetUserTimestamp Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /user/timestamp (the `GetUserTimestamp` operationId).
 func (c *Client) GetUserTimestamp(ctx context.Context, params *GetUserTimestampParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46782,7 +46782,7 @@ func (c *Client) GetUserTimestamp(ctx context.Context, params *GetUserTimestampP
 
 // GetMyTrades Get your trades
 //
-// Requires limited access key. When requesting 'ongoing' trades (default), limit/offset/sort are not being used.
+// Requires limited access key. <br> When requesting 'ongoing' trades (default), limit/offset/sort are not being used.
 //
 // Corresponds with GET /user/trades (the `GetMyTrades` operationId).
 func (c *Client) GetMyTrades(ctx context.Context, params *GetMyTradesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46799,7 +46799,7 @@ func (c *Client) GetMyTrades(ctx context.Context, params *GetMyTradesParams, req
 
 // GetMyTravelInformation Get your travel information
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/travel (the `GetMyTravelInformation` operationId).
 func (c *Client) GetMyTravelInformation(ctx context.Context, params *GetMyTravelInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46816,7 +46816,7 @@ func (c *Client) GetMyTravelInformation(ctx context.Context, params *GetMyTravel
 
 // GetMyVirusCodingInformation Get your virus coding information
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/virus (the `GetMyVirusCodingInformation` operationId).
 func (c *Client) GetMyVirusCodingInformation(ctx context.Context, params *GetMyVirusCodingInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46833,7 +46833,7 @@ func (c *Client) GetMyVirusCodingInformation(ctx context.Context, params *GetMyV
 
 // GetMyWeaponExp Get your weapon experience information
 //
-// Requires minimal key.
+// Requires minimal key. <br>
 //
 // Corresponds with GET /user/weaponexp (the `GetMyWeaponExp` operationId).
 func (c *Client) GetMyWeaponExp(ctx context.Context, params *GetMyWeaponExpParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46850,7 +46850,7 @@ func (c *Client) GetMyWeaponExp(ctx context.Context, params *GetMyWeaponExpParam
 
 // GetMyWorkstats Get your working stats
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Corresponds with GET /user/workstats (the `GetMyWorkstats` operationId).
 func (c *Client) GetMyWorkstats(ctx context.Context, params *GetMyWorkstatsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46867,7 +46867,7 @@ func (c *Client) GetMyWorkstats(ctx context.Context, params *GetMyWorkstatsParam
 
 // GetMyCrimes Get your crime statistics
 //
-// Requires minimal access key. Return the details and statistics about for a specific crime.
+// Requires minimal access key. <br>Return the details and statistics about for a specific crime.
 //
 // Corresponds with GET /user/{crimeId}/crimes (the `GetMyCrimes` operationId).
 func (c *Client) GetMyCrimes(ctx context.Context, crimeId TornCrimeId, params *GetMyCrimesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46884,7 +46884,7 @@ func (c *Client) GetMyCrimes(ctx context.Context, crimeId TornCrimeId, params *G
 
 // GetUserBasicInformation Get basic profile information for a specific user
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /user/{id}/basic (the `GetUserBasicInformation` operationId).
 func (c *Client) GetUserBasicInformation(ctx context.Context, id UserDiscordPathId, params *GetUserBasicInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46901,7 +46901,7 @@ func (c *Client) GetUserBasicInformation(ctx context.Context, id UserDiscordPath
 
 // GetUserBounties Get bounties placed on a specific user
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /user/{id}/bounties (the `GetUserBounties` operationId).
 func (c *Client) GetUserBounties(ctx context.Context, id UserDiscordPathId, params *GetUserBountiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46935,7 +46935,7 @@ func (c *Client) GetUserCompetitionInfo(ctx context.Context, id UserDiscordPathI
 
 // GetUserDiscord Get discord information for a specific user
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /user/{id}/discord (the `GetUserDiscord` operationId).
 func (c *Client) GetUserDiscord(ctx context.Context, id UserDiscordPathId, params *GetUserDiscordParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46969,7 +46969,7 @@ func (c *Client) GetUserFaction(ctx context.Context, id UserDiscordPathId, param
 
 // GetUserForumPosts Get posts for a specific player
 //
-// Requires public access key. Returns 20 posts per page for a specific player.
+// Requires public access key. <br>Returns 20 posts per page for a specific player.
 //
 // Corresponds with GET /user/{id}/forumposts (the `GetUserForumPosts` operationId).
 func (c *Client) GetUserForumPosts(ctx context.Context, id UserDiscordPathId, params *GetUserForumPostsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46986,7 +46986,7 @@ func (c *Client) GetUserForumPosts(ctx context.Context, id UserDiscordPathId, pa
 
 // GetUserForumThreads Get threads for a specific player
 //
-// Requires public access key. Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.
+// Requires public access key. <br>Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.
 //
 // Corresponds with GET /user/{id}/forumthreads (the `GetUserForumThreads` operationId).
 func (c *Client) GetUserForumThreads(ctx context.Context, id UserDiscordPathId, params *GetUserForumThreadsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -47003,7 +47003,7 @@ func (c *Client) GetUserForumThreads(ctx context.Context, id UserDiscordPathId, 
 
 // GetUserHoF Get hall of fame rankings for a specific player
 //
-// Requires public access key. The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.
+// Requires public access key. <br>The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.
 //
 // Corresponds with GET /user/{id}/hof (the `GetUserHoF` operationId).
 func (c *Client) GetUserHoF(ctx context.Context, id UserDiscordPathId, params *GetUserHoFParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -47020,7 +47020,7 @@ func (c *Client) GetUserHoF(ctx context.Context, id UserDiscordPathId, params *G
 
 // GetUserIcons Get icons information for a specific player
 //
-// Requires public access key. When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
+// Requires public access key.<br> When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
 //
 // Corresponds with GET /user/{id}/icons (the `GetUserIcons` operationId).
 func (c *Client) GetUserIcons(ctx context.Context, id UserDiscordPathId, params *GetUserIconsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -47054,7 +47054,7 @@ func (c *Client) GetUserJob(ctx context.Context, id UserDiscordPathId, params *G
 
 // GetUserMedals Get medals achieved by a specific player
 //
-// Requires public access key. Returns only highest medal in each category (just like profiles on site).
+// Requires public access key.<br>Returns only highest medal in each category (just like profiles on site).
 //
 // Corresponds with GET /user/{id}/medals (the `GetUserMedals` operationId).
 func (c *Client) GetUserMedals(ctx context.Context, id UserDiscordPathId, params *GetUserMedalsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -47071,7 +47071,7 @@ func (c *Client) GetUserMedals(ctx context.Context, id UserDiscordPathId, params
 
 // GetUserPersonalStats Get a player's personal stats
 //
-// Requires public access key.
+// Requires public access key. <br>
 //   - UserPersonalStatsFull is returned only when this selection is requested for the key owner with Limited, Full or Custom key.
 //   - UserPersonalStatsFullPublic is returned when the requested category is 'all'.
 //   - UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.
@@ -47111,7 +47111,7 @@ func (c *Client) GetUserProfile(ctx context.Context, id UserDiscordPathId, param
 
 // GetUserProperties Get specific user's properties
 //
-// Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
+// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
 //
 // Corresponds with GET /user/{id}/properties (the `GetUserProperties` operationId).
 func (c *Client) GetUserProperties(ctx context.Context, id UserDiscordPathId, params *GetUserPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -47128,7 +47128,7 @@ func (c *Client) GetUserProperties(ctx context.Context, id UserDiscordPathId, pa
 
 // GetUserProperty Get specific user's property
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Corresponds with GET /user/{id}/property (the `GetUserProperty` operationId).
 func (c *Client) GetUserProperty(ctx context.Context, id UserDiscordPathId, params *GetUserPropertyParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -47145,7 +47145,7 @@ func (c *Client) GetUserProperty(ctx context.Context, id UserDiscordPathId, para
 
 // GetMyDetailedTrade Get your detailed trade
 //
-// Requires limited access key. Only possible to get trades you participated in.
+// Requires limited access key. <br>Only possible to get trades you participated in.
 //
 // Corresponds with GET /user/{tradeId}/trade (the `GetMyDetailedTrade` operationId).
 func (c *Client) GetMyDetailedTrade(ctx context.Context, tradeId TradeId, params *GetMyDetailedTradeParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -70232,7 +70232,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetCompanyGenericWithResponse Get any Company selection
 	//
-	// Key access level depends on the required selections. Choose one or more selections (comma separated).
+	// Key access level depends on the required selections. <br> Choose one or more selections (comma separated).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70241,7 +70241,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyCompanyApplicationsWithResponse Get your company's applications
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70250,7 +70250,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyCompanyEmployeesWithResponse Get my company's employees
 	//
-	// Requires public access key. When using Limited, Custom or Full access API keys, the response will be:
+	// Requires public access key. <br>When using Limited, Custom or Full access API keys, the response will be:<br>
 	//  * for director: CompanyEmployeeFull
 	//  * for employee: CompanyEmployeeExtended
 	//  * anyone else: CompanyEmployee.
@@ -70262,14 +70262,14 @@ type ClientWithResponsesInterface interface {
 
 	// GetCompanyLookupWithResponse performs a GET /company/lookup (the `GetCompanyLookup` operationId) request.
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	GetCompanyLookupWithResponse(ctx context.Context, params *GetCompanyLookupParams, reqEditors ...RequestEditorFn) (*GetCompanyLookupResponse, error)
 
 	// GetMyCompanyNewsWithResponse Get your company's news details
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70278,7 +70278,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyCompanyProfileWithResponse Get my company's profile
 	//
-	// Requires public access key. When using Limited, Custom or Full access API keys, the response will be of type CompanyProfileExtended, otherwise it will be CompanyProfile.
+	// Requires public access key. <br>When using Limited, Custom or Full access API keys, the response will be of type CompanyProfileExtended, otherwise it will be CompanyProfile.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70287,7 +70287,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetCompaniesSearchWithResponse Search companies by name or other criteria
 	//
-	// Requires public access key. This selection is standalone and cannot be used together with other selections.
+	// Requires public access key. <br>This selection is standalone and cannot be used together with other selections.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70296,7 +70296,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetCompaniesSnapshotWithResponse Get daily companies snapshot CSV
 	//
-	// Requires public access key. Returns a CSV daily snapshot of companies. This selection is standalone and cannot be used together with other selections.
+	// Requires public access key.<br>Returns a CSV daily snapshot of companies.<br>This selection is standalone and cannot be used together with other selections.<br>
 	// CSV columns: id, name, created_at, days_old, image, type, rating, director_id,
 	// employees_hired, employees_capacity, daily_income, daily_customers,
 	// weekly_income, weekly_customers, applications_allowed
@@ -70308,7 +70308,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyCompanyStockWithResponse Get your company's stock
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70317,7 +70317,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetCompanyTimestampWithResponse Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70344,7 +70344,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetCompaniesListWithResponse Get a list of companies for a specific company type
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70353,7 +70353,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionGenericWithResponse Get any Faction selection
 	//
-	// Key access level depends on the required selections. Choose one or more selections (comma separated).
+	// Key access level depends on the required selections. <br> Choose one or more selections (comma separated).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70362,7 +70362,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionApplicationsWithResponse Get your faction's applications
 	//
-	// Requires minimal access key with faction API access permissions.
+	// Requires minimal access key with faction API access permissions. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70371,7 +70371,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionAttacksWithResponse Get your faction's detailed attacks
 	//
-	// Requires limited access key with faction API access permissions.
+	// Requires limited access key with faction API access permissions. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70380,7 +70380,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionAttacksSimplifiedWithResponse Get your faction's simplified attacks
 	//
-	// Requires limited access key with faction API access permissions.
+	// Requires limited access key with faction API access permissions. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70389,7 +70389,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionBalanceWithResponse Get your faction's & member's balance details
 	//
-	// Requires limited access key with faction API access permissions.
+	// Requires limited access key with faction API access permissions. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70398,7 +70398,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionBasicInformationWithResponse Get your faction's basic details
 	//
-	// Requires public access key. The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
+	// Requires public access key. <br> The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70407,7 +70407,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionChainWithResponse Get your faction's current chain
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70416,7 +70416,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionLatestChainReportWithResponse Get your faction's latest chain report
 	//
-	// Requires public access key. This includes currently ongoing chains.
+	// Requires public access key. <br> This includes currently ongoing chains.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70425,7 +70425,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionCompletedChainsWithResponse Get a list of your faction's completed chains
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70434,7 +70434,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionContributorsWithResponse Get your faction's challenge contributors
 	//
-	// Requires limiteed access key with faction API access permissions.
+	// Requires limiteed access key with faction API access permissions. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70443,7 +70443,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionCrimeExpWithResponse Get your faction members crime experience
 	//
-	// Requires minimal access key. Members are ordered descending, from highest crime experience to lowest.
+	// Requires minimal access key. <br>Members are ordered descending, from highest crime experience to lowest.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70452,7 +70452,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionOrganizedCrimesWithResponse Get your faction's organized crimes
 	//
-	// Requires minimal access key with faction API access permissions. It's possible to get older entries either by timestamp range (from, to) or with offset. Crimes are ordered depending on the category chosen:
+	// Requires minimal access key with faction API access permissions. <br> It's possible to get older entries either by timestamp range (from, to) or with offset.<br> Crimes are ordered depending on the category chosen:
 	//  * For categories 'all' & 'available', the ordering field is 'created_at'.
 	//  * For categories 'successful', 'failed' & 'completed', the ordering field is 'executed_at'.
 	//  * For categories 'recruiting' & 'expired', the ordering field is 'expired_at'.
@@ -70465,7 +70465,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetWarfareDirtyBombsWithResponse Get all dirty bombs
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70474,7 +70474,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionHoFWithResponse Get your faction's hall of fame rankings.
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70483,7 +70483,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionInventoryWithResponse Get your faction's inventory items.
 	//
-	//  Cached selection (5 minutes, all items cached at once). Requires limited access key.
+	// <b>Cached selection (5 minutes, all items cached at once).</b><br><br>Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70492,14 +70492,14 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionLookupWithResponse performs a GET /faction/lookup (the `GetFactionLookup` operationId) request.
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	GetFactionLookupWithResponse(ctx context.Context, params *GetFactionLookupParams, reqEditors ...RequestEditorFn) (*GetFactionLookupResponse, error)
 
 	// GetMyFactionMembersWithResponse Get a list of your faction's members
 	//
-	// Requires public access key. The 'revive_setting' value will be populated (not Unknown) if you have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
+	// Requires public access key. <br> The 'revive_setting' value will be populated (not Unknown) if you have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70508,7 +70508,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionNewsWithResponse Get your faction's news details
 	//
-	// Requires minimal access key with faction API access permissions. It is possible to pass up to 10 categories at the time (comma separated). Categories 'attack', 'depositFunds' and 'giveFunds' are only available with 'Custom', 'Limited' or 'Full' access keys.
+	// Requires minimal access key with faction API access permissions. <br> It is possible to pass up to 10 categories at the time (comma separated). Categories 'attack', 'depositFunds' and 'giveFunds' are only available with 'Custom', 'Limited' or 'Full' access keys.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70517,7 +70517,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionPositionsWithResponse Get your faction's positions details
 	//
-	// Requires minimal access key with faction API access permissions.
+	// Requires minimal access key with faction API access permissions. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70526,7 +70526,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionRacketsWithResponse Get a list of current rackets
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70535,7 +70535,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionRaidsHistoryWithResponse Get raids history for your faction
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70544,7 +70544,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionRankedWarsHistoryWithResponse Get ranked wars history for your faction
 	//
-	// Requires public access key. Use offset to get older results which are always ordered descending.
+	// Requires public access key. <br> Use offset to get older results which are always ordered descending.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70553,8 +70553,8 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionReportsWithResponse Get faction reports
 	//
-	// Requires limited access key.
-	// The limit is set to 25 when requesting any category other than 'stats'.
+	// Requires limited access key. <br>
+	// The limit is set to 25 when requesting any category other than 'stats'.<br>
 	// When requesting the 'stats' category, limit can be increased up to 100.
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -70564,7 +70564,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionRevivesWithResponse Get your faction's detailed revives
 	//
-	// Requires limited access key with faction API access permissions.
+	// Requires limited access key with faction API access permissions. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70573,7 +70573,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionRevivesSimplifiedWithResponse Get your faction's simplified revives
 	//
-	// Requires limited access key with faction API access permissions.
+	// Requires limited access key with faction API access permissions. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70582,7 +70582,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionSearchWithResponse Search factions by name or other criteria
 	//
-	// Requires public access key. This selection is standalone and cannot be used together with other selections.
+	// Requires public access key. <br>This selection is standalone and cannot be used together with other selections.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70591,7 +70591,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionsSnapshotWithResponse Get daily factions snapshot CSV
 	//
-	// Requires public access key. Returns a CSV daily snapshot of factions. This selection is standalone and cannot be used together with other selections.
+	// Requires public access key.<br>Returns a CSV daily snapshot of factions.<br>This selection is standalone and cannot be used together with other selections.<br>
 	// CSV columns: id, name, tag, tag_image, banner_image, leader_id, co_leader_id, respect, days_old, rank, members, members_max, member_list, recruiting, destroyed_timestamp
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -70601,7 +70601,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionStatsWithResponse Get your faction's challenges stats
 	//
-	// Requires minimal access key with faction API access permissions.
+	// Requires minimal access key with faction API access permissions. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70610,7 +70610,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionTerritoryWithResponse Get a list of your faction's territories
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70619,7 +70619,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTerritoryOwnershipWithResponse Get a list territory ownership
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70628,7 +70628,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionTerritoryWarsHistoryWithResponse Get territory wars history for your faction
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70637,7 +70637,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionTimestampWithResponse Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70646,7 +70646,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionUpgradesWithResponse Get your faction's upgrades
 	//
-	// Requires minimal access key with faction API access permissions.
+	// Requires minimal access key with faction API access permissions. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70655,7 +70655,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetWarfareWithResponse Get faction warfare
 	//
-	// This selection is replaced by other warfare selections and 'faction' -> 'dirtybombs'. This will be removed on 1st January 2027. Requires public access key. The response depends on the selected category.
+	// This selection is replaced by other warfare selections and 'faction' -> 'dirtybombs'.<br>This will be removed on 1st January 2027<b></b>.<br>Requires public access key. <br>The response depends on the selected category.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70666,7 +70666,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetWarfareChainsWithResponse Get all chains
 	//
-	// Requires public access key. By default, active chains are returned.
+	// Requires public access key. <br>By default, active chains are returned.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70675,7 +70675,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetWarfareRaidsWithResponse Get all raids
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70684,7 +70684,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetWarfareRankedWarsWithResponse Get all ranked wars
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70693,7 +70693,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetWarfareTerritoryWarsWithResponse Get all territory wars
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70702,7 +70702,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionWarsWithResponse Get your faction's wars & pacts details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70711,7 +70711,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetChainReportWithResponse Get a chain report
 	//
-	// Requires public access key. Chain reports for ongoing chains are available only for your own faction.
+	// Requires public access key. <br> Chain reports for ongoing chains are available only for your own faction.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70720,7 +70720,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyFactionOrganizedCrimeWithResponse Get a specific organized crime
 	//
-	// Requires minimal access key with faction API access permissions.
+	// Requires minimal access key with faction API access permissions. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70729,7 +70729,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionBasicInformationWithResponse Get a faction's basic details
 	//
-	// Requires public access key. The 'is_enlisted' value will be populated if you're requesting data for your faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
+	// Requires public access key. <br> The 'is_enlisted' value will be populated if you're requesting data for your faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70738,7 +70738,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionChainWithResponse Get a faction's current chain
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70747,7 +70747,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionCompletedChainsWithResponse Get a list of a faction's completed chains
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70756,7 +70756,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionHoFWithResponse Get a faction's hall of fame rankings.
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70765,7 +70765,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionMembersWithResponse Get a list of a faction's members
 	//
-	// Requires public access key. The 'revive_setting' value will be populated (not Unknown) if you're requesting data for your own faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
+	// Requires public access key. <br> The 'revive_setting' value will be populated (not Unknown) if you're requesting data for your own faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70774,7 +70774,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionRaidsHistoryWithResponse Get a faction's raids history
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70783,7 +70783,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionRankedWarsHistoryWithResponse Get a faction's ranked wars history
 	//
-	// Requires public access key. Use offset to get older results which are always ordered descending.
+	// Requires public access key. <br> Use offset to get older results which are always ordered descending.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70792,7 +70792,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionTerritoryWithResponse Get a list of a faction's territories
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70801,7 +70801,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionTerritoryWarsHistoryWithResponse Get a faction's territory wars history
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70810,7 +70810,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetFactionWarsWithResponse Get a faction's wars & pacts details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70819,7 +70819,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetRaidReportWithResponse Get raid war details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70828,7 +70828,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetRankedWarReportWithResponse Get ranked war details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70837,7 +70837,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTerritoryWarReportWithResponse Get territory war details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70846,7 +70846,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetForumGenericWithResponse Get any Forum selection
 	//
-	// Requires public access key. Choose one or more selections (comma separated).
+	// Requires public access key. <br>Choose one or more selections (comma separated).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70855,7 +70855,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetForumCategoriesWithResponse Get publicly available forum categories
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70864,7 +70864,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetForumLookupWithResponse Get all available forum selections
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70873,7 +70873,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetForumAllThreadsWithResponse Get threads across all forum categories
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70882,7 +70882,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetForumTimestampWithResponse Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70891,7 +70891,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetForumThreadsWithResponse Get threads for specific public forum category or categories
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70900,7 +70900,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetForumThreadPostsWithResponse Get specific forum thread posts
 	//
-	// Requires public access key. Returns 20 posts per page for a specific thread. By default, it uses 'offset', but it's possible to filter posts with 'from' & 'to' parameters.
+	// Requires public access key. <br>Returns 20 posts per page for a specific thread. <br> By default, it uses 'offset', but it's possible to filter posts with 'from' & 'to' parameters.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70909,7 +70909,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetForumThreadWithResponse Get specific thread details
 	//
-	// Requires public access key. Contains details of a thread including topic content and poll (if any).
+	// Requires public access key. <br>Contains details of a thread including topic content and poll (if any).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70925,7 +70925,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetKeyInfoWithResponse Get current key info
 	//
-	// Available for any key.
+	// Available for any key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70934,7 +70934,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetKeyLogWithResponse Get current key log history
 	//
-	// Available for any key.
+	// Available for any key. <br>
 	//  * This selection contains up to last 250 request logs.
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -70944,7 +70944,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketGenericWithResponse Get any Market selection
 	//
-	// Requires public access key. Choose one or more selections (comma separated).
+	// Requires public access key. <br>Choose one or more selections (comma separated).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70953,7 +70953,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketAuctionHouseWithResponse Get auction house listings
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70962,7 +70962,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketBazaarWithResponse Get bazaar directory
 	//
-	// Requires public access key. The default response is of type 'BazaarWeekly', but if a category is chosen, the response will be of type 'BazaarSpecialized'.
+	// Requires public access key. <br> The default response is of type 'BazaarWeekly', but if a category is chosen, the response will be of type 'BazaarSpecialized'.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70971,7 +70971,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketLookupWithResponse Get all available market selections
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70980,7 +70980,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketPointsWithResponse Get points market listings
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70989,7 +70989,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketTimestampWithResponse Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -70998,7 +70998,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketAuctionHouseItemWithResponse Get specific item auction house listings
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71007,7 +71007,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketAuctionHouseListingWithResponse Get specific item auction house listings
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71016,7 +71016,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketBazaarItemWithResponse Get item specialized bazaar directory
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71025,7 +71025,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketItemMarketItemWithResponse Get item market listings
 	//
-	//  Globally cached selection. Requires public access key.
+	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71034,7 +71034,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketPropertiesWithResponse Get properties market listings
 	//
-	//  Globally cached selection. Requires public access key.
+	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71043,7 +71043,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketPropertiesRentalWithResponse Get properties rental listings
 	//
-	//  Globally cached selection. Requires public access key.
+	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71052,7 +71052,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetPropertyGenericWithResponse Get any property selection
 	//
-	// Requires public access key. Choose one or more selections (comma separated).
+	// Requires public access key. <br>Choose one or more selections (comma separated).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71061,7 +71061,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetPropertyLookupWithResponse Get all available property selections
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71070,7 +71070,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetPropertyTimestampWithResponse Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71079,7 +71079,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetPropertyWithResponse Get a specific property
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71088,7 +71088,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetRacingGenericWithResponse Get any Racing selection
 	//
-	// Requires public access key. Choose one or more selections (comma separated).
+	// Requires public access key. <br>Choose one or more selections (comma separated).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71097,7 +71097,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetRacingCarsWithResponse Get cars and their racing stats
 	//
-	// Requires public access key. Returns the stat details about racing cars.
+	// Requires public access key. <br>Returns the stat details about racing cars.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71106,7 +71106,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetRacingCarUpgradesWithResponse Get all possible car upgrades
 	//
-	// Requires public access key. Returns the details about all possible car upgrades.
+	// Requires public access key. <br>Returns the details about all possible car upgrades.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71115,7 +71115,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetRacingLookupWithResponse Get all available racing selections
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71124,7 +71124,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetRacingRacesWithResponse Get races
 	//
-	// Requires public access key. Returns a list of races, ordered by race start timestamp.
+	// Requires public access key. <br>Returns a list of races, ordered by race start timestamp.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71133,7 +71133,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetRacingTimestampWithResponse Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71142,7 +71142,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetRacingTracksWithResponse Get race tracks and descriptions
 	//
-	// Requires public access key. Returns the details about racing tracks.
+	// Requires public access key. <br>Returns the details about racing tracks.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71151,7 +71151,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetRacingRaceDetailsWithResponse Get specific race details
 	//
-	// Requires public access key. Returns the details of a race.
+	// Requires public access key. <br>Returns the details of a race.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71160,7 +71160,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetRacingTrackRecordsWithResponse Get track records
 	//
-	// Requires public access key. Returns a list of 5 best lap records for the chosen track and car class.
+	// Requires public access key. <br>Returns a list of 5 best lap records for the chosen track and car class.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71169,7 +71169,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornGenericWithResponse Get any Torn selection
 	//
-	// Requires public access key. Choose one or more selections (comma separated).
+	// Requires public access key. <br> Choose one or more selections (comma separated).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71178,7 +71178,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornAttackLogWithResponse Get attack log details
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71187,7 +71187,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornBankWithResponse Get current bank rates
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71196,7 +71196,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornBountiesWithResponse Get bounties
 	//
-	//  Globally cached selection. Requires public key.
+	// <b>Globally cached selection.</b><br><br>Requires public key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71205,7 +71205,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornCalendarWithResponse Get calendar information
 	//
-	// Requires public access key. Get the details about competitions & events in the running year.
+	// Requires public access key. <br> Get the details about competitions & events in the running year.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71214,7 +71214,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornCardsWithResponse Get casino playing cards
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71223,7 +71223,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornCityShopsWithResponse Get city shops stock information
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71232,7 +71232,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornCompaniesWithResponse Get all companies details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71241,7 +71241,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornCrimesWithResponse Get crimes information
 	//
-	// Requires public access key. Return the details about released crimes.
+	// Requires public access key. <br> Return the details about released crimes.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71250,7 +71250,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornEducationWithResponse Get education information
 	//
-	// Requires public access key.
+	// Requires public access key.<br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71268,7 +71268,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornFactionHoFWithResponse Get faction hall of fame positions for a specific category
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71277,7 +71277,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornFactionTreeWithResponse Get full faction tree
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71286,7 +71286,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornGymsWithResponse Get all gyms
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71295,7 +71295,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornHalloweenWithResponse Get Halloween basket upgrades
 	//
-	// Requires minimal access key. Returns the list of available Halloween basket upgrades with their benefits, treats cost and unlock requirement.
+	// Requires minimal access key. <br>Returns the list of available Halloween basket upgrades with their benefits, treats cost and unlock requirement.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71313,7 +71313,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornHonorsWithResponse Get all honors
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71340,7 +71340,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornItemsWithResponse Get information about items
 	//
-	// Requires public key. Default category is 'All'. Details are not populated when requesting the category 'All'.
+	// Requires public key.<br>Default category is 'All'.<br>Details are not populated when requesting the category 'All'.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71349,7 +71349,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornLogCategoriesWithResponse Get available log categories
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71358,7 +71358,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornLogTypesWithResponse Get all available log ids
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71367,7 +71367,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornLookupWithResponse Get all available torn selections
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71376,7 +71376,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornMedalsWithResponse Get all medals
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71385,7 +71385,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornMeritsWithResponse Get all merits
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71394,7 +71394,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornMuseumWithResponse Get all museum sets
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71403,7 +71403,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornOrganizedCrimesWithResponse Get organized crimes information
 	//
-	// Requires public access key. Return the details about released faction organized crimes.
+	// Requires public access key. <br> Return the details about released faction organized crimes.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71412,7 +71412,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornPokerTablesWithResponse Get active poker tables
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71421,7 +71421,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornPropertiesWithResponse Get properties details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71439,7 +71439,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornSearchForCashWithResponse Get search for cash crime statuses
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71448,7 +71448,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornShopliftingWithResponse Get shoplifting crime statuses
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71466,7 +71466,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornStocksWithResponse Get all stocks
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71475,7 +71475,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornTerritoryWithResponse Get territory details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71484,7 +71484,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornTimestampWithResponse Get current server time
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71493,7 +71493,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornSubcrimesWithResponse Get Subcrimes information
 	//
-	// Requires public access key. Return the details about possible actions for a specific crime.
+	// Requires public access key. <br> Return the details about possible actions for a specific crime.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71502,7 +71502,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornHonorsSpecificWithResponse Get specific honors
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71520,7 +71520,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornItemsSpecificWithResponse Get information about items
 	//
-	// Requires public key. Details are always populated when available.
+	// Requires public key.<br>Details are always populated when available.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71529,7 +71529,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornItemStatsWithResponse Get specific item(s) stats
 	//
-	// Requires public key.
+	// Requires public key.<br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71538,7 +71538,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornMedalsSpecificWithResponse Get specific medals
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71556,7 +71556,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornLogTypesSpecificWithResponse Get available log ids for a specific log category
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71565,7 +71565,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornCityShopSpecificWithResponse Get stock information for a specific shop
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71574,7 +71574,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetSpecificTornStockWithResponse Get specific stock with chart history
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71583,7 +71583,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornCompaniesSpecificWithResponse Get specific company details
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71592,7 +71592,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserGenericWithResponse Get any User selection
 	//
-	// Key access level depends on the required selections. Choose one or more selections (comma separated).
+	// Key access level depends on the required selections. <br>Choose one or more selections (comma separated).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71601,7 +71601,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyAmmoWithResponse Get your ammo information
 	//
-	// Requires minimal key.
+	// Requires minimal key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71610,7 +71610,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyAttacksWithResponse Get your detailed attacks
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71619,7 +71619,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyAttacksSimplifiedWithResponse Get your simplified attacks
 	//
-	// Requires limited access key. Returns up to 1,000 rows.
+	// Requires limited access key. <br>Returns up to 1,000 rows. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71628,7 +71628,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyBarsWithResponse Get your bars information
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71637,7 +71637,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyBasicInformationWithResponse Get your basic profile information
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71646,7 +71646,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyBattlestatsWithResponse Get your battlestats
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71655,7 +71655,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyBountiesWithResponse Get bounties placed on you
 	//
-	//  Globally cached selection. Requires public access key.
+	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71664,7 +71664,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyCalendarTimeWithResponse Get your calendar events start time
 	//
-	// Requires minimal access key. Only available to yourself.
+	// Requires minimal access key. <br>Only available to yourself.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71673,7 +71673,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyCasinoStreakWithResponse Get your casino streak & tokens
 	//
-	// Requires limited access key. Only available to yourself.
+	// Requires limited access key. <br>Only available to yourself.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71691,7 +71691,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyCooldownsWithResponse Get your cooldowns information
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71700,7 +71700,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyDiscordWithResponse Get your discord information
 	//
-	// Requires public key.
+	// Requires public key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71709,7 +71709,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyEducationWithResponse Get your education information
 	//
-	// Requires minimal access key. The response contains a list of complete eduactions and of a current education (if any).
+	// Requires minimal access key. <br>The response contains a list of complete eduactions and of a current education (if any).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71718,7 +71718,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyEnlistedCarsWithResponse Get your enlisted cars
 	//
-	// Requires minimal access key. Returns a list of all user enlisted cars.
+	// Requires minimal access key. <br>Returns a list of all user enlisted cars.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71736,7 +71736,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyEventsWithResponse Get your events
 	//
-	// Requires limited access key. Unfortunately, the 'sort' parameter is not available for this selection.
+	// Requires limited access key. <br> Unfortunately, the 'sort' parameter is not available for this selection.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71754,7 +71754,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyForumFeedWithResponse Get updates on your threads and posts
 	//
-	// Requires minimal access key. This selection returns data visible in 'Feed' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
+	// Requires minimal access key. <br>This selection returns data visible in 'Feed' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71763,7 +71763,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyForumFriendsUpdatesWithResponse Get updates on your friends' activity
 	//
-	// Requires minimal access key. This selection returns data visible in 'Friends' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
+	// Requires minimal access key. <br>This selection returns data visible in 'Friends' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71772,7 +71772,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyForumPostsWithResponse Get your posts
 	//
-	// Requires public access key. Returns 20 posts per page.
+	// Requires public access key. <br>Returns 20 posts per page.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71781,7 +71781,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyForumSubscribedThreadsWithResponse Get updates on threads you subscribed to
 	//
-	// Requires minimal access key. This selection returns data visible in 'Subscribed Threads' section on forum page. Threads are sorted in the same way as on site.
+	// Requires minimal access key. <br>This selection returns data visible in 'Subscribed Threads' section on forum page. Threads are sorted in the same way as on site.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71790,7 +71790,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyForumThreadsWithResponse Get your threads
 	//
-	// Requires public access key. Returns 100 threads per page. The field 'new_posts' is also available, indicating the amount of unread posts with a Minimum API key (or higher).
+	// Requires public access key. <br>Returns 100 threads per page. The field 'new_posts' is also available, indicating the amount of unread posts with a Minimum API key (or higher).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71799,7 +71799,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyGymWithResponse Get your currently active gym
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71808,7 +71808,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyHalloweenWithResponse Get your Halloween treats information
 	//
-	// Requires minimal access key. Returns your current and cumulative treats and the IDs of basket upgrades you have unlocked.
+	// Requires minimal access key. <br>Returns your current and cumulative treats and the IDs of basket upgrades you have unlocked.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71817,7 +71817,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyHoFWithResponse Get your hall of fame rankings
 	//
-	// Requires public access key. When requesting selection with Limited, Full or Custom key, battle_stats selection will be populated.
+	// Requires public access key. <br>When requesting selection with Limited, Full or Custom key, battle_stats selection will be populated.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71826,7 +71826,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyHonorsWithResponse Get your achieved honors
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71835,7 +71835,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyIconsWithResponse Get your icons information
 	//
-	// Requires public access key. When requesting data for yourself with 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
+	// Requires public access key. <br> When requesting data for yourself with 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71844,7 +71844,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyInventoryWithResponse Get your inventory
 	//
-	//  Cached selection (15 minutes per category). Requires minimal access key.
+	// <b>Cached selection (15 minutes per category).</b><br><br>Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71853,7 +71853,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyItemMarketListingsWithResponse Get your item market listings
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71862,7 +71862,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyItemModsInformationWithResponse Get your information about available item mods
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71880,7 +71880,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyJobPointsWithResponse Get your jobpoints
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71889,7 +71889,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyJobRanksWithResponse Get your starter job positions
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71898,7 +71898,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyContactsListWithResponse Get your friends, enemies or targets list
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71907,7 +71907,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyLogsWithResponse Get your logs
 	//
-	// Requires full access key. It's possible to pass a list of log ids or a log category id. This selection is standalone and cannot be used together with other selections.
+	// Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71916,7 +71916,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserLookupWithResponse Get all available user selections
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71925,7 +71925,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyMedalsWithResponse Get all your achieved medals
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71934,7 +71934,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyMeritsWithResponse Get your merits
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71943,7 +71943,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyMessagesWithResponse Get your messages
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71952,7 +71952,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyMissionsWithResponse Get your current missions information
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71961,7 +71961,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyMoneyWithResponse Get your current wealth
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71970,7 +71970,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyNetworthWithResponse Get your networth
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71979,7 +71979,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyNewEventsWithResponse Get your unseen events
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71988,7 +71988,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyNewMessagesWithResponse Get your unseen messages
 	//
-	// Requires limited access key. This selection is cached for 1 hour.
+	// Requires limited access key. <br>This selection is cached for 1 hour.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -71997,7 +71997,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyNotificationsWithResponse Get your notifications
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72006,7 +72006,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyOrganizedCrimeWithResponse Get your current ongoing organized crime
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72015,7 +72015,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyAvailableOrganizedCrimesWithResponse Get your available slots for organized crimes with status 'Recruiting'
 	//
-	// Requires minimal access key. Unlike 'faction' -> 'crimes', this selection only shows empty slots, and only for crimes with the 'Recruiting' status.
+	// Requires minimal access key. <br>Unlike 'faction' -> 'crimes', this selection only shows empty slots, and only for crimes with the 'Recruiting' status.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72024,7 +72024,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyPerksWithResponse Get your current perks
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72033,7 +72033,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyPersonalStatsWithResponse Get your personal stats
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//  * UserPersonalStatsFull is returned only when this selection is requested with Limited, Full or Custom key access key.
 	//  * UserPersonalStatsFullPublic is returned when the requested category is 'all'.
 	//  * UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.
@@ -72057,7 +72057,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyPropertiesWithResponse Get your own properties
 	//
-	// Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys.
+	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72066,7 +72066,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyPropertyWithResponse Get your current property
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72075,7 +72075,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyRacesWithResponse Get your races
 	//
-	// Requires minimal access key. Returns a list of user races, ordered by race start timestamp.
+	// Requires minimal access key. <br>Returns a list of user races, ordered by race start timestamp.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72084,7 +72084,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyRacingRecordsWithResponse Get your current racing records
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72093,7 +72093,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyRefillsWithResponse Get your refills information
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72102,8 +72102,8 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyReportsWithResponse Get your reports
 	//
-	// Requires limited access key.
-	// The limit is set to 25 when requesting any category other than 'stats'.
+	// Requires limited access key. <br>
+	// The limit is set to 25 when requesting any category other than 'stats'.<br>
 	// When requesting the 'stats' category, limit can be increased up to 100.
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -72113,7 +72113,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyRevivesWithResponse Get your detailed revives
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72122,7 +72122,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyRevivesSimplifiedWithResponse Get your simplified revives
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72131,7 +72131,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUsersSearchWithResponse Search users by name or other criteria
 	//
-	// Requires public access key. This selection is standalone and cannot be used together with other selections. It's always limited to return just 25 records.
+	// Requires public access key. <br>This selection is standalone and cannot be used together with other selections.<br>It's always limited to return just 25 records.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72140,7 +72140,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMySkillsWithResponse Get your skills
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72149,7 +72149,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUsersSnapshotWithResponse Get daily active players snapshot CSV
 	//
-	// Requires public access key. Returns a CSV daily snapshot of active players. This selection is standalone and cannot be used together with other selections.
+	// Requires public access key.<br>Returns a CSV daily snapshot of active players.<br>This selection is standalone and cannot be used together with other selections.<br>
 	// CSV columns: id, name, gender, signed_up, level, rank, donator, faction, company, job, spouse, display_case, bazaar, fed, fed_reason, time_played, awards
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -72159,7 +72159,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyStocksWithResponse Get your stocks
 	//
-	// Requires limited access key.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72168,7 +72168,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserTimestampWithResponse Get current server time
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72177,7 +72177,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyTradesWithResponse Get your trades
 	//
-	// Requires limited access key. When requesting 'ongoing' trades (default), limit/offset/sort are not being used.
+	// Requires limited access key. <br> When requesting 'ongoing' trades (default), limit/offset/sort are not being used.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72186,7 +72186,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyTravelInformationWithResponse Get your travel information
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72195,7 +72195,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyVirusCodingInformationWithResponse Get your virus coding information
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72204,7 +72204,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyWeaponExpWithResponse Get your weapon experience information
 	//
-	// Requires minimal key.
+	// Requires minimal key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72213,7 +72213,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyWorkstatsWithResponse Get your working stats
 	//
-	// Requires minimal access key.
+	// Requires minimal access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72222,7 +72222,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyCrimesWithResponse Get your crime statistics
 	//
-	// Requires minimal access key. Return the details and statistics about for a specific crime.
+	// Requires minimal access key. <br>Return the details and statistics about for a specific crime.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72231,7 +72231,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserBasicInformationWithResponse Get basic profile information for a specific user
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72240,7 +72240,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserBountiesWithResponse Get bounties placed on a specific user
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72258,7 +72258,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserDiscordWithResponse Get discord information for a specific user
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72276,7 +72276,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserForumPostsWithResponse Get posts for a specific player
 	//
-	// Requires public access key. Returns 20 posts per page for a specific player.
+	// Requires public access key. <br>Returns 20 posts per page for a specific player.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72285,7 +72285,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserForumThreadsWithResponse Get threads for a specific player
 	//
-	// Requires public access key. Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.
+	// Requires public access key. <br>Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72294,7 +72294,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserHoFWithResponse Get hall of fame rankings for a specific player
 	//
-	// Requires public access key. The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.
+	// Requires public access key. <br>The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72303,7 +72303,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserIconsWithResponse Get icons information for a specific player
 	//
-	// Requires public access key. When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
+	// Requires public access key.<br> When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72321,7 +72321,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserMedalsWithResponse Get medals achieved by a specific player
 	//
-	// Requires public access key. Returns only highest medal in each category (just like profiles on site).
+	// Requires public access key.<br>Returns only highest medal in each category (just like profiles on site).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72330,13 +72330,13 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserPersonalStatsWithResponse Get a player's personal stats
 	//
-	// Requires public access key.
-	//  * UserPersonalStatsFull is returned only when this selection is requested for the key owner with Limited, Full or Custom key.
-	//  * UserPersonalStatsFullPublic is returned when the requested category is 'all'.
-	//  * UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.
-	//  * Otherwise, UserPersonalStatsCategory is returned for the matched category.
-	//  * It's possible to request specific stats via 'stat' parameter. In this case the response will vary depending on the stats requested. Private stats are still available only to the key owner (with Limited or higher key).
-	//  * Additionally, historical stats can also be fetched via 'stat' query parameter, but 'timestamp' parameter must be provided as well. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.
+	// Requires public access key. <br>
+	//  *  UserPersonalStatsFull is returned only when this selection is requested for the key owner with Limited, Full or Custom key.
+	//  *  UserPersonalStatsFullPublic is returned when the requested category is 'all'.
+	//  *  UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.
+	//  *  Otherwise, UserPersonalStatsCategory is returned for the matched category.
+	//  *  It's possible to request specific stats via 'stat' parameter. In this case the response will vary depending on the stats requested. Private stats are still available only to the key owner (with Limited or higher key).
+	//  *  Additionally, historical stats can also be fetched via 'stat' query parameter, but 'timestamp' parameter must be provided as well. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72354,7 +72354,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserPropertiesWithResponse Get specific user's properties
 	//
-	// Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
+	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72363,7 +72363,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserPropertyWithResponse Get specific user's property
 	//
-	// Requires public access key.
+	// Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72372,7 +72372,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyDetailedTradeWithResponse Get your detailed trade
 	//
-	// Requires limited access key. Only possible to get trades you participated in.
+	// Requires limited access key. <br>Only possible to get trades you participated in.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -82037,7 +82037,7 @@ func (r GetMyDetailedTradeResponse) ContentType() string {
 
 // GetCompanyGenericWithResponse Get any Company selection
 //
-// Key access level depends on the required selections. Choose one or more selections (comma separated).
+// Key access level depends on the required selections. <br> Choose one or more selections (comma separated).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82052,7 +82052,7 @@ func (c *ClientWithResponses) GetCompanyGenericWithResponse(ctx context.Context,
 
 // GetMyCompanyApplicationsWithResponse Get your company's applications
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82067,7 +82067,7 @@ func (c *ClientWithResponses) GetMyCompanyApplicationsWithResponse(ctx context.C
 
 // GetMyCompanyEmployeesWithResponse Get my company's employees
 //
-// Requires public access key. When using Limited, Custom or Full access API keys, the response will be:
+// Requires public access key. <br>When using Limited, Custom or Full access API keys, the response will be:<br>
 //   - for director: CompanyEmployeeFull
 //   - for employee: CompanyEmployeeExtended
 //   - anyone else: CompanyEmployee.
@@ -82085,7 +82085,7 @@ func (c *ClientWithResponses) GetMyCompanyEmployeesWithResponse(ctx context.Cont
 
 // GetCompanyLookupWithResponse performs a GET /company/lookup (the `GetCompanyLookup` operationId) request.
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 func (c *ClientWithResponses) GetCompanyLookupWithResponse(ctx context.Context, params *GetCompanyLookupParams, reqEditors ...RequestEditorFn) (*GetCompanyLookupResponse, error) {
@@ -82098,7 +82098,7 @@ func (c *ClientWithResponses) GetCompanyLookupWithResponse(ctx context.Context, 
 
 // GetMyCompanyNewsWithResponse Get your company's news details
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82113,7 +82113,7 @@ func (c *ClientWithResponses) GetMyCompanyNewsWithResponse(ctx context.Context, 
 
 // GetMyCompanyProfileWithResponse Get my company's profile
 //
-// Requires public access key. When using Limited, Custom or Full access API keys, the response will be of type CompanyProfileExtended, otherwise it will be CompanyProfile.
+// Requires public access key. <br>When using Limited, Custom or Full access API keys, the response will be of type CompanyProfileExtended, otherwise it will be CompanyProfile.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82128,7 +82128,7 @@ func (c *ClientWithResponses) GetMyCompanyProfileWithResponse(ctx context.Contex
 
 // GetCompaniesSearchWithResponse Search companies by name or other criteria
 //
-// Requires public access key. This selection is standalone and cannot be used together with other selections.
+// Requires public access key. <br>This selection is standalone and cannot be used together with other selections.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82143,7 +82143,7 @@ func (c *ClientWithResponses) GetCompaniesSearchWithResponse(ctx context.Context
 
 // GetCompaniesSnapshotWithResponse Get daily companies snapshot CSV
 //
-// Requires public access key. Returns a CSV daily snapshot of companies. This selection is standalone and cannot be used together with other selections.
+// Requires public access key.<br>Returns a CSV daily snapshot of companies.<br>This selection is standalone and cannot be used together with other selections.<br>
 // CSV columns: id, name, created_at, days_old, image, type, rating, director_id,
 // employees_hired, employees_capacity, daily_income, daily_customers,
 // weekly_income, weekly_customers, applications_allowed
@@ -82161,7 +82161,7 @@ func (c *ClientWithResponses) GetCompaniesSnapshotWithResponse(ctx context.Conte
 
 // GetMyCompanyStockWithResponse Get your company's stock
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82176,7 +82176,7 @@ func (c *ClientWithResponses) GetMyCompanyStockWithResponse(ctx context.Context,
 
 // GetCompanyTimestampWithResponse Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82221,7 +82221,7 @@ func (c *ClientWithResponses) GetCompanyProfileWithResponse(ctx context.Context,
 
 // GetCompaniesListWithResponse Get a list of companies for a specific company type
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82236,7 +82236,7 @@ func (c *ClientWithResponses) GetCompaniesListWithResponse(ctx context.Context, 
 
 // GetFactionGenericWithResponse Get any Faction selection
 //
-// Key access level depends on the required selections. Choose one or more selections (comma separated).
+// Key access level depends on the required selections. <br> Choose one or more selections (comma separated).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82251,7 +82251,7 @@ func (c *ClientWithResponses) GetFactionGenericWithResponse(ctx context.Context,
 
 // GetMyFactionApplicationsWithResponse Get your faction's applications
 //
-// Requires minimal access key with faction API access permissions.
+// Requires minimal access key with faction API access permissions. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82266,7 +82266,7 @@ func (c *ClientWithResponses) GetMyFactionApplicationsWithResponse(ctx context.C
 
 // GetMyFactionAttacksWithResponse Get your faction's detailed attacks
 //
-// Requires limited access key with faction API access permissions.
+// Requires limited access key with faction API access permissions. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82281,7 +82281,7 @@ func (c *ClientWithResponses) GetMyFactionAttacksWithResponse(ctx context.Contex
 
 // GetMyFactionAttacksSimplifiedWithResponse Get your faction's simplified attacks
 //
-// Requires limited access key with faction API access permissions.
+// Requires limited access key with faction API access permissions. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82296,7 +82296,7 @@ func (c *ClientWithResponses) GetMyFactionAttacksSimplifiedWithResponse(ctx cont
 
 // GetMyFactionBalanceWithResponse Get your faction's & member's balance details
 //
-// Requires limited access key with faction API access permissions.
+// Requires limited access key with faction API access permissions. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82311,7 +82311,7 @@ func (c *ClientWithResponses) GetMyFactionBalanceWithResponse(ctx context.Contex
 
 // GetMyFactionBasicInformationWithResponse Get your faction's basic details
 //
-// Requires public access key. The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
+// Requires public access key. <br> The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82326,7 +82326,7 @@ func (c *ClientWithResponses) GetMyFactionBasicInformationWithResponse(ctx conte
 
 // GetMyFactionChainWithResponse Get your faction's current chain
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82341,7 +82341,7 @@ func (c *ClientWithResponses) GetMyFactionChainWithResponse(ctx context.Context,
 
 // GetMyFactionLatestChainReportWithResponse Get your faction's latest chain report
 //
-// Requires public access key. This includes currently ongoing chains.
+// Requires public access key. <br> This includes currently ongoing chains.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82356,7 +82356,7 @@ func (c *ClientWithResponses) GetMyFactionLatestChainReportWithResponse(ctx cont
 
 // GetMyFactionCompletedChainsWithResponse Get a list of your faction's completed chains
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82371,7 +82371,7 @@ func (c *ClientWithResponses) GetMyFactionCompletedChainsWithResponse(ctx contex
 
 // GetMyFactionContributorsWithResponse Get your faction's challenge contributors
 //
-// Requires limiteed access key with faction API access permissions.
+// Requires limiteed access key with faction API access permissions. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82386,7 +82386,7 @@ func (c *ClientWithResponses) GetMyFactionContributorsWithResponse(ctx context.C
 
 // GetMyFactionCrimeExpWithResponse Get your faction members crime experience
 //
-// Requires minimal access key. Members are ordered descending, from highest crime experience to lowest.
+// Requires minimal access key. <br>Members are ordered descending, from highest crime experience to lowest.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82401,7 +82401,7 @@ func (c *ClientWithResponses) GetMyFactionCrimeExpWithResponse(ctx context.Conte
 
 // GetMyFactionOrganizedCrimesWithResponse Get your faction's organized crimes
 //
-// Requires minimal access key with faction API access permissions. It's possible to get older entries either by timestamp range (from, to) or with offset. Crimes are ordered depending on the category chosen:
+// Requires minimal access key with faction API access permissions. <br> It's possible to get older entries either by timestamp range (from, to) or with offset.<br> Crimes are ordered depending on the category chosen:
 //   - For categories 'all' & 'available', the ordering field is 'created_at'.
 //   - For categories 'successful', 'failed' & 'completed', the ordering field is 'executed_at'.
 //   - For categories 'recruiting' & 'expired', the ordering field is 'expired_at'.
@@ -82420,7 +82420,7 @@ func (c *ClientWithResponses) GetMyFactionOrganizedCrimesWithResponse(ctx contex
 
 // GetWarfareDirtyBombsWithResponse Get all dirty bombs
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82435,7 +82435,7 @@ func (c *ClientWithResponses) GetWarfareDirtyBombsWithResponse(ctx context.Conte
 
 // GetMyFactionHoFWithResponse Get your faction's hall of fame rankings.
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82450,7 +82450,7 @@ func (c *ClientWithResponses) GetMyFactionHoFWithResponse(ctx context.Context, p
 
 // GetMyFactionInventoryWithResponse Get your faction's inventory items.
 //
-//	Cached selection (5 minutes, all items cached at once). Requires limited access key.
+// <b>Cached selection (5 minutes, all items cached at once).</b><br><br>Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82465,7 +82465,7 @@ func (c *ClientWithResponses) GetMyFactionInventoryWithResponse(ctx context.Cont
 
 // GetFactionLookupWithResponse performs a GET /faction/lookup (the `GetFactionLookup` operationId) request.
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 func (c *ClientWithResponses) GetFactionLookupWithResponse(ctx context.Context, params *GetFactionLookupParams, reqEditors ...RequestEditorFn) (*GetFactionLookupResponse, error) {
@@ -82478,7 +82478,7 @@ func (c *ClientWithResponses) GetFactionLookupWithResponse(ctx context.Context, 
 
 // GetMyFactionMembersWithResponse Get a list of your faction's members
 //
-// Requires public access key. The 'revive_setting' value will be populated (not Unknown) if you have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
+// Requires public access key. <br> The 'revive_setting' value will be populated (not Unknown) if you have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82493,7 +82493,7 @@ func (c *ClientWithResponses) GetMyFactionMembersWithResponse(ctx context.Contex
 
 // GetMyFactionNewsWithResponse Get your faction's news details
 //
-// Requires minimal access key with faction API access permissions. It is possible to pass up to 10 categories at the time (comma separated). Categories 'attack', 'depositFunds' and 'giveFunds' are only available with 'Custom', 'Limited' or 'Full' access keys.
+// Requires minimal access key with faction API access permissions. <br> It is possible to pass up to 10 categories at the time (comma separated). Categories 'attack', 'depositFunds' and 'giveFunds' are only available with 'Custom', 'Limited' or 'Full' access keys.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82508,7 +82508,7 @@ func (c *ClientWithResponses) GetMyFactionNewsWithResponse(ctx context.Context, 
 
 // GetMyFactionPositionsWithResponse Get your faction's positions details
 //
-// Requires minimal access key with faction API access permissions.
+// Requires minimal access key with faction API access permissions. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82523,7 +82523,7 @@ func (c *ClientWithResponses) GetMyFactionPositionsWithResponse(ctx context.Cont
 
 // GetFactionRacketsWithResponse Get a list of current rackets
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82538,7 +82538,7 @@ func (c *ClientWithResponses) GetFactionRacketsWithResponse(ctx context.Context,
 
 // GetMyFactionRaidsHistoryWithResponse Get raids history for your faction
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82553,7 +82553,7 @@ func (c *ClientWithResponses) GetMyFactionRaidsHistoryWithResponse(ctx context.C
 
 // GetMyFactionRankedWarsHistoryWithResponse Get ranked wars history for your faction
 //
-// Requires public access key. Use offset to get older results which are always ordered descending.
+// Requires public access key. <br> Use offset to get older results which are always ordered descending.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82568,8 +82568,8 @@ func (c *ClientWithResponses) GetMyFactionRankedWarsHistoryWithResponse(ctx cont
 
 // GetMyFactionReportsWithResponse Get faction reports
 //
-// Requires limited access key.
-// The limit is set to 25 when requesting any category other than 'stats'.
+// Requires limited access key. <br>
+// The limit is set to 25 when requesting any category other than 'stats'.<br>
 // When requesting the 'stats' category, limit can be increased up to 100.
 //
 // Returns a wrapper object for the known response body format(s).
@@ -82585,7 +82585,7 @@ func (c *ClientWithResponses) GetMyFactionReportsWithResponse(ctx context.Contex
 
 // GetMyFactionRevivesWithResponse Get your faction's detailed revives
 //
-// Requires limited access key with faction API access permissions.
+// Requires limited access key with faction API access permissions. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82600,7 +82600,7 @@ func (c *ClientWithResponses) GetMyFactionRevivesWithResponse(ctx context.Contex
 
 // GetMyFactionRevivesSimplifiedWithResponse Get your faction's simplified revives
 //
-// Requires limited access key with faction API access permissions.
+// Requires limited access key with faction API access permissions. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82615,7 +82615,7 @@ func (c *ClientWithResponses) GetMyFactionRevivesSimplifiedWithResponse(ctx cont
 
 // GetFactionSearchWithResponse Search factions by name or other criteria
 //
-// Requires public access key. This selection is standalone and cannot be used together with other selections.
+// Requires public access key. <br>This selection is standalone and cannot be used together with other selections.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82630,7 +82630,7 @@ func (c *ClientWithResponses) GetFactionSearchWithResponse(ctx context.Context, 
 
 // GetFactionsSnapshotWithResponse Get daily factions snapshot CSV
 //
-// Requires public access key. Returns a CSV daily snapshot of factions. This selection is standalone and cannot be used together with other selections.
+// Requires public access key.<br>Returns a CSV daily snapshot of factions.<br>This selection is standalone and cannot be used together with other selections.<br>
 // CSV columns: id, name, tag, tag_image, banner_image, leader_id, co_leader_id, respect, days_old, rank, members, members_max, member_list, recruiting, destroyed_timestamp
 //
 // Returns a wrapper object for the known response body format(s).
@@ -82646,7 +82646,7 @@ func (c *ClientWithResponses) GetFactionsSnapshotWithResponse(ctx context.Contex
 
 // GetMyFactionStatsWithResponse Get your faction's challenges stats
 //
-// Requires minimal access key with faction API access permissions.
+// Requires minimal access key with faction API access permissions. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82661,7 +82661,7 @@ func (c *ClientWithResponses) GetMyFactionStatsWithResponse(ctx context.Context,
 
 // GetMyFactionTerritoryWithResponse Get a list of your faction's territories
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82676,7 +82676,7 @@ func (c *ClientWithResponses) GetMyFactionTerritoryWithResponse(ctx context.Cont
 
 // GetTerritoryOwnershipWithResponse Get a list territory ownership
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82691,7 +82691,7 @@ func (c *ClientWithResponses) GetTerritoryOwnershipWithResponse(ctx context.Cont
 
 // GetMyFactionTerritoryWarsHistoryWithResponse Get territory wars history for your faction
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82706,7 +82706,7 @@ func (c *ClientWithResponses) GetMyFactionTerritoryWarsHistoryWithResponse(ctx c
 
 // GetFactionTimestampWithResponse Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82721,7 +82721,7 @@ func (c *ClientWithResponses) GetFactionTimestampWithResponse(ctx context.Contex
 
 // GetMyFactionUpgradesWithResponse Get your faction's upgrades
 //
-// Requires minimal access key with faction API access permissions.
+// Requires minimal access key with faction API access permissions. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82736,7 +82736,7 @@ func (c *ClientWithResponses) GetMyFactionUpgradesWithResponse(ctx context.Conte
 
 // GetWarfareWithResponse Get faction warfare
 //
-// This selection is replaced by other warfare selections and 'faction' -> 'dirtybombs'. This will be removed on 1st January 2027. Requires public access key. The response depends on the selected category.
+// This selection is replaced by other warfare selections and 'faction' -> 'dirtybombs'.<br>This will be removed on 1st January 2027<b></b>.<br>Requires public access key. <br>The response depends on the selected category.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82753,7 +82753,7 @@ func (c *ClientWithResponses) GetWarfareWithResponse(ctx context.Context, params
 
 // GetWarfareChainsWithResponse Get all chains
 //
-// Requires public access key. By default, active chains are returned.
+// Requires public access key. <br>By default, active chains are returned.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82768,7 +82768,7 @@ func (c *ClientWithResponses) GetWarfareChainsWithResponse(ctx context.Context, 
 
 // GetWarfareRaidsWithResponse Get all raids
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82783,7 +82783,7 @@ func (c *ClientWithResponses) GetWarfareRaidsWithResponse(ctx context.Context, p
 
 // GetWarfareRankedWarsWithResponse Get all ranked wars
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82798,7 +82798,7 @@ func (c *ClientWithResponses) GetWarfareRankedWarsWithResponse(ctx context.Conte
 
 // GetWarfareTerritoryWarsWithResponse Get all territory wars
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82813,7 +82813,7 @@ func (c *ClientWithResponses) GetWarfareTerritoryWarsWithResponse(ctx context.Co
 
 // GetMyFactionWarsWithResponse Get your faction's wars & pacts details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82828,7 +82828,7 @@ func (c *ClientWithResponses) GetMyFactionWarsWithResponse(ctx context.Context, 
 
 // GetChainReportWithResponse Get a chain report
 //
-// Requires public access key. Chain reports for ongoing chains are available only for your own faction.
+// Requires public access key. <br> Chain reports for ongoing chains are available only for your own faction.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82843,7 +82843,7 @@ func (c *ClientWithResponses) GetChainReportWithResponse(ctx context.Context, ch
 
 // GetMyFactionOrganizedCrimeWithResponse Get a specific organized crime
 //
-// Requires minimal access key with faction API access permissions.
+// Requires minimal access key with faction API access permissions. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82858,7 +82858,7 @@ func (c *ClientWithResponses) GetMyFactionOrganizedCrimeWithResponse(ctx context
 
 // GetFactionBasicInformationWithResponse Get a faction's basic details
 //
-// Requires public access key. The 'is_enlisted' value will be populated if you're requesting data for your faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
+// Requires public access key. <br> The 'is_enlisted' value will be populated if you're requesting data for your faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as null.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82873,7 +82873,7 @@ func (c *ClientWithResponses) GetFactionBasicInformationWithResponse(ctx context
 
 // GetFactionChainWithResponse Get a faction's current chain
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82888,7 +82888,7 @@ func (c *ClientWithResponses) GetFactionChainWithResponse(ctx context.Context, i
 
 // GetFactionCompletedChainsWithResponse Get a list of a faction's completed chains
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82903,7 +82903,7 @@ func (c *ClientWithResponses) GetFactionCompletedChainsWithResponse(ctx context.
 
 // GetFactionHoFWithResponse Get a faction's hall of fame rankings.
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82918,7 +82918,7 @@ func (c *ClientWithResponses) GetFactionHoFWithResponse(ctx context.Context, id 
 
 // GetFactionMembersWithResponse Get a list of a faction's members
 //
-// Requires public access key. The 'revive_setting' value will be populated (not Unknown) if you're requesting data for your own faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
+// Requires public access key. <br> The 'revive_setting' value will be populated (not Unknown) if you're requesting data for your own faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82933,7 +82933,7 @@ func (c *ClientWithResponses) GetFactionMembersWithResponse(ctx context.Context,
 
 // GetFactionRaidsHistoryWithResponse Get a faction's raids history
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82948,7 +82948,7 @@ func (c *ClientWithResponses) GetFactionRaidsHistoryWithResponse(ctx context.Con
 
 // GetFactionRankedWarsHistoryWithResponse Get a faction's ranked wars history
 //
-// Requires public access key. Use offset to get older results which are always ordered descending.
+// Requires public access key. <br> Use offset to get older results which are always ordered descending.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82963,7 +82963,7 @@ func (c *ClientWithResponses) GetFactionRankedWarsHistoryWithResponse(ctx contex
 
 // GetFactionTerritoryWithResponse Get a list of a faction's territories
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82978,7 +82978,7 @@ func (c *ClientWithResponses) GetFactionTerritoryWithResponse(ctx context.Contex
 
 // GetFactionTerritoryWarsHistoryWithResponse Get a faction's territory wars history
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -82993,7 +82993,7 @@ func (c *ClientWithResponses) GetFactionTerritoryWarsHistoryWithResponse(ctx con
 
 // GetFactionWarsWithResponse Get a faction's wars & pacts details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83008,7 +83008,7 @@ func (c *ClientWithResponses) GetFactionWarsWithResponse(ctx context.Context, id
 
 // GetRaidReportWithResponse Get raid war details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83023,7 +83023,7 @@ func (c *ClientWithResponses) GetRaidReportWithResponse(ctx context.Context, rai
 
 // GetRankedWarReportWithResponse Get ranked war details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83038,7 +83038,7 @@ func (c *ClientWithResponses) GetRankedWarReportWithResponse(ctx context.Context
 
 // GetTerritoryWarReportWithResponse Get territory war details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83053,7 +83053,7 @@ func (c *ClientWithResponses) GetTerritoryWarReportWithResponse(ctx context.Cont
 
 // GetForumGenericWithResponse Get any Forum selection
 //
-// Requires public access key. Choose one or more selections (comma separated).
+// Requires public access key. <br>Choose one or more selections (comma separated).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83068,7 +83068,7 @@ func (c *ClientWithResponses) GetForumGenericWithResponse(ctx context.Context, p
 
 // GetForumCategoriesWithResponse Get publicly available forum categories
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83083,7 +83083,7 @@ func (c *ClientWithResponses) GetForumCategoriesWithResponse(ctx context.Context
 
 // GetForumLookupWithResponse Get all available forum selections
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83098,7 +83098,7 @@ func (c *ClientWithResponses) GetForumLookupWithResponse(ctx context.Context, pa
 
 // GetForumAllThreadsWithResponse Get threads across all forum categories
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83113,7 +83113,7 @@ func (c *ClientWithResponses) GetForumAllThreadsWithResponse(ctx context.Context
 
 // GetForumTimestampWithResponse Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83128,7 +83128,7 @@ func (c *ClientWithResponses) GetForumTimestampWithResponse(ctx context.Context,
 
 // GetForumThreadsWithResponse Get threads for specific public forum category or categories
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83143,7 +83143,7 @@ func (c *ClientWithResponses) GetForumThreadsWithResponse(ctx context.Context, c
 
 // GetForumThreadPostsWithResponse Get specific forum thread posts
 //
-// Requires public access key. Returns 20 posts per page for a specific thread. By default, it uses 'offset', but it's possible to filter posts with 'from' & 'to' parameters.
+// Requires public access key. <br>Returns 20 posts per page for a specific thread. <br> By default, it uses 'offset', but it's possible to filter posts with 'from' & 'to' parameters.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83158,7 +83158,7 @@ func (c *ClientWithResponses) GetForumThreadPostsWithResponse(ctx context.Contex
 
 // GetForumThreadWithResponse Get specific thread details
 //
-// Requires public access key. Contains details of a thread including topic content and poll (if any).
+// Requires public access key. <br>Contains details of a thread including topic content and poll (if any).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83186,7 +83186,7 @@ func (c *ClientWithResponses) GetKeyGenericWithResponse(ctx context.Context, par
 
 // GetKeyInfoWithResponse Get current key info
 //
-// Available for any key.
+// Available for any key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83201,7 +83201,7 @@ func (c *ClientWithResponses) GetKeyInfoWithResponse(ctx context.Context, params
 
 // GetKeyLogWithResponse Get current key log history
 //
-// Available for any key.
+// Available for any key. <br>
 //   - This selection contains up to last 250 request logs.
 //
 // Returns a wrapper object for the known response body format(s).
@@ -83217,7 +83217,7 @@ func (c *ClientWithResponses) GetKeyLogWithResponse(ctx context.Context, params 
 
 // GetMarketGenericWithResponse Get any Market selection
 //
-// Requires public access key. Choose one or more selections (comma separated).
+// Requires public access key. <br>Choose one or more selections (comma separated).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83232,7 +83232,7 @@ func (c *ClientWithResponses) GetMarketGenericWithResponse(ctx context.Context, 
 
 // GetMarketAuctionHouseWithResponse Get auction house listings
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83247,7 +83247,7 @@ func (c *ClientWithResponses) GetMarketAuctionHouseWithResponse(ctx context.Cont
 
 // GetMarketBazaarWithResponse Get bazaar directory
 //
-// Requires public access key. The default response is of type 'BazaarWeekly', but if a category is chosen, the response will be of type 'BazaarSpecialized'.
+// Requires public access key. <br> The default response is of type 'BazaarWeekly', but if a category is chosen, the response will be of type 'BazaarSpecialized'.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83262,7 +83262,7 @@ func (c *ClientWithResponses) GetMarketBazaarWithResponse(ctx context.Context, p
 
 // GetMarketLookupWithResponse Get all available market selections
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83277,7 +83277,7 @@ func (c *ClientWithResponses) GetMarketLookupWithResponse(ctx context.Context, p
 
 // GetMarketPointsWithResponse Get points market listings
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83292,7 +83292,7 @@ func (c *ClientWithResponses) GetMarketPointsWithResponse(ctx context.Context, p
 
 // GetMarketTimestampWithResponse Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83307,7 +83307,7 @@ func (c *ClientWithResponses) GetMarketTimestampWithResponse(ctx context.Context
 
 // GetMarketAuctionHouseItemWithResponse Get specific item auction house listings
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83322,7 +83322,7 @@ func (c *ClientWithResponses) GetMarketAuctionHouseItemWithResponse(ctx context.
 
 // GetMarketAuctionHouseListingWithResponse Get specific item auction house listings
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83337,7 +83337,7 @@ func (c *ClientWithResponses) GetMarketAuctionHouseListingWithResponse(ctx conte
 
 // GetMarketBazaarItemWithResponse Get item specialized bazaar directory
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83352,7 +83352,7 @@ func (c *ClientWithResponses) GetMarketBazaarItemWithResponse(ctx context.Contex
 
 // GetMarketItemMarketItemWithResponse Get item market listings
 //
-//	Globally cached selection. Requires public access key.
+// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83367,7 +83367,7 @@ func (c *ClientWithResponses) GetMarketItemMarketItemWithResponse(ctx context.Co
 
 // GetMarketPropertiesWithResponse Get properties market listings
 //
-//	Globally cached selection. Requires public access key.
+// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83382,7 +83382,7 @@ func (c *ClientWithResponses) GetMarketPropertiesWithResponse(ctx context.Contex
 
 // GetMarketPropertiesRentalWithResponse Get properties rental listings
 //
-//	Globally cached selection. Requires public access key.
+// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83397,7 +83397,7 @@ func (c *ClientWithResponses) GetMarketPropertiesRentalWithResponse(ctx context.
 
 // GetPropertyGenericWithResponse Get any property selection
 //
-// Requires public access key. Choose one or more selections (comma separated).
+// Requires public access key. <br>Choose one or more selections (comma separated).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83412,7 +83412,7 @@ func (c *ClientWithResponses) GetPropertyGenericWithResponse(ctx context.Context
 
 // GetPropertyLookupWithResponse Get all available property selections
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83427,7 +83427,7 @@ func (c *ClientWithResponses) GetPropertyLookupWithResponse(ctx context.Context,
 
 // GetPropertyTimestampWithResponse Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83442,7 +83442,7 @@ func (c *ClientWithResponses) GetPropertyTimestampWithResponse(ctx context.Conte
 
 // GetPropertyWithResponse Get a specific property
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83457,7 +83457,7 @@ func (c *ClientWithResponses) GetPropertyWithResponse(ctx context.Context, id Pr
 
 // GetRacingGenericWithResponse Get any Racing selection
 //
-// Requires public access key. Choose one or more selections (comma separated).
+// Requires public access key. <br>Choose one or more selections (comma separated).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83472,7 +83472,7 @@ func (c *ClientWithResponses) GetRacingGenericWithResponse(ctx context.Context, 
 
 // GetRacingCarsWithResponse Get cars and their racing stats
 //
-// Requires public access key. Returns the stat details about racing cars.
+// Requires public access key. <br>Returns the stat details about racing cars.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83487,7 +83487,7 @@ func (c *ClientWithResponses) GetRacingCarsWithResponse(ctx context.Context, par
 
 // GetRacingCarUpgradesWithResponse Get all possible car upgrades
 //
-// Requires public access key. Returns the details about all possible car upgrades.
+// Requires public access key. <br>Returns the details about all possible car upgrades.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83502,7 +83502,7 @@ func (c *ClientWithResponses) GetRacingCarUpgradesWithResponse(ctx context.Conte
 
 // GetRacingLookupWithResponse Get all available racing selections
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83517,7 +83517,7 @@ func (c *ClientWithResponses) GetRacingLookupWithResponse(ctx context.Context, p
 
 // GetRacingRacesWithResponse Get races
 //
-// Requires public access key. Returns a list of races, ordered by race start timestamp.
+// Requires public access key. <br>Returns a list of races, ordered by race start timestamp.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83532,7 +83532,7 @@ func (c *ClientWithResponses) GetRacingRacesWithResponse(ctx context.Context, pa
 
 // GetRacingTimestampWithResponse Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83547,7 +83547,7 @@ func (c *ClientWithResponses) GetRacingTimestampWithResponse(ctx context.Context
 
 // GetRacingTracksWithResponse Get race tracks and descriptions
 //
-// Requires public access key. Returns the details about racing tracks.
+// Requires public access key. <br>Returns the details about racing tracks.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83562,7 +83562,7 @@ func (c *ClientWithResponses) GetRacingTracksWithResponse(ctx context.Context, p
 
 // GetRacingRaceDetailsWithResponse Get specific race details
 //
-// Requires public access key. Returns the details of a race.
+// Requires public access key. <br>Returns the details of a race.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83577,7 +83577,7 @@ func (c *ClientWithResponses) GetRacingRaceDetailsWithResponse(ctx context.Conte
 
 // GetRacingTrackRecordsWithResponse Get track records
 //
-// Requires public access key. Returns a list of 5 best lap records for the chosen track and car class.
+// Requires public access key. <br>Returns a list of 5 best lap records for the chosen track and car class.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83592,7 +83592,7 @@ func (c *ClientWithResponses) GetRacingTrackRecordsWithResponse(ctx context.Cont
 
 // GetTornGenericWithResponse Get any Torn selection
 //
-// Requires public access key. Choose one or more selections (comma separated).
+// Requires public access key. <br> Choose one or more selections (comma separated).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83607,7 +83607,7 @@ func (c *ClientWithResponses) GetTornGenericWithResponse(ctx context.Context, pa
 
 // GetTornAttackLogWithResponse Get attack log details
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83622,7 +83622,7 @@ func (c *ClientWithResponses) GetTornAttackLogWithResponse(ctx context.Context, 
 
 // GetTornBankWithResponse Get current bank rates
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83637,7 +83637,7 @@ func (c *ClientWithResponses) GetTornBankWithResponse(ctx context.Context, param
 
 // GetTornBountiesWithResponse Get bounties
 //
-//	Globally cached selection. Requires public key.
+// <b>Globally cached selection.</b><br><br>Requires public key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83652,7 +83652,7 @@ func (c *ClientWithResponses) GetTornBountiesWithResponse(ctx context.Context, p
 
 // GetTornCalendarWithResponse Get calendar information
 //
-// Requires public access key. Get the details about competitions & events in the running year.
+// Requires public access key. <br> Get the details about competitions & events in the running year.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83667,7 +83667,7 @@ func (c *ClientWithResponses) GetTornCalendarWithResponse(ctx context.Context, p
 
 // GetTornCardsWithResponse Get casino playing cards
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83682,7 +83682,7 @@ func (c *ClientWithResponses) GetTornCardsWithResponse(ctx context.Context, para
 
 // GetTornCityShopsWithResponse Get city shops stock information
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83697,7 +83697,7 @@ func (c *ClientWithResponses) GetTornCityShopsWithResponse(ctx context.Context, 
 
 // GetTornCompaniesWithResponse Get all companies details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83712,7 +83712,7 @@ func (c *ClientWithResponses) GetTornCompaniesWithResponse(ctx context.Context, 
 
 // GetTornCrimesWithResponse Get crimes information
 //
-// Requires public access key. Return the details about released crimes.
+// Requires public access key. <br> Return the details about released crimes.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83727,7 +83727,7 @@ func (c *ClientWithResponses) GetTornCrimesWithResponse(ctx context.Context, par
 
 // GetTornEducationWithResponse Get education information
 //
-// Requires public access key.
+// Requires public access key.<br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83757,7 +83757,7 @@ func (c *ClientWithResponses) GetTornEliminationWithResponse(ctx context.Context
 
 // GetTornFactionHoFWithResponse Get faction hall of fame positions for a specific category
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83772,7 +83772,7 @@ func (c *ClientWithResponses) GetTornFactionHoFWithResponse(ctx context.Context,
 
 // GetTornFactionTreeWithResponse Get full faction tree
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83787,7 +83787,7 @@ func (c *ClientWithResponses) GetTornFactionTreeWithResponse(ctx context.Context
 
 // GetTornGymsWithResponse Get all gyms
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83802,7 +83802,7 @@ func (c *ClientWithResponses) GetTornGymsWithResponse(ctx context.Context, param
 
 // GetTornHalloweenWithResponse Get Halloween basket upgrades
 //
-// Requires minimal access key. Returns the list of available Halloween basket upgrades with their benefits, treats cost and unlock requirement.
+// Requires minimal access key. <br>Returns the list of available Halloween basket upgrades with their benefits, treats cost and unlock requirement.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83832,7 +83832,7 @@ func (c *ClientWithResponses) GetTornHoFWithResponse(ctx context.Context, params
 
 // GetTornHonorsWithResponse Get all honors
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83877,7 +83877,7 @@ func (c *ClientWithResponses) GetTornItemModsWithResponse(ctx context.Context, p
 
 // GetTornItemsWithResponse Get information about items
 //
-// Requires public key. Default category is 'All'. Details are not populated when requesting the category 'All'.
+// Requires public key.<br>Default category is 'All'.<br>Details are not populated when requesting the category 'All'.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83892,7 +83892,7 @@ func (c *ClientWithResponses) GetTornItemsWithResponse(ctx context.Context, para
 
 // GetTornLogCategoriesWithResponse Get available log categories
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83907,7 +83907,7 @@ func (c *ClientWithResponses) GetTornLogCategoriesWithResponse(ctx context.Conte
 
 // GetTornLogTypesWithResponse Get all available log ids
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83922,7 +83922,7 @@ func (c *ClientWithResponses) GetTornLogTypesWithResponse(ctx context.Context, p
 
 // GetTornLookupWithResponse Get all available torn selections
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83937,7 +83937,7 @@ func (c *ClientWithResponses) GetTornLookupWithResponse(ctx context.Context, par
 
 // GetTornMedalsWithResponse Get all medals
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83952,7 +83952,7 @@ func (c *ClientWithResponses) GetTornMedalsWithResponse(ctx context.Context, par
 
 // GetTornMeritsWithResponse Get all merits
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83967,7 +83967,7 @@ func (c *ClientWithResponses) GetTornMeritsWithResponse(ctx context.Context, par
 
 // GetTornMuseumWithResponse Get all museum sets
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83982,7 +83982,7 @@ func (c *ClientWithResponses) GetTornMuseumWithResponse(ctx context.Context, par
 
 // GetTornOrganizedCrimesWithResponse Get organized crimes information
 //
-// Requires public access key. Return the details about released faction organized crimes.
+// Requires public access key. <br> Return the details about released faction organized crimes.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -83997,7 +83997,7 @@ func (c *ClientWithResponses) GetTornOrganizedCrimesWithResponse(ctx context.Con
 
 // GetTornPokerTablesWithResponse Get active poker tables
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84012,7 +84012,7 @@ func (c *ClientWithResponses) GetTornPokerTablesWithResponse(ctx context.Context
 
 // GetTornPropertiesWithResponse Get properties details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84042,7 +84042,7 @@ func (c *ClientWithResponses) GetTornRpsWithResponse(ctx context.Context, params
 
 // GetTornSearchForCashWithResponse Get search for cash crime statuses
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84057,7 +84057,7 @@ func (c *ClientWithResponses) GetTornSearchForCashWithResponse(ctx context.Conte
 
 // GetTornShopliftingWithResponse Get shoplifting crime statuses
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84087,7 +84087,7 @@ func (c *ClientWithResponses) GetTornCityStatsWithResponse(ctx context.Context, 
 
 // GetTornStocksWithResponse Get all stocks
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84102,7 +84102,7 @@ func (c *ClientWithResponses) GetTornStocksWithResponse(ctx context.Context, par
 
 // GetTornTerritoryWithResponse Get territory details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84117,7 +84117,7 @@ func (c *ClientWithResponses) GetTornTerritoryWithResponse(ctx context.Context, 
 
 // GetTornTimestampWithResponse Get current server time
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84132,7 +84132,7 @@ func (c *ClientWithResponses) GetTornTimestampWithResponse(ctx context.Context, 
 
 // GetTornSubcrimesWithResponse Get Subcrimes information
 //
-// Requires public access key. Return the details about possible actions for a specific crime.
+// Requires public access key. <br> Return the details about possible actions for a specific crime.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84147,7 +84147,7 @@ func (c *ClientWithResponses) GetTornSubcrimesWithResponse(ctx context.Context, 
 
 // GetTornHonorsSpecificWithResponse Get specific honors
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84177,7 +84177,7 @@ func (c *ClientWithResponses) GetTornItemDetailsWithResponse(ctx context.Context
 
 // GetTornItemsSpecificWithResponse Get information about items
 //
-// Requires public key. Details are always populated when available.
+// Requires public key.<br>Details are always populated when available.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84192,7 +84192,7 @@ func (c *ClientWithResponses) GetTornItemsSpecificWithResponse(ctx context.Conte
 
 // GetTornItemStatsWithResponse Get specific item(s) stats
 //
-// Requires public key.
+// Requires public key.<br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84207,7 +84207,7 @@ func (c *ClientWithResponses) GetTornItemStatsWithResponse(ctx context.Context, 
 
 // GetTornMedalsSpecificWithResponse Get specific medals
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84237,7 +84237,7 @@ func (c *ClientWithResponses) GetTornEliminationTeamWithResponse(ctx context.Con
 
 // GetTornLogTypesSpecificWithResponse Get available log ids for a specific log category
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84252,7 +84252,7 @@ func (c *ClientWithResponses) GetTornLogTypesSpecificWithResponse(ctx context.Co
 
 // GetTornCityShopSpecificWithResponse Get stock information for a specific shop
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84267,7 +84267,7 @@ func (c *ClientWithResponses) GetTornCityShopSpecificWithResponse(ctx context.Co
 
 // GetSpecificTornStockWithResponse Get specific stock with chart history
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84282,7 +84282,7 @@ func (c *ClientWithResponses) GetSpecificTornStockWithResponse(ctx context.Conte
 
 // GetTornCompaniesSpecificWithResponse Get specific company details
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84297,7 +84297,7 @@ func (c *ClientWithResponses) GetTornCompaniesSpecificWithResponse(ctx context.C
 
 // GetUserGenericWithResponse Get any User selection
 //
-// Key access level depends on the required selections. Choose one or more selections (comma separated).
+// Key access level depends on the required selections. <br>Choose one or more selections (comma separated).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84312,7 +84312,7 @@ func (c *ClientWithResponses) GetUserGenericWithResponse(ctx context.Context, pa
 
 // GetMyAmmoWithResponse Get your ammo information
 //
-// Requires minimal key.
+// Requires minimal key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84327,7 +84327,7 @@ func (c *ClientWithResponses) GetMyAmmoWithResponse(ctx context.Context, params 
 
 // GetMyAttacksWithResponse Get your detailed attacks
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84342,7 +84342,7 @@ func (c *ClientWithResponses) GetMyAttacksWithResponse(ctx context.Context, para
 
 // GetMyAttacksSimplifiedWithResponse Get your simplified attacks
 //
-// Requires limited access key. Returns up to 1,000 rows.
+// Requires limited access key. <br>Returns up to 1,000 rows. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84357,7 +84357,7 @@ func (c *ClientWithResponses) GetMyAttacksSimplifiedWithResponse(ctx context.Con
 
 // GetMyBarsWithResponse Get your bars information
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84372,7 +84372,7 @@ func (c *ClientWithResponses) GetMyBarsWithResponse(ctx context.Context, params 
 
 // GetMyBasicInformationWithResponse Get your basic profile information
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84387,7 +84387,7 @@ func (c *ClientWithResponses) GetMyBasicInformationWithResponse(ctx context.Cont
 
 // GetMyBattlestatsWithResponse Get your battlestats
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84402,7 +84402,7 @@ func (c *ClientWithResponses) GetMyBattlestatsWithResponse(ctx context.Context, 
 
 // GetMyBountiesWithResponse Get bounties placed on you
 //
-//	Globally cached selection. Requires public access key.
+// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84417,7 +84417,7 @@ func (c *ClientWithResponses) GetMyBountiesWithResponse(ctx context.Context, par
 
 // GetMyCalendarTimeWithResponse Get your calendar events start time
 //
-// Requires minimal access key. Only available to yourself.
+// Requires minimal access key. <br>Only available to yourself.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84432,7 +84432,7 @@ func (c *ClientWithResponses) GetMyCalendarTimeWithResponse(ctx context.Context,
 
 // GetMyCasinoStreakWithResponse Get your casino streak & tokens
 //
-// Requires limited access key. Only available to yourself.
+// Requires limited access key. <br>Only available to yourself.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84462,7 +84462,7 @@ func (c *ClientWithResponses) GetMyCompetitionInfoWithResponse(ctx context.Conte
 
 // GetMyCooldownsWithResponse Get your cooldowns information
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84477,7 +84477,7 @@ func (c *ClientWithResponses) GetMyCooldownsWithResponse(ctx context.Context, pa
 
 // GetMyDiscordWithResponse Get your discord information
 //
-// Requires public key.
+// Requires public key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84492,7 +84492,7 @@ func (c *ClientWithResponses) GetMyDiscordWithResponse(ctx context.Context, para
 
 // GetMyEducationWithResponse Get your education information
 //
-// Requires minimal access key. The response contains a list of complete eduactions and of a current education (if any).
+// Requires minimal access key. <br>The response contains a list of complete eduactions and of a current education (if any).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84507,7 +84507,7 @@ func (c *ClientWithResponses) GetMyEducationWithResponse(ctx context.Context, pa
 
 // GetMyEnlistedCarsWithResponse Get your enlisted cars
 //
-// Requires minimal access key. Returns a list of all user enlisted cars.
+// Requires minimal access key. <br>Returns a list of all user enlisted cars.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84537,7 +84537,7 @@ func (c *ClientWithResponses) GetMyEquipmentWithResponse(ctx context.Context, pa
 
 // GetMyEventsWithResponse Get your events
 //
-// Requires limited access key. Unfortunately, the 'sort' parameter is not available for this selection.
+// Requires limited access key. <br> Unfortunately, the 'sort' parameter is not available for this selection.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84567,7 +84567,7 @@ func (c *ClientWithResponses) GetMyFactionWithResponse(ctx context.Context, para
 
 // GetMyForumFeedWithResponse Get updates on your threads and posts
 //
-// Requires minimal access key. This selection returns data visible in 'Feed' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
+// Requires minimal access key. <br>This selection returns data visible in 'Feed' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84582,7 +84582,7 @@ func (c *ClientWithResponses) GetMyForumFeedWithResponse(ctx context.Context, pa
 
 // GetMyForumFriendsUpdatesWithResponse Get updates on your friends' activity
 //
-// Requires minimal access key. This selection returns data visible in 'Friends' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
+// Requires minimal access key. <br>This selection returns data visible in 'Friends' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84597,7 +84597,7 @@ func (c *ClientWithResponses) GetMyForumFriendsUpdatesWithResponse(ctx context.C
 
 // GetMyForumPostsWithResponse Get your posts
 //
-// Requires public access key. Returns 20 posts per page.
+// Requires public access key. <br>Returns 20 posts per page.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84612,7 +84612,7 @@ func (c *ClientWithResponses) GetMyForumPostsWithResponse(ctx context.Context, p
 
 // GetMyForumSubscribedThreadsWithResponse Get updates on threads you subscribed to
 //
-// Requires minimal access key. This selection returns data visible in 'Subscribed Threads' section on forum page. Threads are sorted in the same way as on site.
+// Requires minimal access key. <br>This selection returns data visible in 'Subscribed Threads' section on forum page. Threads are sorted in the same way as on site.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84627,7 +84627,7 @@ func (c *ClientWithResponses) GetMyForumSubscribedThreadsWithResponse(ctx contex
 
 // GetMyForumThreadsWithResponse Get your threads
 //
-// Requires public access key. Returns 100 threads per page. The field 'new_posts' is also available, indicating the amount of unread posts with a Minimum API key (or higher).
+// Requires public access key. <br>Returns 100 threads per page. The field 'new_posts' is also available, indicating the amount of unread posts with a Minimum API key (or higher).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84642,7 +84642,7 @@ func (c *ClientWithResponses) GetMyForumThreadsWithResponse(ctx context.Context,
 
 // GetMyGymWithResponse Get your currently active gym
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84657,7 +84657,7 @@ func (c *ClientWithResponses) GetMyGymWithResponse(ctx context.Context, params *
 
 // GetMyHalloweenWithResponse Get your Halloween treats information
 //
-// Requires minimal access key. Returns your current and cumulative treats and the IDs of basket upgrades you have unlocked.
+// Requires minimal access key. <br>Returns your current and cumulative treats and the IDs of basket upgrades you have unlocked.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84672,7 +84672,7 @@ func (c *ClientWithResponses) GetMyHalloweenWithResponse(ctx context.Context, pa
 
 // GetMyHoFWithResponse Get your hall of fame rankings
 //
-// Requires public access key. When requesting selection with Limited, Full or Custom key, battle_stats selection will be populated.
+// Requires public access key. <br>When requesting selection with Limited, Full or Custom key, battle_stats selection will be populated.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84687,7 +84687,7 @@ func (c *ClientWithResponses) GetMyHoFWithResponse(ctx context.Context, params *
 
 // GetMyHonorsWithResponse Get your achieved honors
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84702,7 +84702,7 @@ func (c *ClientWithResponses) GetMyHonorsWithResponse(ctx context.Context, param
 
 // GetMyIconsWithResponse Get your icons information
 //
-// Requires public access key. When requesting data for yourself with 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
+// Requires public access key. <br> When requesting data for yourself with 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84717,7 +84717,7 @@ func (c *ClientWithResponses) GetMyIconsWithResponse(ctx context.Context, params
 
 // GetMyInventoryWithResponse Get your inventory
 //
-//	Cached selection (15 minutes per category). Requires minimal access key.
+// <b>Cached selection (15 minutes per category).</b><br><br>Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84732,7 +84732,7 @@ func (c *ClientWithResponses) GetMyInventoryWithResponse(ctx context.Context, pa
 
 // GetMyItemMarketListingsWithResponse Get your item market listings
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84747,7 +84747,7 @@ func (c *ClientWithResponses) GetMyItemMarketListingsWithResponse(ctx context.Co
 
 // GetMyItemModsInformationWithResponse Get your information about available item mods
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84777,7 +84777,7 @@ func (c *ClientWithResponses) GetMyJobWithResponse(ctx context.Context, params *
 
 // GetMyJobPointsWithResponse Get your jobpoints
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84792,7 +84792,7 @@ func (c *ClientWithResponses) GetMyJobPointsWithResponse(ctx context.Context, pa
 
 // GetMyJobRanksWithResponse Get your starter job positions
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84807,7 +84807,7 @@ func (c *ClientWithResponses) GetMyJobRanksWithResponse(ctx context.Context, par
 
 // GetMyContactsListWithResponse Get your friends, enemies or targets list
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84822,7 +84822,7 @@ func (c *ClientWithResponses) GetMyContactsListWithResponse(ctx context.Context,
 
 // GetMyLogsWithResponse Get your logs
 //
-// Requires full access key. It's possible to pass a list of log ids or a log category id. This selection is standalone and cannot be used together with other selections.
+// Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84837,7 +84837,7 @@ func (c *ClientWithResponses) GetMyLogsWithResponse(ctx context.Context, params 
 
 // GetUserLookupWithResponse Get all available user selections
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84852,7 +84852,7 @@ func (c *ClientWithResponses) GetUserLookupWithResponse(ctx context.Context, par
 
 // GetMyMedalsWithResponse Get all your achieved medals
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84867,7 +84867,7 @@ func (c *ClientWithResponses) GetMyMedalsWithResponse(ctx context.Context, param
 
 // GetMyMeritsWithResponse Get your merits
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84882,7 +84882,7 @@ func (c *ClientWithResponses) GetMyMeritsWithResponse(ctx context.Context, param
 
 // GetMyMessagesWithResponse Get your messages
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84897,7 +84897,7 @@ func (c *ClientWithResponses) GetMyMessagesWithResponse(ctx context.Context, par
 
 // GetMyMissionsWithResponse Get your current missions information
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84912,7 +84912,7 @@ func (c *ClientWithResponses) GetMyMissionsWithResponse(ctx context.Context, par
 
 // GetMyMoneyWithResponse Get your current wealth
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84927,7 +84927,7 @@ func (c *ClientWithResponses) GetMyMoneyWithResponse(ctx context.Context, params
 
 // GetMyNetworthWithResponse Get your networth
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84942,7 +84942,7 @@ func (c *ClientWithResponses) GetMyNetworthWithResponse(ctx context.Context, par
 
 // GetMyNewEventsWithResponse Get your unseen events
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84957,7 +84957,7 @@ func (c *ClientWithResponses) GetMyNewEventsWithResponse(ctx context.Context, pa
 
 // GetMyNewMessagesWithResponse Get your unseen messages
 //
-// Requires limited access key. This selection is cached for 1 hour.
+// Requires limited access key. <br>This selection is cached for 1 hour.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84972,7 +84972,7 @@ func (c *ClientWithResponses) GetMyNewMessagesWithResponse(ctx context.Context, 
 
 // GetMyNotificationsWithResponse Get your notifications
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84987,7 +84987,7 @@ func (c *ClientWithResponses) GetMyNotificationsWithResponse(ctx context.Context
 
 // GetMyOrganizedCrimeWithResponse Get your current ongoing organized crime
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85002,7 +85002,7 @@ func (c *ClientWithResponses) GetMyOrganizedCrimeWithResponse(ctx context.Contex
 
 // GetMyAvailableOrganizedCrimesWithResponse Get your available slots for organized crimes with status 'Recruiting'
 //
-// Requires minimal access key. Unlike 'faction' -> 'crimes', this selection only shows empty slots, and only for crimes with the 'Recruiting' status.
+// Requires minimal access key. <br>Unlike 'faction' -> 'crimes', this selection only shows empty slots, and only for crimes with the 'Recruiting' status.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85017,7 +85017,7 @@ func (c *ClientWithResponses) GetMyAvailableOrganizedCrimesWithResponse(ctx cont
 
 // GetMyPerksWithResponse Get your current perks
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85032,7 +85032,7 @@ func (c *ClientWithResponses) GetMyPerksWithResponse(ctx context.Context, params
 
 // GetMyPersonalStatsWithResponse Get your personal stats
 //
-// Requires public access key.
+// Requires public access key. <br>
 //   - UserPersonalStatsFull is returned only when this selection is requested with Limited, Full or Custom key access key.
 //   - UserPersonalStatsFullPublic is returned when the requested category is 'all'.
 //   - UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.
@@ -85068,7 +85068,7 @@ func (c *ClientWithResponses) GetMyProfileWithResponse(ctx context.Context, para
 
 // GetMyPropertiesWithResponse Get your own properties
 //
-// Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys.
+// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85083,7 +85083,7 @@ func (c *ClientWithResponses) GetMyPropertiesWithResponse(ctx context.Context, p
 
 // GetMyPropertyWithResponse Get your current property
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85098,7 +85098,7 @@ func (c *ClientWithResponses) GetMyPropertyWithResponse(ctx context.Context, par
 
 // GetMyRacesWithResponse Get your races
 //
-// Requires minimal access key. Returns a list of user races, ordered by race start timestamp.
+// Requires minimal access key. <br>Returns a list of user races, ordered by race start timestamp.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85113,7 +85113,7 @@ func (c *ClientWithResponses) GetMyRacesWithResponse(ctx context.Context, params
 
 // GetMyRacingRecordsWithResponse Get your current racing records
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85128,7 +85128,7 @@ func (c *ClientWithResponses) GetMyRacingRecordsWithResponse(ctx context.Context
 
 // GetMyRefillsWithResponse Get your refills information
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85143,8 +85143,8 @@ func (c *ClientWithResponses) GetMyRefillsWithResponse(ctx context.Context, para
 
 // GetMyReportsWithResponse Get your reports
 //
-// Requires limited access key.
-// The limit is set to 25 when requesting any category other than 'stats'.
+// Requires limited access key. <br>
+// The limit is set to 25 when requesting any category other than 'stats'.<br>
 // When requesting the 'stats' category, limit can be increased up to 100.
 //
 // Returns a wrapper object for the known response body format(s).
@@ -85160,7 +85160,7 @@ func (c *ClientWithResponses) GetMyReportsWithResponse(ctx context.Context, para
 
 // GetMyRevivesWithResponse Get your detailed revives
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85175,7 +85175,7 @@ func (c *ClientWithResponses) GetMyRevivesWithResponse(ctx context.Context, para
 
 // GetMyRevivesSimplifiedWithResponse Get your simplified revives
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85190,7 +85190,7 @@ func (c *ClientWithResponses) GetMyRevivesSimplifiedWithResponse(ctx context.Con
 
 // GetUsersSearchWithResponse Search users by name or other criteria
 //
-// Requires public access key. This selection is standalone and cannot be used together with other selections. It's always limited to return just 25 records.
+// Requires public access key. <br>This selection is standalone and cannot be used together with other selections.<br>It's always limited to return just 25 records.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85205,7 +85205,7 @@ func (c *ClientWithResponses) GetUsersSearchWithResponse(ctx context.Context, pa
 
 // GetMySkillsWithResponse Get your skills
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85220,7 +85220,7 @@ func (c *ClientWithResponses) GetMySkillsWithResponse(ctx context.Context, param
 
 // GetUsersSnapshotWithResponse Get daily active players snapshot CSV
 //
-// Requires public access key. Returns a CSV daily snapshot of active players. This selection is standalone and cannot be used together with other selections.
+// Requires public access key.<br>Returns a CSV daily snapshot of active players.<br>This selection is standalone and cannot be used together with other selections.<br>
 // CSV columns: id, name, gender, signed_up, level, rank, donator, faction, company, job, spouse, display_case, bazaar, fed, fed_reason, time_played, awards
 //
 // Returns a wrapper object for the known response body format(s).
@@ -85236,7 +85236,7 @@ func (c *ClientWithResponses) GetUsersSnapshotWithResponse(ctx context.Context, 
 
 // GetMyStocksWithResponse Get your stocks
 //
-// Requires limited access key.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85251,7 +85251,7 @@ func (c *ClientWithResponses) GetMyStocksWithResponse(ctx context.Context, param
 
 // GetUserTimestampWithResponse Get current server time
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85266,7 +85266,7 @@ func (c *ClientWithResponses) GetUserTimestampWithResponse(ctx context.Context, 
 
 // GetMyTradesWithResponse Get your trades
 //
-// Requires limited access key. When requesting 'ongoing' trades (default), limit/offset/sort are not being used.
+// Requires limited access key. <br> When requesting 'ongoing' trades (default), limit/offset/sort are not being used.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85281,7 +85281,7 @@ func (c *ClientWithResponses) GetMyTradesWithResponse(ctx context.Context, param
 
 // GetMyTravelInformationWithResponse Get your travel information
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85296,7 +85296,7 @@ func (c *ClientWithResponses) GetMyTravelInformationWithResponse(ctx context.Con
 
 // GetMyVirusCodingInformationWithResponse Get your virus coding information
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85311,7 +85311,7 @@ func (c *ClientWithResponses) GetMyVirusCodingInformationWithResponse(ctx contex
 
 // GetMyWeaponExpWithResponse Get your weapon experience information
 //
-// Requires minimal key.
+// Requires minimal key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85326,7 +85326,7 @@ func (c *ClientWithResponses) GetMyWeaponExpWithResponse(ctx context.Context, pa
 
 // GetMyWorkstatsWithResponse Get your working stats
 //
-// Requires minimal access key.
+// Requires minimal access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85341,7 +85341,7 @@ func (c *ClientWithResponses) GetMyWorkstatsWithResponse(ctx context.Context, pa
 
 // GetMyCrimesWithResponse Get your crime statistics
 //
-// Requires minimal access key. Return the details and statistics about for a specific crime.
+// Requires minimal access key. <br>Return the details and statistics about for a specific crime.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85356,7 +85356,7 @@ func (c *ClientWithResponses) GetMyCrimesWithResponse(ctx context.Context, crime
 
 // GetUserBasicInformationWithResponse Get basic profile information for a specific user
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85371,7 +85371,7 @@ func (c *ClientWithResponses) GetUserBasicInformationWithResponse(ctx context.Co
 
 // GetUserBountiesWithResponse Get bounties placed on a specific user
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85401,7 +85401,7 @@ func (c *ClientWithResponses) GetUserCompetitionInfoWithResponse(ctx context.Con
 
 // GetUserDiscordWithResponse Get discord information for a specific user
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85431,7 +85431,7 @@ func (c *ClientWithResponses) GetUserFactionWithResponse(ctx context.Context, id
 
 // GetUserForumPostsWithResponse Get posts for a specific player
 //
-// Requires public access key. Returns 20 posts per page for a specific player.
+// Requires public access key. <br>Returns 20 posts per page for a specific player.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85446,7 +85446,7 @@ func (c *ClientWithResponses) GetUserForumPostsWithResponse(ctx context.Context,
 
 // GetUserForumThreadsWithResponse Get threads for a specific player
 //
-// Requires public access key. Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.
+// Requires public access key. <br>Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85461,7 +85461,7 @@ func (c *ClientWithResponses) GetUserForumThreadsWithResponse(ctx context.Contex
 
 // GetUserHoFWithResponse Get hall of fame rankings for a specific player
 //
-// Requires public access key. The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.
+// Requires public access key. <br>The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85476,7 +85476,7 @@ func (c *ClientWithResponses) GetUserHoFWithResponse(ctx context.Context, id Use
 
 // GetUserIconsWithResponse Get icons information for a specific player
 //
-// Requires public access key. When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
+// Requires public access key.<br> When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85506,7 +85506,7 @@ func (c *ClientWithResponses) GetUserJobWithResponse(ctx context.Context, id Use
 
 // GetUserMedalsWithResponse Get medals achieved by a specific player
 //
-// Requires public access key. Returns only highest medal in each category (just like profiles on site).
+// Requires public access key.<br>Returns only highest medal in each category (just like profiles on site).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85521,7 +85521,7 @@ func (c *ClientWithResponses) GetUserMedalsWithResponse(ctx context.Context, id 
 
 // GetUserPersonalStatsWithResponse Get a player's personal stats
 //
-// Requires public access key.
+// Requires public access key. <br>
 //   - UserPersonalStatsFull is returned only when this selection is requested for the key owner with Limited, Full or Custom key.
 //   - UserPersonalStatsFullPublic is returned when the requested category is 'all'.
 //   - UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.
@@ -85557,7 +85557,7 @@ func (c *ClientWithResponses) GetUserProfileWithResponse(ctx context.Context, id
 
 // GetUserPropertiesWithResponse Get specific user's properties
 //
-// Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
+// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85572,7 +85572,7 @@ func (c *ClientWithResponses) GetUserPropertiesWithResponse(ctx context.Context,
 
 // GetUserPropertyWithResponse Get specific user's property
 //
-// Requires public access key.
+// Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85587,7 +85587,7 @@ func (c *ClientWithResponses) GetUserPropertyWithResponse(ctx context.Context, i
 
 // GetMyDetailedTradeWithResponse Get your detailed trade
 //
-// Requires limited access key. Only possible to get trades you participated in.
+// Requires limited access key. <br>Only possible to get trades you participated in.
 //
 // Returns a wrapper object for the known response body format(s).
 //

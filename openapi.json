@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Torn API",
-    "description": "\n * The development of Torn's API v2 is still ongoing.\n * If selections remain unaltered, they will default to the API v1 version.\n * Unlike API v1, API v2 accepts both selections and IDs as path and query parameters.\n * If any discrepancies or errors are found, please submit a bug report on the Torn Forums.\n * In case you're using bots to check for changes on openapi.json file, make sure to specificy a custom user-agent header - CloudFlare sometimes prevents requests from default user-agents.",
+    "description": "\n * The development of Torn's API v2 is still ongoing.\n * If selections remain unaltered, they will default to the API v1 version.\n * Unlike API v1, API v2 accepts both selections and IDs as path and query parameters.\n * If any discrepancies or errors are found, please submit a [bug report](https://www.torn.com/forums.php#/p=forums&f=19&b=0&a=0) on the Torn Forums.\n * In case you're using bots to check for changes on openapi.json file, make sure to specificy a custom user-agent header - CloudFlare sometimes prevents requests from default user-agents.",
     "version": "6.14.0"
   },
   "servers": [
@@ -18,7 +18,7 @@
           "User"
         ],
         "summary": "Get your ammo information",
-        "description": "Requires minimal key. ",
+        "description": "Requires minimal key. <br>",
         "operationId": "getMyAmmo",
         "parameters": [
           {
@@ -57,7 +57,7 @@
           "User"
         ],
         "summary": "Get your detailed attacks",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyAttacks",
         "parameters": [
           {
@@ -111,7 +111,7 @@
           "User"
         ],
         "summary": "Get your simplified attacks",
-        "description": "Requires limited access key. Returns up to 1,000 rows. ",
+        "description": "Requires limited access key. <br>Returns up to 1,000 rows. <br>",
         "operationId": "getMyAttacksSimplified",
         "parameters": [
           {
@@ -165,7 +165,7 @@
           "User"
         ],
         "summary": "Get your bars information",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyBars",
         "parameters": [
           {
@@ -204,7 +204,7 @@
           "User"
         ],
         "summary": "Get your basic profile information",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMyBasicInformation",
         "parameters": [
           {
@@ -246,7 +246,7 @@
           "User"
         ],
         "summary": "Get basic profile information for a specific user",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getUserBasicInformation",
         "parameters": [
           {
@@ -297,7 +297,7 @@
           "User"
         ],
         "summary": "Get your battlestats",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyBattlestats",
         "parameters": [
           {
@@ -336,7 +336,7 @@
           "User"
         ],
         "summary": "Get bounties placed on you",
-        "description": " Globally cached selection. Requires public access key. ",
+        "description": "<b>Globally cached selection.</b><br><br>Requires public access key. <br>",
         "operationId": "getMyBounties",
         "parameters": [
           {
@@ -375,7 +375,7 @@
           "User"
         ],
         "summary": "Get bounties placed on a specific user",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getUserBounties",
         "parameters": [
           {
@@ -423,7 +423,7 @@
           "User"
         ],
         "summary": "Get your calendar events start time",
-        "description": "Requires minimal access key. Only available to yourself.",
+        "description": "Requires minimal access key. <br>Only available to yourself.",
         "operationId": "getMyCalendarTime",
         "parameters": [
           {
@@ -462,7 +462,7 @@
           "User"
         ],
         "summary": "Get your casino streak & tokens",
-        "description": "Requires limited access key. Only available to yourself.",
+        "description": "Requires limited access key. <br>Only available to yourself.",
         "operationId": "getMyCasinoStreak",
         "parameters": [
           {
@@ -588,7 +588,7 @@
           "User"
         ],
         "summary": "Get your cooldowns information",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyCooldowns",
         "parameters": [
           {
@@ -627,7 +627,7 @@
           "User"
         ],
         "summary": "Get your crime statistics",
-        "description": "Requires minimal access key. Return the details and statistics about for a specific crime.",
+        "description": "Requires minimal access key. <br>Return the details and statistics about for a specific crime.",
         "operationId": "getMyCrimes",
         "parameters": [
           {
@@ -675,7 +675,7 @@
           "User"
         ],
         "summary": "Get your discord information",
-        "description": "Requires public key. ",
+        "description": "Requires public key. <br>",
         "operationId": "getMyDiscord",
         "parameters": [
           {
@@ -714,7 +714,7 @@
           "User"
         ],
         "summary": "Get discord information for a specific user",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getUserDiscord",
         "parameters": [
           {
@@ -762,7 +762,7 @@
           "User"
         ],
         "summary": "Get your education information",
-        "description": "Requires minimal access key. The response contains a list of complete eduactions and of a current education (if any).",
+        "description": "Requires minimal access key. <br>The response contains a list of complete eduactions and of a current education (if any).",
         "operationId": "getMyEducation",
         "parameters": [
           {
@@ -801,7 +801,7 @@
           "User"
         ],
         "summary": "Get your enlisted cars",
-        "description": "Requires minimal access key. Returns a list of all user enlisted cars.",
+        "description": "Requires minimal access key. <br>Returns a list of all user enlisted cars.",
         "operationId": "getMyEnlistedCars",
         "parameters": [
           {
@@ -879,7 +879,7 @@
           "User"
         ],
         "summary": "Get your events",
-        "description": "Requires limited access key. Unfortunately, the 'sort' parameter is not available for this selection.",
+        "description": "Requires limited access key. <br> Unfortunately, the 'sort' parameter is not available for this selection.",
         "operationId": "getMyEvents",
         "parameters": [
           {
@@ -1017,7 +1017,7 @@
           "User"
         ],
         "summary": "Get updates on your threads and posts",
-        "description": "Requires minimal access key. This selection returns data visible in 'Feed' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.",
+        "description": "Requires minimal access key. <br>This selection returns data visible in 'Feed' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.",
         "operationId": "getMyForumFeed",
         "parameters": [
           {
@@ -1056,7 +1056,7 @@
           "User"
         ],
         "summary": "Get updates on your friends' activity",
-        "description": "Requires minimal access key. This selection returns data visible in 'Friends' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.",
+        "description": "Requires minimal access key. <br>This selection returns data visible in 'Friends' section on forum page. Feed is sorted by timestamp descending. Only a maximum of 100 rows are returned.",
         "operationId": "getMyForumFriendsUpdates",
         "parameters": [
           {
@@ -1095,7 +1095,7 @@
           "User"
         ],
         "summary": "Get your posts",
-        "description": "Requires public access key. Returns 20 posts per page.",
+        "description": "Requires public access key. <br>Returns 20 posts per page.",
         "operationId": "getMyForumPosts",
         "parameters": [
           {
@@ -1149,7 +1149,7 @@
           "User"
         ],
         "summary": "Get posts for a specific player",
-        "description": "Requires public access key. Returns 20 posts per page for a specific player.",
+        "description": "Requires public access key. <br>Returns 20 posts per page for a specific player.",
         "operationId": "getUserForumPosts",
         "parameters": [
           {
@@ -1212,7 +1212,7 @@
           "User"
         ],
         "summary": "Get updates on threads you subscribed to",
-        "description": "Requires minimal access key. This selection returns data visible in 'Subscribed Threads' section on forum page. Threads are sorted in the same way as on site.",
+        "description": "Requires minimal access key. <br>This selection returns data visible in 'Subscribed Threads' section on forum page. Threads are sorted in the same way as on site.",
         "operationId": "getMyForumSubscribedThreads",
         "parameters": [
           {
@@ -1251,7 +1251,7 @@
           "User"
         ],
         "summary": "Get your threads",
-        "description": "Requires public access key. Returns 100 threads per page. The field 'new_posts' is also available, indicating the amount of unread posts with a Minimum API key (or higher).",
+        "description": "Requires public access key. <br>Returns 100 threads per page. The field 'new_posts' is also available, indicating the amount of unread posts with a Minimum API key (or higher).",
         "operationId": "getMyForumThreads",
         "parameters": [
           {
@@ -1302,7 +1302,7 @@
           "User"
         ],
         "summary": "Get threads for a specific player",
-        "description": "Requires public access key. Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.",
+        "description": "Requires public access key. <br>Returns 100 threads per page for a specific player. When requesting data for the key owner, a field 'new_posts' is also available, indicating the amount of unread posts. Minimum API key is required for that.",
         "operationId": "getUserForumThreads",
         "parameters": [
           {
@@ -1362,7 +1362,7 @@
           "User"
         ],
         "summary": "Get your currently active gym",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyGym",
         "parameters": [
           {
@@ -1401,7 +1401,7 @@
           "User"
         ],
         "summary": "Get your Halloween treats information",
-        "description": "Requires minimal access key. Returns your current and cumulative treats and the IDs of basket upgrades you have unlocked.",
+        "description": "Requires minimal access key. <br>Returns your current and cumulative treats and the IDs of basket upgrades you have unlocked.",
         "operationId": "getMyHalloween",
         "parameters": [
           {
@@ -1440,7 +1440,7 @@
           "User"
         ],
         "summary": "Get your hall of fame rankings",
-        "description": "Requires public access key. When requesting selection with Limited, Full or Custom key, battle_stats selection will be populated.",
+        "description": "Requires public access key. <br>When requesting selection with Limited, Full or Custom key, battle_stats selection will be populated.",
         "operationId": "getMyHoF",
         "parameters": [
           {
@@ -1479,7 +1479,7 @@
           "User"
         ],
         "summary": "Get hall of fame rankings for a specific player",
-        "description": "Requires public access key. The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.",
+        "description": "Requires public access key. <br>The battle_stats selection will be populated only when requesting selection with Limited, Full or Custom key and for yourself.",
         "operationId": "getUserHoF",
         "parameters": [
           {
@@ -1527,7 +1527,7 @@
           "User"
         ],
         "summary": "Get your achieved honors",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyHonors",
         "parameters": [
           {
@@ -1566,7 +1566,7 @@
           "User"
         ],
         "summary": "Get your icons information",
-        "description": "Requires public access key. When requesting data for yourself with 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.",
+        "description": "Requires public access key. <br> When requesting data for yourself with 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.",
         "operationId": "getMyIcons",
         "parameters": [
           {
@@ -1605,7 +1605,7 @@
           "User"
         ],
         "summary": "Get icons information for a specific player",
-        "description": "Requires public access key. When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.",
+        "description": "Requires public access key.<br> When requesting data for yourself with 'Custom', 'Limited' or 'Full' access keys, the response will be of type UserIconPrivate, otherwise UserIconPublic.",
         "operationId": "getUserIcons",
         "parameters": [
           {
@@ -1653,7 +1653,7 @@
           "User"
         ],
         "summary": "Get your inventory",
-        "description": " Cached selection (15 minutes per category). Requires minimal access key. ",
+        "description": "<b>Cached selection (15 minutes per category).</b><br><br>Requires minimal access key. <br>",
         "operationId": "getMyInventory",
         "parameters": [
           {
@@ -1707,7 +1707,7 @@
           "User"
         ],
         "summary": "Get your item market listings",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyItemMarketListings",
         "parameters": [
           {
@@ -1749,7 +1749,7 @@
           "User"
         ],
         "summary": "Get your information about available item mods",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyItemModsInformation",
         "parameters": [
           {
@@ -1875,7 +1875,7 @@
           "User"
         ],
         "summary": "Get your jobpoints",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyJobPoints",
         "parameters": [
           {
@@ -1914,7 +1914,7 @@
           "User"
         ],
         "summary": "Get your starter job positions",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyJobRanks",
         "parameters": [
           {
@@ -1953,7 +1953,7 @@
           "User"
         ],
         "summary": "Get your friends, enemies or targets list",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyContactsList",
         "parameters": [
           {
@@ -2013,7 +2013,7 @@
           "User"
         ],
         "summary": "Get your logs",
-        "description": "Requires full access key. It's possible to pass a list of log ids or a log category id. This selection is standalone and cannot be used together with other selections.",
+        "description": "Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.",
         "operationId": "getMyLogs",
         "parameters": [
           {
@@ -2096,7 +2096,7 @@
           "User"
         ],
         "summary": "Get all your achieved medals",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMyMedals",
         "parameters": [
           {
@@ -2135,7 +2135,7 @@
           "User"
         ],
         "summary": "Get medals achieved by a specific player",
-        "description": "Requires public access key. Returns only highest medal in each category (just like profiles on site).",
+        "description": "Requires public access key.<br>Returns only highest medal in each category (just like profiles on site).",
         "operationId": "getUserMedals",
         "parameters": [
           {
@@ -2183,7 +2183,7 @@
           "User"
         ],
         "summary": "Get your merits",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyMerits",
         "parameters": [
           {
@@ -2222,7 +2222,7 @@
           "User"
         ],
         "summary": "Get your messages",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyMessages",
         "parameters": [
           {
@@ -2273,7 +2273,7 @@
           "User"
         ],
         "summary": "Get your current missions information",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyMissions",
         "parameters": [
           {
@@ -2312,7 +2312,7 @@
           "User"
         ],
         "summary": "Get your current wealth",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyMoney",
         "parameters": [
           {
@@ -2351,7 +2351,7 @@
           "User"
         ],
         "summary": "Get your unseen events",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyNewEvents",
         "parameters": [
           {
@@ -2393,7 +2393,7 @@
           "User"
         ],
         "summary": "Get your networth",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyNetworth",
         "parameters": [
           {
@@ -2432,7 +2432,7 @@
           "User"
         ],
         "summary": "Get your unseen messages",
-        "description": "Requires limited access key. This selection is cached for 1 hour.",
+        "description": "Requires limited access key. <br>This selection is cached for 1 hour.",
         "operationId": "getMyNewMessages",
         "parameters": [
           {
@@ -2471,7 +2471,7 @@
           "User"
         ],
         "summary": "Get your notifications",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyNotifications",
         "parameters": [
           {
@@ -2510,7 +2510,7 @@
           "User"
         ],
         "summary": "Get your current ongoing organized crime",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyOrganizedCrime",
         "parameters": [
           {
@@ -2549,7 +2549,7 @@
           "User"
         ],
         "summary": "Get your available slots for organized crimes with status 'Recruiting'",
-        "description": "Requires minimal access key. Unlike 'faction' -> 'crimes', this selection only shows empty slots, and only for crimes with the 'Recruiting' status.",
+        "description": "Requires minimal access key. <br>Unlike 'faction' -> 'crimes', this selection only shows empty slots, and only for crimes with the 'Recruiting' status.",
         "operationId": "getMyAvailableOrganizedCrimes",
         "parameters": [
           {
@@ -2588,7 +2588,7 @@
           "User"
         ],
         "summary": "Get your current perks",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyPerks",
         "parameters": [
           {
@@ -2627,7 +2627,7 @@
           "User"
         ],
         "summary": "Get your personal stats",
-        "description": "Requires public access key. \n * UserPersonalStatsFull is returned only when this selection is requested with Limited, Full or Custom key access key.\n * UserPersonalStatsFullPublic is returned when the requested category is 'all'.\n * UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.\n * Otherwise, UserPersonalStatsCategory is returned for the matched category.\n * Historical stats can be fetched via 'stat' query parameter. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.\n * Use 'timestamp' query parameter to get historical stats at the certain point in time. It's possible some historical stats didn't exist at the given timestamp, and for such stats you will not receive anything back.",
+        "description": "Requires public access key. <br>\n * UserPersonalStatsFull is returned only when this selection is requested with Limited, Full or Custom key access key.\n * UserPersonalStatsFullPublic is returned when the requested category is 'all'.\n * UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.\n * Otherwise, UserPersonalStatsCategory is returned for the matched category.\n * Historical stats can be fetched via 'stat' query parameter. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.\n * Use 'timestamp' query parameter to get historical stats at the certain point in time. It's possible some historical stats didn't exist at the given timestamp, and for such stats you will not receive anything back.",
         "operationId": "getMyPersonalStats",
         "parameters": [
           {
@@ -2696,7 +2696,7 @@
           "User"
         ],
         "summary": "Get a player's personal stats",
-        "description": "Requires public access key. \n * UserPersonalStatsFull is returned only when this selection is requested for the key owner with Limited, Full or Custom key.\n * UserPersonalStatsFullPublic is returned when the requested category is 'all'.\n * UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.\n * Otherwise, UserPersonalStatsCategory is returned for the matched category.\n * It's possible to request specific stats via 'stat' parameter. In this case the response will vary depending on the stats requested. Private stats are still available only to the key owner (with Limited or higher key).\n * Additionally, historical stats can also be fetched via 'stat' query parameter, but 'timestamp' parameter must be provided as well. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.",
+        "description": "Requires public access key. <br>\n *  UserPersonalStatsFull is returned only when this selection is requested for the key owner with Limited, Full or Custom key.\n *  UserPersonalStatsFullPublic is returned when the requested category is 'all'.\n *  UserPersonalStatsPopular is returned when the requested category is 'popular'. Please try to use UserPersonalStatsPopular over UserPersonalStatsFullPublic wherever possible in order to reduce the server load.\n *  Otherwise, UserPersonalStatsCategory is returned for the matched category.\n *  It's possible to request specific stats via 'stat' parameter. In this case the response will vary depending on the stats requested. Private stats are still available only to the key owner (with Limited or higher key).\n *  Additionally, historical stats can also be fetched via 'stat' query parameter, but 'timestamp' parameter must be provided as well. It's only possible to pass up to 10 historical stats at once (the rest is trimmed). When requesting historical stats the response will be of type UserPersonalStatsHistoric.",
         "operationId": "getUserPersonalStats",
         "parameters": [
           {
@@ -2867,7 +2867,7 @@
           "User"
         ],
         "summary": "Get your own properties",
-        "description": "Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys.",
+        "description": "Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys.",
         "operationId": "getMyProperties",
         "parameters": [
           {
@@ -2915,7 +2915,7 @@
           "User"
         ],
         "summary": "Get specific user's properties",
-        "description": "Requires public access key. Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.",
+        "description": "Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.",
         "operationId": "getUserProperties",
         "parameters": [
           {
@@ -2972,7 +2972,7 @@
           "User"
         ],
         "summary": "Get your current property",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMyProperty",
         "parameters": [
           {
@@ -3011,7 +3011,7 @@
           "User"
         ],
         "summary": "Get specific user's property",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getUserProperty",
         "parameters": [
           {
@@ -3059,7 +3059,7 @@
           "User"
         ],
         "summary": "Get your races",
-        "description": "Requires minimal access key. Returns a list of user races, ordered by race start timestamp.",
+        "description": "Requires minimal access key. <br>Returns a list of user races, ordered by race start timestamp.",
         "operationId": "getMyRaces",
         "parameters": [
           {
@@ -3119,7 +3119,7 @@
           "User"
         ],
         "summary": "Get your current racing records",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyRacingRecords",
         "parameters": [
           {
@@ -3158,7 +3158,7 @@
           "User"
         ],
         "summary": "Get your refills information",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyRefills",
         "parameters": [
           {
@@ -3197,7 +3197,7 @@
           "User"
         ],
         "summary": "Get your reports",
-        "description": "Requires limited access key. \nThe limit is set to 25 when requesting any category other than 'stats'. \nWhen requesting the 'stats' category, limit can be increased up to 100.",
+        "description": "Requires limited access key. <br>\nThe limit is set to 25 when requesting any category other than 'stats'.<br>\nWhen requesting the 'stats' category, limit can be increased up to 100.",
         "operationId": "getMyReports",
         "parameters": [
           {
@@ -3263,7 +3263,7 @@
           "User"
         ],
         "summary": "Get your detailed revives",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyRevives",
         "parameters": [
           {
@@ -3320,7 +3320,7 @@
           "User"
         ],
         "summary": "Get your simplified revives",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyRevivesSimplified",
         "parameters": [
           {
@@ -3377,7 +3377,7 @@
           "User"
         ],
         "summary": "Get your skills",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMySkills",
         "parameters": [
           {
@@ -3416,7 +3416,7 @@
           "User"
         ],
         "summary": "Search users by name or other criteria",
-        "description": "Requires public access key. This selection is standalone and cannot be used together with other selections. It's always limited to return just 25 records.",
+        "description": "Requires public access key. <br>This selection is standalone and cannot be used together with other selections.<br>It's always limited to return just 25 records.",
         "operationId": "getUsersSearch",
         "parameters": [
           {
@@ -3470,7 +3470,7 @@
           "User"
         ],
         "summary": "Get daily active players snapshot CSV",
-        "description": "Requires public access key. Returns a CSV daily snapshot of active players. This selection is standalone and cannot be used together with other selections. \nCSV columns: id, name, gender, signed_up, level, rank, donator, faction, company, job, spouse, display_case, bazaar, fed, fed_reason, time_played, awards",
+        "description": "Requires public access key.<br>Returns a CSV daily snapshot of active players.<br>This selection is standalone and cannot be used together with other selections.<br>\nCSV columns: id, name, gender, signed_up, level, rank, donator, faction, company, job, spouse, display_case, bazaar, fed, fed_reason, time_played, awards",
         "operationId": "getUsersSnapshot",
         "parameters": [
           {
@@ -3510,7 +3510,7 @@
           "User"
         ],
         "summary": "Get your stocks",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyStocks",
         "parameters": [
           {
@@ -3549,7 +3549,7 @@
           "User"
         ],
         "summary": "Get your trades",
-        "description": "Requires limited access key. When requesting 'ongoing' trades (default), limit/offset/sort are not being used.",
+        "description": "Requires limited access key. <br> When requesting 'ongoing' trades (default), limit/offset/sort are not being used.",
         "operationId": "getMyTrades",
         "parameters": [
           {
@@ -3609,7 +3609,7 @@
           "User"
         ],
         "summary": "Get your detailed trade",
-        "description": "Requires limited access key. Only possible to get trades you participated in.",
+        "description": "Requires limited access key. <br>Only possible to get trades you participated in.",
         "operationId": "getMyDetailedTrade",
         "parameters": [
           {
@@ -3657,7 +3657,7 @@
           "User"
         ],
         "summary": "Get your travel information",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyTravelInformation",
         "parameters": [
           {
@@ -3696,7 +3696,7 @@
           "User"
         ],
         "summary": "Get your virus coding information",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyVirusCodingInformation",
         "parameters": [
           {
@@ -3735,7 +3735,7 @@
           "User"
         ],
         "summary": "Get your weapon experience information",
-        "description": "Requires minimal key. ",
+        "description": "Requires minimal key. <br>",
         "operationId": "getMyWeaponExp",
         "parameters": [
           {
@@ -3774,7 +3774,7 @@
           "User"
         ],
         "summary": "Get your working stats",
-        "description": "Requires minimal access key. ",
+        "description": "Requires minimal access key. <br>",
         "operationId": "getMyWorkstats",
         "parameters": [
           {
@@ -3813,7 +3813,7 @@
           "User"
         ],
         "summary": "Get all available user selections",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getUserLookup",
         "parameters": [
           {
@@ -3852,7 +3852,7 @@
           "User"
         ],
         "summary": "Get current server time",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getUserTimestamp",
         "parameters": [
           {
@@ -3891,7 +3891,7 @@
           "User"
         ],
         "summary": "Get any User selection",
-        "description": "Key access level depends on the required selections. Choose one or more selections (comma separated).",
+        "description": "Key access level depends on the required selections. <br>Choose one or more selections (comma separated).",
         "operationId": "getUserGeneric",
         "parameters": [
           {
@@ -4245,7 +4245,7 @@
           "Faction"
         ],
         "summary": "Get your faction's applications",
-        "description": "Requires minimal access key with faction API access permissions. ",
+        "description": "Requires minimal access key with faction API access permissions. <br>",
         "operationId": "getMyFactionApplications",
         "parameters": [
           {
@@ -4284,7 +4284,7 @@
           "Faction"
         ],
         "summary": "Get your faction's detailed attacks",
-        "description": "Requires limited access key with faction API access permissions. ",
+        "description": "Requires limited access key with faction API access permissions. <br>",
         "operationId": "getMyFactionAttacks",
         "parameters": [
           {
@@ -4338,7 +4338,7 @@
           "Faction"
         ],
         "summary": "Get your faction's simplified attacks",
-        "description": "Requires limited access key with faction API access permissions. ",
+        "description": "Requires limited access key with faction API access permissions. <br>",
         "operationId": "getMyFactionAttacksSimplified",
         "parameters": [
           {
@@ -4392,7 +4392,7 @@
           "Faction"
         ],
         "summary": "Get your faction's & member's balance details",
-        "description": "Requires limited access key with faction API access permissions. ",
+        "description": "Requires limited access key with faction API access permissions. <br>",
         "operationId": "getMyFactionBalance",
         "parameters": [
           {
@@ -4444,7 +4444,7 @@
           "Faction"
         ],
         "summary": "Get your faction's basic details",
-        "description": "Requires public access key. The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.",
+        "description": "Requires public access key. <br> The 'is_enlisted' value will be populated if you have API faction permissions (with custom, limited or full access keys), otherwise it will be set as null.",
         "operationId": "getMyFactionBasicInformation",
         "parameters": [
           {
@@ -4483,7 +4483,7 @@
           "Faction"
         ],
         "summary": "Get a faction's basic details",
-        "description": "Requires public access key. The 'is_enlisted' value will be populated if you're requesting data for your faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as null.",
+        "description": "Requires public access key. <br> The 'is_enlisted' value will be populated if you're requesting data for your faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as null.",
         "operationId": "getFactionBasicInformation",
         "parameters": [
           {
@@ -4531,7 +4531,7 @@
           "Faction"
         ],
         "summary": "Get your faction's current chain",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMyFactionChain",
         "parameters": [
           {
@@ -4570,7 +4570,7 @@
           "Faction"
         ],
         "summary": "Get a faction's current chain",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getFactionChain",
         "parameters": [
           {
@@ -4618,7 +4618,7 @@
           "Faction"
         ],
         "summary": "Get a list of your faction's completed chains",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMyFactionCompletedChains",
         "parameters": [
           {
@@ -4669,7 +4669,7 @@
           "Faction"
         ],
         "summary": "Get a list of a faction's completed chains",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getFactionCompletedChains",
         "parameters": [
           {
@@ -4729,7 +4729,7 @@
           "Faction"
         ],
         "summary": "Get your faction's latest chain report",
-        "description": "Requires public access key. This includes currently ongoing chains.",
+        "description": "Requires public access key. <br> This includes currently ongoing chains.",
         "operationId": "getMyFactionLatestChainReport",
         "parameters": [
           {
@@ -4768,7 +4768,7 @@
           "Faction"
         ],
         "summary": "Get a chain report",
-        "description": "Requires public access key. Chain reports for ongoing chains are available only for your own faction.",
+        "description": "Requires public access key. <br> Chain reports for ongoing chains are available only for your own faction.",
         "operationId": "getChainReport",
         "parameters": [
           {
@@ -4816,7 +4816,7 @@
           "Faction"
         ],
         "summary": "Get your faction's challenge contributors",
-        "description": "Requires limiteed access key with faction API access permissions. ",
+        "description": "Requires limiteed access key with faction API access permissions. <br>",
         "operationId": "getMyFactionContributors",
         "parameters": [
           {
@@ -4877,7 +4877,7 @@
           "Faction"
         ],
         "summary": "Get your faction members crime experience",
-        "description": "Requires minimal access key. Members are ordered descending, from highest crime experience to lowest.",
+        "description": "Requires minimal access key. <br>Members are ordered descending, from highest crime experience to lowest.",
         "operationId": "getMyFactionCrimeExp",
         "parameters": [
           {
@@ -4916,13 +4916,13 @@
           "Faction"
         ],
         "summary": "Get your faction's organized crimes",
-        "description": "Requires minimal access key with faction API access permissions. It's possible to get older entries either by timestamp range (from, to) or with offset. Crimes are ordered depending on the category chosen:\n * For categories 'all' & 'available', the ordering field is 'created_at'.\n * For categories 'successful', 'failed' & 'completed', the ordering field is 'executed_at'.\n * For categories 'recruiting' & 'expired', the ordering field is 'expired_at'.\n * For category 'planning', the ordering field is 'ready_at'.",
+        "description": "Requires minimal access key with faction API access permissions. <br> It's possible to get older entries either by timestamp range (from, to) or with offset.<br> Crimes are ordered depending on the category chosen:\n * For categories 'all' & 'available', the ordering field is 'created_at'.\n * For categories 'successful', 'failed' & 'completed', the ordering field is 'executed_at'.\n * For categories 'recruiting' & 'expired', the ordering field is 'expired_at'.\n * For category 'planning', the ordering field is 'ready_at'.",
         "operationId": "getMyFactionOrganizedCrimes",
         "parameters": [
           {
             "name": "cat",
             "in": "query",
-            "description": "Category of organized crimes returned. Category 'available' includes both 'recruiting' & 'planning', and category 'completed' includes both 'successful' & 'failure' Default category is 'all'.",
+            "description": "Category of organized crimes returned. Category 'available' includes both 'recruiting' & 'planning', and category 'completed' includes both 'successful' & 'failure'<br>Default category is 'all'.",
             "required": false,
             "schema": {
               "type": "string",
@@ -5004,7 +5004,7 @@
           "Faction"
         ],
         "summary": "Get a specific organized crime",
-        "description": "Requires minimal access key with faction API access permissions. ",
+        "description": "Requires minimal access key with faction API access permissions. <br>",
         "operationId": "getMyFactionOrganizedCrime",
         "parameters": [
           {
@@ -5052,7 +5052,7 @@
           "Faction"
         ],
         "summary": "Get all dirty bombs",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getWarfareDirtyBombs",
         "parameters": [
           {
@@ -5091,7 +5091,7 @@
           "Faction"
         ],
         "summary": "Get your faction's hall of fame rankings.",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br> ",
         "operationId": "getMyFactionHoF",
         "parameters": [
           {
@@ -5130,7 +5130,7 @@
           "Faction"
         ],
         "summary": "Get a faction's hall of fame rankings.",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br> ",
         "operationId": "getFactionHoF",
         "parameters": [
           {
@@ -5178,7 +5178,7 @@
           "Faction"
         ],
         "summary": "Get your faction's inventory items.",
-        "description": " Cached selection (5 minutes, all items cached at once). Requires limited access key. ",
+        "description": "<b>Cached selection (5 minutes, all items cached at once).</b><br><br>Requires limited access key. <br> ",
         "operationId": "getMyFactionInventory",
         "parameters": [
           {
@@ -5232,7 +5232,7 @@
           "Faction"
         ],
         "summary": "Get a list of your faction's members",
-        "description": "Requires public access key. The 'revive_setting' value will be populated (not Unknown) if you have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.",
+        "description": "Requires public access key. <br> The 'revive_setting' value will be populated (not Unknown) if you have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.",
         "operationId": "getMyFactionMembers",
         "parameters": [
           {
@@ -5274,7 +5274,7 @@
           "Faction"
         ],
         "summary": "Get a list of a faction's members",
-        "description": "Requires public access key. The 'revive_setting' value will be populated (not Unknown) if you're requesting data for your own faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.",
+        "description": "Requires public access key. <br> The 'revive_setting' value will be populated (not Unknown) if you're requesting data for your own faction and have faction permissions (with custom, limited or full access keys), otherwise it will be set as 'Unknown'.",
         "operationId": "getFactionMembers",
         "parameters": [
           {
@@ -5325,7 +5325,7 @@
           "Faction"
         ],
         "summary": "Get your faction's news details",
-        "description": "Requires minimal access key with faction API access permissions. It is possible to pass up to 10 categories at the time (comma separated). Categories 'attack', 'depositFunds' and 'giveFunds' are only available with 'Custom', 'Limited' or 'Full' access keys.",
+        "description": "Requires minimal access key with faction API access permissions. <br> It is possible to pass up to 10 categories at the time (comma separated). Categories 'attack', 'depositFunds' and 'giveFunds' are only available with 'Custom', 'Limited' or 'Full' access keys.",
         "operationId": "getMyFactionNews",
         "parameters": [
           {
@@ -5388,7 +5388,7 @@
           "Faction"
         ],
         "summary": "Get your faction's positions details",
-        "description": "Requires minimal access key with faction API access permissions. ",
+        "description": "Requires minimal access key with faction API access permissions. <br>",
         "operationId": "getMyFactionPositions",
         "parameters": [
           {
@@ -5427,7 +5427,7 @@
           "Faction"
         ],
         "summary": "Get a list of current rackets",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getFactionRackets",
         "parameters": [
           {
@@ -5466,7 +5466,7 @@
           "Faction"
         ],
         "summary": "Get raid war details",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br> ",
         "operationId": "getRaidReport",
         "parameters": [
           {
@@ -5514,7 +5514,7 @@
           "Faction"
         ],
         "summary": "Get raids history for your faction",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMyFactionRaidsHistory",
         "parameters": [
           {
@@ -5565,7 +5565,7 @@
           "Faction"
         ],
         "summary": "Get a faction's raids history",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br> ",
         "operationId": "getFactionRaidsHistory",
         "parameters": [
           {
@@ -5625,7 +5625,7 @@
           "Faction"
         ],
         "summary": "Get ranked wars history for your faction",
-        "description": "Requires public access key. Use offset to get older results which are always ordered descending.",
+        "description": "Requires public access key. <br> Use offset to get older results which are always ordered descending.",
         "operationId": "getMyFactionRankedWarsHistory",
         "parameters": [
           {
@@ -5682,7 +5682,7 @@
           "Faction"
         ],
         "summary": "Get a faction's ranked wars history",
-        "description": "Requires public access key. Use offset to get older results which are always ordered descending.",
+        "description": "Requires public access key. <br> Use offset to get older results which are always ordered descending.",
         "operationId": "getFactionRankedWarsHistory",
         "parameters": [
           {
@@ -5736,7 +5736,7 @@
           "Faction"
         ],
         "summary": "Get ranked war details",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br> ",
         "operationId": "getRankedWarReport",
         "parameters": [
           {
@@ -5784,7 +5784,7 @@
           "Faction"
         ],
         "summary": "Get faction reports",
-        "description": "Requires limited access key. \nThe limit is set to 25 when requesting any category other than 'stats'. \nWhen requesting the 'stats' category, limit can be increased up to 100.",
+        "description": "Requires limited access key. <br>\nThe limit is set to 25 when requesting any category other than 'stats'.<br>\nWhen requesting the 'stats' category, limit can be increased up to 100.",
         "operationId": "getMyFactionReports",
         "parameters": [
           {
@@ -5850,7 +5850,7 @@
           "Faction"
         ],
         "summary": "Get your faction's detailed revives",
-        "description": "Requires limited access key with faction API access permissions. ",
+        "description": "Requires limited access key with faction API access permissions. <br>",
         "operationId": "getMyFactionRevives",
         "parameters": [
           {
@@ -5907,7 +5907,7 @@
           "Faction"
         ],
         "summary": "Get your faction's simplified revives",
-        "description": "Requires limited access key with faction API access permissions. ",
+        "description": "Requires limited access key with faction API access permissions. <br>",
         "operationId": "getMyFactionRevivesSimplified",
         "parameters": [
           {
@@ -5964,7 +5964,7 @@
           "Faction"
         ],
         "summary": "Search factions by name or other criteria",
-        "description": "Requires public access key. This selection is standalone and cannot be used together with other selections.",
+        "description": "Requires public access key. <br>This selection is standalone and cannot be used together with other selections.",
         "operationId": "getFactionSearch",
         "parameters": [
           {
@@ -6015,7 +6015,7 @@
           "Faction"
         ],
         "summary": "Get daily factions snapshot CSV",
-        "description": "Requires public access key. Returns a CSV daily snapshot of factions. This selection is standalone and cannot be used together with other selections. \nCSV columns: id, name, tag, tag_image, banner_image, leader_id, co_leader_id, respect, days_old, rank, members, members_max, member_list, recruiting, destroyed_timestamp",
+        "description": "Requires public access key.<br>Returns a CSV daily snapshot of factions.<br>This selection is standalone and cannot be used together with other selections.<br>\nCSV columns: id, name, tag, tag_image, banner_image, leader_id, co_leader_id, respect, days_old, rank, members, members_max, member_list, recruiting, destroyed_timestamp",
         "operationId": "getFactionsSnapshot",
         "parameters": [
           {
@@ -6055,7 +6055,7 @@
           "Faction"
         ],
         "summary": "Get your faction's challenges stats",
-        "description": "Requires minimal access key with faction API access permissions. ",
+        "description": "Requires minimal access key with faction API access permissions. <br>",
         "operationId": "getMyFactionStats",
         "parameters": [
           {
@@ -6094,7 +6094,7 @@
           "Faction"
         ],
         "summary": "Get a list of your faction's territories",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMyFactionTerritory",
         "parameters": [
           {
@@ -6133,7 +6133,7 @@
           "Faction"
         ],
         "summary": "Get a list of a faction's territories",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getFactionTerritory",
         "parameters": [
           {
@@ -6181,7 +6181,7 @@
           "Faction"
         ],
         "summary": "Get a list territory ownership",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTerritoryOwnership",
         "parameters": [
           {
@@ -6226,7 +6226,7 @@
           "Faction"
         ],
         "summary": "Get territory wars history for your faction",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMyFactionTerritoryWarsHistory",
         "parameters": [
           {
@@ -6277,7 +6277,7 @@
           "Faction"
         ],
         "summary": "Get a faction's territory wars history",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br> ",
         "operationId": "getFactionTerritoryWarsHistory",
         "parameters": [
           {
@@ -6337,7 +6337,7 @@
           "Faction"
         ],
         "summary": "Get territory war details",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br> ",
         "operationId": "getTerritoryWarReport",
         "parameters": [
           {
@@ -6385,7 +6385,7 @@
           "Faction"
         ],
         "summary": "Get your faction's upgrades",
-        "description": "Requires minimal access key with faction API access permissions. ",
+        "description": "Requires minimal access key with faction API access permissions. <br>",
         "operationId": "getMyFactionUpgrades",
         "parameters": [
           {
@@ -6424,7 +6424,7 @@
           "Faction"
         ],
         "summary": "Get all chains",
-        "description": "Requires public access key. By default, active chains are returned.",
+        "description": "Requires public access key. <br>By default, active chains are returned.",
         "operationId": "getWarfareChains",
         "parameters": [
           {
@@ -6487,7 +6487,7 @@
           "Faction"
         ],
         "summary": "Get all raids",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getWarfareRaids",
         "parameters": [
           {
@@ -6538,7 +6538,7 @@
           "Faction"
         ],
         "summary": "Get all ranked wars",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getWarfareRankedWars",
         "parameters": [
           {
@@ -6589,7 +6589,7 @@
           "Faction"
         ],
         "summary": "Get all territory wars",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getWarfareTerritoryWars",
         "parameters": [
           {
@@ -6640,7 +6640,7 @@
           "Faction"
         ],
         "summary": "Get faction warfare",
-        "description": "This selection is replaced by other warfare selections and 'faction' -> 'dirtybombs'. This will be removed on 1st January 2027. Requires public access key. The response depends on the selected category.",
+        "description": "This selection is replaced by other warfare selections and 'faction' -> 'dirtybombs'.<br>This will be removed on 1st January 2027<b></b>.<br>Requires public access key. <br>The response depends on the selected category.",
         "operationId": "getWarfare",
         "parameters": [
           {
@@ -6700,7 +6700,7 @@
           "Faction"
         ],
         "summary": "Get your faction's wars & pacts details",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br> ",
         "operationId": "getMyFactionWars",
         "parameters": [
           {
@@ -6739,7 +6739,7 @@
           "Faction"
         ],
         "summary": "Get a faction's wars & pacts details",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br> ",
         "operationId": "getFactionWars",
         "parameters": [
           {
@@ -6786,7 +6786,7 @@
         "tags": [
           "Faction"
         ],
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getFactionLookup",
         "parameters": [
           {
@@ -6825,7 +6825,7 @@
           "Faction"
         ],
         "summary": "Get current server time",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getFactionTimestamp",
         "parameters": [
           {
@@ -6864,7 +6864,7 @@
           "Faction"
         ],
         "summary": "Get any Faction selection",
-        "description": "Key access level depends on the required selections. Choose one or more selections (comma separated).",
+        "description": "Key access level depends on the required selections. <br> Choose one or more selections (comma separated).",
         "operationId": "getFactionGeneric",
         "parameters": [
           {
@@ -7168,7 +7168,7 @@
           "Company"
         ],
         "summary": "Get your company's applications",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyCompanyApplications",
         "parameters": [
           {
@@ -7207,7 +7207,7 @@
           "Company"
         ],
         "summary": "Get my company's employees",
-        "description": "Requires public access key. When using Limited, Custom or Full access API keys, the response will be: \n * for director: CompanyEmployeeFull\n * for employee: CompanyEmployeeExtended\n * anyone else: CompanyEmployee.",
+        "description": "Requires public access key. <br>When using Limited, Custom or Full access API keys, the response will be:<br>\n * for director: CompanyEmployeeFull\n * for employee: CompanyEmployeeExtended\n * anyone else: CompanyEmployee.",
         "operationId": "getMyCompanyEmployees",
         "parameters": [
           {
@@ -7300,7 +7300,7 @@
           "Company"
         ],
         "summary": "Get your company's news details",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyCompanyNews",
         "parameters": [
           {
@@ -7363,7 +7363,7 @@
           "Company"
         ],
         "summary": "Get a list of companies for a specific company type",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getCompaniesList",
         "parameters": [
           {
@@ -7420,7 +7420,7 @@
           "Company"
         ],
         "summary": "Get my company's profile",
-        "description": "Requires public access key. When using Limited, Custom or Full access API keys, the response will be of type CompanyProfileExtended, otherwise it will be CompanyProfile.",
+        "description": "Requires public access key. <br>When using Limited, Custom or Full access API keys, the response will be of type CompanyProfileExtended, otherwise it will be CompanyProfile.",
         "operationId": "getMyCompanyProfile",
         "parameters": [
           {
@@ -7513,7 +7513,7 @@
           "Company"
         ],
         "summary": "Search companies by name or other criteria",
-        "description": "Requires public access key. This selection is standalone and cannot be used together with other selections.",
+        "description": "Requires public access key. <br>This selection is standalone and cannot be used together with other selections.",
         "operationId": "getCompaniesSearch",
         "parameters": [
           {
@@ -7564,7 +7564,7 @@
           "Company"
         ],
         "summary": "Get daily companies snapshot CSV",
-        "description": "Requires public access key. Returns a CSV daily snapshot of companies. This selection is standalone and cannot be used together with other selections. \nCSV columns: id, name, created_at, days_old, image, type, rating, director_id,\nemployees_hired, employees_capacity, daily_income, daily_customers,\nweekly_income, weekly_customers, applications_allowed",
+        "description": "Requires public access key.<br>Returns a CSV daily snapshot of companies.<br>This selection is standalone and cannot be used together with other selections.<br>\nCSV columns: id, name, created_at, days_old, image, type, rating, director_id,\nemployees_hired, employees_capacity, daily_income, daily_customers,\nweekly_income, weekly_customers, applications_allowed",
         "operationId": "getCompaniesSnapshot",
         "parameters": [
           {
@@ -7604,7 +7604,7 @@
           "Company"
         ],
         "summary": "Get your company's stock",
-        "description": "Requires limited access key. ",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyCompanyStock",
         "parameters": [
           {
@@ -7642,7 +7642,7 @@
         "tags": [
           "Company"
         ],
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getCompanyLookup",
         "parameters": [
           {
@@ -7681,7 +7681,7 @@
           "Company"
         ],
         "summary": "Get current server time",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getCompanyTimestamp",
         "parameters": [
           {
@@ -7720,7 +7720,7 @@
           "Company"
         ],
         "summary": "Get any Company selection",
-        "description": "Key access level depends on the required selections. Choose one or more selections (comma separated).",
+        "description": "Key access level depends on the required selections. <br> Choose one or more selections (comma separated).",
         "operationId": "getCompanyGeneric",
         "parameters": [
           {
@@ -7850,7 +7850,7 @@
           "Forum"
         ],
         "summary": "Get publicly available forum categories",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getForumCategories",
         "parameters": [
           {
@@ -7889,7 +7889,7 @@
           "Forum"
         ],
         "summary": "Get specific forum thread posts",
-        "description": "Requires public access key. Returns 20 posts per page for a specific thread. By default, it uses 'offset', but it's possible to filter posts with 'from' & 'to' parameters.",
+        "description": "Requires public access key. <br>Returns 20 posts per page for a specific thread. <br> By default, it uses 'offset', but it's possible to filter posts with 'from' & 'to' parameters.",
         "operationId": "getForumThreadPosts",
         "parameters": [
           {
@@ -7952,7 +7952,7 @@
           "Forum"
         ],
         "summary": "Get specific thread details",
-        "description": "Requires public access key. Contains details of a thread including topic content and poll (if any).",
+        "description": "Requires public access key. <br>Contains details of a thread including topic content and poll (if any).",
         "operationId": "getForumThread",
         "parameters": [
           {
@@ -8000,7 +8000,7 @@
           "Forum"
         ],
         "summary": "Get threads across all forum categories",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getForumAllThreads",
         "parameters": [
           {
@@ -8051,7 +8051,7 @@
           "Forum"
         ],
         "summary": "Get threads for specific public forum category or categories",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getForumThreads",
         "parameters": [
           {
@@ -8116,7 +8116,7 @@
           "Forum"
         ],
         "summary": "Get all available forum selections",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getForumLookup",
         "parameters": [
           {
@@ -8155,7 +8155,7 @@
           "Forum"
         ],
         "summary": "Get current server time",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getForumTimestamp",
         "parameters": [
           {
@@ -8194,7 +8194,7 @@
           "Forum"
         ],
         "summary": "Get any Forum selection",
-        "description": "Requires public access key. Choose one or more selections (comma separated).",
+        "description": "Requires public access key. <br>Choose one or more selections (comma separated).",
         "operationId": "getForumGeneric",
         "parameters": [
           {
@@ -8303,7 +8303,7 @@
           "Key"
         ],
         "summary": "Get current key log history",
-        "description": "Available for any key. \n * This selection contains up to last 250 request logs.",
+        "description": "Available for any key. <br>\n * This selection contains up to last 250 request logs.",
         "operationId": "getKeyLog",
         "parameters": [
           {
@@ -8348,7 +8348,7 @@
           "Key"
         ],
         "summary": "Get current key info",
-        "description": "Available for any key. ",
+        "description": "Available for any key. <br>",
         "operationId": "getKeyInfo",
         "parameters": [
           {
@@ -8452,7 +8452,7 @@
           "Market"
         ],
         "summary": "Get specific item auction house listings",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMarketAuctionHouseListing",
         "parameters": [
           {
@@ -8500,7 +8500,7 @@
           "Market"
         ],
         "summary": "Get specific item auction house listings",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMarketAuctionHouseItem",
         "parameters": [
           {
@@ -8560,7 +8560,7 @@
           "Market"
         ],
         "summary": "Get auction house listings",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMarketAuctionHouse",
         "parameters": [
           {
@@ -8611,7 +8611,7 @@
           "Market"
         ],
         "summary": "Get bazaar directory",
-        "description": "Requires public access key. The default response is of type 'BazaarWeekly', but if a category is chosen, the response will be of type 'BazaarSpecialized'.",
+        "description": "Requires public access key. <br> The default response is of type 'BazaarWeekly', but if a category is chosen, the response will be of type 'BazaarSpecialized'.",
         "operationId": "getMarketBazaar",
         "parameters": [
           {
@@ -8659,7 +8659,7 @@
           "Market"
         ],
         "summary": "Get item specialized bazaar directory",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMarketBazaarItem",
         "parameters": [
           {
@@ -8707,7 +8707,7 @@
           "Market"
         ],
         "summary": "Get item market listings",
-        "description": " Globally cached selection. Requires public access key. ",
+        "description": "<b>Globally cached selection.</b><br><br>Requires public access key. <br>",
         "operationId": "getMarketItemMarketItem",
         "parameters": [
           {
@@ -8770,7 +8770,7 @@
           "Market"
         ],
         "summary": "Get properties market listings",
-        "description": " Globally cached selection. Requires public access key. ",
+        "description": "<b>Globally cached selection.</b><br><br>Requires public access key. <br>",
         "operationId": "getMarketProperties",
         "parameters": [
           {
@@ -8827,7 +8827,7 @@
           "Market"
         ],
         "summary": "Get points market listings",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMarketPoints",
         "parameters": [
           {
@@ -8866,7 +8866,7 @@
           "Market"
         ],
         "summary": "Get properties rental listings",
-        "description": " Globally cached selection. Requires public access key. ",
+        "description": "<b>Globally cached selection.</b><br><br>Requires public access key. <br>",
         "operationId": "getMarketPropertiesRental",
         "parameters": [
           {
@@ -8923,7 +8923,7 @@
           "Market"
         ],
         "summary": "Get all available market selections",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMarketLookup",
         "parameters": [
           {
@@ -8962,7 +8962,7 @@
           "Market"
         ],
         "summary": "Get current server time",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getMarketTimestamp",
         "parameters": [
           {
@@ -9001,7 +9001,7 @@
           "Market"
         ],
         "summary": "Get any Market selection",
-        "description": "Requires public access key. Choose one or more selections (comma separated).",
+        "description": "Requires public access key. <br>Choose one or more selections (comma separated).",
         "operationId": "getMarketGeneric",
         "parameters": [
           {
@@ -9155,7 +9155,7 @@
           "Racing"
         ],
         "summary": "Get cars and their racing stats",
-        "description": "Requires public access key. Returns the stat details about racing cars.",
+        "description": "Requires public access key. <br>Returns the stat details about racing cars.",
         "operationId": "getRacingCars",
         "parameters": [
           {
@@ -9194,7 +9194,7 @@
           "Racing"
         ],
         "summary": "Get all possible car upgrades",
-        "description": "Requires public access key. Returns the details about all possible car upgrades.",
+        "description": "Requires public access key. <br>Returns the details about all possible car upgrades.",
         "operationId": "getRacingCarUpgrades",
         "parameters": [
           {
@@ -9233,7 +9233,7 @@
           "Racing"
         ],
         "summary": "Get races",
-        "description": "Requires public access key. Returns a list of races, ordered by race start timestamp.",
+        "description": "Requires public access key. <br>Returns a list of races, ordered by race start timestamp.",
         "operationId": "getRacingRaces",
         "parameters": [
           {
@@ -9293,7 +9293,7 @@
           "Racing"
         ],
         "summary": "Get specific race details",
-        "description": "Requires public access key. Returns the details of a race.",
+        "description": "Requires public access key. <br>Returns the details of a race.",
         "operationId": "getRacingRaceDetails",
         "parameters": [
           {
@@ -9341,7 +9341,7 @@
           "Racing"
         ],
         "summary": "Get track records",
-        "description": "Requires public access key. Returns a list of 5 best lap records for the chosen track and car class.",
+        "description": "Requires public access key. <br>Returns a list of 5 best lap records for the chosen track and car class.",
         "operationId": "getRacingTrackRecords",
         "parameters": [
           {
@@ -9398,7 +9398,7 @@
           "Racing"
         ],
         "summary": "Get race tracks and descriptions",
-        "description": "Requires public access key. Returns the details about racing tracks.",
+        "description": "Requires public access key. <br>Returns the details about racing tracks.",
         "operationId": "getRacingTracks",
         "parameters": [
           {
@@ -9437,7 +9437,7 @@
           "Racing"
         ],
         "summary": "Get all available racing selections",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getRacingLookup",
         "parameters": [
           {
@@ -9476,7 +9476,7 @@
           "Racing"
         ],
         "summary": "Get current server time",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getRacingTimestamp",
         "parameters": [
           {
@@ -9515,7 +9515,7 @@
           "Racing"
         ],
         "summary": "Get any Racing selection",
-        "description": "Requires public access key. Choose one or more selections (comma separated).",
+        "description": "Requires public access key. <br>Choose one or more selections (comma separated).",
         "operationId": "getRacingGeneric",
         "parameters": [
           {
@@ -9640,7 +9640,7 @@
           "Property"
         ],
         "summary": "Get a specific property",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getProperty",
         "parameters": [
           {
@@ -9688,7 +9688,7 @@
           "Property"
         ],
         "summary": "Get all available property selections",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getPropertyLookup",
         "parameters": [
           {
@@ -9727,7 +9727,7 @@
           "Property"
         ],
         "summary": "Get current server time",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getPropertyTimestamp",
         "parameters": [
           {
@@ -9766,7 +9766,7 @@
           "Property"
         ],
         "summary": "Get any property selection",
-        "description": "Requires public access key. Choose one or more selections (comma separated).",
+        "description": "Requires public access key. <br>Choose one or more selections (comma separated).",
         "operationId": "getPropertyGeneric",
         "parameters": [
           {
@@ -9838,7 +9838,7 @@
           "Torn"
         ],
         "summary": "Get attack log details",
-        "description": "Requires public key. ",
+        "description": "Requires public key. <br>",
         "operationId": "getTornAttackLog",
         "parameters": [
           {
@@ -9895,7 +9895,7 @@
           "Torn"
         ],
         "summary": "Get current bank rates",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornBank",
         "parameters": [
           {
@@ -9934,7 +9934,7 @@
           "Torn"
         ],
         "summary": "Get bounties",
-        "description": " Globally cached selection. Requires public key. ",
+        "description": "<b>Globally cached selection.</b><br><br>Requires public key. <br>",
         "operationId": "getTornBounties",
         "parameters": [
           {
@@ -9979,7 +9979,7 @@
           "Torn"
         ],
         "summary": "Get calendar information",
-        "description": "Requires public access key. Get the details about competitions & events in the running year.",
+        "description": "Requires public access key. <br> Get the details about competitions & events in the running year.",
         "operationId": "getTornCalendar",
         "parameters": [
           {
@@ -10018,7 +10018,7 @@
           "Torn"
         ],
         "summary": "Get casino playing cards",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornCards",
         "parameters": [
           {
@@ -10057,7 +10057,7 @@
           "Torn"
         ],
         "summary": "Get city shops stock information",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornCityShops",
         "parameters": [
           {
@@ -10096,7 +10096,7 @@
           "Torn"
         ],
         "summary": "Get stock information for a specific shop",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornCityShopSpecific",
         "parameters": [
           {
@@ -10144,7 +10144,7 @@
           "Torn"
         ],
         "summary": "Get all companies details",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornCompanies",
         "parameters": [
           {
@@ -10183,7 +10183,7 @@
           "Torn"
         ],
         "summary": "Get specific company details",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornCompaniesSpecific",
         "parameters": [
           {
@@ -10231,7 +10231,7 @@
           "Torn"
         ],
         "summary": "Get crimes information",
-        "description": "Requires public access key. Return the details about released crimes.",
+        "description": "Requires public access key. <br> Return the details about released crimes.",
         "operationId": "getTornCrimes",
         "parameters": [
           {
@@ -10270,7 +10270,7 @@
           "Torn"
         ],
         "summary": "Get education information",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key.<br>",
         "operationId": "getTornEducation",
         "parameters": [
           {
@@ -10402,7 +10402,7 @@
           "Torn"
         ],
         "summary": "Get faction hall of fame positions for a specific category",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br> ",
         "operationId": "getTornFactionHoF",
         "parameters": [
           {
@@ -10456,7 +10456,7 @@
           "Torn"
         ],
         "summary": "Get full faction tree",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br> ",
         "operationId": "getTornFactionTree",
         "parameters": [
           {
@@ -10495,7 +10495,7 @@
           "Torn"
         ],
         "summary": "Get all gyms",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornGyms",
         "parameters": [
           {
@@ -10534,7 +10534,7 @@
           "Torn"
         ],
         "summary": "Get Halloween basket upgrades",
-        "description": "Requires minimal access key. Returns the list of available Halloween basket upgrades with their benefits, treats cost and unlock requirement.",
+        "description": "Requires minimal access key. <br>Returns the list of available Halloween basket upgrades with their benefits, treats cost and unlock requirement.",
         "operationId": "getTornHalloween",
         "parameters": [
           {
@@ -10573,7 +10573,7 @@
           "Torn"
         ],
         "summary": "Get all honors",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornHonors",
         "parameters": [
           {
@@ -10621,7 +10621,7 @@
           "Torn"
         ],
         "summary": "Get specific honors",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornHonorsSpecific",
         "parameters": [
           {
@@ -10859,7 +10859,7 @@
           "Torn"
         ],
         "summary": "Get specific item(s) stats",
-        "description": "Requires public key. ",
+        "description": "Requires public key.<br>",
         "operationId": "getTornItemStats",
         "parameters": [
           {
@@ -10912,7 +10912,7 @@
           "Torn"
         ],
         "summary": "Get information about items",
-        "description": "Requires public key. Default category is 'All'. Details are not populated when requesting the category 'All'.",
+        "description": "Requires public key.<br>Default category is 'All'.<br>Details are not populated when requesting the category 'All'.",
         "operationId": "getTornItems",
         "parameters": [
           {
@@ -10963,7 +10963,7 @@
           "Torn"
         ],
         "summary": "Get information about items",
-        "description": "Requires public key. Details are always populated when available.",
+        "description": "Requires public key.<br>Details are always populated when available.",
         "operationId": "getTornItemsSpecific",
         "parameters": [
           {
@@ -11019,7 +11019,7 @@
           "Torn"
         ],
         "summary": "Get available log categories",
-        "description": "Requires public key. ",
+        "description": "Requires public key. <br>",
         "operationId": "getTornLogCategories",
         "parameters": [
           {
@@ -11058,7 +11058,7 @@
           "Torn"
         ],
         "summary": "Get all available log ids",
-        "description": "Requires public key. ",
+        "description": "Requires public key. <br>",
         "operationId": "getTornLogTypes",
         "parameters": [
           {
@@ -11097,7 +11097,7 @@
           "Torn"
         ],
         "summary": "Get available log ids for a specific log category",
-        "description": "Requires public key. ",
+        "description": "Requires public key. <br>",
         "operationId": "getTornLogTypesSpecific",
         "parameters": [
           {
@@ -11145,7 +11145,7 @@
           "Torn"
         ],
         "summary": "Get all medals",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornMedals",
         "parameters": [
           {
@@ -11184,7 +11184,7 @@
           "Torn"
         ],
         "summary": "Get specific medals",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornMedalsSpecific",
         "parameters": [
           {
@@ -11237,7 +11237,7 @@
           "Torn"
         ],
         "summary": "Get all merits",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornMerits",
         "parameters": [
           {
@@ -11276,7 +11276,7 @@
           "Torn"
         ],
         "summary": "Get all museum sets",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornMuseum",
         "parameters": [
           {
@@ -11315,7 +11315,7 @@
           "Torn"
         ],
         "summary": "Get organized crimes information",
-        "description": "Requires public access key. Return the details about released faction organized crimes.",
+        "description": "Requires public access key. <br> Return the details about released faction organized crimes.",
         "operationId": "getTornOrganizedCrimes",
         "parameters": [
           {
@@ -11354,7 +11354,7 @@
           "Torn"
         ],
         "summary": "Get active poker tables",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornPokerTables",
         "parameters": [
           {
@@ -11393,7 +11393,7 @@
           "Torn"
         ],
         "summary": "Get properties details",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornProperties",
         "parameters": [
           {
@@ -11471,7 +11471,7 @@
           "Torn"
         ],
         "summary": "Get search for cash crime statuses",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornSearchForCash",
         "parameters": [
           {
@@ -11510,7 +11510,7 @@
           "Torn"
         ],
         "summary": "Get shoplifting crime statuses",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornShoplifting",
         "parameters": [
           {
@@ -11588,7 +11588,7 @@
           "Torn"
         ],
         "summary": "Get all stocks",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornStocks",
         "parameters": [
           {
@@ -11627,7 +11627,7 @@
           "Torn"
         ],
         "summary": "Get specific stock with chart history",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getSpecificTornStock",
         "parameters": [
           {
@@ -11675,7 +11675,7 @@
           "Torn"
         ],
         "summary": "Get Subcrimes information",
-        "description": "Requires public access key. Return the details about possible actions for a specific crime.",
+        "description": "Requires public access key. <br> Return the details about possible actions for a specific crime.",
         "operationId": "getTornSubcrimes",
         "parameters": [
           {
@@ -11723,7 +11723,7 @@
           "Torn"
         ],
         "summary": "Get territory details",
-        "description": "Requires public access key. ",
+        "description": "Requires public access key. <br>",
         "operationId": "getTornTerritory",
         "parameters": [
           {
@@ -11782,7 +11782,7 @@
           "Torn"
         ],
         "summary": "Get all available torn selections",
-        "description": "Requires public key. ",
+        "description": "Requires public key. <br>",
         "operationId": "getTornLookup",
         "parameters": [
           {
@@ -11821,7 +11821,7 @@
           "Torn"
         ],
         "summary": "Get current server time",
-        "description": "Requires public key. ",
+        "description": "Requires public key. <br>",
         "operationId": "getTornTimestamp",
         "parameters": [
           {
@@ -11860,7 +11860,7 @@
           "Torn"
         ],
         "summary": "Get any Torn selection",
-        "description": "Requires public access key. Choose one or more selections (comma separated).",
+        "description": "Requires public access key. <br> Choose one or more selections (comma separated).",
         "operationId": "getTornGeneric",
         "parameters": [
           {
@@ -16793,7 +16793,7 @@
         ]
       },
       "TornOrganizedCrimePositionIdDeprecated": {
-        "description": "This field is now available in 'position_info' object as 'id' field. This field will be removed on 1st of June 2026.",
+        "description": "This field is now available in 'position_info' object as 'id' field.<br>This field will be removed on 1st of June 2026.",
         "type": "string",
         "enum": [
           "P1",
@@ -17438,7 +17438,7 @@
         "type": "object"
       },
       "ForumFeedTypeEnum": {
-        "description": "This represents the type of the activity. Values range from 1 to 8 where:\n * 1 = 'X posted on a thread',\n * 2 = 'X created a thread',\n * 3 = 'X liked your thread',\n * 4 = 'X disliked your thread',\n * 5 = 'X liked your post',\n * 6 = 'X disliked your post',\n * 7 = 'X quoted your post'.",
+        "description": "This represents the type of the activity. Values range from 1 to 8 where:\n *                    1 = 'X posted on a thread',\n *                    2 = 'X created a thread',\n *                    3 = 'X liked your thread',\n *                    4 = 'X disliked your thread',\n *                    5 = 'X liked your post',\n *                    6 = 'X disliked your post',\n *                    7 = 'X quoted your post'.",
         "type": "integer",
         "format": "int32",
         "enum": [
@@ -27902,7 +27902,7 @@
             "type": "string"
           },
           "number": {
-            "description": "This field is no longer needed as there's 'label' field now. This field will be removed on 1st of June 2026.",
+            "description": "This field is no longer needed as there's 'label' field now.<br>This field will be removed on 1st of June 2026.",
             "type": "integer",
             "format": "int32",
             "deprecated": true
@@ -30440,7 +30440,7 @@
                     "$ref": "#/components/schemas/ItemId"
                   },
                   "is_reusable": {
-                    "description": "Shows if the item is reusable or consumed during the crime. Important note: There may be alternative paths which won't consume the item, even if the item is non-reusable. ",
+                    "description": "Shows if the item is reusable or consumed during the crime.<br><b>Important note: There may be alternative paths which won't consume the item, even if the item is non-reusable.</b>",
                     "type": "boolean"
                   },
                   "is_available": {
@@ -30548,7 +30548,7 @@
             "format": "int32"
           },
           "executed_at": {
-            "description": "The timestamp at which the crime was executed. Note: this value is null for all crimes executed before January 15th, 2025.",
+            "description": "The timestamp at which the crime was executed. <br> Note: this value is null for all crimes executed before January 15th, 2025.",
             "oneOf": [
               {
                 "type": "integer",
@@ -37891,7 +37891,7 @@
             "format": "int64"
           },
           "details": {
-            "description": "If the item 'type' is 'Armor' then TornItemArmorDetails is returned. If the item 'type' is 'Weapon' then TornItemWeaponDetails is returned. Otherwise, null is returned.",
+            "description": "If the item 'type' is 'Armor' then TornItemArmorDetails is returned.<br>If the item 'type' is 'Weapon' then TornItemWeaponDetails is returned.<br>Otherwise, null is returned.",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/TornItemWeaponDetails"
@@ -38028,7 +38028,7 @@
       "TornSelectionName": {
         "oneOf": [
           {
-            "description": "The following selections will fallback to API v1 and may change at any time:'competition','organisedcrimes'.\n * The following selections are not available in API v2: 'dirtybombs','raidreport','raids', 'chainreport', 'rackets', 'rankedwarreport', 'rankedwars', 'territorynames', 'territorywarreport', 'territorywars', 'pawnshop'.",
+            "description": "The following selections will fallback to API v1 and may change at any time:'competition','organisedcrimes'.\n *   The following selections are not available in API v2: 'dirtybombs','raidreport','raids', 'chainreport', 'rackets', 'rankedwarreport', 'rankedwars', 'territorynames', 'territorywarreport', 'territorywars', 'pawnshop'.",
             "type": "string",
             "enum": [
               "attacklog",
@@ -38174,7 +38174,7 @@
       "ApiCompanySearchFilter": {
         "name": "filters",
         "in": "query",
-        "description": "A filtering query parameter allowing a comma-separated list of filters. \n * Each filter can be one of the following:\n * Fixed options: `recruiting`, `notRecruiting`\n * Dynamic options: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:\n * * `fieldName` is one of: `id`, `type`, `daysOld`, `rating`, `dailyIncome`, `weeklyIncome`, `dailyCustomers`, `weeklyCustomers`\n * * `condition` is one of: `=`, `!=`, `<`, `<=`, `>=`, `>`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`\n * * `number`: any integer value\n * Examples:\n * `filters=recruiting`,\n * `filters=weeklyIncome:>=:20000,id:<:1000,notRecruiting`,\n * `filters=type:Equal:10,rating:=:10,dailyIncome:<=:6666666`",
+        "description": "A filtering query parameter allowing a comma-separated list of filters. <br>\n *  Each filter can be one of the following:\n *  Fixed options: `recruiting`, `notRecruiting`\n *  Dynamic options: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:\n *  * `fieldName` is one of: `id`, `type`, `daysOld`, `rating`, `dailyIncome`, `weeklyIncome`, `dailyCustomers`, `weeklyCustomers`\n *  * `condition` is one of: `=`, `!=`, `<`, `<=`, `>=`, `>`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`\n *  * `number`: any integer value\n *  Examples:\n * `filters=recruiting`,\n * `filters=weeklyIncome:>=:20000,id:<:1000,notRecruiting`,\n * `filters=type:Equal:10,rating:=:10,dailyIncome:<=:6666666`",
         "required": false,
         "style": "form",
         "explode": false,
@@ -38188,7 +38188,7 @@
       "ApiUserSearchFilter": {
         "name": "filters",
         "in": "query",
-        "description": "A filtering query parameter allowing a comma-separated list of filters. \n * Filters in this selection reflect on-site filters, and they can be:\n * One of: `married`, `notMarried`, `traveling`, `notTraveling`, `inFaction`, `notInFaction`, `inCompany`, `notInCompany`, `inHospital`, `notInHospital`, `inJail`, `notInJail`, `inFederalJail`, `notInFederalJail`\n * Additionally, one of last action: `lastActionNow`, `lastActionRecent`, `lastActionHourAgo`, `lastActionDayAgo`, `lastActionWeekAgo`, `lastActionMonthAgo`, `lastActionYearAgo`\n * Additionally, one of gender: `male`, `female`, `enby`\n * Any dynamic option: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:\n * * `fieldName` is one of: `level`, `daysOld`, `offences`\n * * `condition` is one of: `=`, `!=`, `<`, `<=`, `>=`, `>`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`\n * * `number`: any integer value\n * Additionally, a dynamic list of faction ids (negates `inFaction` and `notInFaction` filters): `factions`+`:`+`list of ids separated by semicolon ;`\n * Examples:\n * `filters=married`,\n * `filters=daysOld:>=:5000,offences:>:100000,notInFaction`,\n * `filters=factions:1;2;3`,\n * `filters=level:=:100,lastActionYearAgo,male,inFaction,offences:>=:1000,offences:<=:1000000,daysOld:>:500,daysOld:<:7000`",
+        "description": "A filtering query parameter allowing a comma-separated list of filters. <br>\n *  Filters in this selection reflect on-site filters, and they can be:\n *  One of: `married`, `notMarried`, `traveling`, `notTraveling`, `inFaction`, `notInFaction`, `inCompany`, `notInCompany`, `inHospital`, `notInHospital`, `inJail`, `notInJail`, `inFederalJail`, `notInFederalJail`\n *  Additionally, one of last action: `lastActionNow`, `lastActionRecent`, `lastActionHourAgo`, `lastActionDayAgo`, `lastActionWeekAgo`, `lastActionMonthAgo`, `lastActionYearAgo`\n *  Additionally, one of gender: `male`, `female`, `enby`\n *  Any dynamic option: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:\n *  * `fieldName` is one of: `level`, `daysOld`, `offences`\n *  * `condition` is one of: `=`, `!=`, `<`, `<=`, `>=`, `>`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`\n *  * `number`: any integer value\n *  Additionally, a dynamic list of faction ids (negates `inFaction` and `notInFaction` filters): `factions`+`:`+`list of ids separated by semicolon ;`\n *  Examples:\n * `filters=married`,\n * `filters=daysOld:>=:5000,offences:>:100000,notInFaction`,\n * `filters=factions:1;2;3`,\n * `filters=level:=:100,lastActionYearAgo,male,inFaction,offences:>=:1000,offences:<=:1000000,daysOld:>:500,daysOld:<:7000`",
         "required": false,
         "style": "form",
         "explode": false,
@@ -38202,7 +38202,7 @@
       "ApiKeyPublic": {
         "name": "key",
         "in": "query",
-        "description": "API key (Public). It's not required to use this parameter when passing the API key via the Authorization header.",
+        "description": "API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.",
         "required": false,
         "schema": {
           "type": "string"
@@ -38211,7 +38211,7 @@
       "ApiKeyMinimal": {
         "name": "key",
         "in": "query",
-        "description": "API key (Minimal). It's not required to use this parameter when passing the API key via the Authorization header.",
+        "description": "API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.",
         "required": false,
         "schema": {
           "type": "string"
@@ -38220,7 +38220,7 @@
       "ApiKeyLimited": {
         "name": "key",
         "in": "query",
-        "description": "API key (Limited). It's not required to use this parameter when passing the API key via the Authorization header.",
+        "description": "API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.",
         "required": false,
         "schema": {
           "type": "string"
@@ -38229,7 +38229,7 @@
       "ApiKeyFull": {
         "name": "key",
         "in": "query",
-        "description": "API key (Full). It's not required to use this parameter when passing the API key via the Authorization header.",
+        "description": "API key (Full).<br>It's not required to use this parameter when passing the API key via the Authorization header.",
         "required": false,
         "schema": {
           "type": "string"
@@ -38309,7 +38309,7 @@
       "ApiFactionSearchFilter": {
         "name": "filters",
         "in": "query",
-        "description": "A filtering query parameter allowing a comma-separated list of filters. \n * Each filter can be one of the following:\n * Fixed options: `destroyed`, `notDestroyed`, `recruiting`, `notRecruiting`\n * Dynamic options: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:\n * * `fieldName` is one of: `id`, `respect`, `members`, `membersMax`\n * * `condition` is one of: `=`, `!=`, `<`, `<=`, `>=`, `>`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`\n * * `number`: any integer value\n * Examples:\n * `filters=destroyed`,\n * `filters=notDestroyed,recruiting`,\n * `filters=respect:>=:20000,id:<:100,notRecruiting`",
+        "description": "A filtering query parameter allowing a comma-separated list of filters. <br>\n * Each filter can be one of the following:\n * Fixed options: `destroyed`, `notDestroyed`, `recruiting`, `notRecruiting`\n * Dynamic options: `fieldName`+`condition`+`number`. Each dynamic filter is made out of 3 parts separated by colon `:`:\n * * `fieldName` is one of: `id`, `respect`, `members`, `membersMax`\n * * `condition` is one of: `=`, `!=`, `<`, `<=`, `>=`, `>`, `Equal`, `NotEqual`, `Less`, `LessOrEqual`, `GreaterOrEqual`, `Greater`\n * * `number`: any integer value\n * Examples:\n * `filters=destroyed`,\n * `filters=notDestroyed,recruiting`,\n * `filters=respect:>=:20000,id:<:100,notRecruiting`",
         "required": false,
         "style": "form",
         "explode": false,
@@ -38516,7 +38516,7 @@
       "ApiSortAsc": {
         "name": "sort",
         "in": "query",
-        "description": "Sort rows from newest to oldest Default ordering is ascending",
+        "description": "Sort rows from newest to oldest<br>Default ordering is ascending",
         "required": false,
         "schema": {
           "type": "string",
@@ -38571,7 +38571,7 @@
       "ApiStripTagsTrue": {
         "name": "striptags",
         "in": "query",
-        "description": "Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').",
+        "description": "Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').",
         "required": false,
         "schema": {
           "type": "string",
@@ -38581,7 +38581,7 @@
       "ApiStripTagsFalse": {
         "name": "striptags",
         "in": "query",
-        "description": "Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').",
+        "description": "Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').",
         "required": false,
         "schema": {
           "type": "string",
@@ -38591,7 +38591,7 @@
       "ApiStripTags": {
         "name": "striptags",
         "in": "query",
-        "description": "Determines if fields include HTML or not ('Hospitalized by user ' vs 'Hospitalized by user').",
+        "description": "Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').",
         "required": false,
         "schema": {
           "type": "string"
@@ -38601,7 +38601,7 @@
     "securitySchemes": {
       "api_key": {
         "type": "apiKey",
-        "description": "Pass your API key as the value. Example header: Authorization: ApiKey rnavT95qnTCTAbdK The 'ApiKey' prefix is automatically added in Swagger.",
+        "description": "Pass your API key as the value.<br>Example header:<br>Authorization: ApiKey rnavT95qnTCTAbdK<br>The 'ApiKey' prefix is automatically added in Swagger.",
         "name": "Authorization",
         "in": "header"
       }
