@@ -35,6 +35,11 @@ if [[ "${SKIP_PUSH:-0}" == "1" ]]; then
   exit 0
 fi
 
+if [[ -z "${CI_JOB_TOKEN:-}" ]]; then
+  echo "CI_JOB_TOKEN is required to push (run in CI with Job token Git push enabled)" >&2
+  exit 1
+fi
+
 echo "configuring git..."
 git config user.email "${GIT_AUTHOR_EMAIL:-cicd@gitlab.com}"
 git config user.name "${GIT_AUTHOR_NAME:-GitLab CI/CD}"
@@ -47,20 +52,15 @@ if git diff --cached --quiet; then
 fi
 
 branch="${CI_COMMIT_REF_NAME:-$(git rev-parse --abbrev-ref HEAD)}"
-project_path="${CI_PROJECT_PATH:-torn-city/go-torn-client}"
-remote_url="https://oauth2:${GITLAB_TOKEN}@gitlab.com/${project_path}.git"
+server_host="${CI_SERVER_HOST:-gitlab.com}"
+project_path="${CI_PROJECT_PATH:?CI_PROJECT_PATH is required}"
+remote_url="https://gitlab-ci-token:${CI_JOB_TOKEN}@${server_host}/${project_path}.git"
 
 echo "committing regenerated OpenAPI client..."
 git commit -m "CI: regenerate Torn API client from upstream OpenAPI"
 
-if [[ -z "${GITLAB_TOKEN:-}" ]]; then
-  echo "GITLAB_TOKEN is required to push" >&2
-  exit 1
-fi
-
 echo "pushing to GitLab..."
-git remote remove gitlab_origin 2>/dev/null || true
-git remote add gitlab_origin "$remote_url"
-git push gitlab_origin "HEAD:${branch}" -o ci.skip
+git remote set-url origin "$remote_url"
+git push origin "HEAD:${branch}" -o ci.skip
 
 echo "done"
