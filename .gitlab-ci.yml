@@ -1,0 +1,33 @@
+image: golang:latest
+
+stages:
+  - update
+
+variables:
+  GOPATH: "$CI_PROJECT_DIR/.go"
+  PATH: "$CI_PROJECT_DIR/.go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+update_openapi:
+  stage: update
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "api"
+    - if: $CI_PIPELINE_SOURCE == "trigger"
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+      - api_failure
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y -qq python3 curl ca-certificates git
+    - go version
+    - go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
+  script:
+    - ./scripts/ci-update-openapi.sh
+  cache:
+    key: go-mod
+    paths:
+      - .go/pkg/mod/

@@ -1,0 +1,42 @@
+version: "3"
+
+dotenv: [".env"]
+
+vars:
+  EXAMPLE_PKG: ./examples/basic
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+
+  generate:
+    desc: Regenerate the Torn API client from the vendored OpenAPI spec
+    cmds:
+      - ./scripts/generate.sh
+
+  generate:fetch:
+    desc: Fetch the latest Torn OpenAPI spec, then regenerate the client
+    cmds:
+      - FETCH_SPEC=1 ./scripts/generate.sh
+
+  ci:update:
+    desc: Fetch OpenAPI, regenerate client (local dry-run of the scheduled CI job)
+    cmds:
+      - SKIP_PUSH=1 ./scripts/ci-update-openapi.sh
+
+  test:
+    desc: Run all Go tests
+    cmds:
+      - go test ./...
+
+  tidy:
+    desc: Tidy Go module dependencies
+    cmds:
+      - go mod tidy
+
+  example:
+    desc: Run the basic live API example
+    cmds:
+      - go run {{.EXAMPLE_PKG}}
