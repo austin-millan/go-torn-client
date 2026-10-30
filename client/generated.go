@@ -13991,6 +13991,7 @@ func (e FactionTerritoryEnum) Valid() bool {
 const (
 	FactionTerritoryWarResultEnumEndWithDestroyAttack  FactionTerritoryWarResultEnum = "end_with_destroy_attack"
 	FactionTerritoryWarResultEnumEndWithDestroyDefense FactionTerritoryWarResultEnum = "end_with_destroy_defense"
+	FactionTerritoryWarResultEnumEndWithDirtyBomb      FactionTerritoryWarResultEnum = "end_with_dirty_bomb"
 	FactionTerritoryWarResultEnumEndWithNap            FactionTerritoryWarResultEnum = "end_with_nap"
 	FactionTerritoryWarResultEnumEndWithPeaceTreaty    FactionTerritoryWarResultEnum = "end_with_peace_treaty"
 	FactionTerritoryWarResultEnumFailAssault           FactionTerritoryWarResultEnum = "fail_assault"
@@ -14003,6 +14004,8 @@ func (e FactionTerritoryWarResultEnum) Valid() bool {
 	case FactionTerritoryWarResultEnumEndWithDestroyAttack:
 		return true
 	case FactionTerritoryWarResultEnumEndWithDestroyDefense:
+		return true
+	case FactionTerritoryWarResultEnumEndWithDirtyBomb:
 		return true
 	case FactionTerritoryWarResultEnumEndWithNap:
 		return true
