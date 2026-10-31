@@ -14333,6 +14333,7 @@ func (e JobPositionArmyEnum) Valid() bool {
 const (
 	JobPositionCasinoEnumCasinoManager    JobPositionCasinoEnum = "Casino Manager"
 	JobPositionCasinoEnumCasinoPresident  JobPositionCasinoEnum = "Casino President"
+	JobPositionCasinoEnumDealer           JobPositionCasinoEnum = "Dealer"
 	JobPositionCasinoEnumGamingConsultant JobPositionCasinoEnum = "Gaming Consultant"
 	JobPositionCasinoEnumMarketingManager JobPositionCasinoEnum = "Marketing Manager"
 	JobPositionCasinoEnumRevenueManager   JobPositionCasinoEnum = "Revenue Manager"
@@ -14344,6 +14345,8 @@ func (e JobPositionCasinoEnum) Valid() bool {
 	case JobPositionCasinoEnumCasinoManager:
 		return true
 	case JobPositionCasinoEnumCasinoPresident:
+		return true
+	case JobPositionCasinoEnumDealer:
 		return true
 	case JobPositionCasinoEnumGamingConsultant:
 		return true
@@ -17760,6 +17763,7 @@ const (
 	UserSelectionName0Trade                  UserSelectionName0 = "trade"
 	UserSelectionName0Trades                 UserSelectionName0 = "trades"
 	UserSelectionName0Travel                 UserSelectionName0 = "travel"
+	UserSelectionName0Travelinventory        UserSelectionName0 = "travelinventory"
 	UserSelectionName0Weaponexp              UserSelectionName0 = "weaponexp"
 	UserSelectionName0Workstats              UserSelectionName0 = "workstats"
 )
@@ -17904,6 +17908,8 @@ func (e UserSelectionName0) Valid() bool {
 	case UserSelectionName0Trades:
 		return true
 	case UserSelectionName0Travel:
+		return true
+	case UserSelectionName0Travelinventory:
 		return true
 	case UserSelectionName0Weaponexp:
 		return true
@@ -27018,6 +27024,42 @@ type UserTradesResponse struct {
 	Trades             []UserTrade              `json:"trades"`
 }
 
+// UserTravelInventory defines model for UserTravelInventory.
+type UserTravelInventory struct {
+	Capacity  UserTravelInventoryCapacity `json:"capacity"`
+	Inventory []UserTravelInventorySlot   `json:"inventory"`
+}
+
+// UserTravelInventoryCapacity defines model for UserTravelInventoryCapacity.
+type UserTravelInventoryCapacity struct {
+	Base    int32 `json:"base"`
+	Special int32 `json:"special"`
+}
+
+// UserTravelInventoryItem defines model for UserTravelInventoryItem.
+type UserTravelInventoryItem struct {
+	Id             ItemId `json:"id"`
+	IsEquipped     bool   `json:"is_equipped"`
+	IsFactionOwned bool   `json:"is_faction_owned"`
+
+	// IsPermanent True for items added while player was in Torn.
+	IsPermanent bool     `json:"is_permanent"`
+	Name        string   `json:"name"`
+	Type        string   `json:"type"`
+	Uid         *ItemUid `json:"uid"`
+}
+
+// UserTravelInventoryResponse defines model for UserTravelInventoryResponse.
+type UserTravelInventoryResponse struct {
+	Travelinventory UserTravelInventory `json:"travelinventory"`
+}
+
+// UserTravelInventorySlot defines model for UserTravelInventorySlot.
+type UserTravelInventorySlot struct {
+	Id   int64                    `json:"id"`
+	Item *UserTravelInventoryItem `json:"item"`
+}
+
 // UserTravelResponse defines model for UserTravelResponse.
 type UserTravelResponse struct {
 	Travel struct {
@@ -30930,6 +30972,18 @@ type GetMyTravelInformationParams struct {
 
 	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
+}
+
+// GetMyTravelInventoryParams defines parameters for GetMyTravelInventory.
+type GetMyTravelInventoryParams struct {
+	// Timestamp Timestamp to bypass cache
+	Timestamp *ApiTimestamp `form:"timestamp,omitempty" json:"timestamp,omitempty"`
+
+	// Comment Comment for your tool/service/bot/website to be visible in the logs.
+	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
+
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyVirusCodingInformationParams defines parameters for GetMyVirusCodingInformation.
@@ -40845,6 +40899,32 @@ func (t *GetUserGeneric200JSONResponseBody) MergeUserTravelResponse(v UserTravel
 	return err
 }
 
+// AsUserTravelInventoryResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserTravelInventoryResponse
+func (t GetUserGeneric200JSONResponseBody) AsUserTravelInventoryResponse() (UserTravelInventoryResponse, error) {
+	var body UserTravelInventoryResponse
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUserTravelInventoryResponse overwrites any union data inside the GetUserGeneric200JSONResponseBody as the provided UserTravelInventoryResponse
+func (t *GetUserGeneric200JSONResponseBody) FromUserTravelInventoryResponse(v UserTravelInventoryResponse) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUserTravelInventoryResponse performs a merge with any union data inside the GetUserGeneric200JSONResponseBody, using the provided UserTravelInventoryResponse
+func (t *GetUserGeneric200JSONResponseBody) MergeUserTravelInventoryResponse(v UserTravelInventoryResponse) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
 // AsUserVirusResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserVirusResponse
 func (t GetUserGeneric200JSONResponseBody) AsUserVirusResponse() (UserVirusResponse, error) {
 	var body UserVirusResponse
@@ -42979,6 +43059,13 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /user/travel (the `GetMyTravelInformation` operationId).
 	GetMyTravelInformation(ctx context.Context, params *GetMyTravelInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetMyTravelInventory Get your travel inventory capacity
+	//
+	// Requires limited access key. <br>
+	//
+	// Corresponds with GET /user/travelinventory (the `GetMyTravelInventory` operationId).
+	GetMyTravelInventory(ctx context.Context, params *GetMyTravelInventoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyVirusCodingInformation Get your virus coding information
 	//
@@ -46807,6 +46894,23 @@ func (c *Client) GetMyTrades(ctx context.Context, params *GetMyTradesParams, req
 // Corresponds with GET /user/travel (the `GetMyTravelInformation` operationId).
 func (c *Client) GetMyTravelInformation(ctx context.Context, params *GetMyTravelInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetMyTravelInformationRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetMyTravelInventory Get your travel inventory capacity
+//
+// Requires limited access key. <br>
+//
+// Corresponds with GET /user/travelinventory (the `GetMyTravelInventory` operationId).
+func (c *Client) GetMyTravelInventory(ctx context.Context, params *GetMyTravelInventoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetMyTravelInventoryRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -68318,6 +68422,84 @@ func NewGetMyTravelInformationRequest(server string, params *GetMyTravelInformat
 	return req, nil
 }
 
+// NewGetMyTravelInventoryRequest constructs an http.Request for the GetMyTravelInventory method
+func NewGetMyTravelInventoryRequest(server string, params *GetMyTravelInventoryParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/user/travelinventory")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Timestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "timestamp", *params.Timestamp, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Comment != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "comment", *params.Comment, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Key != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "key", *params.Key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetMyVirusCodingInformationRequest constructs an http.Request for the GetMyVirusCodingInformation method
 func NewGetMyVirusCodingInformationRequest(server string, params *GetMyVirusCodingInformationParams) (*http.Request, error) {
 	var err error
@@ -72195,6 +72377,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /user/travel (the `GetMyTravelInformation` operationId).
 	GetMyTravelInformationWithResponse(ctx context.Context, params *GetMyTravelInformationParams, reqEditors ...RequestEditorFn) (*GetMyTravelInformationResponse, error)
+
+	// GetMyTravelInventoryWithResponse Get your travel inventory capacity
+	//
+	// Requires limited access key. <br>
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /user/travelinventory (the `GetMyTravelInventory` operationId).
+	GetMyTravelInventoryWithResponse(ctx context.Context, params *GetMyTravelInventoryParams, reqEditors ...RequestEditorFn) (*GetMyTravelInventoryResponse, error)
 
 	// GetMyVirusCodingInformationWithResponse Get your virus coding information
 	//
@@ -81218,6 +81409,47 @@ func (r GetMyTravelInformationResponse) ContentType() string {
 	return ""
 }
 
+type GetMyTravelInventoryResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *UserTravelInventoryResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetMyTravelInventoryResponse) GetJSON200() *UserTravelInventoryResponse {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r GetMyTravelInventoryResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetMyTravelInventoryResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetMyTravelInventoryResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetMyTravelInventoryResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetMyVirusCodingInformationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -85295,6 +85527,21 @@ func (c *ClientWithResponses) GetMyTravelInformationWithResponse(ctx context.Con
 		return nil, err
 	}
 	return ParseGetMyTravelInformationResponse(rsp)
+}
+
+// GetMyTravelInventoryWithResponse Get your travel inventory capacity
+//
+// Requires limited access key. <br>
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /user/travelinventory (the `GetMyTravelInventory` operationId).
+func (c *ClientWithResponses) GetMyTravelInventoryWithResponse(ctx context.Context, params *GetMyTravelInventoryParams, reqEditors ...RequestEditorFn) (*GetMyTravelInventoryResponse, error) {
+	rsp, err := c.GetMyTravelInventory(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetMyTravelInventoryResponse(rsp)
 }
 
 // GetMyVirusCodingInformationWithResponse Get your virus coding information
@@ -91179,6 +91426,32 @@ func ParseGetMyTravelInformationResponse(rsp *http.Response) (*GetMyTravelInform
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest UserTravelResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetMyTravelInventoryResponse parses an HTTP response from a GetMyTravelInventoryWithResponse call
+func ParseGetMyTravelInventoryResponse(rsp *http.Response) (*GetMyTravelInventoryResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetMyTravelInventoryResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest UserTravelInventoryResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
