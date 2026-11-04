@@ -3,7 +3,7 @@
   "info": {
     "title": "Torn API",
     "description": "\n * The development of Torn's API v2 is still ongoing.\n * If selections remain unaltered, they will default to the API v1 version.\n * Unlike API v1, API v2 accepts both selections and IDs as path and query parameters.\n * If any discrepancies or errors are found, please submit a [bug report](https://www.torn.com/forums.php#/p=forums&f=19&b=0&a=0) on the Torn Forums.\n * In case you're using bots to check for changes on openapi.json file, make sure to specificy a custom user-agent header - CloudFlare sometimes prevents requests from default user-agents.",
-    "version": "6.15.0"
+    "version": "6.15.2"
   },
   "servers": [
     {
@@ -2013,7 +2013,7 @@
           "User"
         ],
         "summary": "Get your logs",
-        "description": "Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.",
+        "description": "Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.<br><br>Pagination: `from` and `to` are inclusive bounds at one-second resolution. Log timestamps are nanosecond-precise, so to page without gaps or repeats use the `nanostamp` cursor (returned as `_metadata.nanostamp`, sent without `to`); the `prev` link does this automatically.",
         "operationId": "getMyLogs",
         "parameters": [
           {
@@ -2052,10 +2052,10 @@
             "$ref": "#/components/parameters/ApiLimit100Default20"
           },
           {
-            "$ref": "#/components/parameters/ApiTo"
+            "$ref": "#/components/parameters/ApiToLog"
           },
           {
-            "$ref": "#/components/parameters/ApiFrom"
+            "$ref": "#/components/parameters/ApiFromLog"
           },
           {
             "$ref": "#/components/parameters/ApiTimestamp"
@@ -17475,7 +17475,7 @@
             "$ref": "#/components/schemas/RequestLinks"
           },
           "nanostamp": {
-            "description": "Use to bypass system limitation when 100 or more logs were inserted within the same second.",
+            "description": "Nanosecond paging cursor. Send it back (without `to`) as the next request's `nanostamp` to continue from the exact position; also bypasses the limitation when 100 or more logs share the same second.",
             "type": "string"
           }
         },
@@ -38415,7 +38415,7 @@
       "ApiNanostamp": {
         "name": "nanostamp",
         "in": "query",
-        "description": "Timestamp in nanoseconds to bypass system limitation when more than 100 logs were returned in the same second.",
+        "description": "Nanosecond cursor for user/log pagination, returned as `_metadata.nanostamp`. Pass it back (without `to`) to continue from the exact position with no skipped or repeated logs; it also bypasses the limitation when more than 100 logs share the same second.",
         "required": false,
         "schema": {
           "type": "string"
@@ -38698,6 +38698,26 @@
         "name": "from",
         "in": "query",
         "description": "Timestamp that sets the lower limit for the data returned. Data returned will be after this time",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "ApiFromLog": {
+        "name": "from",
+        "in": "query",
+        "description": "Timestamp that sets the lower limit for the data returned. Data returned will be from and including this time",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "ApiToLog": {
+        "name": "to",
+        "in": "query",
+        "description": "Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time",
         "required": false,
         "schema": {
           "type": "integer",

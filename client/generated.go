@@ -23353,7 +23353,7 @@ type RequestMetadataWithLinks struct {
 type RequestMetadataWithLinksAndNanostamp struct {
 	Links RequestLinks `json:"links"`
 
-	// Nanostamp Use to bypass system limitation when 100 or more logs were inserted within the same second.
+	// Nanostamp Nanosecond paging cursor. Send it back (without `to`) as the next request's `nanostamp` to continue from the exact position; also bypasses the limitation when 100 or more logs share the same second.
 	Nanostamp *string `json:"nanostamp,omitempty"`
 }
 
@@ -27142,6 +27142,9 @@ type ApiFiltersUserProperties string
 // ApiFrom defines model for ApiFrom.
 type ApiFrom = int32
 
+// ApiFromLog defines model for ApiFromLog.
+type ApiFromLog = int32
+
 // ApiKeyFull defines model for ApiKeyFull.
 type ApiKeyFull = string
 
@@ -27228,6 +27231,9 @@ type ApiTimestampSpecificPointInTime = string
 
 // ApiTo defines model for ApiTo.
 type ApiTo = int32
+
+// ApiToLog defines model for ApiToLog.
+type ApiToLog = int32
 
 // ApiUserSearchFilter defines model for ApiUserSearchFilter.
 type ApiUserSearchFilter = []UserSearchParameter
@@ -30445,15 +30451,15 @@ type GetMyLogsParams struct {
 	Limit  *ApiLimit100Default20 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// To Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
-	To *ApiTo `form:"to,omitempty" json:"to,omitempty"`
+	To *ApiToLog `form:"to,omitempty" json:"to,omitempty"`
 
-	// From Timestamp that sets the lower limit for the data returned. Data returned will be after this time
-	From *ApiFrom `form:"from,omitempty" json:"from,omitempty"`
+	// From Timestamp that sets the lower limit for the data returned. Data returned will be from and including this time
+	From *ApiFromLog `form:"from,omitempty" json:"from,omitempty"`
 
 	// Timestamp Timestamp to bypass cache
 	Timestamp *ApiTimestamp `form:"timestamp,omitempty" json:"timestamp,omitempty"`
 
-	// Nanostamp Timestamp in nanoseconds to bypass system limitation when more than 100 logs were returned in the same second.
+	// Nanostamp Nanosecond cursor for user/log pagination, returned as `_metadata.nanostamp`. Pass it back (without `to`) to continue from the exact position with no skipped or repeated logs; it also bypasses the limitation when more than 100 logs share the same second.
 	Nanostamp *ApiNanostamp `form:"nanostamp,omitempty" json:"nanostamp,omitempty"`
 
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
@@ -42836,7 +42842,7 @@ type ClientInterface interface {
 
 	// GetMyLogs Get your logs
 	//
-	// Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.
+	// Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.<br><br>Pagination: `from` and `to` are inclusive bounds at one-second resolution. Log timestamps are nanosecond-precise, so to page without gaps or repeats use the `nanostamp` cursor (returned as `_metadata.nanostamp`, sent without `to`); the `prev` link does this automatically.
 	//
 	// Corresponds with GET /user/log (the `GetMyLogs` operationId).
 	GetMyLogs(ctx context.Context, params *GetMyLogsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -46370,7 +46376,7 @@ func (c *Client) GetMyContactsList(ctx context.Context, params *GetMyContactsLis
 
 // GetMyLogs Get your logs
 //
-// Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.
+// Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.<br><br>Pagination: `from` and `to` are inclusive bounds at one-second resolution. Log timestamps are nanosecond-precise, so to page without gaps or repeats use the `nanostamp` cursor (returned as `_metadata.nanostamp`, sent without `to`); the `prev` link does this automatically.
 //
 // Corresponds with GET /user/log (the `GetMyLogs` operationId).
 func (c *Client) GetMyLogs(ctx context.Context, params *GetMyLogsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -72092,7 +72098,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyLogsWithResponse Get your logs
 	//
-	// Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.
+	// Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.<br><br>Pagination: `from` and `to` are inclusive bounds at one-second resolution. Log timestamps are nanosecond-precise, so to page without gaps or repeats use the `nanostamp` cursor (returned as `_metadata.nanostamp`, sent without `to`); the `prev` link does this automatically.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -85057,7 +85063,7 @@ func (c *ClientWithResponses) GetMyContactsListWithResponse(ctx context.Context,
 
 // GetMyLogsWithResponse Get your logs
 //
-// Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.
+// Requires full access key. <br> It's possible to pass a list of log ids or a log category id.<br>This selection is standalone and cannot be used together with other selections.<br><br>Pagination: `from` and `to` are inclusive bounds at one-second resolution. Log timestamps are nanosecond-precise, so to page without gaps or repeats use the `nanostamp` cursor (returned as `_metadata.nanostamp`, sent without `to`); the `prev` link does this automatically.
 //
 // Returns a wrapper object for the known response body format(s).
 //
