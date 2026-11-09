@@ -18,7 +18,9 @@ STRIP_TAGS_PARAMS = (
     "ApiStripTagsTrue",
 )
 
-# Torn marks array items with a non-standard "schema": "TypeName" field.
+# Search-filter array params: keep stable component schema names for codegen.
+# Older Torn specs used a non-standard items.schema="TypeName" pointer; newer
+# specs inline the oneOf on items and omit the named schema entirely.
 ITEM_SCHEMA_FIXES = {
     "ApiCompanySearchFilter": "CompanySearchParameter",
     "ApiFactionSearchFilter": "Parameters",
@@ -28,20 +30,39 @@ ITEM_SCHEMA_FIXES = {
 
 def fix_items_schema_refs(spec: dict[str, Any]) -> None:
     parameters = spec["components"]["parameters"]
+    schemas = spec["components"].setdefault("schemas", {})
     for param_name, expected in ITEM_SCHEMA_FIXES.items():
         schema = parameters[param_name]["schema"]
         items = schema.get("items")
         if not isinstance(items, dict):
             continue
-        if items.get("schema") != expected and "$ref" not in items:
+
+        ref = f"#/components/schemas/{expected}"
+
+        if items.get("$ref") == ref:
+            continue
+
+        if items.get("schema") == expected:
+            # Legacy Torn form: items.schema = "TypeName" with a sibling component.
+            pass
+        elif "oneOf" in items:
+            # Current Torn form: oneOf inlined on items; hoist if the name is gone.
+            if expected not in schemas:
+                schemas[expected] = copy.deepcopy(items)
+        elif "$ref" in items:
+            # Unexpected ref target; normalize to the stable name below.
+            pass
+        else:
             raise SystemExit(
-                f"{param_name}: expected items.schema={expected!r}, got {items!r}"
+                f"{param_name}: expected items.schema={expected!r}, "
+                f"$ref, or inlined oneOf; got {items!r}"
             )
+
+        # Preserve style/explode siblings on the parameter itself; only schema changes.
         parameters[param_name]["schema"] = {
             "type": "array",
-            "items": {"$ref": f"#/components/schemas/{expected}"},
+            "items": {"$ref": ref},
         }
-        # Preserve style/explode siblings on the parameter itself; only schema changes.
 
 
 def simplify_strip_tags_enums(spec: dict[str, Any]) -> None:

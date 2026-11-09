@@ -3,7 +3,7 @@
   "info": {
     "title": "Torn API",
     "description": "\n * The development of Torn's API v2 is still ongoing.\n * If selections remain unaltered, they will default to the API v1 version.\n * Unlike API v1, API v2 accepts both selections and IDs as path and query parameters.\n * If any discrepancies or errors are found, please submit a [bug report](https://www.torn.com/forums.php#/p=forums&f=19&b=0&a=0) on the Torn Forums.\n * In case you're using bots to check for changes on openapi.json file, make sure to specificy a custom user-agent header - CloudFlare sometimes prevents requests from default user-agents.",
-    "version": "6.15.2"
+    "version": "6.15.7"
   },
   "servers": [
     {
@@ -8113,8 +8113,7 @@
             "in": "path",
             "description": "Category id or a list of category ids (comma separated)",
             "required": true,
-            "style": "form",
-            "explode": false,
+            "style": "simple",
             "schema": {
               "type": "array",
               "items": {
@@ -9275,7 +9274,7 @@
           "Racing"
         ],
         "summary": "Get races",
-        "description": "Requires public access key. <br>Returns a list of races, ordered by race start timestamp.",
+        "description": "Requires public access key. <br>Returns a list of races, ordered by race start timestamp. <br>The 'available' category returns races which have not started yet and can still be joined; 'from' and 'to' are ignored for this category.",
         "operationId": "getRacingRaces",
         "parameters": [
           {
@@ -9296,7 +9295,7 @@
             "description": "Category of races returned",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/RacingRaceTypeEnum"
+              "$ref": "#/components/schemas/RacingRacesCategoryEnum"
             }
           },
           {
@@ -9610,7 +9609,7 @@
             "schema": {
               "oneOf": [
                 {
-                  "$ref": "#/components/schemas/RacingRaceTypeEnum"
+                  "$ref": "#/components/schemas/RacingRacesCategoryEnum"
                 },
                 {
                   "$ref": "#/components/schemas/RaceClassEnum"
@@ -10671,8 +10670,7 @@
             "in": "path",
             "description": "Honor id or a list of honor ids (comma separated)",
             "required": true,
-            "style": "form",
-            "explode": false,
+            "style": "simple",
             "schema": {
               "type": "array",
               "items": {
@@ -10817,8 +10815,7 @@
             "in": "path",
             "description": "Item uid or a list of item uids (comma separated), 25 uids maximum",
             "required": true,
-            "style": "form",
-            "explode": false,
+            "style": "simple",
             "schema": {
               "type": "array",
               "items": {
@@ -10909,8 +10906,7 @@
             "in": "path",
             "description": "Item uid or a list of item uids (comma separated), 25 uids maximum",
             "required": true,
-            "style": "form",
-            "explode": false,
+            "style": "simple",
             "schema": {
               "type": "array",
               "items": {
@@ -11013,8 +11009,7 @@
             "in": "path",
             "description": "Item id or a list of item ids (comma separated)",
             "required": true,
-            "style": "form",
-            "explode": false,
+            "style": "simple",
             "schema": {
               "type": "array",
               "items": {
@@ -11234,8 +11229,7 @@
             "in": "path",
             "description": "Medal id or a list of medal ids (comma separated)",
             "required": true,
-            "style": "form",
-            "explode": false,
+            "style": "simple",
             "schema": {
               "type": "array",
               "items": {
@@ -16665,6 +16659,14 @@
           "custom"
         ]
       },
+      "RacingRacesCategoryEnum": {
+        "type": "string",
+        "enum": [
+          "official",
+          "custom",
+          "available"
+        ]
+      },
       "MarketSpecializedBazaarCategoryEnum": {
         "type": "string",
         "enum": [
@@ -17578,62 +17580,6 @@
         "enum": [
           "v1",
           "v2"
-        ]
-      },
-      "CompanySearchParameter": {
-        "oneOf": [
-          {
-            "type": "string",
-            "enum": [
-              "recruiting",
-              "notRecruiting"
-            ]
-          },
-          {
-            "type": "string",
-            "pattern": "^(id|type|daysOld|rating|dailyIncome|weeklyIncome|dailyCustomers|weeklyCustomers):(=|!=|<|<=|>=|>|Equal|NotEqual|Less|LessOrEqual|GreaterOrEqual|Greater):\\d+$"
-          }
-        ]
-      },
-      "UserSearchParameter": {
-        "oneOf": [
-          {
-            "type": "string",
-            "enum": [
-              "married",
-              "notMarried",
-              "traveling",
-              "notTraveling",
-              "inFaction",
-              "notInFaction",
-              "inCompany",
-              "notInCompany",
-              "inHospital",
-              "notInHospital",
-              "inJail",
-              "notInJail",
-              "inFederalJail",
-              "notInFederalJail",
-              "male",
-              "female",
-              "enby",
-              "lastActionNow",
-              "lastActionRecent",
-              "lastActionHourAgo",
-              "lastActionDayAgo",
-              "lastActionWeekAgo",
-              "lastActionMonthAgo",
-              "lastActionYearAgo"
-            ]
-          },
-          {
-            "type": "string",
-            "pattern": "^(level|daysOld|offences):(=|!=|<|<=|>=|>|Equal|NotEqual|Less|LessOrEqual|GreaterOrEqual|Greater):\\d+$"
-          },
-          {
-            "type": "string",
-            "pattern": "^factions:\\d+(;\\d+)*$"
-          }
         ]
       },
       "TornShopliftingStatusTitleEnum": {
@@ -18848,7 +18794,8 @@
                 "country",
                 "item",
                 "trip_duration",
-                "hourly_profit"
+                "hourly_profit",
+                "restock_timestamp"
               ],
               "properties": {
                 "country": {
@@ -18869,6 +18816,10 @@
                     },
                     "name": {
                       "type": "string"
+                    },
+                    "stock": {
+                      "type": "integer",
+                      "format": "int32"
                     },
                     "price": {
                       "type": "integer",
@@ -18899,6 +18850,17 @@
                 "hourly_profit": {
                   "type": "integer",
                   "format": "int32"
+                },
+                "restock_timestamp": {
+                  "oneOf": [
+                    {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
                 }
               },
               "type": "object"
@@ -19803,7 +19765,8 @@
           "gym": {
             "required": [
               "id",
-              "name"
+              "name",
+              "unlocked_gyms"
             ],
             "properties": {
               "id": {
@@ -19811,9 +19774,34 @@
               },
               "name": {
                 "type": "string"
+              },
+              "unlocked_gyms": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UserUnlockedGym"
+                }
               }
             },
             "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "UserUnlockedGym": {
+        "required": [
+          "id",
+          "name",
+          "available"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/GymId"
+          },
+          "name": {
+            "type": "string"
+          },
+          "available": {
+            "type": "boolean"
           }
         },
         "type": "object"
@@ -37022,7 +37010,10 @@
           "title",
           "description",
           "start",
-          "end"
+          "end",
+          "earliest_start",
+          "latest_end",
+          "fixed_start_time"
         ],
         "properties": {
           "title": {
@@ -37036,6 +37027,14 @@
             "format": "int32"
           },
           "end": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "earliest_start": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "latest_end": {
             "type": "integer",
             "format": "int32"
           },
@@ -37472,6 +37471,63 @@
         },
         "type": "object"
       },
+      "AttackLogItem": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/ItemId"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "AttackLogAttacker": {
+        "required": [
+          "id",
+          "name",
+          "item"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/UserId"
+          },
+          "name": {
+            "type": "string"
+          },
+          "item": {
+            "description": "This value is null if there was no item being used in this turn or during this effect.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AttackLogItem"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "AttackLogDefender": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/UserId"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "AttackLog": {
         "required": [
           "text",
@@ -37496,42 +37552,10 @@
             "type": "string"
           },
           "attacker": {
+            "description": "This value is null in stealthed attacks.",
             "oneOf": [
               {
-                "description": "This value could be null in stealthed attacks.",
-                "required": [
-                  "id",
-                  "name",
-                  "item"
-                ],
-                "properties": {
-                  "id": {
-                    "$ref": "#/components/schemas/UserId"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "item": {
-                    "oneOf": [
-                      {
-                        "description": "This object could be null if there was no item being used in this turn or during this effect.",
-                        "properties": {
-                          "id": {
-                            "$ref": "#/components/schemas/ItemId"
-                          },
-                          "name": {
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  }
-                },
-                "type": "object"
+                "$ref": "#/components/schemas/AttackLogAttacker"
               },
               {
                 "type": "null"
@@ -37539,22 +37563,10 @@
             ]
           },
           "defender": {
+            "description": "This value is null in stealthed attacks.",
             "oneOf": [
               {
-                "description": "This value could be null in stealthed attacks.",
-                "required": [
-                  "id",
-                  "name"
-                ],
-                "properties": {
-                  "id": {
-                    "$ref": "#/components/schemas/UserId"
-                  },
-                  "name": {
-                    "type": "string"
-                  }
-                },
-                "type": "object"
+                "$ref": "#/components/schemas/AttackLogDefender"
               },
               {
                 "type": "null"
@@ -37562,20 +37574,15 @@
             ]
           },
           "attacker_item": {
-            "description": "This field only exists if the attacker is stealthed and they used a temporary item.",
-            "required": [
-              "id",
-              "name"
-            ],
-            "properties": {
-              "id": {
-                "$ref": "#/components/schemas/ItemId"
+            "description": "This field only exists if the attacker is stealthed and they used a temporary item. It is null if the item could not be resolved.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AttackLogItem"
               },
-              "name": {
-                "type": "string"
+              {
+                "type": "null"
               }
-            },
-            "type": "object"
+            ]
           }
         },
         "type": "object"
@@ -38308,6 +38315,62 @@
           }
         },
         "type": "object"
+      },
+      "CompanySearchParameter": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "recruiting",
+              "notRecruiting"
+            ]
+          },
+          {
+            "type": "string",
+            "pattern": "^(id|type|daysOld|rating|dailyIncome|weeklyIncome|dailyCustomers|weeklyCustomers):(=|!=|<|<=|>=|>|Equal|NotEqual|Less|LessOrEqual|GreaterOrEqual|Greater):\\d+$"
+          }
+        ]
+      },
+      "UserSearchParameter": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "married",
+              "notMarried",
+              "traveling",
+              "notTraveling",
+              "inFaction",
+              "notInFaction",
+              "inCompany",
+              "notInCompany",
+              "inHospital",
+              "notInHospital",
+              "inJail",
+              "notInJail",
+              "inFederalJail",
+              "notInFederalJail",
+              "male",
+              "female",
+              "enby",
+              "lastActionNow",
+              "lastActionRecent",
+              "lastActionHourAgo",
+              "lastActionDayAgo",
+              "lastActionWeekAgo",
+              "lastActionMonthAgo",
+              "lastActionYearAgo"
+            ]
+          },
+          {
+            "type": "string",
+            "pattern": "^(level|daysOld|offences):(=|!=|<|<=|>=|>|Equal|NotEqual|Less|LessOrEqual|GreaterOrEqual|Greater):\\d+$"
+          },
+          {
+            "type": "string",
+            "pattern": "^factions:\\d+(;\\d+)*$"
+          }
+        ]
       },
       "FactionSearchParameter": {
         "oneOf": [
