@@ -18,30 +18,70 @@ STRIP_TAGS_PARAMS = (
     "ApiStripTagsTrue",
 )
 
-# Torn marks array items with a non-standard "schema": "TypeName" field.
+# Search-filter array params: keep stable component schema names for codegen.
+# Older Torn specs used a non-standard items.schema="TypeName" pointer; newer
+# specs inline the oneOf on items and omit the named schema entirely.
+# ApiFactionSearchFilter's upstream schema is awkwardly named "Parameters";
+# rename_parameters_schema later rewrites that to FactionSearchParameter.
 ITEM_SCHEMA_FIXES = {
     "ApiCompanySearchFilter": "CompanySearchParameter",
     "ApiFactionSearchFilter": "Parameters",
     "ApiUserSearchFilter": "UserSearchParameter",
 }
 
+# Post-rename stable names. An existing $ref to either the intermediate or the
+# final name is already correct; do not rewrite FactionSearchParameter back to
+# Parameters on an already-preprocessed vendored spec.
+ITEM_SCHEMA_FINAL_NAMES = {
+    "ApiFactionSearchFilter": "FactionSearchParameter",
+}
+
 
 def fix_items_schema_refs(spec: dict[str, Any]) -> None:
     parameters = spec["components"]["parameters"]
+    schemas = spec["components"].setdefault("schemas", {})
     for param_name, expected in ITEM_SCHEMA_FIXES.items():
         schema = parameters[param_name]["schema"]
         items = schema.get("items")
         if not isinstance(items, dict):
             continue
-        if items.get("schema") != expected and "$ref" not in items:
+
+        ref = f"#/components/schemas/{expected}"
+        final_name = ITEM_SCHEMA_FINAL_NAMES.get(param_name, expected)
+        acceptable_refs = {
+            ref,
+            f"#/components/schemas/{final_name}",
+        }
+
+        if items.get("$ref") in acceptable_refs:
+            continue
+
+        if items.get("schema") in (expected, final_name):
+            # Legacy Torn form: items.schema = "TypeName" with a sibling component.
+            pass
+        elif "oneOf" in items:
+            # Current Torn form: oneOf inlined on items; hoist if the name is gone.
+            # Prefer the intermediate name so rename_parameters_schema can run.
+            hoist_name = expected
+            if hoist_name not in schemas and final_name not in schemas:
+                schemas[hoist_name] = copy.deepcopy(items)
+            elif hoist_name not in schemas and final_name in schemas:
+                # Already renamed on a prior pass; point at the final name.
+                ref = f"#/components/schemas/{final_name}"
+        elif "$ref" in items:
+            # Unexpected ref target; normalize to the stable name below.
+            pass
+        else:
             raise SystemExit(
-                f"{param_name}: expected items.schema={expected!r}, got {items!r}"
+                f"{param_name}: expected items.schema={expected!r}, "
+                f"$ref, or inlined oneOf; got {items!r}"
             )
+
+        # Preserve style/explode siblings on the parameter itself; only schema changes.
         parameters[param_name]["schema"] = {
             "type": "array",
-            "items": {"$ref": f"#/components/schemas/{expected}"},
+            "items": {"$ref": ref},
         }
-        # Preserve style/explode siblings on the parameter itself; only schema changes.
 
 
 def simplify_strip_tags_enums(spec: dict[str, Any]) -> None:
