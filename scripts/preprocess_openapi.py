@@ -46,14 +46,36 @@ def fix_items_schema_refs(spec: dict[str, Any]) -> None:
         if not isinstance(items, dict):
             continue
 
-        ref = f"#/components/schemas/{expected}"
+        intermediate_ref = f"#/components/schemas/{expected}"
         final_name = ITEM_SCHEMA_FINAL_NAMES.get(param_name, expected)
+        final_ref = f"#/components/schemas/{final_name}"
         acceptable_refs = {
-            ref,
-            f"#/components/schemas/{final_name}",
+            intermediate_ref,
+            final_ref,
         }
+        ref = intermediate_ref
 
-        if items.get("$ref") in acceptable_refs:
+        current_ref = items.get("$ref")
+        if current_ref in acceptable_refs:
+            target_name = current_ref.rsplit("/", 1)[-1]
+            if target_name in schemas:
+                # Idempotent: ref already resolves.
+                continue
+            # Heal dangling refs left by a prior failed generate (e.g. items
+            # still point at Parameters after that schema was renamed away).
+            if final_name in schemas:
+                ref = final_ref
+            elif expected in schemas:
+                ref = intermediate_ref
+            else:
+                raise SystemExit(
+                    f"{param_name}: dangling $ref {current_ref!r}; "
+                    f"schemas missing {expected!r} and {final_name!r}"
+                )
+            parameters[param_name]["schema"] = {
+                "type": "array",
+                "items": {"$ref": ref},
+            }
             continue
 
         if items.get("schema") in (expected, final_name):
@@ -67,7 +89,7 @@ def fix_items_schema_refs(spec: dict[str, Any]) -> None:
                 schemas[hoist_name] = copy.deepcopy(items)
             elif hoist_name not in schemas and final_name in schemas:
                 # Already renamed on a prior pass; point at the final name.
-                ref = f"#/components/schemas/{final_name}"
+                ref = final_ref
         elif "$ref" in items:
             # Unexpected ref target; normalize to the stable name below.
             pass
