@@ -21,10 +21,19 @@ STRIP_TAGS_PARAMS = (
 # Search-filter array params: keep stable component schema names for codegen.
 # Older Torn specs used a non-standard items.schema="TypeName" pointer; newer
 # specs inline the oneOf on items and omit the named schema entirely.
+# ApiFactionSearchFilter's upstream schema is awkwardly named "Parameters";
+# rename_parameters_schema later rewrites that to FactionSearchParameter.
 ITEM_SCHEMA_FIXES = {
     "ApiCompanySearchFilter": "CompanySearchParameter",
     "ApiFactionSearchFilter": "Parameters",
     "ApiUserSearchFilter": "UserSearchParameter",
+}
+
+# Post-rename stable names. An existing $ref to either the intermediate or the
+# final name is already correct; do not rewrite FactionSearchParameter back to
+# Parameters on an already-preprocessed vendored spec.
+ITEM_SCHEMA_FINAL_NAMES = {
+    "ApiFactionSearchFilter": "FactionSearchParameter",
 }
 
 
@@ -38,17 +47,27 @@ def fix_items_schema_refs(spec: dict[str, Any]) -> None:
             continue
 
         ref = f"#/components/schemas/{expected}"
+        final_name = ITEM_SCHEMA_FINAL_NAMES.get(param_name, expected)
+        acceptable_refs = {
+            ref,
+            f"#/components/schemas/{final_name}",
+        }
 
-        if items.get("$ref") == ref:
+        if items.get("$ref") in acceptable_refs:
             continue
 
-        if items.get("schema") == expected:
+        if items.get("schema") in (expected, final_name):
             # Legacy Torn form: items.schema = "TypeName" with a sibling component.
             pass
         elif "oneOf" in items:
             # Current Torn form: oneOf inlined on items; hoist if the name is gone.
-            if expected not in schemas:
-                schemas[expected] = copy.deepcopy(items)
+            # Prefer the intermediate name so rename_parameters_schema can run.
+            hoist_name = expected
+            if hoist_name not in schemas and final_name not in schemas:
+                schemas[hoist_name] = copy.deepcopy(items)
+            elif hoist_name not in schemas and final_name in schemas:
+                # Already renamed on a prior pass; point at the final name.
+                ref = f"#/components/schemas/{final_name}"
         elif "$ref" in items:
             # Unexpected ref target; normalize to the stable name below.
             pass
