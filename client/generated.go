@@ -22105,16 +22105,18 @@ type KeyInfoAvailableLog struct {
 type KeyInfoResponse struct {
 	Info struct {
 		Access struct {
-			Company bool  `json:"company"`
-			Faction bool  `json:"faction"`
-			Level   int32 `json:"level"`
-			Log     struct {
+			Company           bool  `json:"company"`
+			Faction           bool  `json:"faction"`
+			LegacyPermissions bool  `json:"legacy_permissions"`
+			Level             int32 `json:"level"`
+			Log               struct {
 				Available []KeyInfoAvailableLog `json:"available"`
 
 				// CustomPermissions Shows if key has custom log permissions enabled.
 				CustomPermissions bool `json:"custom_permissions"`
 			} `json:"log"`
-			Type ApiKeyAccessTypeEnum `json:"type"`
+			SensitiveData bool                 `json:"sensitive_data"`
+			Type          ApiKeyAccessTypeEnum `json:"type"`
 		} `json:"access"`
 		Selections struct {
 			Company  []string               `json:"company"`
@@ -42126,7 +42128,7 @@ type ClientInterface interface {
 
 	// GetKeyInfo Get current key info
 	//
-	// Available for any key. <br>
+	// Available for any key. <br>'sensitive_data' is true when the key returns the same data as a Limited Access key (e.g. battle stats, revive setting, property and company finances): Limited Access, Full Access and custom keys created with 'Include sensitive data' enabled. Custom keys created before this option existed keep the permissions they had, report false and have 'legacy_permissions' set to true.
 	//
 	// Corresponds with GET /key/info (the `GetKeyInfo` operationId).
 	GetKeyInfo(ctx context.Context, params *GetKeyInfoParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -44570,7 +44572,7 @@ func (c *Client) GetKeyGeneric(ctx context.Context, params *GetKeyGenericParams,
 
 // GetKeyInfo Get current key info
 //
-// Available for any key. <br>
+// Available for any key. <br>'sensitive_data' is true when the key returns the same data as a Limited Access key (e.g. battle stats, revive setting, property and company finances): Limited Access, Full Access and custom keys created with 'Include sensitive data' enabled. Custom keys created before this option existed keep the permissions they had, report false and have 'legacy_permissions' set to true.
 //
 // Corresponds with GET /key/info (the `GetKeyInfo` operationId).
 func (c *Client) GetKeyInfo(ctx context.Context, params *GetKeyInfoParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -71164,7 +71166,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetKeyInfoWithResponse Get current key info
 	//
-	// Available for any key. <br>
+	// Available for any key. <br>'sensitive_data' is true when the key returns the same data as a Limited Access key (e.g. battle stats, revive setting, property and company finances): Limited Access, Full Access and custom keys created with 'Include sensitive data' enabled. Custom keys created before this option existed keep the permissions they had, report false and have 'legacy_permissions' set to true.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -83475,7 +83477,7 @@ func (c *ClientWithResponses) GetKeyGenericWithResponse(ctx context.Context, par
 
 // GetKeyInfoWithResponse Get current key info
 //
-// Available for any key. <br>
+// Available for any key. <br>'sensitive_data' is true when the key returns the same data as a Limited Access key (e.g. battle stats, revive setting, property and company finances): Limited Access, Full Access and custom keys created with 'Include sensitive data' enabled. Custom keys created before this option existed keep the permissions they had, report false and have 'legacy_permissions' set to true.
 //
 // Returns a wrapper object for the known response body format(s).
 //

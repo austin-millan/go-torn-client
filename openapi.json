@@ -3,7 +3,7 @@
   "info": {
     "title": "Torn API",
     "description": "\n * The development of Torn's API v2 is still ongoing.\n * If selections remain unaltered, they will default to the API v1 version.\n * Unlike API v1, API v2 accepts both selections and IDs as path and query parameters.\n * If any discrepancies or errors are found, please submit a [bug report](https://www.torn.com/forums.php#/p=forums&f=19&b=0&a=0) on the Torn Forums.\n * In case you're using bots to check for changes on openapi.json file, make sure to specificy a custom user-agent header - CloudFlare sometimes prevents requests from default user-agents.",
-    "version": "6.15.7"
+    "version": "6.15.9"
   },
   "servers": [
     {
@@ -8389,7 +8389,7 @@
           "Key"
         ],
         "summary": "Get current key info",
-        "description": "Available for any key. <br>",
+        "description": "Available for any key. <br>'sensitive_data' is true when the key returns the same data as a Limited Access key (e.g. battle stats, revive setting, property and company finances): Limited Access, Full Access and custom keys created with 'Include sensitive data' enabled. Custom keys created before this option existed keep the permissions they had, report false and have 'legacy_permissions' set to true.",
         "operationId": "getKeyInfo",
         "parameters": [
           {
@@ -32737,6 +32737,8 @@
                 "required": [
                   "level",
                   "type",
+                  "sensitive_data",
+                  "legacy_permissions",
                   "faction",
                   "company",
                   "log"
@@ -32748,6 +32750,12 @@
                   },
                   "type": {
                     "$ref": "#/components/schemas/ApiKeyAccessTypeEnum"
+                  },
+                  "sensitive_data": {
+                    "type": "boolean"
+                  },
+                  "legacy_permissions": {
+                    "type": "boolean"
                   },
                   "faction": {
                     "type": "boolean"
