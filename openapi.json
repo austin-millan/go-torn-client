@@ -3,7 +3,7 @@
   "info": {
     "title": "Torn API",
     "description": "\n * The development of Torn's API v2 is still ongoing.\n * If selections remain unaltered, they will default to the API v1 version.\n * Unlike API v1, API v2 accepts both selections and IDs as path and query parameters.\n * If any discrepancies or errors are found, please submit a [bug report](https://www.torn.com/forums.php#/p=forums&f=19&b=0&a=0) on the Torn Forums.\n * In case you're using bots to check for changes on openapi.json file, make sure to specificy a custom user-agent header - CloudFlare sometimes prevents requests from default user-agents.",
-    "version": "6.15.9"
+    "version": "6.16.0"
   },
   "servers": [
     {
@@ -2867,7 +2867,7 @@
           "User"
         ],
         "summary": "Get your own properties",
-        "description": "Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys.",
+        "description": "Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.",
         "operationId": "getMyProperties",
         "parameters": [
           {
@@ -2915,7 +2915,7 @@
           "User"
         ],
         "summary": "Get specific user's properties",
-        "description": "Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.",
+        "description": "Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.",
         "operationId": "getUserProperties",
         "parameters": [
           {
@@ -5127,6 +5127,48 @@
         "x-stability": "Stable"
       }
     },
+    "/faction/headlines": {
+      "get": {
+        "tags": [
+          "Faction"
+        ],
+        "summary": "Get your faction's news ticker headlines",
+        "description": "Requires minimal access key with faction API access permissions. <br>Returns the headlines currently shown in your faction's news ticker. 'importance' is 'urgent' for headlines marked as urgent.",
+        "operationId": "getMyFactionHeadlines",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ApiStripTagsFalse"
+          },
+          {
+            "$ref": "#/components/parameters/ApiTimestamp"
+          },
+          {
+            "$ref": "#/components/parameters/ApiComment"
+          },
+          {
+            "$ref": "#/components/parameters/ApiKeyMinimal"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FactionHeadlinesResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-stability": "Unstable"
+      }
+    },
     "/faction/hof": {
       "get": {
         "tags": [
@@ -7087,6 +7129,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/NewsResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/FactionHeadlinesResponse"
                     },
                     {
                       "$ref": "#/components/schemas/RevivesResponse"
@@ -10608,6 +10653,48 @@
         "x-stability": "Stable"
       }
     },
+    "/torn/headlines": {
+      "get": {
+        "tags": [
+          "Torn"
+        ],
+        "summary": "Get news ticker headlines",
+        "description": "Requires public access key. <br>Returns the headlines currently shown in the news ticker. 'importance' is 'urgent' for headlines marked as announcements.",
+        "operationId": "getTornHeadlines",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ApiStripTagsFalse"
+          },
+          {
+            "$ref": "#/components/parameters/ApiTimestamp"
+          },
+          {
+            "$ref": "#/components/parameters/ApiComment"
+          },
+          {
+            "$ref": "#/components/parameters/ApiKeyPublic"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TornHeadlinesResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-stability": "Unstable"
+      }
+    },
     "/torn/honors": {
       "get": {
         "tags": [
@@ -12101,6 +12188,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/TornHalloweenResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TornHeadlinesResponse"
                     },
                     {
                       "$ref": "#/components/schemas/TornBountiesResponse"
@@ -29802,6 +29892,20 @@
         },
         "type": "object"
       },
+      "FactionHeadlinesResponse": {
+        "required": [
+          "headlines"
+        ],
+        "properties": {
+          "headlines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TornHeadline"
+            }
+          }
+        },
+        "type": "object"
+      },
       "NewsResponse": {
         "required": [
           "news",
@@ -30842,6 +30946,7 @@
               "crimes",
               "crimeexp",
               "dirtbombs",
+              "headlines",
               "hof",
               "lookup",
               "members",
@@ -38218,6 +38323,7 @@
               "factiontree",
               "gyms",
               "halloween",
+              "headlines",
               "hof",
               "honors",
               "itemammo",
@@ -38320,6 +38426,66 @@
         "properties": {
           "halloween": {
             "$ref": "#/components/schemas/TornHalloween"
+          }
+        },
+        "type": "object"
+      },
+      "TornHeadline": {
+        "required": [
+          "id",
+          "headline",
+          "link",
+          "type",
+          "importance"
+        ],
+        "properties": {
+          "id": {
+            "oneOf": [
+              {
+                "type": "integer",
+                "format": "int32"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "headline": {
+            "type": "string"
+          },
+          "link": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "type": {
+            "type": "string"
+          },
+          "importance": {
+            "type": "string",
+            "enum": [
+              "normal",
+              "urgent"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "TornHeadlinesResponse": {
+        "required": [
+          "headlines"
+        ],
+        "properties": {
+          "headlines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TornHeadline"
+            }
           }
         },
         "type": "object"

@@ -1396,6 +1396,7 @@ const (
 	FactionSelectionName0Crimeexp           FactionSelectionName0 = "crimeexp"
 	FactionSelectionName0Crimes             FactionSelectionName0 = "crimes"
 	FactionSelectionName0Dirtbombs          FactionSelectionName0 = "dirtbombs"
+	FactionSelectionName0Headlines          FactionSelectionName0 = "headlines"
 	FactionSelectionName0Hof                FactionSelectionName0 = "hof"
 	FactionSelectionName0Lookup             FactionSelectionName0 = "lookup"
 	FactionSelectionName0Members            FactionSelectionName0 = "members"
@@ -1452,6 +1453,8 @@ func (e FactionSelectionName0) Valid() bool {
 	case FactionSelectionName0Crimes:
 		return true
 	case FactionSelectionName0Dirtbombs:
+		return true
+	case FactionSelectionName0Headlines:
 		return true
 	case FactionSelectionName0Hof:
 		return true
@@ -16102,6 +16105,24 @@ func (e TornFactionHofCategory) Valid() bool {
 	}
 }
 
+// Defines values for TornHeadlineImportance.
+const (
+	TornHeadlineImportanceNormal TornHeadlineImportance = "normal"
+	TornHeadlineImportanceUrgent TornHeadlineImportance = "urgent"
+)
+
+// Valid indicates whether the value is a known member of the TornHeadlineImportance enum.
+func (e TornHeadlineImportance) Valid() bool {
+	switch e {
+	case TornHeadlineImportanceNormal:
+		return true
+	case TornHeadlineImportanceUrgent:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for TornHofCategory.
 const (
 	TornHofCategoryAttacks      TornHofCategory = "attacks"
@@ -16789,6 +16810,7 @@ const (
 	TornSelectionName0Factiontree       TornSelectionName0 = "factiontree"
 	TornSelectionName0Gyms              TornSelectionName0 = "gyms"
 	TornSelectionName0Halloween         TornSelectionName0 = "halloween"
+	TornSelectionName0Headlines         TornSelectionName0 = "headlines"
 	TornSelectionName0Hof               TornSelectionName0 = "hof"
 	TornSelectionName0Honors            TornSelectionName0 = "honors"
 	TornSelectionName0Itemammo          TornSelectionName0 = "itemammo"
@@ -16850,6 +16872,8 @@ func (e TornSelectionName0) Valid() bool {
 	case TornSelectionName0Gyms:
 		return true
 	case TornSelectionName0Halloween:
+		return true
+	case TornSelectionName0Headlines:
 		return true
 	case TornSelectionName0Hof:
 		return true
@@ -21056,6 +21080,11 @@ type FactionCrimesResponse struct {
 	Crimes             []FactionCrime           `json:"crimes"`
 }
 
+// FactionHeadlinesResponse defines model for FactionHeadlinesResponse.
+type FactionHeadlinesResponse struct {
+	Headlines []TornHeadline `json:"headlines"`
+}
+
 // FactionHofResponse defines model for FactionHofResponse.
 type FactionHofResponse struct {
 	Hof FactionHofStats `json:"hof"`
@@ -23991,6 +24020,23 @@ type TornHalloweenUpgrade struct {
 	Id          HalloweenBasketUpgradeId `json:"id"`
 	Name        string                   `json:"name"`
 	Requirement int32                    `json:"requirement"`
+}
+
+// TornHeadline defines model for TornHeadline.
+type TornHeadline struct {
+	Headline   string                 `json:"headline"`
+	Id         *int32                 `json:"id"`
+	Importance TornHeadlineImportance `json:"importance"`
+	Link       *string                `json:"link"`
+	Type       string                 `json:"type"`
+}
+
+// TornHeadlineImportance defines model for TornHeadline.Importance.
+type TornHeadlineImportance string
+
+// TornHeadlinesResponse defines model for TornHeadlinesResponse.
+type TornHeadlinesResponse struct {
+	Headlines []TornHeadline `json:"headlines"`
 }
 
 // TornHof defines model for TornHof.
@@ -27821,6 +27867,21 @@ type GetWarfareDirtyBombsParams struct {
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
+// GetMyFactionHeadlinesParams defines parameters for GetMyFactionHeadlines.
+type GetMyFactionHeadlinesParams struct {
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
+	Striptags *ApiStripTagsFalse `form:"striptags,omitempty" json:"striptags,omitempty"`
+
+	// Timestamp Timestamp to bypass cache
+	Timestamp *ApiTimestamp `form:"timestamp,omitempty" json:"timestamp,omitempty"`
+
+	// Comment Comment for your tool/service/bot/website to be visible in the logs.
+	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
+
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
+}
+
 // GetMyFactionHoFParams defines parameters for GetMyFactionHoF.
 type GetMyFactionHoFParams struct {
 	// Timestamp Timestamp to bypass cache
@@ -29496,6 +29557,21 @@ type GetTornHalloweenParams struct {
 
 	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
+}
+
+// GetTornHeadlinesParams defines parameters for GetTornHeadlines.
+type GetTornHeadlinesParams struct {
+	// Striptags Determines if fields include HTML or not ('Hospitalized by <a href=...>user</a>' vs 'Hospitalized by user').
+	Striptags *ApiStripTagsFalse `form:"striptags,omitempty" json:"striptags,omitempty"`
+
+	// Timestamp Timestamp to bypass cache
+	Timestamp *ApiTimestamp `form:"timestamp,omitempty" json:"timestamp,omitempty"`
+
+	// Comment Comment for your tool/service/bot/website to be visible in the logs.
+	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
+
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetTornHoFParams defines parameters for GetTornHoF.
@@ -37037,6 +37113,32 @@ func (t *GetFactionGeneric200JSONResponseBody) MergeNewsResponse(v NewsResponse)
 	return err
 }
 
+// AsFactionHeadlinesResponse returns the union data inside the GetFactionGeneric200JSONResponseBody as a FactionHeadlinesResponse
+func (t GetFactionGeneric200JSONResponseBody) AsFactionHeadlinesResponse() (FactionHeadlinesResponse, error) {
+	var body FactionHeadlinesResponse
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromFactionHeadlinesResponse overwrites any union data inside the GetFactionGeneric200JSONResponseBody as the provided FactionHeadlinesResponse
+func (t *GetFactionGeneric200JSONResponseBody) FromFactionHeadlinesResponse(v FactionHeadlinesResponse) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeFactionHeadlinesResponse performs a merge with any union data inside the GetFactionGeneric200JSONResponseBody, using the provided FactionHeadlinesResponse
+func (t *GetFactionGeneric200JSONResponseBody) MergeFactionHeadlinesResponse(v FactionHeadlinesResponse) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
 // AsRevivesResponse returns the union data inside the GetFactionGeneric200JSONResponseBody as a RevivesResponse
 func (t GetFactionGeneric200JSONResponseBody) AsRevivesResponse() (RevivesResponse, error) {
 	var body RevivesResponse
@@ -39323,6 +39425,32 @@ func (t *GetTornGeneric200JSONResponseBody) FromTornHalloweenResponse(v TornHall
 
 // MergeTornHalloweenResponse performs a merge with any union data inside the GetTornGeneric200JSONResponseBody, using the provided TornHalloweenResponse
 func (t *GetTornGeneric200JSONResponseBody) MergeTornHalloweenResponse(v TornHalloweenResponse) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsTornHeadlinesResponse returns the union data inside the GetTornGeneric200JSONResponseBody as a TornHeadlinesResponse
+func (t GetTornGeneric200JSONResponseBody) AsTornHeadlinesResponse() (TornHeadlinesResponse, error) {
+	var body TornHeadlinesResponse
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromTornHeadlinesResponse overwrites any union data inside the GetTornGeneric200JSONResponseBody as the provided TornHeadlinesResponse
+func (t *GetTornGeneric200JSONResponseBody) FromTornHeadlinesResponse(v TornHeadlinesResponse) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeTornHeadlinesResponse performs a merge with any union data inside the GetTornGeneric200JSONResponseBody, using the provided TornHeadlinesResponse
+func (t *GetTornGeneric200JSONResponseBody) MergeTornHeadlinesResponse(v TornHeadlinesResponse) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -41775,6 +41903,13 @@ type ClientInterface interface {
 	// Corresponds with GET /faction/dirtybombs (the `GetWarfareDirtyBombs` operationId).
 	GetWarfareDirtyBombs(ctx context.Context, params *GetWarfareDirtyBombsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetMyFactionHeadlines Get your faction's news ticker headlines
+	//
+	// Requires minimal access key with faction API access permissions. <br>Returns the headlines currently shown in your faction's news ticker. 'importance' is 'urgent' for headlines marked as urgent.
+	//
+	// Corresponds with GET /faction/headlines (the `GetMyFactionHeadlines` operationId).
+	GetMyFactionHeadlines(ctx context.Context, params *GetMyFactionHeadlinesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetMyFactionHoF Get your faction's hall of fame rankings.
 	//
 	// Requires public access key. <br>
@@ -42421,6 +42556,13 @@ type ClientInterface interface {
 	// Corresponds with GET /torn/halloween (the `GetTornHalloween` operationId).
 	GetTornHalloween(ctx context.Context, params *GetTornHalloweenParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetTornHeadlines Get news ticker headlines
+	//
+	// Requires public access key. <br>Returns the headlines currently shown in the news ticker. 'importance' is 'urgent' for headlines marked as announcements.
+	//
+	// Corresponds with GET /torn/headlines (the `GetTornHeadlines` operationId).
+	GetTornHeadlines(ctx context.Context, params *GetTornHeadlinesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetTornHoF Get player hall of fame positions for a specific category
 	//
 	// Requires public key.
@@ -43010,7 +43152,7 @@ type ClientInterface interface {
 
 	// GetMyProperties Get your own properties
 	//
-	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys.
+	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
 	//
 	// Corresponds with GET /user/properties (the `GetMyProperties` operationId).
 	GetMyProperties(ctx context.Context, params *GetMyPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43250,7 +43392,7 @@ type ClientInterface interface {
 
 	// GetUserProperties Get specific user's properties
 	//
-	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
+	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
 	//
 	// Corresponds with GET /user/{id}/properties (the `GetUserProperties` operationId).
 	GetUserProperties(ctx context.Context, id UserDiscordPathId, params *GetUserPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43710,6 +43852,23 @@ func (c *Client) GetMyFactionOrganizedCrimes(ctx context.Context, params *GetMyF
 // Corresponds with GET /faction/dirtybombs (the `GetWarfareDirtyBombs` operationId).
 func (c *Client) GetWarfareDirtyBombs(ctx context.Context, params *GetWarfareDirtyBombsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetWarfareDirtyBombsRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetMyFactionHeadlines Get your faction's news ticker headlines
+//
+// Requires minimal access key with faction API access permissions. <br>Returns the headlines currently shown in your faction's news ticker. 'importance' is 'urgent' for headlines marked as urgent.
+//
+// Corresponds with GET /faction/headlines (the `GetMyFactionHeadlines` operationId).
+func (c *Client) GetMyFactionHeadlines(ctx context.Context, params *GetMyFactionHeadlinesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetMyFactionHeadlinesRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -45285,6 +45444,23 @@ func (c *Client) GetTornHalloween(ctx context.Context, params *GetTornHalloweenP
 	return c.Client.Do(req)
 }
 
+// GetTornHeadlines Get news ticker headlines
+//
+// Requires public access key. <br>Returns the headlines currently shown in the news ticker. 'importance' is 'urgent' for headlines marked as announcements.
+//
+// Corresponds with GET /torn/headlines (the `GetTornHeadlines` operationId).
+func (c *Client) GetTornHeadlines(ctx context.Context, params *GetTornHeadlinesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetTornHeadlinesRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // GetTornHoF Get player hall of fame positions for a specific category
 //
 // Requires public key.
@@ -46704,7 +46880,7 @@ func (c *Client) GetMyProfile(ctx context.Context, params *GetMyProfileParams, r
 
 // GetMyProperties Get your own properties
 //
-// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys.
+// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
 //
 // Corresponds with GET /user/properties (the `GetMyProperties` operationId).
 func (c *Client) GetMyProperties(ctx context.Context, params *GetMyPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -47274,7 +47450,7 @@ func (c *Client) GetUserProfile(ctx context.Context, id UserDiscordPathId, param
 
 // GetUserProperties Get specific user's properties
 //
-// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
+// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
 //
 // Corresponds with GET /user/{id}/properties (the `GetUserProperties` operationId).
 func (c *Client) GetUserProperties(ctx context.Context, id UserDiscordPathId, params *GetUserPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -50033,6 +50209,96 @@ func NewGetWarfareDirtyBombsRequest(server string, params *GetWarfareDirtyBombsP
 		// styled parameters, preserving literal commas as delimiters
 		// per the OpenAPI spec (e.g. "color=blue,black,brown").
 		var rawQueryFragments []string
+
+		if params.Timestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "timestamp", *params.Timestamp, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Comment != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "comment", *params.Comment, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Key != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "key", *params.Key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetMyFactionHeadlinesRequest constructs an http.Request for the GetMyFactionHeadlines method
+func NewGetMyFactionHeadlinesRequest(server string, params *GetMyFactionHeadlinesParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/faction/headlines")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Striptags != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "striptags", *params.Striptags, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
 
 		if params.Timestamp != nil {
 
@@ -59406,6 +59672,96 @@ func NewGetTornHalloweenRequest(server string, params *GetTornHalloweenParams) (
 		// styled parameters, preserving literal commas as delimiters
 		// per the OpenAPI spec (e.g. "color=blue,black,brown").
 		var rawQueryFragments []string
+
+		if params.Timestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "timestamp", *params.Timestamp, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Comment != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "comment", *params.Comment, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Key != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "key", *params.Key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetTornHeadlinesRequest constructs an http.Request for the GetTornHeadlines method
+func NewGetTornHeadlinesRequest(server string, params *GetTornHeadlinesParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/torn/headlines")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Striptags != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "striptags", *params.Striptags, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
 
 		if params.Timestamp != nil {
 
@@ -70713,6 +71069,15 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /faction/dirtybombs (the `GetWarfareDirtyBombs` operationId).
 	GetWarfareDirtyBombsWithResponse(ctx context.Context, params *GetWarfareDirtyBombsParams, reqEditors ...RequestEditorFn) (*GetWarfareDirtyBombsResponse, error)
 
+	// GetMyFactionHeadlinesWithResponse Get your faction's news ticker headlines
+	//
+	// Requires minimal access key with faction API access permissions. <br>Returns the headlines currently shown in your faction's news ticker. 'importance' is 'urgent' for headlines marked as urgent.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /faction/headlines (the `GetMyFactionHeadlines` operationId).
+	GetMyFactionHeadlinesWithResponse(ctx context.Context, params *GetMyFactionHeadlinesParams, reqEditors ...RequestEditorFn) (*GetMyFactionHeadlinesResponse, error)
+
 	// GetMyFactionHoFWithResponse Get your faction's hall of fame rankings.
 	//
 	// Requires public access key. <br>
@@ -71543,6 +71908,15 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /torn/halloween (the `GetTornHalloween` operationId).
 	GetTornHalloweenWithResponse(ctx context.Context, params *GetTornHalloweenParams, reqEditors ...RequestEditorFn) (*GetTornHalloweenResponse, error)
 
+	// GetTornHeadlinesWithResponse Get news ticker headlines
+	//
+	// Requires public access key. <br>Returns the headlines currently shown in the news ticker. 'importance' is 'urgent' for headlines marked as announcements.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /torn/headlines (the `GetTornHeadlines` operationId).
+	GetTornHeadlinesWithResponse(ctx context.Context, params *GetTornHeadlinesParams, reqEditors ...RequestEditorFn) (*GetTornHeadlinesResponse, error)
+
 	// GetTornHoFWithResponse Get player hall of fame positions for a specific category
 	//
 	// Requires public key.
@@ -72298,7 +72672,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyPropertiesWithResponse Get your own properties
 	//
-	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys.
+	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72604,7 +72978,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserPropertiesWithResponse Get specific user's properties
 	//
-	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
+	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -73683,6 +74057,47 @@ func (r GetWarfareDirtyBombsResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetWarfareDirtyBombsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetMyFactionHeadlinesResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *FactionHeadlinesResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetMyFactionHeadlinesResponse) GetJSON200() *FactionHeadlinesResponse {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r GetMyFactionHeadlinesResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetMyFactionHeadlinesResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetMyFactionHeadlinesResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetMyFactionHeadlinesResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -77448,6 +77863,47 @@ func (r GetTornHalloweenResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetTornHalloweenResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetTornHeadlinesResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *TornHeadlinesResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetTornHeadlinesResponse) GetJSON200() *TornHeadlinesResponse {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r GetTornHeadlinesResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetTornHeadlinesResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetTornHeadlinesResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetTornHeadlinesResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -82724,6 +83180,21 @@ func (c *ClientWithResponses) GetWarfareDirtyBombsWithResponse(ctx context.Conte
 	return ParseGetWarfareDirtyBombsResponse(rsp)
 }
 
+// GetMyFactionHeadlinesWithResponse Get your faction's news ticker headlines
+//
+// Requires minimal access key with faction API access permissions. <br>Returns the headlines currently shown in your faction's news ticker. 'importance' is 'urgent' for headlines marked as urgent.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /faction/headlines (the `GetMyFactionHeadlines` operationId).
+func (c *ClientWithResponses) GetMyFactionHeadlinesWithResponse(ctx context.Context, params *GetMyFactionHeadlinesParams, reqEditors ...RequestEditorFn) (*GetMyFactionHeadlinesResponse, error) {
+	rsp, err := c.GetMyFactionHeadlines(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetMyFactionHeadlinesResponse(rsp)
+}
+
 // GetMyFactionHoFWithResponse Get your faction's hall of fame rankings.
 //
 // Requires public access key. <br>
@@ -84106,6 +84577,21 @@ func (c *ClientWithResponses) GetTornHalloweenWithResponse(ctx context.Context, 
 	return ParseGetTornHalloweenResponse(rsp)
 }
 
+// GetTornHeadlinesWithResponse Get news ticker headlines
+//
+// Requires public access key. <br>Returns the headlines currently shown in the news ticker. 'importance' is 'urgent' for headlines marked as announcements.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /torn/headlines (the `GetTornHeadlines` operationId).
+func (c *ClientWithResponses) GetTornHeadlinesWithResponse(ctx context.Context, params *GetTornHeadlinesParams, reqEditors ...RequestEditorFn) (*GetTornHeadlinesResponse, error) {
+	rsp, err := c.GetTornHeadlines(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetTornHeadlinesResponse(rsp)
+}
+
 // GetTornHoFWithResponse Get player hall of fame positions for a specific category
 //
 // Requires public key.
@@ -85359,7 +85845,7 @@ func (c *ClientWithResponses) GetMyProfileWithResponse(ctx context.Context, para
 
 // GetMyPropertiesWithResponse Get your own properties
 //
-// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys.
+// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85863,7 +86349,7 @@ func (c *ClientWithResponses) GetUserProfileWithResponse(ctx context.Context, id
 
 // GetUserPropertiesWithResponse Get specific user's properties
 //
-// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse.
+// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -86562,6 +87048,32 @@ func ParseGetWarfareDirtyBombsResponse(rsp *http.Response) (*GetWarfareDirtyBomb
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest FactionWarfareDirtyBombsResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetMyFactionHeadlinesResponse parses an HTTP response from a GetMyFactionHeadlinesWithResponse call
+func ParseGetMyFactionHeadlinesResponse(rsp *http.Response) (*GetMyFactionHeadlinesResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetMyFactionHeadlinesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest FactionHeadlinesResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -88944,6 +89456,32 @@ func ParseGetTornHalloweenResponse(rsp *http.Response) (*GetTornHalloweenRespons
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest TornHalloweenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetTornHeadlinesResponse parses an HTTP response from a GetTornHeadlinesWithResponse call
+func ParseGetTornHeadlinesResponse(rsp *http.Response) (*GetTornHeadlinesResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetTornHeadlinesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest TornHeadlinesResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
