@@ -3,7 +3,7 @@
   "info": {
     "title": "Torn API",
     "description": "\n * The development of Torn's API v2 is still ongoing.\n * If selections remain unaltered, they will default to the API v1 version.\n * Unlike API v1, API v2 accepts both selections and IDs as path and query parameters.\n * If any discrepancies or errors are found, please submit a [bug report](https://www.torn.com/forums.php#/p=forums&f=19&b=0&a=0) on the Torn Forums.\n * In case you're using bots to check for changes on openapi.json file, make sure to specificy a custom user-agent header - CloudFlare sometimes prevents requests from default user-agents.",
-    "version": "6.16.0"
+    "version": "6.17.0"
   },
   "servers": [
     {
@@ -196,6 +196,74 @@
           }
         ],
         "x-stability": "Stable"
+      }
+    },
+    "/user/bazaar": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get your bazaar",
+        "description": "Requires Limited, Full or Custom key with sensitive data enabled. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.",
+        "operationId": "getMyBazaar",
+        "parameters": [
+          {
+            "name": "cat",
+            "in": "query",
+            "description": "Items category, defaults to All",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/UserItemsCategory"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ApiOffset"
+          },
+          {
+            "$ref": "#/components/parameters/ApiLimit100Default20"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort by item name",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "ASC",
+              "enum": [
+                "DESC",
+                "ASC"
+              ]
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ApiTimestamp"
+          },
+          {
+            "$ref": "#/components/parameters/ApiComment"
+          },
+          {
+            "$ref": "#/components/parameters/ApiKeyLimited"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBazaarResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-stability": "Unstable"
       }
     },
     "/user/basic": {
@@ -754,6 +822,151 @@
           }
         ],
         "x-stability": "Stable"
+      }
+    },
+    "/user/display": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get your display case",
+        "description": "Requires public access key. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.",
+        "operationId": "getMyDisplayCase",
+        "parameters": [
+          {
+            "name": "cat",
+            "in": "query",
+            "description": "Items category, defaults to All",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/UserItemsCategory"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ApiOffset"
+          },
+          {
+            "$ref": "#/components/parameters/ApiLimit100Default20"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort by item name",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "ASC",
+              "enum": [
+                "DESC",
+                "ASC"
+              ]
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ApiTimestamp"
+          },
+          {
+            "$ref": "#/components/parameters/ApiComment"
+          },
+          {
+            "$ref": "#/components/parameters/ApiKeyPublic"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDisplayResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-stability": "Unstable"
+      }
+    },
+    "/user/{id}/display": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get display case for a specific player",
+        "description": "Requires public access key. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.",
+        "operationId": "getUserDisplayCase",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/UserId"
+            }
+          },
+          {
+            "name": "cat",
+            "in": "query",
+            "description": "Items category, defaults to All",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/UserItemsCategory"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ApiOffset"
+          },
+          {
+            "$ref": "#/components/parameters/ApiLimit100Default20"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort by item name",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "ASC",
+              "enum": [
+                "DESC",
+                "ASC"
+              ]
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ApiTimestamp"
+          },
+          {
+            "$ref": "#/components/parameters/ApiComment"
+          },
+          {
+            "$ref": "#/components/parameters/ApiKeyPublic"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDisplayResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-stability": "Unstable"
       }
     },
     "/user/education": {
@@ -4127,9 +4340,6 @@
                       "$ref": "#/components/schemas/UserPropertiesResponse"
                     },
                     {
-                      "$ref": "#/components/schemas/UserFactionBalanceResponse"
-                    },
-                    {
                       "$ref": "#/components/schemas/UserBasicResponse"
                     },
                     {
@@ -4259,10 +4469,16 @@
                       "$ref": "#/components/schemas/UserNewMessagesResponse"
                     },
                     {
-                      "$ref": "#/components/schemas/UserLookupResponse"
+                      "$ref": "#/components/schemas/UserInventoryResponse"
                     },
                     {
-                      "$ref": "#/components/schemas/UserInventoryResponse"
+                      "$ref": "#/components/schemas/UserBazaarResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/UserDisplayResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/UserLookupResponse"
                     },
                     {
                       "$ref": "#/components/schemas/TimestampResponse"
@@ -24546,41 +24762,6 @@
         },
         "type": "object"
       },
-      "UserFactionBalance": {
-        "required": [
-          "money",
-          "points"
-        ],
-        "properties": {
-          "money": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "points": {
-            "type": "integer",
-            "format": "int64"
-          }
-        },
-        "type": "object"
-      },
-      "UserFactionBalanceResponse": {
-        "required": [
-          "factionBalance"
-        ],
-        "properties": {
-          "factionBalance": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/UserFactionBalance"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
-        },
-        "type": "object"
-      },
       "UserOrganizedCrimeError": {
         "required": [
           "code",
@@ -24681,7 +24862,7 @@
       "UserSelectionName": {
         "oneOf": [
           {
-            "description": "The following selections will fallback to API v1 and may change at any time: 'bazaar','criminalrecord','display','networth'.",
+            "description": "The following selections will fallback to API v1 and may change at any time: 'criminalrecord','networth'.",
             "type": "string",
             "enum": [
               "ammo",
@@ -24690,6 +24871,7 @@
               "bars",
               "basic",
               "battlestats",
+              "bazaar",
               "bounties",
               "calendar",
               "casino",
@@ -24697,11 +24879,12 @@
               "cooldowns",
               "crimes",
               "discord",
+              "display",
+              "education",
               "enlistedcars",
               "equipment",
               "events",
               "faction",
-              "factionbalance",
               "forumfeed",
               "forumfriends",
               "forumposts",
@@ -24714,13 +24897,12 @@
               "icons",
               "inventory",
               "itemmarket",
-              "itemmod",
+              "itemmods",
               "job",
               "jobpoints",
               "jobranks",
               "list",
               "log",
-              "lookup",
               "medals",
               "merits",
               "messages",
@@ -24731,6 +24913,8 @@
               "newmessages",
               "notifications",
               "organizedcrime",
+              "organizedcrimes",
+              "perks",
               "personalstats",
               "profile",
               "properties",
@@ -24742,20 +24926,17 @@
               "revives",
               "revivesfull",
               "skills",
-              "snapshot",
               "stocks",
-              "trades",
               "trade",
+              "trades",
               "travel",
               "travelinventory",
-              "timestamp",
+              "virus",
               "weaponexp",
               "workstats",
-              "bazaar",
-              "criminalrecord",
-              "display",
-              "education",
-              "perks"
+              "lookup",
+              "timestamp",
+              "criminalrecord"
             ]
           },
           {
@@ -24953,6 +25134,270 @@
         "properties": {
           "halloween": {
             "$ref": "#/components/schemas/UserHalloween"
+          }
+        },
+        "type": "object"
+      },
+      "UserItemsCategory": {
+        "type": "string",
+        "enum": [
+          "All",
+          "Alcohol",
+          "Artifact",
+          "Booster",
+          "Candy",
+          "Car",
+          "Clothing",
+          "Collectible",
+          "Defensive",
+          "Drug",
+          "Energy Drink",
+          "Enhancer",
+          "Flower",
+          "Jewelry",
+          "Material",
+          "Medical",
+          "Melee",
+          "Other",
+          "Plushie",
+          "Primary",
+          "Secondary",
+          "Special",
+          "Supply Pack",
+          "Temporary",
+          "Tool"
+        ]
+      },
+      "UserArmouryItemDetails": {
+        "required": [
+          "stats",
+          "bonuses",
+          "rarity"
+        ],
+        "properties": {
+          "stats": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ItemMarketListingItemStats"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "bonuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemMarketListingItemBonus"
+            }
+          },
+          "rarity": {
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "yellow",
+                  "orange",
+                  "red"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "UserBazaarItemUid": {
+        "required": [
+          "uid",
+          "price"
+        ],
+        "properties": {
+          "uid": {
+            "$ref": "#/components/schemas/ItemUid"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "type": "object"
+      },
+      "UserBazaarItem": {
+        "required": [
+          "id",
+          "uids",
+          "name",
+          "type",
+          "quantity",
+          "price",
+          "market_price",
+          "item_details"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/ItemId"
+          },
+          "uids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserBazaarItemUid"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TornInventoryItemType"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "oneOf": [
+              {
+                "type": "integer",
+                "format": "int64"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "market_price": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "item_details": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UserArmouryItemDetails"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "UserBazaar": {
+        "required": [
+          "exists",
+          "is_open",
+          "items"
+        ],
+        "properties": {
+          "exists": {
+            "type": "boolean"
+          },
+          "is_open": {
+            "type": "boolean"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserBazaarItem"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "UserBazaarResponse": {
+        "required": [
+          "bazaar",
+          "_metadata"
+        ],
+        "properties": {
+          "bazaar": {
+            "$ref": "#/components/schemas/UserBazaar"
+          },
+          "_metadata": {
+            "$ref": "#/components/schemas/RequestMetadataWithLinks"
+          }
+        },
+        "type": "object"
+      },
+      "UserDisplayItem": {
+        "required": [
+          "id",
+          "uids",
+          "name",
+          "type",
+          "quantity",
+          "circulation",
+          "market_price",
+          "item_details"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/ItemId"
+          },
+          "uids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemUid"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TornInventoryItemType"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "circulation": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "market_price": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "item_details": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UserArmouryItemDetails"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "UserDisplay": {
+        "required": [
+          "items"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserDisplayItem"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "UserDisplayResponse": {
+        "required": [
+          "display",
+          "_metadata"
+        ],
+        "properties": {
+          "display": {
+            "$ref": "#/components/schemas/UserDisplay"
+          },
+          "_metadata": {
+            "$ref": "#/components/schemas/RequestMetadataWithLinks"
           }
         },
         "type": "object"
@@ -30944,35 +31389,36 @@
               "contributors",
               "crime",
               "crimes",
-              "crimeexp",
-              "dirtbombs",
+              "dirtybombs",
               "headlines",
-              "hof",
-              "lookup",
+              "inventory",
               "members",
               "news",
               "positions",
               "rackets",
               "raidreport",
               "raids",
-              "rankedwars",
               "rankedwarreport",
+              "rankedwars",
               "reports",
               "revives",
               "revivesfull",
-              "search",
               "stats",
               "territory",
               "territoryownership",
               "territorywarreport",
               "territorywars",
-              "timestamp",
               "upgrades",
+              "warfare",
               "warfarechains",
               "warfareraids",
               "warfareranked",
               "warfareterritory",
-              "wars"
+              "wars",
+              "lookup",
+              "timestamp",
+              "crimeexp",
+              "hof"
             ]
           },
           {
@@ -31381,11 +31827,10 @@
               "applications",
               "companies",
               "employees",
-              "lookup",
               "news",
               "profile",
-              "snapshot",
               "stock",
+              "lookup",
               "timestamp"
             ]
           },
@@ -32617,10 +33062,10 @@
             "type": "string",
             "enum": [
               "categories",
-              "lookup",
               "posts",
               "thread",
               "threads",
+              "lookup",
               "timestamp"
             ]
           },
@@ -34392,12 +34837,12 @@
             "enum": [
               "cars",
               "carupgrades",
-              "lookup",
               "race",
               "races",
               "records",
-              "timestamp",
-              "tracks"
+              "tracks",
+              "lookup",
+              "timestamp"
             ]
           },
           {
@@ -38329,11 +38774,10 @@
               "itemammo",
               "itemdetails",
               "itemmods",
-              "itemstats",
               "items",
+              "itemstats",
               "logcategories",
               "logtypes",
-              "lookup",
               "medals",
               "merits",
               "museum",
@@ -38347,6 +38791,7 @@
               "stocks",
               "subcrimes",
               "territory",
+              "lookup",
               "timestamp",
               "competition",
               "organisedcrimes"
@@ -38436,7 +38881,9 @@
           "headline",
           "link",
           "type",
-          "importance"
+          "importance",
+          "start_at",
+          "end_at"
         ],
         "properties": {
           "id": {
@@ -38472,6 +38919,14 @@
               "normal",
               "urgent"
             ]
+          },
+          "start_at": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "end_at": {
+            "type": "integer",
+            "format": "int64"
           }
         },
         "type": "object"

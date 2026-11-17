@@ -285,7 +285,6 @@ const (
 	CompanySelectionName0Lookup       CompanySelectionName0 = "lookup"
 	CompanySelectionName0News         CompanySelectionName0 = "news"
 	CompanySelectionName0Profile      CompanySelectionName0 = "profile"
-	CompanySelectionName0Snapshot     CompanySelectionName0 = "snapshot"
 	CompanySelectionName0Stock        CompanySelectionName0 = "stock"
 	CompanySelectionName0Timestamp    CompanySelectionName0 = "timestamp"
 )
@@ -304,8 +303,6 @@ func (e CompanySelectionName0) Valid() bool {
 	case CompanySelectionName0News:
 		return true
 	case CompanySelectionName0Profile:
-		return true
-	case CompanySelectionName0Snapshot:
 		return true
 	case CompanySelectionName0Stock:
 		return true
@@ -1395,9 +1392,10 @@ const (
 	FactionSelectionName0Crime              FactionSelectionName0 = "crime"
 	FactionSelectionName0Crimeexp           FactionSelectionName0 = "crimeexp"
 	FactionSelectionName0Crimes             FactionSelectionName0 = "crimes"
-	FactionSelectionName0Dirtbombs          FactionSelectionName0 = "dirtbombs"
+	FactionSelectionName0Dirtybombs         FactionSelectionName0 = "dirtybombs"
 	FactionSelectionName0Headlines          FactionSelectionName0 = "headlines"
 	FactionSelectionName0Hof                FactionSelectionName0 = "hof"
+	FactionSelectionName0Inventory          FactionSelectionName0 = "inventory"
 	FactionSelectionName0Lookup             FactionSelectionName0 = "lookup"
 	FactionSelectionName0Members            FactionSelectionName0 = "members"
 	FactionSelectionName0News               FactionSelectionName0 = "news"
@@ -1410,7 +1408,6 @@ const (
 	FactionSelectionName0Reports            FactionSelectionName0 = "reports"
 	FactionSelectionName0Revives            FactionSelectionName0 = "revives"
 	FactionSelectionName0Revivesfull        FactionSelectionName0 = "revivesfull"
-	FactionSelectionName0Search             FactionSelectionName0 = "search"
 	FactionSelectionName0Stats              FactionSelectionName0 = "stats"
 	FactionSelectionName0Territory          FactionSelectionName0 = "territory"
 	FactionSelectionName0Territoryownership FactionSelectionName0 = "territoryownership"
@@ -1418,6 +1415,7 @@ const (
 	FactionSelectionName0Territorywars      FactionSelectionName0 = "territorywars"
 	FactionSelectionName0Timestamp          FactionSelectionName0 = "timestamp"
 	FactionSelectionName0Upgrades           FactionSelectionName0 = "upgrades"
+	FactionSelectionName0Warfare            FactionSelectionName0 = "warfare"
 	FactionSelectionName0Warfarechains      FactionSelectionName0 = "warfarechains"
 	FactionSelectionName0Warfareraids       FactionSelectionName0 = "warfareraids"
 	FactionSelectionName0Warfareranked      FactionSelectionName0 = "warfareranked"
@@ -1452,11 +1450,13 @@ func (e FactionSelectionName0) Valid() bool {
 		return true
 	case FactionSelectionName0Crimes:
 		return true
-	case FactionSelectionName0Dirtbombs:
+	case FactionSelectionName0Dirtybombs:
 		return true
 	case FactionSelectionName0Headlines:
 		return true
 	case FactionSelectionName0Hof:
+		return true
+	case FactionSelectionName0Inventory:
 		return true
 	case FactionSelectionName0Lookup:
 		return true
@@ -1482,8 +1482,6 @@ func (e FactionSelectionName0) Valid() bool {
 		return true
 	case FactionSelectionName0Revivesfull:
 		return true
-	case FactionSelectionName0Search:
-		return true
 	case FactionSelectionName0Stats:
 		return true
 	case FactionSelectionName0Territory:
@@ -1497,6 +1495,8 @@ func (e FactionSelectionName0) Valid() bool {
 	case FactionSelectionName0Timestamp:
 		return true
 	case FactionSelectionName0Upgrades:
+		return true
+	case FactionSelectionName0Warfare:
 		return true
 	case FactionSelectionName0Warfarechains:
 		return true
@@ -17071,6 +17071,27 @@ func (e TradeItemPropertyType) Valid() bool {
 	}
 }
 
+// Defines values for UserArmouryItemDetailsRarity.
+const (
+	UserArmouryItemDetailsRarityOrange UserArmouryItemDetailsRarity = "orange"
+	UserArmouryItemDetailsRarityRed    UserArmouryItemDetailsRarity = "red"
+	UserArmouryItemDetailsRarityYellow UserArmouryItemDetailsRarity = "yellow"
+)
+
+// Valid indicates whether the value is a known member of the UserArmouryItemDetailsRarity enum.
+func (e UserArmouryItemDetailsRarity) Valid() bool {
+	switch e {
+	case UserArmouryItemDetailsRarityOrange:
+		return true
+	case UserArmouryItemDetailsRarityRed:
+		return true
+	case UserArmouryItemDetailsRarityYellow:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for UserCompanyType.
 const (
 	UserCompanyTypeCompany UserCompanyType = "company"
@@ -17263,6 +17284,93 @@ func (e UserItemMarkeListingItemDetailsRarity) Valid() bool {
 	case UserItemMarkeListingItemDetailsRarityRed:
 		return true
 	case UserItemMarkeListingItemDetailsRarityYellow:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for UserItemsCategory.
+const (
+	UserItemsCategoryAlcohol     UserItemsCategory = "Alcohol"
+	UserItemsCategoryAll         UserItemsCategory = "All"
+	UserItemsCategoryArtifact    UserItemsCategory = "Artifact"
+	UserItemsCategoryBooster     UserItemsCategory = "Booster"
+	UserItemsCategoryCandy       UserItemsCategory = "Candy"
+	UserItemsCategoryCar         UserItemsCategory = "Car"
+	UserItemsCategoryClothing    UserItemsCategory = "Clothing"
+	UserItemsCategoryCollectible UserItemsCategory = "Collectible"
+	UserItemsCategoryDefensive   UserItemsCategory = "Defensive"
+	UserItemsCategoryDrug        UserItemsCategory = "Drug"
+	UserItemsCategoryEnergyDrink UserItemsCategory = "Energy Drink"
+	UserItemsCategoryEnhancer    UserItemsCategory = "Enhancer"
+	UserItemsCategoryFlower      UserItemsCategory = "Flower"
+	UserItemsCategoryJewelry     UserItemsCategory = "Jewelry"
+	UserItemsCategoryMaterial    UserItemsCategory = "Material"
+	UserItemsCategoryMedical     UserItemsCategory = "Medical"
+	UserItemsCategoryMelee       UserItemsCategory = "Melee"
+	UserItemsCategoryOther       UserItemsCategory = "Other"
+	UserItemsCategoryPlushie     UserItemsCategory = "Plushie"
+	UserItemsCategoryPrimary     UserItemsCategory = "Primary"
+	UserItemsCategorySecondary   UserItemsCategory = "Secondary"
+	UserItemsCategorySpecial     UserItemsCategory = "Special"
+	UserItemsCategorySupplyPack  UserItemsCategory = "Supply Pack"
+	UserItemsCategoryTemporary   UserItemsCategory = "Temporary"
+	UserItemsCategoryTool        UserItemsCategory = "Tool"
+)
+
+// Valid indicates whether the value is a known member of the UserItemsCategory enum.
+func (e UserItemsCategory) Valid() bool {
+	switch e {
+	case UserItemsCategoryAlcohol:
+		return true
+	case UserItemsCategoryAll:
+		return true
+	case UserItemsCategoryArtifact:
+		return true
+	case UserItemsCategoryBooster:
+		return true
+	case UserItemsCategoryCandy:
+		return true
+	case UserItemsCategoryCar:
+		return true
+	case UserItemsCategoryClothing:
+		return true
+	case UserItemsCategoryCollectible:
+		return true
+	case UserItemsCategoryDefensive:
+		return true
+	case UserItemsCategoryDrug:
+		return true
+	case UserItemsCategoryEnergyDrink:
+		return true
+	case UserItemsCategoryEnhancer:
+		return true
+	case UserItemsCategoryFlower:
+		return true
+	case UserItemsCategoryJewelry:
+		return true
+	case UserItemsCategoryMaterial:
+		return true
+	case UserItemsCategoryMedical:
+		return true
+	case UserItemsCategoryMelee:
+		return true
+	case UserItemsCategoryOther:
+		return true
+	case UserItemsCategoryPlushie:
+		return true
+	case UserItemsCategoryPrimary:
+		return true
+	case UserItemsCategorySecondary:
+		return true
+	case UserItemsCategorySpecial:
+		return true
+	case UserItemsCategorySupplyPack:
+		return true
+	case UserItemsCategoryTemporary:
+		return true
+	case UserItemsCategoryTool:
 		return true
 	default:
 		return false
@@ -17760,7 +17868,6 @@ const (
 	UserSelectionName0Equipment              UserSelectionName0 = "equipment"
 	UserSelectionName0Events                 UserSelectionName0 = "events"
 	UserSelectionName0Faction                UserSelectionName0 = "faction"
-	UserSelectionName0Factionbalance         UserSelectionName0 = "factionbalance"
 	UserSelectionName0Forumfeed              UserSelectionName0 = "forumfeed"
 	UserSelectionName0Forumfriends           UserSelectionName0 = "forumfriends"
 	UserSelectionName0Forumposts             UserSelectionName0 = "forumposts"
@@ -17773,7 +17880,7 @@ const (
 	UserSelectionName0Icons                  UserSelectionName0 = "icons"
 	UserSelectionName0Inventory              UserSelectionName0 = "inventory"
 	UserSelectionName0Itemmarket             UserSelectionName0 = "itemmarket"
-	UserSelectionName0Itemmod                UserSelectionName0 = "itemmod"
+	UserSelectionName0Itemmods               UserSelectionName0 = "itemmods"
 	UserSelectionName0Job                    UserSelectionName0 = "job"
 	UserSelectionName0Jobpoints              UserSelectionName0 = "jobpoints"
 	UserSelectionName0Jobranks               UserSelectionName0 = "jobranks"
@@ -17790,6 +17897,7 @@ const (
 	UserSelectionName0Newmessages            UserSelectionName0 = "newmessages"
 	UserSelectionName0Notifications          UserSelectionName0 = "notifications"
 	UserSelectionName0Organizedcrime         UserSelectionName0 = "organizedcrime"
+	UserSelectionName0Organizedcrimes        UserSelectionName0 = "organizedcrimes"
 	UserSelectionName0Perks                  UserSelectionName0 = "perks"
 	UserSelectionName0Personalstats          UserSelectionName0 = "personalstats"
 	UserSelectionName0Profile                UserSelectionName0 = "profile"
@@ -17802,13 +17910,13 @@ const (
 	UserSelectionName0Revives                UserSelectionName0 = "revives"
 	UserSelectionName0Revivesfull            UserSelectionName0 = "revivesfull"
 	UserSelectionName0Skills                 UserSelectionName0 = "skills"
-	UserSelectionName0Snapshot               UserSelectionName0 = "snapshot"
 	UserSelectionName0Stocks                 UserSelectionName0 = "stocks"
 	UserSelectionName0Timestamp              UserSelectionName0 = "timestamp"
 	UserSelectionName0Trade                  UserSelectionName0 = "trade"
 	UserSelectionName0Trades                 UserSelectionName0 = "trades"
 	UserSelectionName0Travel                 UserSelectionName0 = "travel"
 	UserSelectionName0Travelinventory        UserSelectionName0 = "travelinventory"
+	UserSelectionName0Virus                  UserSelectionName0 = "virus"
 	UserSelectionName0Weaponexp              UserSelectionName0 = "weaponexp"
 	UserSelectionName0Workstats              UserSelectionName0 = "workstats"
 )
@@ -17858,8 +17966,6 @@ func (e UserSelectionName0) Valid() bool {
 		return true
 	case UserSelectionName0Faction:
 		return true
-	case UserSelectionName0Factionbalance:
-		return true
 	case UserSelectionName0Forumfeed:
 		return true
 	case UserSelectionName0Forumfriends:
@@ -17884,7 +17990,7 @@ func (e UserSelectionName0) Valid() bool {
 		return true
 	case UserSelectionName0Itemmarket:
 		return true
-	case UserSelectionName0Itemmod:
+	case UserSelectionName0Itemmods:
 		return true
 	case UserSelectionName0Job:
 		return true
@@ -17918,6 +18024,8 @@ func (e UserSelectionName0) Valid() bool {
 		return true
 	case UserSelectionName0Organizedcrime:
 		return true
+	case UserSelectionName0Organizedcrimes:
+		return true
 	case UserSelectionName0Perks:
 		return true
 	case UserSelectionName0Personalstats:
@@ -17942,8 +18050,6 @@ func (e UserSelectionName0) Valid() bool {
 		return true
 	case UserSelectionName0Skills:
 		return true
-	case UserSelectionName0Snapshot:
-		return true
 	case UserSelectionName0Stocks:
 		return true
 	case UserSelectionName0Timestamp:
@@ -17955,6 +18061,8 @@ func (e UserSelectionName0) Valid() bool {
 	case UserSelectionName0Travel:
 		return true
 	case UserSelectionName0Travelinventory:
+		return true
+	case UserSelectionName0Virus:
 		return true
 	case UserSelectionName0Weaponexp:
 		return true
@@ -19486,6 +19594,42 @@ func (e GetMyAttacksSimplifiedParamsSort) Valid() bool {
 	}
 }
 
+// Defines values for GetMyBazaarParamsSort.
+const (
+	GetMyBazaarParamsSortASC  GetMyBazaarParamsSort = "ASC"
+	GetMyBazaarParamsSortDESC GetMyBazaarParamsSort = "DESC"
+)
+
+// Valid indicates whether the value is a known member of the GetMyBazaarParamsSort enum.
+func (e GetMyBazaarParamsSort) Valid() bool {
+	switch e {
+	case GetMyBazaarParamsSortASC:
+		return true
+	case GetMyBazaarParamsSortDESC:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetMyDisplayCaseParamsSort.
+const (
+	GetMyDisplayCaseParamsSortASC  GetMyDisplayCaseParamsSort = "ASC"
+	GetMyDisplayCaseParamsSortDESC GetMyDisplayCaseParamsSort = "DESC"
+)
+
+// Valid indicates whether the value is a known member of the GetMyDisplayCaseParamsSort enum.
+func (e GetMyDisplayCaseParamsSort) Valid() bool {
+	switch e {
+	case GetMyDisplayCaseParamsSortASC:
+		return true
+	case GetMyDisplayCaseParamsSortDESC:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for GetMyForumPostsParamsSort.
 const (
 	GetMyForumPostsParamsSortASC  GetMyForumPostsParamsSort = "ASC"
@@ -19678,6 +19822,24 @@ func (e GetMyTradesParamsSort) Valid() bool {
 	case GetMyTradesParamsSortASC:
 		return true
 	case GetMyTradesParamsSortDESC:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetUserDisplayCaseParamsSort.
+const (
+	GetUserDisplayCaseParamsSortASC  GetUserDisplayCaseParamsSort = "ASC"
+	GetUserDisplayCaseParamsSortDESC GetUserDisplayCaseParamsSort = "DESC"
+)
+
+// Valid indicates whether the value is a known member of the GetUserDisplayCaseParamsSort enum.
+func (e GetUserDisplayCaseParamsSort) Valid() bool {
+	switch e {
+	case GetUserDisplayCaseParamsSortASC:
+		return true
+	case GetUserDisplayCaseParamsSortDESC:
 		return true
 	default:
 		return false
@@ -24024,10 +24186,12 @@ type TornHalloweenUpgrade struct {
 
 // TornHeadline defines model for TornHeadline.
 type TornHeadline struct {
+	EndAt      int64                  `json:"end_at"`
 	Headline   string                 `json:"headline"`
 	Id         *int32                 `json:"id"`
 	Importance TornHeadlineImportance `json:"importance"`
 	Link       *string                `json:"link"`
+	StartAt    int64                  `json:"start_at"`
 	Type       string                 `json:"type"`
 }
 
@@ -24825,6 +24989,16 @@ type UserAmmoType struct {
 	Quantity int32                `json:"quantity"`
 }
 
+// UserArmouryItemDetails defines model for UserArmouryItemDetails.
+type UserArmouryItemDetails struct {
+	Bonuses []ItemMarketListingItemBonus  `json:"bonuses"`
+	Rarity  *UserArmouryItemDetailsRarity `json:"rarity"`
+	Stats   *ItemMarketListingItemStats   `json:"stats"`
+}
+
+// UserArmouryItemDetailsRarity defines model for UserArmouryItemDetails.Rarity.
+type UserArmouryItemDetailsRarity string
+
 // UserBar defines model for UserBar.
 type UserBar struct {
 	Current   int32 `json:"current"`
@@ -24888,6 +25062,37 @@ type UserBattleStatsResponse struct {
 		Strength  UserBattleStatDetail `json:"strength"`
 		Total     int64                `json:"total"`
 	} `json:"battlestats"`
+}
+
+// UserBazaar defines model for UserBazaar.
+type UserBazaar struct {
+	Exists bool             `json:"exists"`
+	IsOpen bool             `json:"is_open"`
+	Items  []UserBazaarItem `json:"items"`
+}
+
+// UserBazaarItem defines model for UserBazaarItem.
+type UserBazaarItem struct {
+	Id          ItemId                  `json:"id"`
+	ItemDetails *UserArmouryItemDetails `json:"item_details"`
+	MarketPrice int64                   `json:"market_price"`
+	Name        string                  `json:"name"`
+	Price       *int64                  `json:"price"`
+	Quantity    int32                   `json:"quantity"`
+	Type        TornInventoryItemType   `json:"type"`
+	Uids        []UserBazaarItemUid     `json:"uids"`
+}
+
+// UserBazaarItemUid defines model for UserBazaarItemUid.
+type UserBazaarItemUid struct {
+	Price int64   `json:"price"`
+	Uid   ItemUid `json:"uid"`
+}
+
+// UserBazaarResponse defines model for UserBazaarResponse.
+type UserBazaarResponse struct {
+	UnderscoreMetadata RequestMetadataWithLinks `json:"_metadata"`
+	Bazaar             UserBazaar               `json:"bazaar"`
 }
 
 // UserBountiesResponse defines model for UserBountiesResponse.
@@ -25221,6 +25426,29 @@ type UserDiscordResponse struct {
 	} `json:"discord"`
 }
 
+// UserDisplay defines model for UserDisplay.
+type UserDisplay struct {
+	Items []UserDisplayItem `json:"items"`
+}
+
+// UserDisplayItem defines model for UserDisplayItem.
+type UserDisplayItem struct {
+	Circulation int32                   `json:"circulation"`
+	Id          ItemId                  `json:"id"`
+	ItemDetails *UserArmouryItemDetails `json:"item_details"`
+	MarketPrice int64                   `json:"market_price"`
+	Name        string                  `json:"name"`
+	Quantity    int32                   `json:"quantity"`
+	Type        TornInventoryItemType   `json:"type"`
+	Uids        []ItemUid               `json:"uids"`
+}
+
+// UserDisplayResponse defines model for UserDisplayResponse.
+type UserDisplayResponse struct {
+	UnderscoreMetadata RequestMetadataWithLinks `json:"_metadata"`
+	Display            UserDisplay              `json:"display"`
+}
+
 // UserDonatorStatusEnum defines model for UserDonatorStatusEnum.
 type UserDonatorStatusEnum string
 
@@ -25302,17 +25530,6 @@ type UserFaction struct {
 	Position      string    `json:"position"`
 	Tag           string    `json:"tag"`
 	TagImage      string    `json:"tag_image"`
-}
-
-// UserFactionBalance defines model for UserFactionBalance.
-type UserFactionBalance struct {
-	Money  int64 `json:"money"`
-	Points int64 `json:"points"`
-}
-
-// UserFactionBalanceResponse defines model for UserFactionBalanceResponse.
-type UserFactionBalanceResponse struct {
-	FactionBalance *UserFactionBalance `json:"factionBalance"`
 }
 
 // UserFactionBasic defines model for UserFactionBasic.
@@ -25527,6 +25744,9 @@ type UserItemMod struct {
 type UserItemModsResponse struct {
 	Itemmods []UserItemMod `json:"itemmods"`
 }
+
+// UserItemsCategory defines model for UserItemsCategory.
+type UserItemsCategory string
 
 // UserJob defines model for UserJob.
 type UserJob struct {
@@ -26974,7 +27194,7 @@ type UserSelectionName struct {
 	union json.RawMessage
 }
 
-// UserSelectionName0 The following selections will fallback to API v1 and may change at any time: 'bazaar','criminalrecord','display','networth'.
+// UserSelectionName0 The following selections will fallback to API v1 and may change at any time: 'criminalrecord','networth'.
 type UserSelectionName0 string
 
 // UserSelectionName1 defines model for UserSelectionName.1.
@@ -30167,6 +30387,29 @@ type GetMyBattlestatsParams struct {
 	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
 }
 
+// GetMyBazaarParams defines parameters for GetMyBazaar.
+type GetMyBazaarParams struct {
+	// Cat Items category, defaults to All
+	Cat    *UserItemsCategory    `form:"cat,omitempty" json:"cat,omitempty"`
+	Offset *ApiOffset            `form:"offset,omitempty" json:"offset,omitempty"`
+	Limit  *ApiLimit100Default20 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Sort Sort by item name
+	Sort *GetMyBazaarParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+
+	// Timestamp Timestamp to bypass cache
+	Timestamp *ApiTimestamp `form:"timestamp,omitempty" json:"timestamp,omitempty"`
+
+	// Comment Comment for your tool/service/bot/website to be visible in the logs.
+	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
+
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
+}
+
+// GetMyBazaarParamsSort defines parameters for GetMyBazaar.
+type GetMyBazaarParamsSort string
+
 // GetMyBountiesParams defines parameters for GetMyBounties.
 type GetMyBountiesParams struct {
 	// Timestamp Timestamp to bypass cache
@@ -30238,6 +30481,29 @@ type GetMyDiscordParams struct {
 	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
+
+// GetMyDisplayCaseParams defines parameters for GetMyDisplayCase.
+type GetMyDisplayCaseParams struct {
+	// Cat Items category, defaults to All
+	Cat    *UserItemsCategory    `form:"cat,omitempty" json:"cat,omitempty"`
+	Offset *ApiOffset            `form:"offset,omitempty" json:"offset,omitempty"`
+	Limit  *ApiLimit100Default20 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Sort Sort by item name
+	Sort *GetMyDisplayCaseParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+
+	// Timestamp Timestamp to bypass cache
+	Timestamp *ApiTimestamp `form:"timestamp,omitempty" json:"timestamp,omitempty"`
+
+	// Comment Comment for your tool/service/bot/website to be visible in the logs.
+	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
+
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
+}
+
+// GetMyDisplayCaseParamsSort defines parameters for GetMyDisplayCase.
+type GetMyDisplayCaseParamsSort string
 
 // GetMyEducationParams defines parameters for GetMyEducation.
 type GetMyEducationParams struct {
@@ -31216,6 +31482,29 @@ type GetUserDiscordParams struct {
 	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
 	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
 }
+
+// GetUserDisplayCaseParams defines parameters for GetUserDisplayCase.
+type GetUserDisplayCaseParams struct {
+	// Cat Items category, defaults to All
+	Cat    *UserItemsCategory    `form:"cat,omitempty" json:"cat,omitempty"`
+	Offset *ApiOffset            `form:"offset,omitempty" json:"offset,omitempty"`
+	Limit  *ApiLimit100Default20 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Sort Sort by item name
+	Sort *GetUserDisplayCaseParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+
+	// Timestamp Timestamp to bypass cache
+	Timestamp *ApiTimestamp `form:"timestamp,omitempty" json:"timestamp,omitempty"`
+
+	// Comment Comment for your tool/service/bot/website to be visible in the logs.
+	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
+
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
+}
+
+// GetUserDisplayCaseParamsSort defines parameters for GetUserDisplayCase.
+type GetUserDisplayCaseParamsSort string
 
 // GetUserFactionParams defines parameters for GetUserFaction.
 type GetUserFactionParams struct {
@@ -40407,32 +40696,6 @@ func (t *GetUserGeneric200JSONResponseBody) MergeUserPropertiesResponse(v UserPr
 	return err
 }
 
-// AsUserFactionBalanceResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserFactionBalanceResponse
-func (t GetUserGeneric200JSONResponseBody) AsUserFactionBalanceResponse() (UserFactionBalanceResponse, error) {
-	var body UserFactionBalanceResponse
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromUserFactionBalanceResponse overwrites any union data inside the GetUserGeneric200JSONResponseBody as the provided UserFactionBalanceResponse
-func (t *GetUserGeneric200JSONResponseBody) FromUserFactionBalanceResponse(v UserFactionBalanceResponse) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeUserFactionBalanceResponse performs a merge with any union data inside the GetUserGeneric200JSONResponseBody, using the provided UserFactionBalanceResponse
-func (t *GetUserGeneric200JSONResponseBody) MergeUserFactionBalanceResponse(v UserFactionBalanceResponse) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
 // AsUserBasicResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserBasicResponse
 func (t GetUserGeneric200JSONResponseBody) AsUserBasicResponse() (UserBasicResponse, error) {
 	var body UserBasicResponse
@@ -41551,32 +41814,6 @@ func (t *GetUserGeneric200JSONResponseBody) MergeUserNewMessagesResponse(v UserN
 	return err
 }
 
-// AsUserLookupResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserLookupResponse
-func (t GetUserGeneric200JSONResponseBody) AsUserLookupResponse() (UserLookupResponse, error) {
-	var body UserLookupResponse
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromUserLookupResponse overwrites any union data inside the GetUserGeneric200JSONResponseBody as the provided UserLookupResponse
-func (t *GetUserGeneric200JSONResponseBody) FromUserLookupResponse(v UserLookupResponse) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeUserLookupResponse performs a merge with any union data inside the GetUserGeneric200JSONResponseBody, using the provided UserLookupResponse
-func (t *GetUserGeneric200JSONResponseBody) MergeUserLookupResponse(v UserLookupResponse) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
 // AsUserInventoryResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserInventoryResponse
 func (t GetUserGeneric200JSONResponseBody) AsUserInventoryResponse() (UserInventoryResponse, error) {
 	var body UserInventoryResponse
@@ -41593,6 +41830,84 @@ func (t *GetUserGeneric200JSONResponseBody) FromUserInventoryResponse(v UserInve
 
 // MergeUserInventoryResponse performs a merge with any union data inside the GetUserGeneric200JSONResponseBody, using the provided UserInventoryResponse
 func (t *GetUserGeneric200JSONResponseBody) MergeUserInventoryResponse(v UserInventoryResponse) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsUserBazaarResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserBazaarResponse
+func (t GetUserGeneric200JSONResponseBody) AsUserBazaarResponse() (UserBazaarResponse, error) {
+	var body UserBazaarResponse
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUserBazaarResponse overwrites any union data inside the GetUserGeneric200JSONResponseBody as the provided UserBazaarResponse
+func (t *GetUserGeneric200JSONResponseBody) FromUserBazaarResponse(v UserBazaarResponse) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUserBazaarResponse performs a merge with any union data inside the GetUserGeneric200JSONResponseBody, using the provided UserBazaarResponse
+func (t *GetUserGeneric200JSONResponseBody) MergeUserBazaarResponse(v UserBazaarResponse) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsUserDisplayResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserDisplayResponse
+func (t GetUserGeneric200JSONResponseBody) AsUserDisplayResponse() (UserDisplayResponse, error) {
+	var body UserDisplayResponse
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUserDisplayResponse overwrites any union data inside the GetUserGeneric200JSONResponseBody as the provided UserDisplayResponse
+func (t *GetUserGeneric200JSONResponseBody) FromUserDisplayResponse(v UserDisplayResponse) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUserDisplayResponse performs a merge with any union data inside the GetUserGeneric200JSONResponseBody, using the provided UserDisplayResponse
+func (t *GetUserGeneric200JSONResponseBody) MergeUserDisplayResponse(v UserDisplayResponse) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsUserLookupResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserLookupResponse
+func (t GetUserGeneric200JSONResponseBody) AsUserLookupResponse() (UserLookupResponse, error) {
+	var body UserLookupResponse
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUserLookupResponse overwrites any union data inside the GetUserGeneric200JSONResponseBody as the provided UserLookupResponse
+func (t *GetUserGeneric200JSONResponseBody) FromUserLookupResponse(v UserLookupResponse) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUserLookupResponse performs a merge with any union data inside the GetUserGeneric200JSONResponseBody, using the provided UserLookupResponse
+func (t *GetUserGeneric200JSONResponseBody) MergeUserLookupResponse(v UserLookupResponse) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -42836,6 +43151,13 @@ type ClientInterface interface {
 	// Corresponds with GET /user/battlestats (the `GetMyBattlestats` operationId).
 	GetMyBattlestats(ctx context.Context, params *GetMyBattlestatsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetMyBazaar Get your bazaar
+	//
+	// Requires Limited, Full or Custom key with sensitive data enabled. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+	//
+	// Corresponds with GET /user/bazaar (the `GetMyBazaar` operationId).
+	GetMyBazaar(ctx context.Context, params *GetMyBazaarParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetMyBounties Get bounties placed on you
 	//
 	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
@@ -42877,6 +43199,13 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /user/discord (the `GetMyDiscord` operationId).
 	GetMyDiscord(ctx context.Context, params *GetMyDiscordParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetMyDisplayCase Get your display case
+	//
+	// Requires public access key. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+	//
+	// Corresponds with GET /user/display (the `GetMyDisplayCase` operationId).
+	GetMyDisplayCase(ctx context.Context, params *GetMyDisplayCaseParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyEducation Get your education information
 	//
@@ -43320,6 +43649,13 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /user/{id}/discord (the `GetUserDiscord` operationId).
 	GetUserDiscord(ctx context.Context, id UserDiscordPathId, params *GetUserDiscordParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetUserDisplayCase Get display case for a specific player
+	//
+	// Requires public access key. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+	//
+	// Corresponds with GET /user/{id}/display (the `GetUserDisplayCase` operationId).
+	GetUserDisplayCase(ctx context.Context, id UserId, params *GetUserDisplayCaseParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserFaction Get faction information for a specific player
 	//
@@ -46124,6 +46460,23 @@ func (c *Client) GetMyBattlestats(ctx context.Context, params *GetMyBattlestatsP
 	return c.Client.Do(req)
 }
 
+// GetMyBazaar Get your bazaar
+//
+// Requires Limited, Full or Custom key with sensitive data enabled. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+//
+// Corresponds with GET /user/bazaar (the `GetMyBazaar` operationId).
+func (c *Client) GetMyBazaar(ctx context.Context, params *GetMyBazaarParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetMyBazaarRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // GetMyBounties Get bounties placed on you
 //
 // <b>Globally cached selection.</b><br><br>Requires public access key. <br>
@@ -46216,6 +46569,23 @@ func (c *Client) GetMyCooldowns(ctx context.Context, params *GetMyCooldownsParam
 // Corresponds with GET /user/discord (the `GetMyDiscord` operationId).
 func (c *Client) GetMyDiscord(ctx context.Context, params *GetMyDiscordParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetMyDiscordRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetMyDisplayCase Get your display case
+//
+// Requires public access key. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+//
+// Corresponds with GET /user/display (the `GetMyDisplayCase` operationId).
+func (c *Client) GetMyDisplayCase(ctx context.Context, params *GetMyDisplayCaseParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetMyDisplayCaseRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -47279,6 +47649,23 @@ func (c *Client) GetUserCompetitionInfo(ctx context.Context, id UserDiscordPathI
 // Corresponds with GET /user/{id}/discord (the `GetUserDiscord` operationId).
 func (c *Client) GetUserDiscord(ctx context.Context, id UserDiscordPathId, params *GetUserDiscordParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetUserDiscordRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetUserDisplayCase Get display case for a specific player
+//
+// Requires public access key. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+//
+// Corresponds with GET /user/{id}/display (the `GetUserDisplayCase` operationId).
+func (c *Client) GetUserDisplayCase(ctx context.Context, id UserId, params *GetUserDisplayCaseParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetUserDisplayCaseRequest(c.Server, id, params)
 	if err != nil {
 		return nil, err
 	}
@@ -63372,6 +63759,132 @@ func NewGetMyBattlestatsRequest(server string, params *GetMyBattlestatsParams) (
 	return req, nil
 }
 
+// NewGetMyBazaarRequest constructs an http.Request for the GetMyBazaar method
+func NewGetMyBazaarRequest(server string, params *GetMyBazaarParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/user/bazaar")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Cat != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "cat", *params.Cat, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Offset != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "offset", *params.Offset, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int32"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "limit", *params.Limit, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int32"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Sort != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sort", *params.Sort, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Timestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "timestamp", *params.Timestamp, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Comment != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "comment", *params.Comment, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Key != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "key", *params.Key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetMyBountiesRequest constructs an http.Request for the GetMyBounties method
 func NewGetMyBountiesRequest(server string, params *GetMyBountiesParams) (*http.Request, error) {
 	var err error
@@ -63789,6 +64302,132 @@ func NewGetMyDiscordRequest(server string, params *GetMyDiscordParams) (*http.Re
 		// styled parameters, preserving literal commas as delimiters
 		// per the OpenAPI spec (e.g. "color=blue,black,brown").
 		var rawQueryFragments []string
+
+		if params.Timestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "timestamp", *params.Timestamp, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Comment != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "comment", *params.Comment, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Key != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "key", *params.Key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetMyDisplayCaseRequest constructs an http.Request for the GetMyDisplayCase method
+func NewGetMyDisplayCaseRequest(server string, params *GetMyDisplayCaseParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/user/display")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Cat != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "cat", *params.Cat, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Offset != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "offset", *params.Offset, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int32"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "limit", *params.Limit, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int32"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Sort != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sort", *params.Sort, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
 
 		if params.Timestamp != nil {
 
@@ -69583,6 +70222,139 @@ func NewGetUserDiscordRequest(server string, id UserDiscordPathId, params *GetUs
 	return req, nil
 }
 
+// NewGetUserDisplayCaseRequest constructs an http.Request for the GetUserDisplayCase method
+func NewGetUserDisplayCaseRequest(server string, id UserId, params *GetUserDisplayCaseParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: "int32"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/user/%s/display", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Cat != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "cat", *params.Cat, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Offset != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "offset", *params.Offset, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int32"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "limit", *params.Limit, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int32"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Sort != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sort", *params.Sort, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Timestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "timestamp", *params.Timestamp, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Comment != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "comment", *params.Comment, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Key != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "key", *params.Key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetUserFactionRequest constructs an http.Request for the GetUserFaction method
 func NewGetUserFactionRequest(server string, id UserDiscordPathId, params *GetUserFactionParams) (*http.Request, error) {
 	var err error
@@ -72268,6 +73040,15 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /user/battlestats (the `GetMyBattlestats` operationId).
 	GetMyBattlestatsWithResponse(ctx context.Context, params *GetMyBattlestatsParams, reqEditors ...RequestEditorFn) (*GetMyBattlestatsResponse, error)
 
+	// GetMyBazaarWithResponse Get your bazaar
+	//
+	// Requires Limited, Full or Custom key with sensitive data enabled. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /user/bazaar (the `GetMyBazaar` operationId).
+	GetMyBazaarWithResponse(ctx context.Context, params *GetMyBazaarParams, reqEditors ...RequestEditorFn) (*GetMyBazaarResponse, error)
+
 	// GetMyBountiesWithResponse Get bounties placed on you
 	//
 	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
@@ -72321,6 +73102,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /user/discord (the `GetMyDiscord` operationId).
 	GetMyDiscordWithResponse(ctx context.Context, params *GetMyDiscordParams, reqEditors ...RequestEditorFn) (*GetMyDiscordResponse, error)
+
+	// GetMyDisplayCaseWithResponse Get your display case
+	//
+	// Requires public access key. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /user/display (the `GetMyDisplayCase` operationId).
+	GetMyDisplayCaseWithResponse(ctx context.Context, params *GetMyDisplayCaseParams, reqEditors ...RequestEditorFn) (*GetMyDisplayCaseResponse, error)
 
 	// GetMyEducationWithResponse Get your education information
 	//
@@ -72888,6 +73678,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /user/{id}/discord (the `GetUserDiscord` operationId).
 	GetUserDiscordWithResponse(ctx context.Context, id UserDiscordPathId, params *GetUserDiscordParams, reqEditors ...RequestEditorFn) (*GetUserDiscordResponse, error)
+
+	// GetUserDisplayCaseWithResponse Get display case for a specific player
+	//
+	// Requires public access key. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /user/{id}/display (the `GetUserDisplayCase` operationId).
+	GetUserDisplayCaseWithResponse(ctx context.Context, id UserId, params *GetUserDisplayCaseParams, reqEditors ...RequestEditorFn) (*GetUserDisplayCaseResponse, error)
 
 	// GetUserFactionWithResponse Get faction information for a specific player
 	//
@@ -79509,6 +80308,47 @@ func (r GetMyBattlestatsResponse) ContentType() string {
 	return ""
 }
 
+type GetMyBazaarResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *UserBazaarResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetMyBazaarResponse) GetJSON200() *UserBazaarResponse {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r GetMyBazaarResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetMyBazaarResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetMyBazaarResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetMyBazaarResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetMyBountiesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -79749,6 +80589,47 @@ func (r GetMyDiscordResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetMyDiscordResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetMyDisplayCaseResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *UserDisplayResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetMyDisplayCaseResponse) GetJSON200() *UserDisplayResponse {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r GetMyDisplayCaseResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetMyDisplayCaseResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetMyDisplayCaseResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetMyDisplayCaseResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -82284,6 +83165,47 @@ func (r GetUserDiscordResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetUserDiscordResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetUserDisplayCaseResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *UserDisplayResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetUserDisplayCaseResponse) GetJSON200() *UserDisplayResponse {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r GetUserDisplayCaseResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetUserDisplayCaseResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetUserDisplayCaseResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetUserDisplayCaseResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -85177,6 +86099,21 @@ func (c *ClientWithResponses) GetMyBattlestatsWithResponse(ctx context.Context, 
 	return ParseGetMyBattlestatsResponse(rsp)
 }
 
+// GetMyBazaarWithResponse Get your bazaar
+//
+// Requires Limited, Full or Custom key with sensitive data enabled. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /user/bazaar (the `GetMyBazaar` operationId).
+func (c *ClientWithResponses) GetMyBazaarWithResponse(ctx context.Context, params *GetMyBazaarParams, reqEditors ...RequestEditorFn) (*GetMyBazaarResponse, error) {
+	rsp, err := c.GetMyBazaar(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetMyBazaarResponse(rsp)
+}
+
 // GetMyBountiesWithResponse Get bounties placed on you
 //
 // <b>Globally cached selection.</b><br><br>Requires public access key. <br>
@@ -85265,6 +86202,21 @@ func (c *ClientWithResponses) GetMyDiscordWithResponse(ctx context.Context, para
 		return nil, err
 	}
 	return ParseGetMyDiscordResponse(rsp)
+}
+
+// GetMyDisplayCaseWithResponse Get your display case
+//
+// Requires public access key. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /user/display (the `GetMyDisplayCase` operationId).
+func (c *ClientWithResponses) GetMyDisplayCaseWithResponse(ctx context.Context, params *GetMyDisplayCaseParams, reqEditors ...RequestEditorFn) (*GetMyDisplayCaseResponse, error) {
+	rsp, err := c.GetMyDisplayCase(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetMyDisplayCaseResponse(rsp)
 }
 
 // GetMyEducationWithResponse Get your education information
@@ -86204,6 +87156,21 @@ func (c *ClientWithResponses) GetUserDiscordWithResponse(ctx context.Context, id
 		return nil, err
 	}
 	return ParseGetUserDiscordResponse(rsp)
+}
+
+// GetUserDisplayCaseWithResponse Get display case for a specific player
+//
+// Requires public access key. <br>Item details are included only for the Primary, Secondary, Melee and Defensive categories. <br>The All category returns every item unless a limit is given. <br>Identical items are grouped into one row with their uids listed; limit and offset count individual items.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /user/{id}/display (the `GetUserDisplayCase` operationId).
+func (c *ClientWithResponses) GetUserDisplayCaseWithResponse(ctx context.Context, id UserId, params *GetUserDisplayCaseParams, reqEditors ...RequestEditorFn) (*GetUserDisplayCaseResponse, error) {
+	rsp, err := c.GetUserDisplayCase(ctx, id, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetUserDisplayCaseResponse(rsp)
 }
 
 // GetUserFactionWithResponse Get faction information for a specific player
@@ -90506,6 +91473,32 @@ func ParseGetMyBattlestatsResponse(rsp *http.Response) (*GetMyBattlestatsRespons
 	return response, nil
 }
 
+// ParseGetMyBazaarResponse parses an HTTP response from a GetMyBazaarWithResponse call
+func ParseGetMyBazaarResponse(rsp *http.Response) (*GetMyBazaarResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetMyBazaarResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest UserBazaarResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetMyBountiesResponse parses an HTTP response from a GetMyBountiesWithResponse call
 func ParseGetMyBountiesResponse(rsp *http.Response) (*GetMyBountiesResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -90652,6 +91645,32 @@ func ParseGetMyDiscordResponse(rsp *http.Response) (*GetMyDiscordResponse, error
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest UserDiscordResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetMyDisplayCaseResponse parses an HTTP response from a GetMyDisplayCaseWithResponse call
+func ParseGetMyDisplayCaseResponse(rsp *http.Response) (*GetMyDisplayCaseResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetMyDisplayCaseResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest UserDisplayResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -92254,6 +93273,32 @@ func ParseGetUserDiscordResponse(rsp *http.Response) (*GetUserDiscordResponse, e
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest UserDiscordResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetUserDisplayCaseResponse parses an HTTP response from a GetUserDisplayCaseWithResponse call
+func ParseGetUserDisplayCaseResponse(rsp *http.Response) (*GetUserDisplayCaseResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetUserDisplayCaseResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest UserDisplayResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
