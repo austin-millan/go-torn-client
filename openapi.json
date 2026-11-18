@@ -3,7 +3,7 @@
   "info": {
     "title": "Torn API",
     "description": "\n * The development of Torn's API v2 is still ongoing.\n * If selections remain unaltered, they will default to the API v1 version.\n * Unlike API v1, API v2 accepts both selections and IDs as path and query parameters.\n * If any discrepancies or errors are found, please submit a [bug report](https://www.torn.com/forums.php#/p=forums&f=19&b=0&a=0) on the Torn Forums.\n * In case you're using bots to check for changes on openapi.json file, make sure to specificy a custom user-agent header - CloudFlare sometimes prevents requests from default user-agents.",
-    "version": "6.17.0"
+    "version": "6.18.1"
   },
   "servers": [
     {
@@ -157,6 +157,66 @@
           }
         ],
         "x-stability": "Stable"
+      }
+    },
+    "/user/auctionhouse": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get your auction house listings",
+        "description": "Requires Limited, Full or Custom key with sensitive data enabled. <br>Returns your item listings ordered by their end time.",
+        "operationId": "getMyAuctionHouseListings",
+        "parameters": [
+          {
+            "name": "cat",
+            "in": "query",
+            "description": "Listings category, defaults to all",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/UserAuctionHouseCategory"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ApiLimit100Default20"
+          },
+          {
+            "$ref": "#/components/parameters/ApiSort"
+          },
+          {
+            "$ref": "#/components/parameters/ApiFrom"
+          },
+          {
+            "$ref": "#/components/parameters/ApiTo"
+          },
+          {
+            "$ref": "#/components/parameters/ApiTimestamp"
+          },
+          {
+            "$ref": "#/components/parameters/ApiComment"
+          },
+          {
+            "$ref": "#/components/parameters/ApiKeyLimited"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserAuctionHouseResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-stability": "Unstable"
       }
     },
     "/user/bars": {
@@ -3504,7 +3564,7 @@
             "$ref": "#/components/parameters/ApiComment"
           },
           {
-            "$ref": "#/components/parameters/ApiKeyLimited"
+            "$ref": "#/components/parameters/ApiKeyMinimal"
           }
         ],
         "responses": {
@@ -3561,7 +3621,7 @@
             "$ref": "#/components/parameters/ApiComment"
           },
           {
-            "$ref": "#/components/parameters/ApiKeyLimited"
+            "$ref": "#/components/parameters/ApiKeyMinimal"
           }
         ],
         "responses": {
@@ -4476,6 +4536,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/UserDisplayResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/UserAuctionHouseResponse"
                     },
                     {
                       "$ref": "#/components/schemas/UserLookupResponse"
@@ -6178,7 +6241,7 @@
             "$ref": "#/components/parameters/ApiComment"
           },
           {
-            "$ref": "#/components/parameters/ApiKeyLimited"
+            "$ref": "#/components/parameters/ApiKeyMinimal"
           }
         ],
         "responses": {
@@ -6235,7 +6298,7 @@
             "$ref": "#/components/parameters/ApiComment"
           },
           {
-            "$ref": "#/components/parameters/ApiKeyLimited"
+            "$ref": "#/components/parameters/ApiKeyMinimal"
           }
         ],
         "responses": {
@@ -8754,7 +8817,7 @@
           "Market"
         ],
         "summary": "Get specific item auction house listings",
-        "description": "Requires public access key. <br>",
+        "description": "Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.",
         "operationId": "getMarketAuctionHouseListing",
         "parameters": [
           {
@@ -8802,7 +8865,7 @@
           "Market"
         ],
         "summary": "Get specific item auction house listings",
-        "description": "Requires public access key. <br>",
+        "description": "Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.",
         "operationId": "getMarketAuctionHouseItem",
         "parameters": [
           {
@@ -8812,6 +8875,15 @@
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/ItemId"
+            }
+          },
+          {
+            "name": "cat",
+            "in": "query",
+            "description": "Listings category, defaults to complete",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/MarketAuctionHouseCategory"
             }
           },
           {
@@ -8862,9 +8934,18 @@
           "Market"
         ],
         "summary": "Get auction house listings",
-        "description": "Requires public access key. <br>",
+        "description": "Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.",
         "operationId": "getMarketAuctionHouse",
         "parameters": [
+          {
+            "name": "cat",
+            "in": "query",
+            "description": "Listings category, defaults to complete",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/MarketAuctionHouseCategory"
+            }
+          },
           {
             "$ref": "#/components/parameters/ApiLimit100Default20"
           },
@@ -24868,6 +24949,7 @@
               "ammo",
               "attacks",
               "attacksfull",
+              "auctionhouse",
               "bars",
               "basic",
               "battlestats",
@@ -25395,6 +25477,73 @@
         "properties": {
           "display": {
             "$ref": "#/components/schemas/UserDisplay"
+          },
+          "_metadata": {
+            "$ref": "#/components/schemas/RequestMetadataWithLinks"
+          }
+        },
+        "type": "object"
+      },
+      "UserAuctionHouseCategory": {
+        "type": "string",
+        "enum": [
+          "all",
+          "ongoing",
+          "complete"
+        ]
+      },
+      "UserAuctionHouseListing": {
+        "required": [
+          "id",
+          "buyer",
+          "timestamp",
+          "price",
+          "bids",
+          "item"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/AuctionListingId"
+          },
+          "buyer": {
+            "$ref": "#/components/schemas/BasicUser"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bids": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AuctionHouseStackableItem"
+              },
+              {
+                "$ref": "#/components/schemas/TornItemDetails"
+              }
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "UserAuctionHouseResponse": {
+        "required": [
+          "auctionhouse",
+          "_metadata"
+        ],
+        "properties": {
+          "auctionhouse": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserAuctionHouseListing"
+            }
           },
           "_metadata": {
             "$ref": "#/components/schemas/RequestMetadataWithLinks"
@@ -33473,6 +33622,13 @@
         },
         "type": "object"
       },
+      "MarketAuctionHouseCategory": {
+        "type": "string",
+        "enum": [
+          "complete",
+          "ongoing"
+        ]
+      },
       "AuctionHouseResponse": {
         "required": [
           "auctionhouse",
@@ -33484,6 +33640,14 @@
             "items": {
               "$ref": "#/components/schemas/AuctionHouseListing"
             }
+          },
+          "auctionhouse_timestamp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "auctionhouse_delay": {
+            "type": "integer",
+            "format": "int32"
           },
           "_metadata": {
             "$ref": "#/components/schemas/RequestMetadataWithLinks"
@@ -38883,7 +39047,8 @@
           "type",
           "importance",
           "start_at",
-          "end_at"
+          "end_at",
+          "has_countdown"
         ],
         "properties": {
           "id": {
@@ -38927,6 +39092,9 @@
           "end_at": {
             "type": "integer",
             "format": "int64"
+          },
+          "has_countdown": {
+            "type": "boolean"
           }
         },
         "type": "object"

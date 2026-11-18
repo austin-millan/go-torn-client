@@ -14533,6 +14533,24 @@ func (e KeySelectionName0) Valid() bool {
 	}
 }
 
+// Defines values for MarketAuctionHouseCategory.
+const (
+	MarketAuctionHouseCategoryComplete MarketAuctionHouseCategory = "complete"
+	MarketAuctionHouseCategoryOngoing  MarketAuctionHouseCategory = "ongoing"
+)
+
+// Valid indicates whether the value is a known member of the MarketAuctionHouseCategory enum.
+func (e MarketAuctionHouseCategory) Valid() bool {
+	switch e {
+	case MarketAuctionHouseCategoryComplete:
+		return true
+	case MarketAuctionHouseCategoryOngoing:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for MarketSelectionName0.
 const (
 	MarketSelectionName0Auctionhouse        MarketSelectionName0 = "auctionhouse"
@@ -17092,6 +17110,27 @@ func (e UserArmouryItemDetailsRarity) Valid() bool {
 	}
 }
 
+// Defines values for UserAuctionHouseCategory.
+const (
+	UserAuctionHouseCategoryAll      UserAuctionHouseCategory = "all"
+	UserAuctionHouseCategoryComplete UserAuctionHouseCategory = "complete"
+	UserAuctionHouseCategoryOngoing  UserAuctionHouseCategory = "ongoing"
+)
+
+// Valid indicates whether the value is a known member of the UserAuctionHouseCategory enum.
+func (e UserAuctionHouseCategory) Valid() bool {
+	switch e {
+	case UserAuctionHouseCategoryAll:
+		return true
+	case UserAuctionHouseCategoryComplete:
+		return true
+	case UserAuctionHouseCategoryOngoing:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for UserCompanyType.
 const (
 	UserCompanyTypeCompany UserCompanyType = "company"
@@ -17850,6 +17889,7 @@ const (
 	UserSelectionName0Ammo                   UserSelectionName0 = "ammo"
 	UserSelectionName0Attacks                UserSelectionName0 = "attacks"
 	UserSelectionName0Attacksfull            UserSelectionName0 = "attacksfull"
+	UserSelectionName0Auctionhouse           UserSelectionName0 = "auctionhouse"
 	UserSelectionName0Bars                   UserSelectionName0 = "bars"
 	UserSelectionName0Basic                  UserSelectionName0 = "basic"
 	UserSelectionName0Battlestats            UserSelectionName0 = "battlestats"
@@ -17929,6 +17969,8 @@ func (e UserSelectionName0) Valid() bool {
 	case UserSelectionName0Attacks:
 		return true
 	case UserSelectionName0Attacksfull:
+		return true
+	case UserSelectionName0Auctionhouse:
 		return true
 	case UserSelectionName0Bars:
 		return true
@@ -19594,6 +19636,24 @@ func (e GetMyAttacksSimplifiedParamsSort) Valid() bool {
 	}
 }
 
+// Defines values for GetMyAuctionHouseListingsParamsSort.
+const (
+	GetMyAuctionHouseListingsParamsSortASC  GetMyAuctionHouseListingsParamsSort = "ASC"
+	GetMyAuctionHouseListingsParamsSortDESC GetMyAuctionHouseListingsParamsSort = "DESC"
+)
+
+// Valid indicates whether the value is a known member of the GetMyAuctionHouseListingsParamsSort enum.
+func (e GetMyAuctionHouseListingsParamsSort) Valid() bool {
+	switch e {
+	case GetMyAuctionHouseListingsParamsSortASC:
+		return true
+	case GetMyAuctionHouseListingsParamsSortDESC:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for GetMyBazaarParamsSort.
 const (
 	GetMyBazaarParamsSortASC  GetMyBazaarParamsSort = "ASC"
@@ -20099,8 +20159,10 @@ type AuctionHouseListingResponse struct {
 
 // AuctionHouseResponse defines model for AuctionHouseResponse.
 type AuctionHouseResponse struct {
-	UnderscoreMetadata RequestMetadataWithLinks `json:"_metadata"`
-	Auctionhouse       []AuctionHouseListing    `json:"auctionhouse"`
+	UnderscoreMetadata    RequestMetadataWithLinks `json:"_metadata"`
+	Auctionhouse          []AuctionHouseListing    `json:"auctionhouse"`
+	AuctionhouseDelay     *int32                   `json:"auctionhouse_delay,omitempty"`
+	AuctionhouseTimestamp *int32                   `json:"auctionhouse_timestamp,omitempty"`
 }
 
 // AuctionHouseStackableItem defines model for AuctionHouseStackableItem.
@@ -22371,6 +22433,9 @@ type LogCategoryId = int32
 // LogId defines model for LogId.
 type LogId = int32
 
+// MarketAuctionHouseCategory defines model for MarketAuctionHouseCategory.
+type MarketAuctionHouseCategory string
+
 // MarketItemMarketResponse defines model for MarketItemMarketResponse.
 type MarketItemMarketResponse struct {
 	UnderscoreMetadata RequestMetadataWithLinksAndTotal `json:"_metadata"`
@@ -24186,13 +24251,14 @@ type TornHalloweenUpgrade struct {
 
 // TornHeadline defines model for TornHeadline.
 type TornHeadline struct {
-	EndAt      int64                  `json:"end_at"`
-	Headline   string                 `json:"headline"`
-	Id         *int32                 `json:"id"`
-	Importance TornHeadlineImportance `json:"importance"`
-	Link       *string                `json:"link"`
-	StartAt    int64                  `json:"start_at"`
-	Type       string                 `json:"type"`
+	EndAt        int64                  `json:"end_at"`
+	HasCountdown bool                   `json:"has_countdown"`
+	Headline     string                 `json:"headline"`
+	Id           *int32                 `json:"id"`
+	Importance   TornHeadlineImportance `json:"importance"`
+	Link         *string                `json:"link"`
+	StartAt      int64                  `json:"start_at"`
+	Type         string                 `json:"type"`
 }
 
 // TornHeadlineImportance defines model for TornHeadline.Importance.
@@ -24998,6 +25064,30 @@ type UserArmouryItemDetails struct {
 
 // UserArmouryItemDetailsRarity defines model for UserArmouryItemDetails.Rarity.
 type UserArmouryItemDetailsRarity string
+
+// UserAuctionHouseCategory defines model for UserAuctionHouseCategory.
+type UserAuctionHouseCategory string
+
+// UserAuctionHouseListing defines model for UserAuctionHouseListing.
+type UserAuctionHouseListing struct {
+	Bids      int32                        `json:"bids"`
+	Buyer     BasicUser                    `json:"buyer"`
+	Id        AuctionListingId             `json:"id"`
+	Item      UserAuctionHouseListing_Item `json:"item"`
+	Price     int32                        `json:"price"`
+	Timestamp int32                        `json:"timestamp"`
+}
+
+// UserAuctionHouseListing_Item defines model for UserAuctionHouseListing.Item.
+type UserAuctionHouseListing_Item struct {
+	union json.RawMessage
+}
+
+// UserAuctionHouseResponse defines model for UserAuctionHouseResponse.
+type UserAuctionHouseResponse struct {
+	UnderscoreMetadata RequestMetadataWithLinks  `json:"_metadata"`
+	Auctionhouse       []UserAuctionHouseListing `json:"auctionhouse"`
+}
 
 // UserBar defines model for UserBar.
 type UserBar struct {
@@ -28316,8 +28406,8 @@ type GetMyFactionRevivesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
-	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyFactionRevivesParamsSort defines parameters for GetMyFactionRevives.
@@ -28348,8 +28438,8 @@ type GetMyFactionRevivesSimplifiedParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
-	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyFactionRevivesSimplifiedParamsSort defines parameters for GetMyFactionRevivesSimplified.
@@ -29124,7 +29214,9 @@ type GetMarketGeneric200JSONResponseBody struct {
 
 // GetMarketAuctionHouseParams defines parameters for GetMarketAuctionHouse.
 type GetMarketAuctionHouseParams struct {
-	Limit *ApiLimit100Default20 `form:"limit,omitempty" json:"limit,omitempty"`
+	// Cat Listings category, defaults to complete
+	Cat   *MarketAuctionHouseCategory `form:"cat,omitempty" json:"cat,omitempty"`
+	Limit *ApiLimit100Default20       `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Sort Sorted by the greatest timestamps
 	Sort *GetMarketAuctionHouseParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
@@ -29201,7 +29293,9 @@ type GetMarketTimestampParams struct {
 
 // GetMarketAuctionHouseItemParams defines parameters for GetMarketAuctionHouseItem.
 type GetMarketAuctionHouseItemParams struct {
-	Limit *ApiLimit100Default20 `form:"limit,omitempty" json:"limit,omitempty"`
+	// Cat Listings category, defaults to complete
+	Cat   *MarketAuctionHouseCategory `form:"cat,omitempty" json:"cat,omitempty"`
+	Limit *ApiLimit100Default20       `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Sort Sorted by the greatest timestamps
 	Sort *GetMarketAuctionHouseItemParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
@@ -30348,6 +30442,34 @@ type GetMyAttacksSimplifiedParams struct {
 // GetMyAttacksSimplifiedParamsSort defines parameters for GetMyAttacksSimplified.
 type GetMyAttacksSimplifiedParamsSort string
 
+// GetMyAuctionHouseListingsParams defines parameters for GetMyAuctionHouseListings.
+type GetMyAuctionHouseListingsParams struct {
+	// Cat Listings category, defaults to all
+	Cat   *UserAuctionHouseCategory `form:"cat,omitempty" json:"cat,omitempty"`
+	Limit *ApiLimit100Default20     `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Sort Sorted by the greatest timestamps
+	Sort *GetMyAuctionHouseListingsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+
+	// From Timestamp that sets the lower limit for the data returned. Data returned will be after this time
+	From *ApiFrom `form:"from,omitempty" json:"from,omitempty"`
+
+	// To Timestamp that sets the upper limit for the data returned. Data returned will be up to and including this time
+	To *ApiTo `form:"to,omitempty" json:"to,omitempty"`
+
+	// Timestamp Timestamp to bypass cache
+	Timestamp *ApiTimestamp `form:"timestamp,omitempty" json:"timestamp,omitempty"`
+
+	// Comment Comment for your tool/service/bot/website to be visible in the logs.
+	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
+
+	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
+}
+
+// GetMyAuctionHouseListingsParamsSort defines parameters for GetMyAuctionHouseListings.
+type GetMyAuctionHouseListingsParamsSort string
+
 // GetMyBarsParams defines parameters for GetMyBars.
 type GetMyBarsParams struct {
 	// Timestamp Timestamp to bypass cache
@@ -31203,8 +31325,8 @@ type GetMyRevivesParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
-	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyRevivesParamsSort defines parameters for GetMyRevives.
@@ -31235,8 +31357,8 @@ type GetMyRevivesSimplifiedParams struct {
 	// Comment Comment for your tool/service/bot/website to be visible in the logs.
 	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
 
-	// Key API key (Limited).<br>It's not required to use this parameter when passing the API key via the Authorization header.
-	Key *ApiKeyLimited `form:"key,omitempty" json:"key,omitempty"`
+	// Key API key (Minimal).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
 // GetMyRevivesSimplifiedParamsSort defines parameters for GetMyRevivesSimplified.
@@ -34988,6 +35110,68 @@ func (t TradeItem) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TradeItem) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsAuctionHouseStackableItem returns the union data inside the UserAuctionHouseListing_Item as a AuctionHouseStackableItem
+func (t UserAuctionHouseListing_Item) AsAuctionHouseStackableItem() (AuctionHouseStackableItem, error) {
+	var body AuctionHouseStackableItem
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAuctionHouseStackableItem overwrites any union data inside the UserAuctionHouseListing_Item as the provided AuctionHouseStackableItem
+func (t *UserAuctionHouseListing_Item) FromAuctionHouseStackableItem(v AuctionHouseStackableItem) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeAuctionHouseStackableItem performs a merge with any union data inside the UserAuctionHouseListing_Item, using the provided AuctionHouseStackableItem
+func (t *UserAuctionHouseListing_Item) MergeAuctionHouseStackableItem(v AuctionHouseStackableItem) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsTornItemDetails returns the union data inside the UserAuctionHouseListing_Item as a TornItemDetails
+func (t UserAuctionHouseListing_Item) AsTornItemDetails() (TornItemDetails, error) {
+	var body TornItemDetails
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromTornItemDetails overwrites any union data inside the UserAuctionHouseListing_Item as the provided TornItemDetails
+func (t *UserAuctionHouseListing_Item) FromTornItemDetails(v TornItemDetails) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeTornItemDetails performs a merge with any union data inside the UserAuctionHouseListing_Item, using the provided TornItemDetails
+func (t *UserAuctionHouseListing_Item) MergeTornItemDetails(v TornItemDetails) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t UserAuctionHouseListing_Item) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *UserAuctionHouseListing_Item) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -41892,6 +42076,32 @@ func (t *GetUserGeneric200JSONResponseBody) MergeUserDisplayResponse(v UserDispl
 	return err
 }
 
+// AsUserAuctionHouseResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserAuctionHouseResponse
+func (t GetUserGeneric200JSONResponseBody) AsUserAuctionHouseResponse() (UserAuctionHouseResponse, error) {
+	var body UserAuctionHouseResponse
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUserAuctionHouseResponse overwrites any union data inside the GetUserGeneric200JSONResponseBody as the provided UserAuctionHouseResponse
+func (t *GetUserGeneric200JSONResponseBody) FromUserAuctionHouseResponse(v UserAuctionHouseResponse) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUserAuctionHouseResponse performs a merge with any union data inside the GetUserGeneric200JSONResponseBody, using the provided UserAuctionHouseResponse
+func (t *GetUserGeneric200JSONResponseBody) MergeUserAuctionHouseResponse(v UserAuctionHouseResponse) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
 // AsUserLookupResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserLookupResponse
 func (t GetUserGeneric200JSONResponseBody) AsUserLookupResponse() (UserLookupResponse, error) {
 	var body UserLookupResponse
@@ -42600,7 +42810,7 @@ type ClientInterface interface {
 
 	// GetMarketAuctionHouse Get auction house listings
 	//
-	// Requires public access key. <br>
+	// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 	//
 	// Corresponds with GET /market/auctionhouse (the `GetMarketAuctionHouse` operationId).
 	GetMarketAuctionHouse(ctx context.Context, params *GetMarketAuctionHouseParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42635,14 +42845,14 @@ type ClientInterface interface {
 
 	// GetMarketAuctionHouseItem Get specific item auction house listings
 	//
-	// Requires public access key. <br>
+	// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 	//
 	// Corresponds with GET /market/{id}/auctionhouse (the `GetMarketAuctionHouseItem` operationId).
 	GetMarketAuctionHouseItem(ctx context.Context, id ItemId, params *GetMarketAuctionHouseItemParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketAuctionHouseListing Get specific item auction house listings
 	//
-	// Requires public access key. <br>
+	// Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.
 	//
 	// Corresponds with GET /market/{id}/auctionhouselisting (the `GetMarketAuctionHouseListing` operationId).
 	GetMarketAuctionHouseListing(ctx context.Context, id AuctionListingId, params *GetMarketAuctionHouseListingParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43129,6 +43339,13 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /user/attacksfull (the `GetMyAttacksSimplified` operationId).
 	GetMyAttacksSimplified(ctx context.Context, params *GetMyAttacksSimplifiedParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetMyAuctionHouseListings Get your auction house listings
+	//
+	// Requires Limited, Full or Custom key with sensitive data enabled. <br>Returns your item listings ordered by their end time.
+	//
+	// Corresponds with GET /user/auctionhouse (the `GetMyAuctionHouseListings` operationId).
+	GetMyAuctionHouseListings(ctx context.Context, params *GetMyAuctionHouseListingsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyBars Get your bars information
 	//
@@ -45119,7 +45336,7 @@ func (c *Client) GetMarketGeneric(ctx context.Context, params *GetMarketGenericP
 
 // GetMarketAuctionHouse Get auction house listings
 //
-// Requires public access key. <br>
+// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 //
 // Corresponds with GET /market/auctionhouse (the `GetMarketAuctionHouse` operationId).
 func (c *Client) GetMarketAuctionHouse(ctx context.Context, params *GetMarketAuctionHouseParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45204,7 +45421,7 @@ func (c *Client) GetMarketTimestamp(ctx context.Context, params *GetMarketTimest
 
 // GetMarketAuctionHouseItem Get specific item auction house listings
 //
-// Requires public access key. <br>
+// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 //
 // Corresponds with GET /market/{id}/auctionhouse (the `GetMarketAuctionHouseItem` operationId).
 func (c *Client) GetMarketAuctionHouseItem(ctx context.Context, id ItemId, params *GetMarketAuctionHouseItemParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45221,7 +45438,7 @@ func (c *Client) GetMarketAuctionHouseItem(ctx context.Context, id ItemId, param
 
 // GetMarketAuctionHouseListing Get specific item auction house listings
 //
-// Requires public access key. <br>
+// Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.
 //
 // Corresponds with GET /market/{id}/auctionhouselisting (the `GetMarketAuctionHouseListing` operationId).
 func (c *Client) GetMarketAuctionHouseListing(ctx context.Context, id AuctionListingId, params *GetMarketAuctionHouseListingParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46399,6 +46616,23 @@ func (c *Client) GetMyAttacks(ctx context.Context, params *GetMyAttacksParams, r
 // Corresponds with GET /user/attacksfull (the `GetMyAttacksSimplified` operationId).
 func (c *Client) GetMyAttacksSimplified(ctx context.Context, params *GetMyAttacksSimplifiedParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetMyAttacksSimplifiedRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetMyAuctionHouseListings Get your auction house listings
+//
+// Requires Limited, Full or Custom key with sensitive data enabled. <br>Returns your item listings ordered by their end time.
+//
+// Corresponds with GET /user/auctionhouse (the `GetMyAuctionHouseListings` operationId).
+func (c *Client) GetMyAuctionHouseListings(ctx context.Context, params *GetMyAuctionHouseListingsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetMyAuctionHouseListingsRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -56413,6 +56647,18 @@ func NewGetMarketAuctionHouseRequest(server string, params *GetMarketAuctionHous
 		// per the OpenAPI spec (e.g. "color=blue,black,brown").
 		var rawQueryFragments []string
 
+		if params.Cat != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "cat", *params.Cat, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
 		if params.Limit != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "limit", *params.Limit, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int32"}); err != nil {
@@ -56869,6 +57115,18 @@ func NewGetMarketAuctionHouseItemRequest(server string, id ItemId, params *GetMa
 		// styled parameters, preserving literal commas as delimiters
 		// per the OpenAPI spec (e.g. "color=blue,black,brown").
 		var rawQueryFragments []string
+
+		if params.Cat != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "cat", *params.Cat, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
 
 		if params.Limit != nil {
 
@@ -63454,6 +63712,144 @@ func NewGetMyAttacksSimplifiedRequest(server string, params *GetMyAttacksSimplif
 		if params.From != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "from", *params.From, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int32"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Timestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "timestamp", *params.Timestamp, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Comment != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "comment", *params.Comment, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Key != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "key", *params.Key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetMyAuctionHouseListingsRequest constructs an http.Request for the GetMyAuctionHouseListings method
+func NewGetMyAuctionHouseListingsRequest(server string, params *GetMyAuctionHouseListingsParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/user/auctionhouse")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Cat != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "cat", *params.Cat, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "limit", *params.Limit, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int32"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Sort != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sort", *params.Sort, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.From != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "from", *params.From, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int32"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.To != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "to", *params.To, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int32"}); err != nil {
 				return nil, err
 			} else {
 				for _, qp := range strings.Split(queryFrag, "&") {
@@ -72331,7 +72727,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketAuctionHouseWithResponse Get auction house listings
 	//
-	// Requires public access key. <br>
+	// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72376,7 +72772,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketAuctionHouseItemWithResponse Get specific item auction house listings
 	//
-	// Requires public access key. <br>
+	// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72385,7 +72781,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketAuctionHouseListingWithResponse Get specific item auction house listings
 	//
-	// Requires public access key. <br>
+	// Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -73012,6 +73408,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /user/attacksfull (the `GetMyAttacksSimplified` operationId).
 	GetMyAttacksSimplifiedWithResponse(ctx context.Context, params *GetMyAttacksSimplifiedParams, reqEditors ...RequestEditorFn) (*GetMyAttacksSimplifiedResponse, error)
+
+	// GetMyAuctionHouseListingsWithResponse Get your auction house listings
+	//
+	// Requires Limited, Full or Custom key with sensitive data enabled. <br>Returns your item listings ordered by their end time.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /user/auctionhouse (the `GetMyAuctionHouseListings` operationId).
+	GetMyAuctionHouseListingsWithResponse(ctx context.Context, params *GetMyAuctionHouseListingsParams, reqEditors ...RequestEditorFn) (*GetMyAuctionHouseListingsResponse, error)
 
 	// GetMyBarsWithResponse Get your bars information
 	//
@@ -80185,6 +80590,47 @@ func (r GetMyAttacksSimplifiedResponse) ContentType() string {
 	return ""
 }
 
+type GetMyAuctionHouseListingsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *UserAuctionHouseResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetMyAuctionHouseListingsResponse) GetJSON200() *UserAuctionHouseResponse {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r GetMyAuctionHouseListingsResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetMyAuctionHouseListingsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetMyAuctionHouseListingsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetMyAuctionHouseListingsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetMyBarsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -84916,7 +85362,7 @@ func (c *ClientWithResponses) GetMarketGenericWithResponse(ctx context.Context, 
 
 // GetMarketAuctionHouseWithResponse Get auction house listings
 //
-// Requires public access key. <br>
+// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -84991,7 +85437,7 @@ func (c *ClientWithResponses) GetMarketTimestampWithResponse(ctx context.Context
 
 // GetMarketAuctionHouseItemWithResponse Get specific item auction house listings
 //
-// Requires public access key. <br>
+// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85006,7 +85452,7 @@ func (c *ClientWithResponses) GetMarketAuctionHouseItemWithResponse(ctx context.
 
 // GetMarketAuctionHouseListingWithResponse Get specific item auction house listings
 //
-// Requires public access key. <br>
+// Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -86052,6 +86498,21 @@ func (c *ClientWithResponses) GetMyAttacksSimplifiedWithResponse(ctx context.Con
 		return nil, err
 	}
 	return ParseGetMyAttacksSimplifiedResponse(rsp)
+}
+
+// GetMyAuctionHouseListingsWithResponse Get your auction house listings
+//
+// Requires Limited, Full or Custom key with sensitive data enabled. <br>Returns your item listings ordered by their end time.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /user/auctionhouse (the `GetMyAuctionHouseListings` operationId).
+func (c *ClientWithResponses) GetMyAuctionHouseListingsWithResponse(ctx context.Context, params *GetMyAuctionHouseListingsParams, reqEditors ...RequestEditorFn) (*GetMyAuctionHouseListingsResponse, error) {
+	rsp, err := c.GetMyAuctionHouseListings(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetMyAuctionHouseListingsResponse(rsp)
 }
 
 // GetMyBarsWithResponse Get your bars information
@@ -91385,6 +91846,32 @@ func ParseGetMyAttacksSimplifiedResponse(rsp *http.Response) (*GetMyAttacksSimpl
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest AttacksFullResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetMyAuctionHouseListingsResponse parses an HTTP response from a GetMyAuctionHouseListingsWithResponse call
+func ParseGetMyAuctionHouseListingsResponse(rsp *http.Response) (*GetMyAuctionHouseListingsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetMyAuctionHouseListingsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest UserAuctionHouseResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
