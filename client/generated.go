@@ -42943,7 +42943,7 @@ type ClientInterface interface {
 
 	// GetRacingRaces Get races
 	//
-	// Requires public access key. <br>Returns a list of races, ordered by race start timestamp. <br>The 'available' category returns races which have not started yet and can still be joined; 'from' and 'to' are ignored for this category.
+	// Requires public access key. <br>Returns a list of races, ordered by race start timestamp. <br>The 'available' category returns only custom races which have not started yet and can still be joined; 'from' and 'to' are ignored for this category.
 	//
 	// Corresponds with GET /racing/races (the `GetRacingRaces` operationId).
 	GetRacingRaces(ctx context.Context, params *GetRacingRacesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -45659,7 +45659,7 @@ func (c *Client) GetRacingLookup(ctx context.Context, params *GetRacingLookupPar
 
 // GetRacingRaces Get races
 //
-// Requires public access key. <br>Returns a list of races, ordered by race start timestamp. <br>The 'available' category returns races which have not started yet and can still be joined; 'from' and 'to' are ignored for this category.
+// Requires public access key. <br>Returns a list of races, ordered by race start timestamp. <br>The 'available' category returns only custom races which have not started yet and can still be joined; 'from' and 'to' are ignored for this category.
 //
 // Corresponds with GET /racing/races (the `GetRacingRaces` operationId).
 func (c *Client) GetRacingRaces(ctx context.Context, params *GetRacingRacesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -72898,7 +72898,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetRacingRacesWithResponse Get races
 	//
-	// Requires public access key. <br>Returns a list of races, ordered by race start timestamp. <br>The 'available' category returns races which have not started yet and can still be joined; 'from' and 'to' are ignored for this category.
+	// Requires public access key. <br>Returns a list of races, ordered by race start timestamp. <br>The 'available' category returns only custom races which have not started yet and can still be joined; 'from' and 'to' are ignored for this category.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -85647,7 +85647,7 @@ func (c *ClientWithResponses) GetRacingLookupWithResponse(ctx context.Context, p
 
 // GetRacingRacesWithResponse Get races
 //
-// Requires public access key. <br>Returns a list of races, ordered by race start timestamp. <br>The 'available' category returns races which have not started yet and can still be joined; 'from' and 'to' are ignored for this category.
+// Requires public access key. <br>Returns a list of races, ordered by race start timestamp. <br>The 'available' category returns only custom races which have not started yet and can still be joined; 'from' and 'to' are ignored for this category.
 //
 // Returns a wrapper object for the known response body format(s).
 //
