@@ -17224,6 +17224,36 @@ func (e UserCrimeUniquesRewardAmmoEnum) Valid() bool {
 	}
 }
 
+// Defines values for UserCriminalRecordV1Version.
+const (
+	UserCriminalRecordV1VersionV1 UserCriminalRecordV1Version = "v1"
+)
+
+// Valid indicates whether the value is a known member of the UserCriminalRecordV1Version enum.
+func (e UserCriminalRecordV1Version) Valid() bool {
+	switch e {
+	case UserCriminalRecordV1VersionV1:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for UserCriminalRecordV2Version.
+const (
+	UserCriminalRecordV2VersionV2 UserCriminalRecordV2Version = "v2"
+)
+
+// Valid indicates whether the value is a known member of the UserCriminalRecordV2Version enum.
+func (e UserCriminalRecordV2Version) Valid() bool {
+	switch e {
+	case UserCriminalRecordV2VersionV2:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for UserDonatorStatusEnum.
 const (
 	UserDonatorStatusEnumDonator    UserDonatorStatusEnum = "Donator"
@@ -25497,6 +25527,50 @@ type UserCrimesResponse struct {
 	Crimes UserCrime `json:"crimes"`
 }
 
+// UserCriminalRecordResponse defines model for UserCriminalRecordResponse.
+type UserCriminalRecordResponse struct {
+	Criminalrecord UserCriminalRecordResponse_Criminalrecord `json:"criminalrecord"`
+}
+
+// UserCriminalRecordResponse_Criminalrecord defines model for UserCriminalRecordResponse.Criminalrecord.
+type UserCriminalRecordResponse_Criminalrecord struct {
+	union json.RawMessage
+}
+
+// UserCriminalRecordV1 defines model for UserCriminalRecordV1.
+type UserCriminalRecordV1 struct {
+	AutoTheft        int32                       `json:"auto_theft"`
+	Computer         int32                       `json:"computer"`
+	DrugDeals        int32                       `json:"drug_deals"`
+	Fraud            int32                       `json:"fraud"`
+	Murder           int32                       `json:"murder"`
+	Other            int32                       `json:"other"`
+	SellIllegalGoods int32                       `json:"sell_illegal_goods"`
+	Theft            int32                       `json:"theft"`
+	Total            int32                       `json:"total"`
+	Version          UserCriminalRecordV1Version `json:"version"`
+}
+
+// UserCriminalRecordV1Version defines model for UserCriminalRecordV1.Version.
+type UserCriminalRecordV1Version string
+
+// UserCriminalRecordV2 defines model for UserCriminalRecordV2.
+type UserCriminalRecordV2 struct {
+	Counterfeiting    int32                       `json:"counterfeiting"`
+	Cybercrime        int32                       `json:"cybercrime"`
+	Extortion         int32                       `json:"extortion"`
+	Fraud             int32                       `json:"fraud"`
+	IllegalProduction int32                       `json:"illegal_production"`
+	IllicitServices   int32                       `json:"illicit_services"`
+	Theft             int32                       `json:"theft"`
+	Total             int32                       `json:"total"`
+	Vandalism         int32                       `json:"vandalism"`
+	Version           UserCriminalRecordV2Version `json:"version"`
+}
+
+// UserCriminalRecordV2Version defines model for UserCriminalRecordV2.Version.
+type UserCriminalRecordV2Version string
+
 // UserCurrentEducation defines model for UserCurrentEducation.
 type UserCurrentEducation struct {
 	Id    EducationId `json:"id"`
@@ -27284,7 +27358,7 @@ type UserSelectionName struct {
 	union json.RawMessage
 }
 
-// UserSelectionName0 The following selections will fallback to API v1 and may change at any time: 'criminalrecord','networth'.
+// UserSelectionName0 defines model for UserSelectionName.0.
 type UserSelectionName0 string
 
 // UserSelectionName1 defines model for UserSelectionName.1.
@@ -30592,6 +30666,18 @@ type GetMyCooldownsParams struct {
 	Key *ApiKeyMinimal `form:"key,omitempty" json:"key,omitempty"`
 }
 
+// GetMyCriminalRecordParams defines parameters for GetMyCriminalRecord.
+type GetMyCriminalRecordParams struct {
+	// Timestamp Timestamp to bypass cache
+	Timestamp *ApiTimestamp `form:"timestamp,omitempty" json:"timestamp,omitempty"`
+
+	// Comment Comment for your tool/service/bot/website to be visible in the logs.
+	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
+
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
+}
+
 // GetMyDiscordParams defines parameters for GetMyDiscord.
 type GetMyDiscordParams struct {
 	// Timestamp Timestamp to bypass cache
@@ -31583,6 +31669,18 @@ type GetUserBountiesParams struct {
 
 // GetUserCompetitionInfoParams defines parameters for GetUserCompetitionInfo.
 type GetUserCompetitionInfoParams struct {
+	// Timestamp Timestamp to bypass cache
+	Timestamp *ApiTimestamp `form:"timestamp,omitempty" json:"timestamp,omitempty"`
+
+	// Comment Comment for your tool/service/bot/website to be visible in the logs.
+	Comment *ApiComment `form:"comment,omitempty" json:"comment,omitempty"`
+
+	// Key API key (Public).<br>It's not required to use this parameter when passing the API key via the Authorization header.
+	Key *ApiKeyPublic `form:"key,omitempty" json:"key,omitempty"`
+}
+
+// GetUserCriminalRecordParams defines parameters for GetUserCriminalRecord.
+type GetUserCriminalRecordParams struct {
 	// Timestamp Timestamp to bypass cache
 	Timestamp *ApiTimestamp `form:"timestamp,omitempty" json:"timestamp,omitempty"`
 
@@ -35478,6 +35576,68 @@ func (t UserCrime_Miscellaneous) MarshalJSON() ([]byte, error) {
 }
 
 func (t *UserCrime_Miscellaneous) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsUserCriminalRecordV2 returns the union data inside the UserCriminalRecordResponse_Criminalrecord as a UserCriminalRecordV2
+func (t UserCriminalRecordResponse_Criminalrecord) AsUserCriminalRecordV2() (UserCriminalRecordV2, error) {
+	var body UserCriminalRecordV2
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUserCriminalRecordV2 overwrites any union data inside the UserCriminalRecordResponse_Criminalrecord as the provided UserCriminalRecordV2
+func (t *UserCriminalRecordResponse_Criminalrecord) FromUserCriminalRecordV2(v UserCriminalRecordV2) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUserCriminalRecordV2 performs a merge with any union data inside the UserCriminalRecordResponse_Criminalrecord, using the provided UserCriminalRecordV2
+func (t *UserCriminalRecordResponse_Criminalrecord) MergeUserCriminalRecordV2(v UserCriminalRecordV2) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsUserCriminalRecordV1 returns the union data inside the UserCriminalRecordResponse_Criminalrecord as a UserCriminalRecordV1
+func (t UserCriminalRecordResponse_Criminalrecord) AsUserCriminalRecordV1() (UserCriminalRecordV1, error) {
+	var body UserCriminalRecordV1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUserCriminalRecordV1 overwrites any union data inside the UserCriminalRecordResponse_Criminalrecord as the provided UserCriminalRecordV1
+func (t *UserCriminalRecordResponse_Criminalrecord) FromUserCriminalRecordV1(v UserCriminalRecordV1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUserCriminalRecordV1 performs a merge with any union data inside the UserCriminalRecordResponse_Criminalrecord, using the provided UserCriminalRecordV1
+func (t *UserCriminalRecordResponse_Criminalrecord) MergeUserCriminalRecordV1(v UserCriminalRecordV1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t UserCriminalRecordResponse_Criminalrecord) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *UserCriminalRecordResponse_Criminalrecord) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -42102,6 +42262,32 @@ func (t *GetUserGeneric200JSONResponseBody) MergeUserAuctionHouseResponse(v User
 	return err
 }
 
+// AsUserCriminalRecordResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserCriminalRecordResponse
+func (t GetUserGeneric200JSONResponseBody) AsUserCriminalRecordResponse() (UserCriminalRecordResponse, error) {
+	var body UserCriminalRecordResponse
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUserCriminalRecordResponse overwrites any union data inside the GetUserGeneric200JSONResponseBody as the provided UserCriminalRecordResponse
+func (t *GetUserGeneric200JSONResponseBody) FromUserCriminalRecordResponse(v UserCriminalRecordResponse) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUserCriminalRecordResponse performs a merge with any union data inside the GetUserGeneric200JSONResponseBody, using the provided UserCriminalRecordResponse
+func (t *GetUserGeneric200JSONResponseBody) MergeUserCriminalRecordResponse(v UserCriminalRecordResponse) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
 // AsUserLookupResponse returns the union data inside the GetUserGeneric200JSONResponseBody as a UserLookupResponse
 func (t GetUserGeneric200JSONResponseBody) AsUserLookupResponse() (UserLookupResponse, error) {
 	var body UserLookupResponse
@@ -42328,7 +42514,7 @@ type ClientInterface interface {
 
 	// GetCompaniesList Get a list of companies for a specific company type
 	//
-	// Requires public access key. <br>
+	// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 	//
 	// Corresponds with GET /company/{typeId}/companies (the `GetCompaniesList` operationId).
 	GetCompaniesList(ctx context.Context, typeId CompanyTypeId, params *GetCompaniesListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42810,7 +42996,7 @@ type ClientInterface interface {
 
 	// GetMarketAuctionHouse Get auction house listings
 	//
-	// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
+	// <b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 	//
 	// Corresponds with GET /market/auctionhouse (the `GetMarketAuctionHouse` operationId).
 	GetMarketAuctionHouse(ctx context.Context, params *GetMarketAuctionHouseParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42845,14 +43031,14 @@ type ClientInterface interface {
 
 	// GetMarketAuctionHouseItem Get specific item auction house listings
 	//
-	// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
+	// <b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 	//
 	// Corresponds with GET /market/{id}/auctionhouse (the `GetMarketAuctionHouseItem` operationId).
 	GetMarketAuctionHouseItem(ctx context.Context, id ItemId, params *GetMarketAuctionHouseItemParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketAuctionHouseListing Get specific item auction house listings
 	//
-	// Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.
+	// <b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.
 	//
 	// Corresponds with GET /market/{id}/auctionhouselisting (the `GetMarketAuctionHouseListing` operationId).
 	GetMarketAuctionHouseListing(ctx context.Context, id AuctionListingId, params *GetMarketAuctionHouseListingParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42866,21 +43052,21 @@ type ClientInterface interface {
 
 	// GetMarketItemMarketItem Get item market listings
 	//
-	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+	// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 	//
 	// Corresponds with GET /market/{id}/itemmarket (the `GetMarketItemMarketItem` operationId).
 	GetMarketItemMarketItem(ctx context.Context, id ItemId, params *GetMarketItemMarketItemParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketProperties Get properties market listings
 	//
-	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+	// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 	//
 	// Corresponds with GET /market/{propertyTypeId}/properties (the `GetMarketProperties` operationId).
 	GetMarketProperties(ctx context.Context, propertyTypeId PropertyTypeId, params *GetMarketPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMarketPropertiesRental Get properties rental listings
 	//
-	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+	// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 	//
 	// Corresponds with GET /market/{propertyTypeId}/rentals (the `GetMarketPropertiesRental` operationId).
 	GetMarketPropertiesRental(ctx context.Context, propertyTypeId PropertyTypeId, params *GetMarketPropertiesRentalParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -42999,7 +43185,7 @@ type ClientInterface interface {
 
 	// GetTornBounties Get bounties
 	//
-	// <b>Globally cached selection.</b><br><br>Requires public key. <br>
+	// <b>Globally cached selection (5 minutes).</b><br><br>Requires public key. <br>
 	//
 	// Corresponds with GET /torn/bounties (the `GetTornBounties` operationId).
 	GetTornBounties(ctx context.Context, params *GetTornBountiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43377,7 +43563,7 @@ type ClientInterface interface {
 
 	// GetMyBounties Get bounties placed on you
 	//
-	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+	// <b>Globally cached selection (5 minutes).</b><br><br>Requires public access key. <br>
 	//
 	// Corresponds with GET /user/bounties (the `GetMyBounties` operationId).
 	GetMyBounties(ctx context.Context, params *GetMyBountiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43409,6 +43595,13 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /user/cooldowns (the `GetMyCooldowns` operationId).
 	GetMyCooldowns(ctx context.Context, params *GetMyCooldownsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetMyCriminalRecord Get your criminal record
+	//
+	// Requires public access key. <br>UserCriminalRecordV1 is returned only for players who have not yet migrated to Crimes 2.0.
+	//
+	// Corresponds with GET /user/criminalrecord (the `GetMyCriminalRecord` operationId).
+	GetMyCriminalRecord(ctx context.Context, params *GetMyCriminalRecordParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMyDiscord Get your discord information
 	//
@@ -43629,7 +43822,7 @@ type ClientInterface interface {
 
 	// GetMyNetworth Get your networth
 	//
-	// Requires limited access key. <br>
+	// <b>Cached selection (15 minutes).</b><br><br>Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/networth (the `GetMyNetworth` operationId).
 	GetMyNetworth(ctx context.Context, params *GetMyNetworthParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43643,7 +43836,7 @@ type ClientInterface interface {
 
 	// GetMyNewMessages Get your unseen messages
 	//
-	// Requires limited access key. <br>This selection is cached for 1 hour.
+	// Requires limited access key. <br>
 	//
 	// Corresponds with GET /user/newmessages (the `GetMyNewMessages` operationId).
 	GetMyNewMessages(ctx context.Context, params *GetMyNewMessagesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43698,7 +43891,7 @@ type ClientInterface interface {
 
 	// GetMyProperties Get your own properties
 	//
-	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
+	// <b>Cached selection (1 hour).</b><br><br>Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>The cache is skipped when requesting your own or your spouse's properties with a Limited or higher access key.
 	//
 	// Corresponds with GET /user/properties (the `GetMyProperties` operationId).
 	GetMyProperties(ctx context.Context, params *GetMyPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43848,7 +44041,7 @@ type ClientInterface interface {
 
 	// GetUserBounties Get bounties placed on a specific user
 	//
-	// Requires public access key. <br>
+	// <b>Globally cached selection (5 minutes).</b><br><br>Requires public access key. <br>
 	//
 	// Corresponds with GET /user/{id}/bounties (the `GetUserBounties` operationId).
 	GetUserBounties(ctx context.Context, id UserDiscordPathId, params *GetUserBountiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -43859,6 +44052,13 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /user/{id}/competition (the `GetUserCompetitionInfo` operationId).
 	GetUserCompetitionInfo(ctx context.Context, id UserDiscordPathId, params *GetUserCompetitionInfoParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetUserCriminalRecord Get criminal record for a specific player
+	//
+	// Requires public access key. <br>UserCriminalRecordV1 is returned only for players who have not yet migrated to Crimes 2.0.
+	//
+	// Corresponds with GET /user/{id}/criminalrecord (the `GetUserCriminalRecord` operationId).
+	GetUserCriminalRecord(ctx context.Context, id UserDiscordPathId, params *GetUserCriminalRecordParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserDiscord Get discord information for a specific user
 	//
@@ -43945,7 +44145,7 @@ type ClientInterface interface {
 
 	// GetUserProperties Get specific user's properties
 	//
-	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
+	// <b>Cached selection (1 hour).</b><br><br>Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>The cache is skipped when requesting your own or your spouse's properties with a Limited or higher access key.
 	//
 	// Corresponds with GET /user/{id}/properties (the `GetUserProperties` operationId).
 	GetUserProperties(ctx context.Context, id UserDiscordPathId, params *GetUserPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -44175,7 +44375,7 @@ func (c *Client) GetCompanyProfile(ctx context.Context, id CompanyId, params *Ge
 
 // GetCompaniesList Get a list of companies for a specific company type
 //
-// Requires public access key. <br>
+// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 //
 // Corresponds with GET /company/{typeId}/companies (the `GetCompaniesList` operationId).
 func (c *Client) GetCompaniesList(ctx context.Context, typeId CompanyTypeId, params *GetCompaniesListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45336,7 +45536,7 @@ func (c *Client) GetMarketGeneric(ctx context.Context, params *GetMarketGenericP
 
 // GetMarketAuctionHouse Get auction house listings
 //
-// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
+// <b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 //
 // Corresponds with GET /market/auctionhouse (the `GetMarketAuctionHouse` operationId).
 func (c *Client) GetMarketAuctionHouse(ctx context.Context, params *GetMarketAuctionHouseParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45421,7 +45621,7 @@ func (c *Client) GetMarketTimestamp(ctx context.Context, params *GetMarketTimest
 
 // GetMarketAuctionHouseItem Get specific item auction house listings
 //
-// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
+// <b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 //
 // Corresponds with GET /market/{id}/auctionhouse (the `GetMarketAuctionHouseItem` operationId).
 func (c *Client) GetMarketAuctionHouseItem(ctx context.Context, id ItemId, params *GetMarketAuctionHouseItemParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45438,7 +45638,7 @@ func (c *Client) GetMarketAuctionHouseItem(ctx context.Context, id ItemId, param
 
 // GetMarketAuctionHouseListing Get specific item auction house listings
 //
-// Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.
+// <b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.
 //
 // Corresponds with GET /market/{id}/auctionhouselisting (the `GetMarketAuctionHouseListing` operationId).
 func (c *Client) GetMarketAuctionHouseListing(ctx context.Context, id AuctionListingId, params *GetMarketAuctionHouseListingParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45472,7 +45672,7 @@ func (c *Client) GetMarketBazaarItem(ctx context.Context, id ItemId, params *Get
 
 // GetMarketItemMarketItem Get item market listings
 //
-// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 //
 // Corresponds with GET /market/{id}/itemmarket (the `GetMarketItemMarketItem` operationId).
 func (c *Client) GetMarketItemMarketItem(ctx context.Context, id ItemId, params *GetMarketItemMarketItemParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45489,7 +45689,7 @@ func (c *Client) GetMarketItemMarketItem(ctx context.Context, id ItemId, params 
 
 // GetMarketProperties Get properties market listings
 //
-// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 //
 // Corresponds with GET /market/{propertyTypeId}/properties (the `GetMarketProperties` operationId).
 func (c *Client) GetMarketProperties(ctx context.Context, propertyTypeId PropertyTypeId, params *GetMarketPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45506,7 +45706,7 @@ func (c *Client) GetMarketProperties(ctx context.Context, propertyTypeId Propert
 
 // GetMarketPropertiesRental Get properties rental listings
 //
-// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 //
 // Corresponds with GET /market/{propertyTypeId}/rentals (the `GetMarketPropertiesRental` operationId).
 func (c *Client) GetMarketPropertiesRental(ctx context.Context, propertyTypeId PropertyTypeId, params *GetMarketPropertiesRentalParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -45795,7 +45995,7 @@ func (c *Client) GetTornBank(ctx context.Context, params *GetTornBankParams, req
 
 // GetTornBounties Get bounties
 //
-// <b>Globally cached selection.</b><br><br>Requires public key. <br>
+// <b>Globally cached selection (5 minutes).</b><br><br>Requires public key. <br>
 //
 // Corresponds with GET /torn/bounties (the `GetTornBounties` operationId).
 func (c *Client) GetTornBounties(ctx context.Context, params *GetTornBountiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46713,7 +46913,7 @@ func (c *Client) GetMyBazaar(ctx context.Context, params *GetMyBazaarParams, req
 
 // GetMyBounties Get bounties placed on you
 //
-// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+// <b>Globally cached selection (5 minutes).</b><br><br>Requires public access key. <br>
 //
 // Corresponds with GET /user/bounties (the `GetMyBounties` operationId).
 func (c *Client) GetMyBounties(ctx context.Context, params *GetMyBountiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -46786,6 +46986,23 @@ func (c *Client) GetMyCompetitionInfo(ctx context.Context, params *GetMyCompetit
 // Corresponds with GET /user/cooldowns (the `GetMyCooldowns` operationId).
 func (c *Client) GetMyCooldowns(ctx context.Context, params *GetMyCooldownsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetMyCooldownsRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetMyCriminalRecord Get your criminal record
+//
+// Requires public access key. <br>UserCriminalRecordV1 is returned only for players who have not yet migrated to Crimes 2.0.
+//
+// Corresponds with GET /user/criminalrecord (the `GetMyCriminalRecord` operationId).
+func (c *Client) GetMyCriminalRecord(ctx context.Context, params *GetMyCriminalRecordParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetMyCriminalRecordRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -47325,7 +47542,7 @@ func (c *Client) GetMyMoney(ctx context.Context, params *GetMyMoneyParams, reqEd
 
 // GetMyNetworth Get your networth
 //
-// Requires limited access key. <br>
+// <b>Cached selection (15 minutes).</b><br><br>Requires limited access key. <br>
 //
 // Corresponds with GET /user/networth (the `GetMyNetworth` operationId).
 func (c *Client) GetMyNetworth(ctx context.Context, params *GetMyNetworthParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -47359,7 +47576,7 @@ func (c *Client) GetMyNewEvents(ctx context.Context, params *GetMyNewEventsParam
 
 // GetMyNewMessages Get your unseen messages
 //
-// Requires limited access key. <br>This selection is cached for 1 hour.
+// Requires limited access key. <br>
 //
 // Corresponds with GET /user/newmessages (the `GetMyNewMessages` operationId).
 func (c *Client) GetMyNewMessages(ctx context.Context, params *GetMyNewMessagesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -47484,7 +47701,7 @@ func (c *Client) GetMyProfile(ctx context.Context, params *GetMyProfileParams, r
 
 // GetMyProperties Get your own properties
 //
-// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
+// <b>Cached selection (1 hour).</b><br><br>Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>The cache is skipped when requesting your own or your spouse's properties with a Limited or higher access key.
 //
 // Corresponds with GET /user/properties (the `GetMyProperties` operationId).
 func (c *Client) GetMyProperties(ctx context.Context, params *GetMyPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -47844,7 +48061,7 @@ func (c *Client) GetUserBasicInformation(ctx context.Context, id UserDiscordPath
 
 // GetUserBounties Get bounties placed on a specific user
 //
-// Requires public access key. <br>
+// <b>Globally cached selection (5 minutes).</b><br><br>Requires public access key. <br>
 //
 // Corresponds with GET /user/{id}/bounties (the `GetUserBounties` operationId).
 func (c *Client) GetUserBounties(ctx context.Context, id UserDiscordPathId, params *GetUserBountiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -47866,6 +48083,23 @@ func (c *Client) GetUserBounties(ctx context.Context, id UserDiscordPathId, para
 // Corresponds with GET /user/{id}/competition (the `GetUserCompetitionInfo` operationId).
 func (c *Client) GetUserCompetitionInfo(ctx context.Context, id UserDiscordPathId, params *GetUserCompetitionInfoParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetUserCompetitionInfoRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetUserCriminalRecord Get criminal record for a specific player
+//
+// Requires public access key. <br>UserCriminalRecordV1 is returned only for players who have not yet migrated to Crimes 2.0.
+//
+// Corresponds with GET /user/{id}/criminalrecord (the `GetUserCriminalRecord` operationId).
+func (c *Client) GetUserCriminalRecord(ctx context.Context, id UserDiscordPathId, params *GetUserCriminalRecordParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetUserCriminalRecordRequest(c.Server, id, params)
 	if err != nil {
 		return nil, err
 	}
@@ -48071,7 +48305,7 @@ func (c *Client) GetUserProfile(ctx context.Context, id UserDiscordPathId, param
 
 // GetUserProperties Get specific user's properties
 //
-// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
+// <b>Cached selection (1 hour).</b><br><br>Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>The cache is skipped when requesting your own or your spouse's properties with a Limited or higher access key.
 //
 // Corresponds with GET /user/{id}/properties (the `GetUserProperties` operationId).
 func (c *Client) GetUserProperties(ctx context.Context, id UserDiscordPathId, params *GetUserPropertiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -64671,6 +64905,84 @@ func NewGetMyCooldownsRequest(server string, params *GetMyCooldownsParams) (*htt
 	return req, nil
 }
 
+// NewGetMyCriminalRecordRequest constructs an http.Request for the GetMyCriminalRecord method
+func NewGetMyCriminalRecordRequest(server string, params *GetMyCriminalRecordParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/user/criminalrecord")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Timestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "timestamp", *params.Timestamp, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Comment != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "comment", *params.Comment, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Key != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "key", *params.Key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetMyDiscordRequest constructs an http.Request for the GetMyDiscord method
 func NewGetMyDiscordRequest(server string, params *GetMyDiscordParams) (*http.Request, error) {
 	var err error
@@ -70533,6 +70845,91 @@ func NewGetUserCompetitionInfoRequest(server string, id UserDiscordPathId, param
 	return req, nil
 }
 
+// NewGetUserCriminalRecordRequest constructs an http.Request for the GetUserCriminalRecord method
+func NewGetUserCriminalRecordRequest(server string, id UserDiscordPathId, params *GetUserCriminalRecordParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/user/%s/criminalrecord", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Timestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "timestamp", *params.Timestamp, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Comment != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "comment", *params.Comment, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Key != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "key", *params.Key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetUserDiscordRequest constructs an http.Request for the GetUserDiscord method
 func NewGetUserDiscordRequest(server string, id UserDiscordPathId, params *GetUserDiscordParams) (*http.Request, error) {
 	var err error
@@ -72109,7 +72506,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetCompaniesListWithResponse Get a list of companies for a specific company type
 	//
-	// Requires public access key. <br>
+	// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72727,7 +73124,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketAuctionHouseWithResponse Get auction house listings
 	//
-	// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
+	// <b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72772,7 +73169,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketAuctionHouseItemWithResponse Get specific item auction house listings
 	//
-	// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
+	// <b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72781,7 +73178,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketAuctionHouseListingWithResponse Get specific item auction house listings
 	//
-	// Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.
+	// <b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72799,7 +73196,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketItemMarketItemWithResponse Get item market listings
 	//
-	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+	// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72808,7 +73205,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketPropertiesWithResponse Get properties market listings
 	//
-	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+	// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72817,7 +73214,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMarketPropertiesRentalWithResponse Get properties rental listings
 	//
-	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+	// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -72970,7 +73367,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetTornBountiesWithResponse Get bounties
 	//
-	// <b>Globally cached selection.</b><br><br>Requires public key. <br>
+	// <b>Globally cached selection (5 minutes).</b><br><br>Requires public key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -73456,7 +73853,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyBountiesWithResponse Get bounties placed on you
 	//
-	// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+	// <b>Globally cached selection (5 minutes).</b><br><br>Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -73498,6 +73895,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /user/cooldowns (the `GetMyCooldowns` operationId).
 	GetMyCooldownsWithResponse(ctx context.Context, params *GetMyCooldownsParams, reqEditors ...RequestEditorFn) (*GetMyCooldownsResponse, error)
+
+	// GetMyCriminalRecordWithResponse Get your criminal record
+	//
+	// Requires public access key. <br>UserCriminalRecordV1 is returned only for players who have not yet migrated to Crimes 2.0.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /user/criminalrecord (the `GetMyCriminalRecord` operationId).
+	GetMyCriminalRecordWithResponse(ctx context.Context, params *GetMyCriminalRecordParams, reqEditors ...RequestEditorFn) (*GetMyCriminalRecordResponse, error)
 
 	// GetMyDiscordWithResponse Get your discord information
 	//
@@ -73780,7 +74186,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyNetworthWithResponse Get your networth
 	//
-	// Requires limited access key. <br>
+	// <b>Cached selection (15 minutes).</b><br><br>Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -73798,7 +74204,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyNewMessagesWithResponse Get your unseen messages
 	//
-	// Requires limited access key. <br>This selection is cached for 1 hour.
+	// Requires limited access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -73867,7 +74273,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetMyPropertiesWithResponse Get your own properties
 	//
-	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
+	// <b>Cached selection (1 hour).</b><br><br>Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>The cache is skipped when requesting your own or your spouse's properties with a Limited or higher access key.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -74059,7 +74465,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserBountiesWithResponse Get bounties placed on a specific user
 	//
-	// Requires public access key. <br>
+	// <b>Globally cached selection (5 minutes).</b><br><br>Requires public access key. <br>
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -74074,6 +74480,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /user/{id}/competition (the `GetUserCompetitionInfo` operationId).
 	GetUserCompetitionInfoWithResponse(ctx context.Context, id UserDiscordPathId, params *GetUserCompetitionInfoParams, reqEditors ...RequestEditorFn) (*GetUserCompetitionInfoResponse, error)
+
+	// GetUserCriminalRecordWithResponse Get criminal record for a specific player
+	//
+	// Requires public access key. <br>UserCriminalRecordV1 is returned only for players who have not yet migrated to Crimes 2.0.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /user/{id}/criminalrecord (the `GetUserCriminalRecord` operationId).
+	GetUserCriminalRecordWithResponse(ctx context.Context, id UserDiscordPathId, params *GetUserCriminalRecordParams, reqEditors ...RequestEditorFn) (*GetUserCriminalRecordResponse, error)
 
 	// GetUserDiscordWithResponse Get discord information for a specific user
 	//
@@ -74182,7 +74597,7 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserPropertiesWithResponse Get specific user's properties
 	//
-	// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
+	// <b>Cached selection (1 hour).</b><br><br>Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>The cache is skipped when requesting your own or your spouse's properties with a Limited or higher access key.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -81000,6 +81415,47 @@ func (r GetMyCooldownsResponse) ContentType() string {
 	return ""
 }
 
+type GetMyCriminalRecordResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *UserCriminalRecordResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetMyCriminalRecordResponse) GetJSON200() *UserCriminalRecordResponse {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r GetMyCriminalRecordResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetMyCriminalRecordResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetMyCriminalRecordResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetMyCriminalRecordResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetMyDiscordResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -83576,6 +84032,47 @@ func (r GetUserCompetitionInfoResponse) ContentType() string {
 	return ""
 }
 
+type GetUserCriminalRecordResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *UserCriminalRecordResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetUserCriminalRecordResponse) GetJSON200() *UserCriminalRecordResponse {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r GetUserCriminalRecordResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetUserCriminalRecordResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetUserCriminalRecordResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetUserCriminalRecordResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetUserDiscordResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -84336,7 +84833,7 @@ func (c *ClientWithResponses) GetCompanyProfileWithResponse(ctx context.Context,
 
 // GetCompaniesListWithResponse Get a list of companies for a specific company type
 //
-// Requires public access key. <br>
+// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85362,7 +85859,7 @@ func (c *ClientWithResponses) GetMarketGenericWithResponse(ctx context.Context, 
 
 // GetMarketAuctionHouseWithResponse Get auction house listings
 //
-// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
+// <b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85437,7 +85934,7 @@ func (c *ClientWithResponses) GetMarketTimestampWithResponse(ctx context.Context
 
 // GetMarketAuctionHouseItemWithResponse Get specific item auction house listings
 //
-// Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
+// <b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85452,7 +85949,7 @@ func (c *ClientWithResponses) GetMarketAuctionHouseItemWithResponse(ctx context.
 
 // GetMarketAuctionHouseListingWithResponse Get specific item auction house listings
 //
-// Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.
+// <b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85482,7 +85979,7 @@ func (c *ClientWithResponses) GetMarketBazaarItemWithResponse(ctx context.Contex
 
 // GetMarketItemMarketItemWithResponse Get item market listings
 //
-// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85497,7 +85994,7 @@ func (c *ClientWithResponses) GetMarketItemMarketItemWithResponse(ctx context.Co
 
 // GetMarketPropertiesWithResponse Get properties market listings
 //
-// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85512,7 +86009,7 @@ func (c *ClientWithResponses) GetMarketPropertiesWithResponse(ctx context.Contex
 
 // GetMarketPropertiesRentalWithResponse Get properties rental listings
 //
-// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+// <b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -85767,7 +86264,7 @@ func (c *ClientWithResponses) GetTornBankWithResponse(ctx context.Context, param
 
 // GetTornBountiesWithResponse Get bounties
 //
-// <b>Globally cached selection.</b><br><br>Requires public key. <br>
+// <b>Globally cached selection (5 minutes).</b><br><br>Requires public key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -86577,7 +87074,7 @@ func (c *ClientWithResponses) GetMyBazaarWithResponse(ctx context.Context, param
 
 // GetMyBountiesWithResponse Get bounties placed on you
 //
-// <b>Globally cached selection.</b><br><br>Requires public access key. <br>
+// <b>Globally cached selection (5 minutes).</b><br><br>Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -86648,6 +87145,21 @@ func (c *ClientWithResponses) GetMyCooldownsWithResponse(ctx context.Context, pa
 		return nil, err
 	}
 	return ParseGetMyCooldownsResponse(rsp)
+}
+
+// GetMyCriminalRecordWithResponse Get your criminal record
+//
+// Requires public access key. <br>UserCriminalRecordV1 is returned only for players who have not yet migrated to Crimes 2.0.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /user/criminalrecord (the `GetMyCriminalRecord` operationId).
+func (c *ClientWithResponses) GetMyCriminalRecordWithResponse(ctx context.Context, params *GetMyCriminalRecordParams, reqEditors ...RequestEditorFn) (*GetMyCriminalRecordResponse, error) {
+	rsp, err := c.GetMyCriminalRecord(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetMyCriminalRecordResponse(rsp)
 }
 
 // GetMyDiscordWithResponse Get your discord information
@@ -87117,7 +87629,7 @@ func (c *ClientWithResponses) GetMyMoneyWithResponse(ctx context.Context, params
 
 // GetMyNetworthWithResponse Get your networth
 //
-// Requires limited access key. <br>
+// <b>Cached selection (15 minutes).</b><br><br>Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -87147,7 +87659,7 @@ func (c *ClientWithResponses) GetMyNewEventsWithResponse(ctx context.Context, pa
 
 // GetMyNewMessagesWithResponse Get your unseen messages
 //
-// Requires limited access key. <br>This selection is cached for 1 hour.
+// Requires limited access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -87258,7 +87770,7 @@ func (c *ClientWithResponses) GetMyProfileWithResponse(ctx context.Context, para
 
 // GetMyPropertiesWithResponse Get your own properties
 //
-// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
+// <b>Cached selection (1 hour).</b><br><br>Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>The cache is skipped when requesting your own or your spouse's properties with a Limited or higher access key.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -87576,7 +88088,7 @@ func (c *ClientWithResponses) GetUserBasicInformationWithResponse(ctx context.Co
 
 // GetUserBountiesWithResponse Get bounties placed on a specific user
 //
-// Requires public access key. <br>
+// <b>Globally cached selection (5 minutes).</b><br><br>Requires public access key. <br>
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -87602,6 +88114,21 @@ func (c *ClientWithResponses) GetUserCompetitionInfoWithResponse(ctx context.Con
 		return nil, err
 	}
 	return ParseGetUserCompetitionInfoResponse(rsp)
+}
+
+// GetUserCriminalRecordWithResponse Get criminal record for a specific player
+//
+// Requires public access key. <br>UserCriminalRecordV1 is returned only for players who have not yet migrated to Crimes 2.0.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /user/{id}/criminalrecord (the `GetUserCriminalRecord` operationId).
+func (c *ClientWithResponses) GetUserCriminalRecordWithResponse(ctx context.Context, id UserDiscordPathId, params *GetUserCriminalRecordParams, reqEditors ...RequestEditorFn) (*GetUserCriminalRecordResponse, error) {
+	rsp, err := c.GetUserCriminalRecord(ctx, id, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetUserCriminalRecordResponse(rsp)
 }
 
 // GetUserDiscordWithResponse Get discord information for a specific user
@@ -87777,7 +88304,7 @@ func (c *ClientWithResponses) GetUserProfileWithResponse(ctx context.Context, id
 
 // GetUserPropertiesWithResponse Get specific user's properties
 //
-// Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.
+// <b>Cached selection (1 hour).</b><br><br>Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>The cache is skipped when requesting your own or your spouse's properties with a Limited or higher access key.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -92116,6 +92643,32 @@ func ParseGetMyCooldownsResponse(rsp *http.Response) (*GetMyCooldownsResponse, e
 	return response, nil
 }
 
+// ParseGetMyCriminalRecordResponse parses an HTTP response from a GetMyCriminalRecordWithResponse call
+func ParseGetMyCriminalRecordResponse(rsp *http.Response) (*GetMyCriminalRecordResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetMyCriminalRecordResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest UserCriminalRecordResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetMyDiscordResponse parses an HTTP response from a GetMyDiscordWithResponse call
 func ParseGetMyDiscordResponse(rsp *http.Response) (*GetMyDiscordResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -93734,6 +94287,32 @@ func ParseGetUserCompetitionInfoResponse(rsp *http.Response) (*GetUserCompetitio
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest UserCompetitionResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetUserCriminalRecordResponse parses an HTTP response from a GetUserCriminalRecordWithResponse call
+func ParseGetUserCriminalRecordResponse(rsp *http.Response) (*GetUserCriminalRecordResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetUserCriminalRecordResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest UserCriminalRecordResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

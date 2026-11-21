@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Torn API",
-    "description": "\n * The development of Torn's API v2 is still ongoing.\n * If selections remain unaltered, they will default to the API v1 version.\n * Unlike API v1, API v2 accepts both selections and IDs as path and query parameters.\n * If any discrepancies or errors are found, please submit a [bug report](https://www.torn.com/forums.php#/p=forums&f=19&b=0&a=0) on the Torn Forums.\n * In case you're using bots to check for changes on openapi.json file, make sure to specificy a custom user-agent header - CloudFlare sometimes prevents requests from default user-agents.",
-    "version": "6.18.2"
+    "description": "\n * The development of Torn's API v2 is still ongoing.\n * If selections remain unaltered, they will default to the API v1 version.\n * Unlike API v1, API v2 accepts both selections and IDs as path and query parameters.\n * If any discrepancies or errors are found, please submit a [bug report](https://www.torn.com/forums.php#/p=forums&f=19&b=0&a=0) on the Torn Forums.\n * Every response is cached for 29 seconds: per key owner in the User, Faction and Company sections, and for all keys in the Torn, Market and Property sections. Pass a different 'timestamp' value to bypass this cache. Selections with a longer cache state it in their description.\n * In case you're using bots to check for changes on openapi.json file, make sure to specificy a custom user-agent header - CloudFlare sometimes prevents requests from default user-agents.",
+    "version": "6.19.0"
   },
   "servers": [
     {
@@ -464,7 +464,7 @@
           "User"
         ],
         "summary": "Get bounties placed on you",
-        "description": "<b>Globally cached selection.</b><br><br>Requires public access key. <br>",
+        "description": "<b>Globally cached selection (5 minutes).</b><br><br>Requires public access key. <br>",
         "operationId": "getMyBounties",
         "parameters": [
           {
@@ -503,7 +503,7 @@
           "User"
         ],
         "summary": "Get bounties placed on a specific user",
-        "description": "Requires public access key. <br>",
+        "description": "<b>Globally cached selection (5 minutes).</b><br><br>Requires public access key. <br>",
         "operationId": "getUserBounties",
         "parameters": [
           {
@@ -795,6 +795,93 @@
           }
         ],
         "x-stability": "Stable"
+      }
+    },
+    "/user/criminalrecord": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get your criminal record",
+        "description": "Requires public access key. <br>UserCriminalRecordV1 is returned only for players who have not yet migrated to Crimes 2.0.",
+        "operationId": "getMyCriminalRecord",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ApiTimestamp"
+          },
+          {
+            "$ref": "#/components/parameters/ApiComment"
+          },
+          {
+            "$ref": "#/components/parameters/ApiKeyPublic"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserCriminalRecordResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-stability": "Unstable"
+      }
+    },
+    "/user/{id}/criminalrecord": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get criminal record for a specific player",
+        "description": "Requires public access key. <br>UserCriminalRecordV1 is returned only for players who have not yet migrated to Crimes 2.0.",
+        "operationId": "getUserCriminalRecord",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User id or user discord id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/UserDiscordPathId"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ApiTimestamp"
+          },
+          {
+            "$ref": "#/components/parameters/ApiComment"
+          },
+          {
+            "$ref": "#/components/parameters/ApiKeyPublic"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserCriminalRecordResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-stability": "Unstable"
       }
     },
     "/user/discord": {
@@ -2666,7 +2753,7 @@
           "User"
         ],
         "summary": "Get your networth",
-        "description": "Requires limited access key. <br>",
+        "description": "<b>Cached selection (15 minutes).</b><br><br>Requires limited access key. <br>",
         "operationId": "getMyNetworth",
         "parameters": [
           {
@@ -2705,7 +2792,7 @@
           "User"
         ],
         "summary": "Get your unseen messages",
-        "description": "Requires limited access key. <br>This selection is cached for 1 hour.",
+        "description": "Requires limited access key. <br>",
         "operationId": "getMyNewMessages",
         "parameters": [
           {
@@ -3140,7 +3227,7 @@
           "User"
         ],
         "summary": "Get your own properties",
-        "description": "Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.",
+        "description": "<b>Cached selection (1 hour).</b><br><br>Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys. <br>The cache is skipped when requesting your own or your spouse's properties with a Limited or higher access key.",
         "operationId": "getMyProperties",
         "parameters": [
           {
@@ -3188,7 +3275,7 @@
           "User"
         ],
         "summary": "Get specific user's properties",
-        "description": "Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>Responses are cached for an hour unless requesting your own or your spouse's properties with a Limited or higher access key.",
+        "description": "<b>Cached selection (1 hour).</b><br><br>Requires public access key. <br>Extended responses are available when requesting the data with Limited or higher access keys for yourself or your spouse. <br>The cache is skipped when requesting your own or your spouse's properties with a Limited or higher access key.",
         "operationId": "getUserProperties",
         "parameters": [
           {
@@ -4539,6 +4626,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/UserAuctionHouseResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/UserCriminalRecordResponse"
                     },
                     {
                       "$ref": "#/components/schemas/UserLookupResponse"
@@ -7729,7 +7819,7 @@
           "Company"
         ],
         "summary": "Get a list of companies for a specific company type",
-        "description": "Requires public access key. <br>",
+        "description": "<b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>",
         "operationId": "getCompaniesList",
         "parameters": [
           {
@@ -8817,7 +8907,7 @@
           "Market"
         ],
         "summary": "Get specific item auction house listings",
-        "description": "Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.",
+        "description": "<b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are returned from the cached and delayed ongoing listings.",
         "operationId": "getMarketAuctionHouseListing",
         "parameters": [
           {
@@ -8865,7 +8955,7 @@
           "Market"
         ],
         "summary": "Get specific item auction house listings",
-        "description": "Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.",
+        "description": "<b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.",
         "operationId": "getMarketAuctionHouseItem",
         "parameters": [
           {
@@ -8934,7 +9024,7 @@
           "Market"
         ],
         "summary": "Get auction house listings",
-        "description": "Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.",
+        "description": "<b>Globally cached selection (15 minutes, ongoing listings only).</b><br><br>Requires public access key. <br>Ongoing listings are cached and delayed; auctionhouse_timestamp and auctionhouse_delay are returned only for the ongoing category. <br>Listings are sorted by their end time: complete listings descending by default, ongoing listings ascending by default.",
         "operationId": "getMarketAuctionHouse",
         "parameters": [
           {
@@ -9090,7 +9180,7 @@
           "Market"
         ],
         "summary": "Get item market listings",
-        "description": "<b>Globally cached selection.</b><br><br>Requires public access key. <br>",
+        "description": "<b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>",
         "operationId": "getMarketItemMarketItem",
         "parameters": [
           {
@@ -9153,7 +9243,7 @@
           "Market"
         ],
         "summary": "Get properties market listings",
-        "description": "<b>Globally cached selection.</b><br><br>Requires public access key. <br>",
+        "description": "<b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>",
         "operationId": "getMarketProperties",
         "parameters": [
           {
@@ -9249,7 +9339,7 @@
           "Market"
         ],
         "summary": "Get properties rental listings",
-        "description": "<b>Globally cached selection.</b><br><br>Requires public access key. <br>",
+        "description": "<b>Globally cached selection (1 hour).</b><br><br>Requires public access key. <br>",
         "operationId": "getMarketPropertiesRental",
         "parameters": [
           {
@@ -10317,7 +10407,7 @@
           "Torn"
         ],
         "summary": "Get bounties",
-        "description": "<b>Globally cached selection.</b><br><br>Requires public key. <br>",
+        "description": "<b>Globally cached selection (5 minutes).</b><br><br>Requires public key. <br>",
         "operationId": "getTornBounties",
         "parameters": [
           {
@@ -20466,6 +20556,142 @@
         },
         "type": "object"
       },
+      "UserCriminalRecordV2": {
+        "required": [
+          "version",
+          "vandalism",
+          "theft",
+          "counterfeiting",
+          "fraud",
+          "illicit_services",
+          "cybercrime",
+          "extortion",
+          "illegal_production",
+          "total"
+        ],
+        "properties": {
+          "version": {
+            "type": "string",
+            "enum": [
+              "v2"
+            ]
+          },
+          "vandalism": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "theft": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "counterfeiting": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fraud": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "illicit_services": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cybercrime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "extortion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "illegal_production": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "type": "object"
+      },
+      "UserCriminalRecordV1": {
+        "required": [
+          "version",
+          "sell_illegal_goods",
+          "theft",
+          "auto_theft",
+          "drug_deals",
+          "computer",
+          "fraud",
+          "murder",
+          "other",
+          "total"
+        ],
+        "properties": {
+          "version": {
+            "type": "string",
+            "enum": [
+              "v1"
+            ]
+          },
+          "sell_illegal_goods": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "theft": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "auto_theft": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "drug_deals": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "computer": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fraud": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "murder": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "other": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "type": "object"
+      },
+      "UserCriminalRecordResponse": {
+        "required": [
+          "criminalrecord"
+        ],
+        "properties": {
+          "criminalrecord": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UserCriminalRecordV2"
+              },
+              {
+                "$ref": "#/components/schemas/UserCriminalRecordV1"
+              }
+            ]
+          }
+        },
+        "type": "object"
+      },
       "UserItemMod": {
         "required": [
           "id",
@@ -24943,7 +25169,6 @@
       "UserSelectionName": {
         "oneOf": [
           {
-            "description": "The following selections will fallback to API v1 and may change at any time: 'criminalrecord','networth'.",
             "type": "string",
             "enum": [
               "ammo",
@@ -24960,6 +25185,7 @@
               "competition",
               "cooldowns",
               "crimes",
+              "criminalrecord",
               "discord",
               "display",
               "education",
@@ -25017,8 +25243,7 @@
               "weaponexp",
               "workstats",
               "lookup",
-              "timestamp",
-              "criminalrecord"
+              "timestamp"
             ]
           },
           {
